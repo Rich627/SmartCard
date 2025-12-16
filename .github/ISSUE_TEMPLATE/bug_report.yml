@@ -1,0 +1,86 @@
+name: Bug Report
+description: Report a bug or issue with SmartCard
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the form below.
+
+        感謝您回報問題！請填寫以下表單。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description / 問題描述
+      description: A clear description of the bug
+      placeholder: Describe what happened...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce / 重現步驟
+      description: How can we reproduce this bug?
+      placeholder: |
+        1. Go to '...'
+        2. Tap on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior / 預期行為
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / 螢幕截圖
+      description: If applicable, add screenshots
+
+  - type: dropdown
+    id: ios-version
+    attributes:
+      label: iOS Version
+      options:
+        - iOS 17.0
+        - iOS 17.1
+        - iOS 17.2
+        - iOS 17.3
+        - iOS 17.4
+        - iOS 18.0
+        - iOS 18.1
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      options:
+        - iPhone 15 Pro Max
+        - iPhone 15 Pro
+        - iPhone 15 Plus
+        - iPhone 15
+        - iPhone 14 Pro Max
+        - iPhone 14 Pro
+        - iPhone 14
+        - iPhone SE
+        - Simulator
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context / 其他資訊
+      description: Any other context about the problem

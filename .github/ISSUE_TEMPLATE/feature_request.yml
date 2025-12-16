@@ -1,0 +1,57 @@
+name: Feature Request
+description: Suggest a new feature for SmartCard
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! We'd love to hear your ideas.
+
+        感謝您提出功能建議！我們很樂意聽取您的想法。
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / 問題
+      description: What problem does this feature solve?
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution / 建議解決方案
+      description: Describe the feature you'd like
+      placeholder: I would like to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered / 考慮過的替代方案
+      description: Any alternative solutions you've considered?
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Feature Category / 功能類別
+      options:
+        - Card Recommendations / 卡片推薦
+        - Spending Tracking / 消費追蹤
+        - New Card Support / 新卡片支援
+        - UI/UX Improvement / 介面改善
+        - Widget / 小工具
+        - Analytics / 分析
+        - Other / 其他
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution / 貢獻意願
+      options:
+        - label: I'm willing to help implement this feature / 我願意協助實作此功能

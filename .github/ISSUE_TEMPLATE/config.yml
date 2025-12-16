@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions / 討論區
+    url: https://github.com/Rich627/SmartCard/discussions
+    about: Ask questions and discuss ideas here / 在此提問和討論
+  - name: Documentation / 文件
+    url: https://github.com/Rich627/SmartCard/blob/main/docs/README_EN.md
+    about: Check out our documentation / 查看文件

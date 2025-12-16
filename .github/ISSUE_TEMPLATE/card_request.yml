@@ -1,0 +1,64 @@
+name: New Card Request
+description: Request support for a new credit card
+title: "[Card]: "
+labels: ["new-card", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Request support for a new credit card!
+
+        申請新增信用卡支援！
+
+  - type: input
+    id: card-name
+    attributes:
+      label: Card Name / 卡片名稱
+      placeholder: e.g., Chase Sapphire Reserve
+    validations:
+      required: true
+
+  - type: input
+    id: issuer
+    attributes:
+      label: Card Issuer / 發卡銀行
+      placeholder: e.g., Chase, Amex, Citi
+    validations:
+      required: true
+
+  - type: textarea
+    id: rewards
+    attributes:
+      label: Reward Structure / 回饋結構
+      description: List the card's reward categories and rates
+      placeholder: |
+        - 3x on dining
+        - 2x on travel
+        - 1x on everything else
+    validations:
+      required: true
+
+  - type: dropdown
+    id: card-type
+    attributes:
+      label: Card Type / 卡片類型
+      options:
+        - Fixed Categories / 固定類別
+        - Rotating Categories / 輪轉類別
+        - Selectable Categories / 自選類別
+        - Flat Rate / 固定回饋率
+    validations:
+      required: true
+
+  - type: input
+    id: annual-fee
+    attributes:
+      label: Annual Fee / 年費
+      placeholder: e.g., $95 or $0
+
+  - type: input
+    id: source
+    attributes:
+      label: Source URL / 資料來源連結
+      description: Link to official card page
+      placeholder: https://...

@@ -1,294 +1,97 @@
-# SmartCard 💳
+<div align="center">
 
-> Maximize your credit card rewards with smart recommendations.
+# SmartCard
 
-An iOS app that helps you choose the best credit card for every purchase, so you never miss out on rewards.
+### Maximize Your Credit Card Rewards
 
-[![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg)](https://swift.org/)
-[![Platform](https://img.shields.io/badge/Platform-iOS%2017+-blue.svg)](https://developer.apple.com/ios/)
-[![License](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
-[![Commercial](https://img.shields.io/badge/Commercial-License%20Available-green.svg)](COMMERCIAL_LICENSE.md)
-
-[English](#features) | [繁體中文](#功能特色)
-
----
-
-## Screenshots
-
-<p align="center">
-  <img src="Screenshots/home.png" width="200" alt="Home Screen">
-  <img src="Screenshots/recommend.png" width="200" alt="Recommendations">
-  <img src="Screenshots/cards.png" width="200" alt="Card Management">
-  <img src="Screenshots/spending.png" width="200" alt="Spending Analytics">
+<p>
+  <a href="https://swift.org/"><img src="https://img.shields.io/badge/Swift-5.9-orange.svg" alt="Swift"></a>
+  <a href="https://developer.apple.com/ios/"><img src="https://img.shields.io/badge/Platform-iOS%2017+-blue.svg" alt="Platform"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License"></a>
+  <a href="https://github.com/Rich627/SmartCard/stargazers"><img src="https://img.shields.io/github/stars/Rich627/SmartCard?style=social" alt="Stars"></a>
 </p>
 
-> 📸 Add your screenshots to the `Screenshots/` folder
+<p>
+  <a href="docs/README_EN.md"><strong>English</strong></a> ·
+  <a href="docs/README_ZH-TW.md"><strong>繁體中文</strong></a>
+</p>
+
+<p>
+  <img src="Screenshots/home.png" width="180" alt="Home">
+  <img src="Screenshots/recommend.png" width="180" alt="Recommend">
+  <img src="Screenshots/cards.png" width="180" alt="Cards">
+  <img src="Screenshots/spending.png" width="180" alt="Spending">
+</p>
+
+</div>
 
 ---
 
-## Features
+## What is SmartCard?
+
+An iOS app that recommends the best credit card for every purchase. Supports 60+ US credit cards with accurate reward tracking for fixed, rotating, and selectable categories.
+
+---
+
+## Key Features
 
 | Feature | Description |
 |---------|-------------|
-| 🎯 **Smart Recommendations** | Get the best card suggestion based on merchant or category |
-| 💳 **60+ Credit Cards** | Comprehensive database of major US credit cards with accurate reward data |
-| 💰 **Reward Tracking** | Track fixed, rotating, and selectable category bonuses |
-| 📊 **Spending Analytics** | Visualize spending patterns with interactive charts |
-| 📷 **Receipt Scanning** | OCR-powered receipt scanning for quick expense logging |
-| 🎁 **Sign-Up Bonus Tracker** | Never miss a sign-up bonus deadline |
-| 📱 **Home Screen Widget** | Quick access to recommendations without opening the app |
-| 🔒 **Privacy First** | All data stored locally on your device |
-
-### Supported Cards
-
-**60+ cards from major US issuers:**
-- **Chase** - Sapphire Preferred/Reserve, Freedom Flex/Unlimited, Ink Business, Amazon Prime, United, Southwest, Marriott
-- **American Express** - Gold, Platinum, Blue Cash Preferred/Everyday, Delta SkyMiles, Hilton Honors
-- **Citi** - Double Cash, Custom Cash, Premier, Strata Premier, Costco Anywhere, AAdvantage
-- **Capital One** - Savor/SavorOne, Venture X/Venture, Quicksilver
-- **Discover** - it Cash Back, Chrome, Miles, Student
-- **Bank of America** - Customized Cash, Premium Rewards, Travel Rewards, Alaska Airlines
-- **US Bank** - Cash+, Altitude Go/Connect/Reserve
-- **Wells Fargo** - Active Cash, Autograph/Journey
-- **Others** - Apple Card, Bilt, PayPal, Venmo, Target RedCard, Walmart
-
-### Supported Card Types
-
-| Type | Example | How It Works |
-|------|---------|--------------|
-| **Fixed Categories** | Amex Gold 4x Dining | Always earns bonus rate |
-| **Rotating Categories** | Chase Freedom Flex 5% | Quarterly bonuses, activation required |
-| **Selectable Categories** | BoA Customized Cash 3% | Choose your own bonus category |
-
----
-
-## Demo
-
-🚀 **Try it out:** [Join TestFlight Beta](#) *(coming soon)*
-
-<!--
-Add a GIF demo here:
-![Demo](Screenshots/demo.gif)
--->
+| Smart Recommendations | Get the best card for each purchase |
+| 60+ Credit Cards | Comprehensive US credit card database |
+| Rotating Categories | Track quarterly bonus activations |
+| Spending Analytics | Visualize spending with charts |
+| Receipt Scanning | OCR-powered expense logging |
+| Bonus Tracker | Never miss sign-up bonus deadlines |
+| Home Widget | Quick access without opening app |
+| Privacy First | 100% offline, data stays on device |
 
 ---
 
 ## Quick Start
 
-### Requirements
-
-- iOS 17.0+
-- Xcode 15+
-- Swift 5.9+
-
-### Installation
-
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/SmartCard.git
-
-# Open in Xcode
+git clone https://github.com/Rich627/SmartCard.git
 cd SmartCard
 open SmartCard.xcodeproj
-
-# Build and run (⌘ + R)
+# Press Cmd + R to build and run
 ```
+
+**Requirements:** iOS 17+ · Xcode 15+ · Swift 5.9+
 
 ---
 
-## How It Works
+## Documentation
 
-```
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  Enter Merchant │ ──▶ │ Category Mapping │ ──▶ │  Recommendation │
-│  or Category    │     │    Database      │     │     Engine      │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-                                                          │
-                                                          ▼
-                                                 ┌─────────────────┐
-                                                 │   Best Card +   │
-                                                 │  Reward Amount  │
-                                                 └─────────────────┘
-```
-
-The **RecommendationEngine** evaluates all your cards considering:
-- ✅ Fixed category bonus multipliers
-- ✅ Current quarter's rotating categories (activation status)
-- ✅ User-selected bonus categories
-- ✅ Spending caps and remaining limits
-- ✅ Point/mile valuations
-
----
-
-## Architecture
-
-```
-SmartCard/
-├── App/                    # App entry point
-├── Models/                 # Data models
-│   ├── CreditCard.swift    # Card definitions & reward configs
-│   ├── Spending.swift      # Transaction records
-│   ├── Merchant.swift      # Merchant → category mapping
-│   └── MockData.swift      # Sample credit card database
-├── Views/                  # SwiftUI views (MVVM)
-│   ├── Home/               # Dashboard
-│   ├── Cards/              # Card management
-│   ├── Spending/           # Expense tracking & charts
-│   ├── Recommend/          # Card recommendations
-│   └── Settings/           # App settings
-├── ViewModels/             # State management
-├── Services/               # Business logic
-│   ├── RecommendationEngine.swift
-│   ├── OCRService.swift
-│   └── NotificationService.swift
-└── Utils/                  # Extensions & helpers
-```
+- [English Documentation](docs/README_EN.md)
+- [繁體中文文件](docs/README_ZH-TW.md)
+- [Contributing Guide](CONTRIBUTING.md)
+- [Commercial License](COMMERCIAL_LICENSE.md)
 
 ---
 
 ## Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| UI | SwiftUI |
-| Architecture | MVVM |
-| Reactive | Combine |
-| Widget | WidgetKit |
-| OCR | Vision Framework |
-| Storage | UserDefaults (Firebase planned) |
-
----
-
-## Testing
-
-```bash
-# Run all tests
-⌘ + U
-
-# Or via command line
-xcodebuild test -scheme SmartCard -destination 'platform=iOS Simulator,name=iPhone 15'
 ```
-
-**Test Coverage:**
-- `RecommendationEngineTests` - Card recommendation logic
-- `MerchantDatabaseTests` - Merchant to category mapping
-- `ModelTests` - Data model encoding/decoding
-- `SearchHistoryManagerTests` - Search history functionality
-
----
-
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Quick Contribution Guide
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## License
-
-This project is dual-licensed:
-
-- **Open Source License:** [AGPL-3.0](LICENSE) - Free for personal and non-commercial use
-- **Commercial License:** [Available for purchase](COMMERCIAL_LICENSE.md) - For commercial/proprietary use
-
-If you want to use SmartCard in a commercial product without open-sourcing your code, please [contact us](mailto:your@email.com) for commercial licensing options.
+SwiftUI · MVVM · Combine · WidgetKit · Vision (OCR)
+```
 
 ---
 
 ## Support
 
-- 🐛 [Report Bug](https://github.com/yourusername/SmartCard/issues)
-- 💡 [Request Feature](https://github.com/yourusername/SmartCard/issues)
-- ⭐ Star this repo if you find it useful!
+- [Report Bug](https://github.com/Rich627/SmartCard/issues)
+- [Request Feature](https://github.com/Rich627/SmartCard/issues)
+- [Discussions](https://github.com/Rich627/SmartCard/discussions)
 
 ---
 
-## Acknowledgments
+<div align="center">
 
-- Credit card data sourced from public issuer information
-- Icons from SF Symbols
+**If this project helps you, please give it a star!**
 
----
+<a href="https://github.com/Rich627/SmartCard/stargazers">
+  <img src="https://img.shields.io/github/stars/Rich627/SmartCard?style=for-the-badge&logo=github" alt="GitHub Stars">
+</a>
 
-<p align="center">
-  Made with ❤️ for credit card enthusiasts
-</p>
-
----
-
-# 繁體中文
-
-## 功能特色
-
-| 功能 | 說明 |
-|------|------|
-| 🎯 **智慧推薦** | 根據商家或消費類別推薦最佳信用卡 |
-| 💳 **60+ 信用卡** | 完整美國主流信用卡資料庫，含準確回饋資訊 |
-| 💰 **回饋追蹤** | 追蹤固定、輪轉、自選類別回饋 |
-| 📊 **消費分析** | 互動式圖表呈現消費模式 |
-| 📷 **收據掃描** | OCR 快速記錄消費 |
-| 🎁 **開卡禮追蹤** | 追蹤開卡禮進度，不錯過期限 |
-| 📱 **主畫面小工具** | 不用開 App 就能查看推薦 |
-| 🔒 **隱私優先** | 所有資料儲存在本機 |
-
-### 支援卡片
-
-**60+ 張美國主流信用卡：**
-- **Chase** - Sapphire Preferred/Reserve, Freedom Flex/Unlimited, Ink Business, Amazon Prime, United, Southwest, Marriott
-- **American Express** - Gold, Platinum, Blue Cash Preferred/Everyday, Delta SkyMiles, Hilton Honors
-- **Citi** - Double Cash, Custom Cash, Premier, Strata Premier, Costco Anywhere, AAdvantage
-- **Capital One** - Savor/SavorOne, Venture X/Venture, Quicksilver
-- **Discover** - it Cash Back, Chrome, Miles, Student
-- **Bank of America** - Customized Cash, Premium Rewards, Travel Rewards, Alaska Airlines
-- **US Bank** - Cash+, Altitude Go/Connect/Reserve
-- **Wells Fargo** - Active Cash, Autograph/Journey
-- **其他** - Apple Card, Bilt, PayPal, Venmo, Target RedCard, Walmart
-
-### 支援卡片類型
-
-| 類型 | 範例 | 運作方式 |
-|------|------|----------|
-| **固定類別** | Amex Gold 餐飲 4x | 永遠享有加碼回饋 |
-| **輪轉類別** | Chase Freedom Flex 5% | 每季輪替，需啟用 |
-| **自選類別** | BoA Customized Cash 3% | 自選一個加碼類別 |
-
----
-
-## 快速開始
-
-### 系統需求
-
-- iOS 17.0+
-- Xcode 15+
-- Swift 5.9+
-
-### 安裝
-
-```bash
-# Clone 儲存庫
-git clone https://github.com/yourusername/SmartCard.git
-
-# 用 Xcode 開啟
-cd SmartCard
-open SmartCard.xcodeproj
-
-# 建置並執行 (⌘ + R)
-```
-
----
-
-## 授權
-
-本專案採用雙重授權：
-
-- **開源授權：** [AGPL-3.0](LICENSE) - 個人與非商業使用免費
-- **商業授權：** [付費授權](COMMERCIAL_LICENSE.md) - 商業/專有軟體使用
-
-如需在商業產品中使用 SmartCard 且不開源，請[聯絡我們](mailto:your@email.com)取得商業授權。
+</div>
