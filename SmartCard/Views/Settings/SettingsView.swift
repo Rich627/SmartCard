@@ -6,7 +6,6 @@ struct SettingsView: View {
     @AppStorage("notificationsEnabled") private var notificationsEnabled = true
     @AppStorage("rotatingReminders") private var rotatingReminders = true
     @AppStorage("spendingCapAlerts") private var spendingCapAlerts = true
-    @State private var showingResetAlert = false
     @State private var showingPrivacyPolicy = false
     @State private var showingTermsOfService = false
 
@@ -68,10 +67,6 @@ struct SettingsView: View {
                 }
 
                 Section("Data Management") {
-                    Button("Reset to Sample Data") {
-                        showingResetAlert = true
-                    }
-
                     Button(role: .destructive) {
                         cardViewModel.clearAllData()
                         spendingViewModel.clearAllData()
@@ -127,15 +122,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .alert("Reset Data", isPresented: $showingResetAlert) {
-                Button("Cancel", role: .cancel) { }
-                Button("Reset", role: .destructive) {
-                    cardViewModel.resetToSampleData()
-                    spendingViewModel.resetToSampleData()
-                }
-            } message: {
-                Text("This will replace your current data with sample data. This cannot be undone.")
-            }
             .sheet(isPresented: $showingPrivacyPolicy) {
                 PrivacyPolicyView()
             }

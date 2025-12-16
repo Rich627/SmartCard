@@ -281,9 +281,13 @@ struct RecommendationDetailRow: View {
             // Card info
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: recommendation.card.imageColor) ?? .gray)
-                        .frame(width: 40, height: 26)
+                    CardImageView(
+                        imageURL: recommendation.card.imageURL,
+                        fallbackColor: recommendation.card.imageColor,
+                        width: 40,
+                        height: 26,
+                        cornerRadius: 4
+                    )
 
                     VStack(alignment: .leading) {
                         Text(recommendation.userCard.nickname ?? recommendation.card.name)

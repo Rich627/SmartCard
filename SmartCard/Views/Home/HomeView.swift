@@ -261,9 +261,13 @@ struct UtilizationRow: View {
     var body: some View {
         VStack(spacing: 6) {
             HStack {
-                RoundedRectangle(cornerRadius: 3)
-                    .fill(Color(hex: card.imageColor) ?? .gray)
-                    .frame(width: 24, height: 16)
+                CardImageView(
+                    imageURL: card.imageURL,
+                    fallbackColor: card.imageColor,
+                    width: 24,
+                    height: 16,
+                    cornerRadius: 3
+                )
 
                 Text(userCard.nickname ?? card.name)
                     .font(.subheadline)
@@ -780,16 +784,20 @@ struct QuickRecommendRow: View {
     var body: some View {
         VStack(spacing: 8) {
             HStack(spacing: 12) {
-                RoundedRectangle(cornerRadius: 6)
-                    .fill(Color(hex: recommendation.card.imageColor) ?? .gray)
-                    .frame(width: 50, height: 32)
-                    .overlay {
-                        if isTop {
-                            Image(systemName: "star.fill")
-                                .font(.caption)
-                                .foregroundStyle(.white)
-                        }
+                ZStack {
+                    CardImageView(
+                        imageURL: recommendation.card.imageURL,
+                        fallbackColor: recommendation.card.imageColor,
+                        width: 50,
+                        height: 32,
+                        cornerRadius: 6
+                    )
+                    if isTop {
+                        Image(systemName: "star.fill")
+                            .font(.caption)
+                            .foregroundStyle(.white)
                     }
+                }
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(recommendation.userCard.nickname ?? recommendation.card.name)

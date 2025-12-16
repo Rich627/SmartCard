@@ -8,6 +8,7 @@ struct WidgetData {
     let topCategoryIcon: String
     let bestCard: String
     let bestCardColor: String
+    let bestCardImageURL: String?
     let rewardRate: String
     let rotatingCategories: [String]
     let rotatingCard: String?
@@ -19,6 +20,7 @@ struct WidgetData {
         topCategoryIcon: "fork.knife",
         bestCard: "Amex Gold",
         bestCardColor: "#B8860B",
+        bestCardImageURL: "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/gold-card.png",
         rewardRate: "4x",
         rotatingCategories: ["Gas", "EV Charging"],
         rotatingCard: "Chase Freedom Flex",
@@ -34,6 +36,7 @@ struct WidgetData {
             topCategoryIcon: defaults?.string(forKey: "widget_topCategoryIcon") ?? "fork.knife",
             bestCard: defaults?.string(forKey: "widget_bestCard") ?? "Add Cards",
             bestCardColor: defaults?.string(forKey: "widget_bestCardColor") ?? "#808080",
+            bestCardImageURL: defaults?.string(forKey: "widget_bestCardImageURL"),
             rewardRate: defaults?.string(forKey: "widget_rewardRate") ?? "-",
             rotatingCategories: defaults?.stringArray(forKey: "widget_rotatingCategories") ?? [],
             rotatingCard: defaults?.string(forKey: "widget_rotatingCard"),
@@ -90,9 +93,12 @@ struct SmartCardWidgetSmallView: View {
 
             // Card recommendation
             HStack(spacing: 8) {
-                RoundedRectangle(cornerRadius: 4)
-                    .fill(Color(hex: entry.data.bestCardColor) ?? .gray)
-                    .frame(width: 32, height: 20)
+                WidgetCardImage(
+                    imageURL: entry.data.bestCardImageURL,
+                    fallbackColor: entry.data.bestCardColor,
+                    width: 32,
+                    height: 20
+                )
 
                 VStack(alignment: .leading, spacing: 0) {
                     Text(entry.data.bestCard)
@@ -109,7 +115,7 @@ struct SmartCardWidgetSmallView: View {
             Spacer()
 
             // Rotating reminder (if applicable)
-            if let rotatingCard = entry.data.rotatingCard, !entry.data.rotatingCategories.isEmpty {
+            if entry.data.rotatingCard != nil, !entry.data.rotatingCategories.isEmpty {
                 HStack(spacing: 4) {
                     Image(systemName: "arrow.triangle.2.circlepath")
                         .font(.caption2)
@@ -150,9 +156,12 @@ struct SmartCardWidgetMediumView: View {
                 Spacer()
 
                 HStack(spacing: 8) {
-                    RoundedRectangle(cornerRadius: 6)
-                        .fill(Color(hex: entry.data.bestCardColor) ?? .gray)
-                        .frame(width: 48, height: 30)
+                    WidgetCardImage(
+                        imageURL: entry.data.bestCardImageURL,
+                        fallbackColor: entry.data.bestCardColor,
+                        width: 48,
+                        height: 30
+                    )
 
                     VStack(alignment: .leading, spacing: 2) {
                         Text(entry.data.bestCard)
@@ -281,6 +290,44 @@ struct SmartCardWidgetEntryView: View {
         default:
             SmartCardWidgetSmallView(entry: entry)
         }
+    }
+}
+
+// MARK: - Widget Card Image Component
+
+struct WidgetCardImage: View {
+    let imageURL: String?
+    let fallbackColor: String
+    let width: CGFloat
+    let height: CGFloat
+
+    var body: some View {
+        if let urlString = imageURL, let url = URL(string: urlString) {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .empty:
+                    colorFallback
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: width, height: height)
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                case .failure:
+                    colorFallback
+                @unknown default:
+                    colorFallback
+                }
+            }
+        } else {
+            colorFallback
+        }
+    }
+
+    private var colorFallback: some View {
+        RoundedRectangle(cornerRadius: 4)
+            .fill(Color(hex: fallbackColor) ?? .gray)
+            .frame(width: width, height: height)
     }
 }
 

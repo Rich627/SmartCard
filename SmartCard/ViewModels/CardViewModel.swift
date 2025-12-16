@@ -18,9 +18,8 @@ class CardViewModel: ObservableObject {
            let cards = try? JSONDecoder().decode([UserCard].self, from: data) {
             userCards = cards
         } else {
-            // Load sample data for first launch
-            userCards = MockData.sampleUserCards
-            saveUserCards()
+            // Start with empty wallet for new users
+            userCards = []
         }
     }
 
@@ -28,13 +27,6 @@ class CardViewModel: ObservableObject {
         if let data = try? JSONEncoder().encode(userCards) {
             UserDefaults.standard.set(data, forKey: "userCards")
         }
-    }
-
-    // MARK: - Data Management
-
-    func resetToSampleData() {
-        userCards = MockData.sampleUserCards
-        saveUserCards()
     }
 
     func clearAllData() {

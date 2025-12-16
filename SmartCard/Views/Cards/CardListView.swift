@@ -67,15 +67,13 @@ struct CardRow: View {
     var body: some View {
         HStack(spacing: 16) {
             // Card visual
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color(hex: card.imageColor) ?? .gray)
-                .frame(width: 60, height: 40)
-                .overlay {
-                    Text(card.network.rawValue.prefix(1))
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                }
+            CardImageView(
+                imageURL: card.imageURL,
+                fallbackColor: card.imageColor,
+                width: 60,
+                height: 40,
+                cornerRadius: 8
+            )
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(userCard.nickname ?? card.name)
@@ -226,9 +224,13 @@ struct CardSelectionRow: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            RoundedRectangle(cornerRadius: 6)
-                .fill(Color(hex: card.imageColor) ?? .gray)
-                .frame(width: 50, height: 32)
+            CardImageView(
+                imageURL: card.imageURL,
+                fallbackColor: card.imageColor,
+                width: 50,
+                height: 32,
+                cornerRadius: 6
+            )
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(card.name)
@@ -264,19 +266,13 @@ struct CardDetailView: View {
                 // Card Info
                 Section {
                     HStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(hex: card.imageColor) ?? .gray)
-                            .frame(width: 100, height: 64)
-                            .overlay {
-                                VStack {
-                                    Text(card.network.rawValue)
-                                        .font(.caption)
-                                        .fontWeight(.bold)
-                                    Text(card.issuer)
-                                        .font(.caption2)
-                                }
-                                .foregroundStyle(.white)
-                            }
+                        CardImageView(
+                            imageURL: card.imageURL,
+                            fallbackColor: card.imageColor,
+                            width: 100,
+                            height: 64,
+                            cornerRadius: 12
+                        )
 
                         VStack(alignment: .leading) {
                             Text(card.name)

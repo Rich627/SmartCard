@@ -86,3 +86,46 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+// MARK: - Card Image View
+
+struct CardImageView: View {
+    let imageURL: String?
+    let fallbackColor: String
+    let width: CGFloat
+    let height: CGFloat
+    var cornerRadius: CGFloat = 8
+
+    var body: some View {
+        if let urlString = imageURL, let url = URL(string: urlString) {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .empty:
+                    colorFallback
+                        .overlay {
+                            ProgressView()
+                                .scaleEffect(0.5)
+                        }
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: width, height: height)
+                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                case .failure:
+                    colorFallback
+                @unknown default:
+                    colorFallback
+                }
+            }
+        } else {
+            colorFallback
+        }
+    }
+
+    private var colorFallback: some View {
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .fill(Color(hex: fallbackColor) ?? .gray)
+            .frame(width: width, height: height)
+    }
+}

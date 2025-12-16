@@ -17,8 +17,8 @@ class SpendingViewModel: ObservableObject {
            let loaded = try? JSONDecoder().decode([Spending].self, from: data) {
             spendings = loaded
         } else {
-            spendings = MockData.sampleSpendings
-            saveSpendings()
+            // Start with empty spending history for new users
+            spendings = []
         }
     }
 
@@ -26,13 +26,6 @@ class SpendingViewModel: ObservableObject {
         if let data = try? JSONEncoder().encode(spendings) {
             UserDefaults.standard.set(data, forKey: "spendings")
         }
-    }
-
-    // MARK: - Data Management
-
-    func resetToSampleData() {
-        spendings = MockData.sampleSpendings
-        saveSpendings()
     }
 
     func clearAllData() {
