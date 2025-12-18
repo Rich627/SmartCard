@@ -1,0 +1,59 @@
+name: Monthly Credit Card Scraper
+
+# 每月 1 號早上 8:00 UTC (台灣時間下午 4:00) 自動執行
+on:
+  schedule:
+    - cron: '0 8 1 * *'
+
+  # 也可以手動觸發
+  workflow_dispatch:
+
+jobs:
+  scrape-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: Functions/scraper/package-lock.json
+
+      - name: Install dependencies
+        working-directory: Functions/scraper
+        run: npm ci
+
+      - name: Install Puppeteer browser
+        working-directory: Functions/scraper
+        run: npx puppeteer browsers install chrome
+
+      - name: Create Firebase service account file
+        working-directory: Functions/scraper
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
+
+      - name: Run scraper
+        working-directory: Functions/scraper
+        run: node index.js
+
+      - name: Upload to Firestore
+        working-directory: Functions/scraper
+        run: node upload-to-firestore.js
+
+      - name: Summary
+        working-directory: Functions/scraper
+        run: |
+          echo "## Scraper Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          node -e "
+          const data = require('./scraped-cards.json');
+          console.log('| Metric | Value |');
+          console.log('|--------|-------|');
+          console.log('| Total Cards | ' + data.cards.length + ' |');
+          console.log('| Cards with Images | ' + data.cards.filter(c => c.imageURL).length + ' |');
+          console.log('| Scraped At | ' + data.scrapedAt + ' |');
+          " >> $GITHUB_STEP_SUMMARY
