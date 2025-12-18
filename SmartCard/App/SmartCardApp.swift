@@ -1,22 +1,18 @@
 import SwiftUI
 import WidgetKit
+import FirebaseCore
 
-// Uncomment when Firebase is configured:
-// import FirebaseCore
-
-// class AppDelegate: NSObject, UIApplicationDelegate {
-//     func application(_ application: UIApplication,
-//                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-//         FirebaseApp.configure()
-//         return true
-//     }
-// }
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
+}
 
 @main
 struct SmartCardApp: App {
-    // Uncomment when Firebase is configured:
-    // @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    // @StateObject private var authService = AuthService()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     @StateObject private var cardViewModel = CardViewModel()
     @StateObject private var spendingViewModel = SpendingViewModel()

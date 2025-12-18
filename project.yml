@@ -10,11 +10,13 @@ settings:
     SWIFT_VERSION: "5.9"
     DEVELOPMENT_TEAM: ""
 
-# Firebase package - uncomment when ready to use
-# packages:
-#   Firebase:
-#     url: https://github.com/firebase/firebase-ios-sdk
-#     version: 10.29.0
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: "11.0.0"
+  PlaidLink:
+    url: https://github.com/plaid/plaid-link-ios
+    from: "5.6.0"
 
 targets:
   SmartCard:
@@ -24,9 +26,6 @@ targets:
       - path: SmartCard
         excludes:
           - "**/.DS_Store"
-          - "**/FirebaseService.swift"
-          - "**/AuthService.swift"
-          - "**/AuthView.swift"
     settings:
       base:
         INFOPLIST_GENERATION_MODE: GeneratedFile
@@ -45,20 +44,19 @@ targets:
     resources:
       - path: SmartCard/Resources/Assets.xcassets
       - path: SmartCard/Resources/Preview Content
+      - path: SmartCard/GoogleService-Info.plist
     dependencies:
-      - target: SmartCardWidget
-        embed: true
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseFirestore
+      - package: PlaidLink
+        product: LinkKit
     entitlements:
       path: SmartCard/SmartCard.entitlements
       properties:
         com.apple.security.application-groups:
           - group.com.smartcard.app
-    # Uncomment when Firebase is configured:
-    # dependencies:
-    #   - package: Firebase
-    #     product: FirebaseAuth
-    #   - package: Firebase
-    #     product: FirebaseFirestore
 
   SmartCardTests:
     type: bundle.unit-test
@@ -72,22 +70,3 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.smartcard.app.tests
         GENERATE_INFOPLIST_FILE: YES
 
-  SmartCardWidget:
-    type: app-extension
-    platform: iOS
-    sources:
-      - path: SmartCardWidget
-    info:
-      path: SmartCardWidget/Info.plist
-      properties:
-        CFBundleDisplayName: SmartCard Widget
-        NSExtension:
-          NSExtensionPointIdentifier: com.apple.widgetkit-extension
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.smartcard.app.widget
-        MARKETING_VERSION: "1.0.0"
-        CURRENT_PROJECT_VERSION: "1"
-        CODE_SIGN_ENTITLEMENTS: SmartCardWidget/SmartCardWidget.entitlements
-        SKIP_INSTALL: YES
-        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"

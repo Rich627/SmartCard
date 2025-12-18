@@ -52,8 +52,7 @@ class SpendingViewModel: ObservableObject {
 
         let effectiveMultiplier = card.getReward(
             for: category,
-            selectedCategories: userCard.selectedCategories,
-            activatedQuarters: userCard.activatedQuarters
+            selectedCategories: userCard.selectedCategories
         )
 
         let rewardEarned = calculateReward(

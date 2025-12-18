@@ -63,6 +63,16 @@ Thumbs.db
 GoogleService-Info.plist
 Secrets.swift
 
+# Firebase Functions secrets
+functions/.env
+functions/.env.*
+functions/.secret.*
+functions/service-account*.json
+functions/node_modules/
+
+# Plaid
+plaid-*.json
+
 # Archives
 *.ipa
 *.dSYM.zip

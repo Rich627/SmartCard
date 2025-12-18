@@ -3,15 +3,41 @@ import SwiftUI
 
 @MainActor
 class CardViewModel: ObservableObject {
-    @Published var allCards: [CreditCard] = MockData.creditCards
+    @Published var allCards: [CreditCard] = []
     @Published var userCards: [UserCard] = []
     @Published var isLoading = false
 
     init() {
         loadUserCards()
+        Task {
+            await loadCardsFromFirebase()
+        }
     }
 
-    // MARK: - Persistence (UserDefaults for now, Firebase later)
+    // MARK: - Firebase
+
+    func loadCardsFromFirebase() async {
+        isLoading = true
+        defer { isLoading = false }
+
+        do {
+            let cards = try await FirebaseService.shared.fetchAllCards()
+            if cards.isEmpty {
+                // Fallback to MockData if Firebase is empty
+                allCards = MockData.creditCards
+                print("Firebase empty, using MockData (\(allCards.count) cards)")
+            } else {
+                allCards = cards
+                print("Loaded \(cards.count) cards from Firebase")
+            }
+        } catch {
+            // Fallback to MockData on error
+            allCards = MockData.creditCards
+            print("Firebase error: \(error), using MockData")
+        }
+    }
+
+    // MARK: - Persistence (UserDefaults)
 
     private func loadUserCards() {
         if let data = UserDefaults.standard.data(forKey: "userCards"),
@@ -40,15 +66,7 @@ class CardViewModel: ObservableObject {
         // Check if card already exists
         guard !userCards.contains(where: { $0.cardId == card.id }) else { return }
 
-        var newUserCard = UserCard(card: card, nickname: nickname, creditLimit: creditLimit)
-
-        // Set default activated quarters for rotating cards
-        if card.rotatingCategories != nil {
-            let currentQ = RotatingCategory.currentQuarter()
-            let currentY = RotatingCategory.currentYear()
-            newUserCard.activatedQuarters = ["\(currentY)-Q\(currentQ)"]
-        }
-
+        let newUserCard = UserCard(card: card, nickname: nickname, creditLimit: creditLimit)
         userCards.append(newUserCard)
         saveUserCards()
     }
@@ -68,18 +86,6 @@ class CardViewModel: ObservableObject {
     func updateSelectedCategories(for userCard: UserCard, categories: [SpendingCategory]) {
         if let index = userCards.firstIndex(where: { $0.id == userCard.id }) {
             userCards[index].selectedCategories = categories
-            saveUserCards()
-        }
-    }
-
-    func activateQuarter(for userCard: UserCard, quarter: Int, year: Int) {
-        if let index = userCards.firstIndex(where: { $0.id == userCard.id }) {
-            let quarterId = "\(year)-Q\(quarter)"
-            if userCards[index].activatedQuarters == nil {
-                userCards[index].activatedQuarters = [quarterId]
-            } else if !userCards[index].activatedQuarters!.contains(quarterId) {
-                userCards[index].activatedQuarters!.append(quarterId)
-            }
             saveUserCards()
         }
     }
@@ -128,30 +134,5 @@ class CardViewModel: ObservableObject {
         allCards.filter { card in
             !userCards.contains { $0.cardId == card.id }
         }
-    }
-
-    // Cards with rotating categories that need activation
-    var cardsNeedingActivation: [(UserCard, CreditCard, RotatingCategory)] {
-        let currentQ = RotatingCategory.currentQuarter()
-        let currentY = RotatingCategory.currentYear()
-        let quarterId = "\(currentY)-Q\(currentQ)"
-
-        var result: [(UserCard, CreditCard, RotatingCategory)] = []
-
-        for userCard in userCards {
-            guard let card = getCard(for: userCard),
-                  let rotating = card.rotatingCategories,
-                  let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }),
-                  currentRotating.activationRequired else {
-                continue
-            }
-
-            let isActivated = userCard.activatedQuarters?.contains(quarterId) ?? false
-            if !isActivated {
-                result.append((userCard, card, currentRotating))
-            }
-        }
-
-        return result
     }
 }
