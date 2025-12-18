@@ -8,10 +8,27 @@ struct SettingsView: View {
     @AppStorage("spendingCapAlerts") private var spendingCapAlerts = true
     @State private var showingPrivacyPolicy = false
     @State private var showingTermsOfService = false
+    @State private var showingLinkBank = false
+    @State private var showingClearDataAlert = false
 
     var body: some View {
         NavigationStack {
             List {
+                // Bank Connection
+                Section("Bank Connection") {
+                    Button {
+                        showingLinkBank = true
+                    } label: {
+                        HStack {
+                            Label("Link Bank Account", systemImage: "building.columns")
+                            Spacer()
+                            Text("\(PlaidService.shared.linkedAccounts.count) linked")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+
                 Section("About") {
                     HStack {
                         Text("Version")
@@ -68,8 +85,7 @@ struct SettingsView: View {
 
                 Section("Data Management") {
                     Button(role: .destructive) {
-                        cardViewModel.clearAllData()
-                        spendingViewModel.clearAllData()
+                        showingClearDataAlert = true
                     } label: {
                         Text("Clear All Data")
                     }
@@ -127,6 +143,18 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showingTermsOfService) {
                 TermsOfServiceView()
+            }
+            .sheet(isPresented: $showingLinkBank) {
+                LinkBankView()
+            }
+            .alert("Clear All Data", isPresented: $showingClearDataAlert) {
+                Button("Cancel", role: .cancel) {}
+                Button("Clear", role: .destructive) {
+                    cardViewModel.clearAllData()
+                    spendingViewModel.clearAllData()
+                }
+            } message: {
+                Text("This will delete all your cards, spending records, and preferences. This action cannot be undone.")
             }
         }
     }
