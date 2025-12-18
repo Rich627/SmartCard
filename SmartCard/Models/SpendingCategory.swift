@@ -1,34 +1,75 @@
 import Foundation
 
 enum SpendingCategory: String, CaseIterable, Codable, Identifiable {
-    case dining = "Dining"
-    case grocery = "Grocery"
-    case gas = "Gas"
-    case travel = "Travel"
-    case streaming = "Streaming"
-    case drugstore = "Drugstore"
-    case homeImprovement = "Home Improvement"
-    case entertainment = "Entertainment"
-    case onlineShopping = "Online Shopping"
-    case transit = "Transit"
-    case utilities = "Utilities"
-    case wholesale = "Wholesale Clubs"
-    case paypal = "PayPal"
-    case amazon = "Amazon"
-    case fitness = "Fitness"
-    case phone = "Phone/Internet"
-    case internet = "Internet/Cable"
-    case shipping = "Shipping"
-    case advertising = "Advertising"
-    case officeSupplies = "Office Supplies"
-    case evCharging = "EV Charging"
-    case apple = "Apple"
-    case wholeFoods = "Whole Foods"
-    case target = "Target"
-    case walmart = "Walmart"
-    case other = "Other"
+    case dining
+    case grocery
+    case gas
+    case travel
+    case streaming
+    case drugstore
+    case homeImprovement
+    case entertainment
+    case onlineShopping
+    case transit
+    case utilities
+    case wholesale
+    case paypal
+    case amazon
+    case fitness
+    case phone
+    case internet
+    case shipping
+    case advertising
+    case officeSupplies
+    case evCharging
+    case apple
+    case wholeFoods
+    case target
+    case walmart
+    case macys
+    case kohls
+    case gap
+    case nordstrom
+    case electronics
+    case other
 
     var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .dining: return "Dining"
+        case .grocery: return "Grocery"
+        case .gas: return "Gas"
+        case .travel: return "Travel"
+        case .streaming: return "Streaming"
+        case .drugstore: return "Drugstore"
+        case .homeImprovement: return "Home Improvement"
+        case .entertainment: return "Entertainment"
+        case .onlineShopping: return "Online Shopping"
+        case .transit: return "Transit"
+        case .utilities: return "Utilities"
+        case .wholesale: return "Wholesale Clubs"
+        case .paypal: return "PayPal"
+        case .amazon: return "Amazon"
+        case .fitness: return "Fitness"
+        case .phone: return "Phone/Internet"
+        case .internet: return "Internet/Cable"
+        case .shipping: return "Shipping"
+        case .advertising: return "Advertising"
+        case .officeSupplies: return "Office Supplies"
+        case .evCharging: return "EV Charging"
+        case .apple: return "Apple"
+        case .wholeFoods: return "Whole Foods"
+        case .target: return "Target"
+        case .walmart: return "Walmart"
+        case .macys: return "Macys"
+        case .kohls: return "Kohls"
+        case .gap: return "Gap"
+        case .nordstrom: return "Nordstrom"
+        case .electronics: return "Electronics"
+        case .other: return "Other"
+        }
+    }
 
     var icon: String {
         switch self {
@@ -57,15 +98,28 @@ enum SpendingCategory: String, CaseIterable, Codable, Identifiable {
         case .wholeFoods: return "leaf.fill"
         case .target: return "target"
         case .walmart: return "cart.fill"
+        case .macys: return "building.2.fill"
+        case .kohls: return "building.2.fill"
+        case .gap: return "tshirt.fill"
+        case .nordstrom: return "bag.fill"
+        case .electronics: return "desktopcomputer"
         case .other: return "ellipsis.circle.fill"
         }
     }
 }
 
 enum CapPeriod: String, Codable {
-    case monthly = "Monthly"
-    case quarterly = "Quarterly"
-    case yearly = "Yearly"
+    case monthly
+    case quarterly
+    case yearly
+
+    var displayName: String {
+        switch self {
+        case .monthly: return "Monthly"
+        case .quarterly: return "Quarterly"
+        case .yearly: return "Yearly"
+        }
+    }
 
     /// Returns the start date of the current period
     var startDate: Date {

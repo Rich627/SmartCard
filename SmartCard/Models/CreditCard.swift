@@ -1,16 +1,33 @@
 import Foundation
 
 enum CardNetwork: String, Codable, CaseIterable {
-    case visa = "Visa"
-    case mastercard = "Mastercard"
-    case amex = "Amex"
-    case discover = "Discover"
+    case visa
+    case mastercard
+    case amex
+    case discover
+
+    var displayName: String {
+        switch self {
+        case .visa: return "Visa"
+        case .mastercard: return "Mastercard"
+        case .amex: return "Amex"
+        case .discover: return "Discover"
+        }
+    }
 }
 
 enum RewardType: String, Codable, CaseIterable {
-    case cashback = "Cash Back"
-    case points = "Points"
-    case miles = "Miles"
+    case cashback
+    case points
+    case miles
+
+    var displayName: String {
+        switch self {
+        case .cashback: return "Cash Back"
+        case .points: return "Points"
+        case .miles: return "Miles"
+        }
+    }
 }
 
 struct CategoryReward: Codable, Identifiable, Equatable {
@@ -113,21 +130,19 @@ struct CreditCard: Identifiable, Codable, Equatable {
     }
 
     // Get effective reward for a category considering rotating and selectable
-    func getReward(for category: SpendingCategory, selectedCategories: [SpendingCategory]? = nil, activatedQuarters: [String]? = nil) -> Double {
+    func getReward(for category: SpendingCategory, selectedCategories: [SpendingCategory]? = nil) -> Double {
         // Check fixed category rewards first
         if let categoryReward = categoryRewards.first(where: { $0.category == category }) {
             return categoryReward.multiplier
         }
 
-        // Check rotating categories (if activated)
+        // Check rotating categories for current quarter
         if let rotating = rotatingCategories {
             let currentQ = RotatingCategory.currentQuarter()
             let currentY = RotatingCategory.currentYear()
-            let quarterId = "\(currentY)-Q\(currentQ)"
 
             if let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) {
-                let isActivated = activatedQuarters?.contains(quarterId) ?? false
-                if currentRotating.categories.contains(category) && (!currentRotating.activationRequired || isActivated) {
+                if currentRotating.categories.contains(category) {
                     return currentRotating.multiplier
                 }
             }
@@ -150,7 +165,6 @@ struct UserCard: Identifiable, Codable, Equatable {
     let cardId: String
     var nickname: String?
     var selectedCategories: [SpendingCategory]?
-    var activatedQuarters: [String]?  // e.g., ["2025-Q1", "2025-Q2"]
     var creditLimit: Double?          // User's credit limit for this card
     var currentBalance: Double?       // Optional: track current balance
     var signUpBonusStartDate: Date?   // When user started tracking sign-up bonus
@@ -162,7 +176,6 @@ struct UserCard: Identifiable, Codable, Equatable {
         self.cardId = card.id
         self.nickname = nickname
         self.selectedCategories = nil
-        self.activatedQuarters = nil
         self.creditLimit = creditLimit
         self.currentBalance = nil
         self.signUpBonusStartDate = trackSignUpBonus ? Date() : nil
