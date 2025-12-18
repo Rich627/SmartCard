@@ -91,3 +91,4 @@ coverage/
 # Temporary files
 *.tmp
 *.temp
+Functions/scraper/node_modules/
