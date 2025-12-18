@@ -151,30 +151,46 @@ struct PlaidLinkController: UIViewControllerRepresentable {
     let onExit: () -> Void
 
     func makeUIViewController(context: Context) -> UIViewController {
-        let vc = UIViewController()
+        let vc = PlaidHostingViewController()
+        vc.linkToken = linkToken
+        vc.onSuccess = onSuccess
+        vc.onExit = onExit
+        return vc
+    }
 
-        // Configure Plaid Link
-        var config = LinkTokenConfiguration(token: linkToken) { success in
-            onSuccess(success.publicToken, success.metadata.institution.name)
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}
+
+class PlaidHostingViewController: UIViewController {
+    var linkToken: String = ""
+    var onSuccess: ((String, String) -> Void)?
+    var onExit: (() -> Void)?
+    private var handler: Handler?
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Only open Plaid Link once
+        guard handler == nil else { return }
+
+        var config = LinkTokenConfiguration(token: linkToken) { [weak self] success in
+            self?.onSuccess?(success.publicToken, success.metadata.institution.name)
         }
 
-        config.onExit = { exit in
-            onExit()
+        config.onExit = { [weak self] _ in
+            self?.onExit?()
         }
 
         let result = Plaid.create(config)
         switch result {
         case .success(let handler):
-            handler.open(presentUsing: .viewController(vc))
+            self.handler = handler
+            handler.open(presentUsing: .viewController(self))
         case .failure(let error):
             print("Plaid Link error: \(error)")
-            onExit()
+            onExit?()
         }
-
-        return vc
     }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
 #Preview {
