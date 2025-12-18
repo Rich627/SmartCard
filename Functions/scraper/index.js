@@ -23,6 +23,7 @@ const discoverScraper = require('./scrapers/discover');
 const bofaScraper = require('./scrapers/bofa');
 const wellsfargoScraper = require('./scrapers/wellsfargo');
 const usbankScraper = require('./scrapers/usbank');
+const othersScraper = require('./scrapers/others');
 
 const OUTPUT_FILE = path.join(__dirname, 'scraped-cards.json');
 
@@ -41,6 +42,7 @@ async function runAllScrapers() {
     { name: 'Bank of America', fn: bofaScraper },
     { name: 'Wells Fargo', fn: wellsfargoScraper },
     { name: 'US Bank', fn: usbankScraper },
+    { name: 'Other Issuers', fn: othersScraper },
   ];
 
   for (const scraper of scrapers) {

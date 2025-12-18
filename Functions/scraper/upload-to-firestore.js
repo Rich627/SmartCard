@@ -11,9 +11,13 @@ const fs = require('fs');
 const path = require('path');
 
 // Initialize Firebase Admin
-const serviceAccountPath = path.join(__dirname, '..', 'service-account.json');
+// Check current directory first (for GitHub Actions), then parent directory
+let serviceAccountPath = path.join(__dirname, 'service-account.json');
 if (!fs.existsSync(serviceAccountPath)) {
-  console.error('Error: service-account.json not found in Functions directory');
+  serviceAccountPath = path.join(__dirname, '..', 'service-account.json');
+}
+if (!fs.existsSync(serviceAccountPath)) {
+  console.error('Error: service-account.json not found');
   console.error('Download it from Firebase Console > Project Settings > Service Accounts');
   process.exit(1);
 }

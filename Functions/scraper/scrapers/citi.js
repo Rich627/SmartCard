@@ -29,6 +29,7 @@ const CITI_CARDS = [
       cap: 500,
       capPeriod: 'monthly'
     },
+    imageURL: 'https://www.citi.com/CRD/images/citi-custom-cash/citi-custom-cash_222x140.png',
     imageColor: '#00BCD4'
   },
   {
@@ -43,6 +44,7 @@ const CITI_CARDS = [
       { category: 'dining', multiplier: 3 },
       { category: 'grocery', multiplier: 3 }
     ],
+    imageURL: 'https://www.citi.com/CRD/images/citi-premier/citi-premier_222x140.png',
     imageColor: '#002D62'
   },
   {
@@ -58,6 +60,7 @@ const CITI_CARDS = [
       { category: 'grocery', multiplier: 3 },
       { category: 'gas', multiplier: 3 }
     ],
+    imageURL: 'https://www.citi.com/CRD/images/citi-strata-premier/citi-strata-premier_222x140.png',
     imageColor: '#1A365D'
   },
   {
@@ -70,6 +73,7 @@ const CITI_CARDS = [
       { category: 'grocery', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
+    imageURL: 'https://www.citi.com/CRD/images/citi-rewards-plus/citi-rewards-plus_222x140.png',
     imageColor: '#5C4A9E'
   },
   {
@@ -80,6 +84,7 @@ const CITI_CARDS = [
     baseReward: 1,
     categories: [],
     note: '0% intro APR card, no bonus categories',
+    imageURL: 'https://www.citi.com/CRD/images/citi-diamond-preferred/citi-diamond-preferred_222x140.png',
     imageColor: '#4B6584'
   },
   {
@@ -95,6 +100,7 @@ const CITI_CARDS = [
       { category: 'wholesale', multiplier: 2, note: 'Costco and Costco.com' }
     ],
     note: 'Requires Costco membership',
+    imageURL: 'https://www.citi.com/CRD/images/costco-anywhere/costco-anywhere_222x140.png',
     imageColor: '#E21836'
   },
   {
@@ -108,6 +114,7 @@ const CITI_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
+    imageURL: 'https://www.citi.com/CRD/images/citi-aadvantage-platinum/citi-aadvantage-platinum_222x140.png',
     imageColor: '#0078D2'
   }
 ];

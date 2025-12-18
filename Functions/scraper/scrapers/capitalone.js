@@ -32,6 +32,7 @@ const CAPITALONE_CARDS = [
       { category: 'streaming', multiplier: 3 },
       { category: 'grocery', multiplier: 3 }
     ],
+    imageURL: 'https://ecm.capitalone.com/WCM/card/products/savorone-background.png',
     imageColor: '#C41230'
   },
   {
@@ -56,6 +57,7 @@ const CAPITALONE_CARDS = [
     categories: [
       { category: 'travel', multiplier: 5, note: 'hotels and car rentals booked through Capital One Travel' }
     ],
+    imageURL: 'https://ecm.capitalone.com/WCM/card/products/venture-background.png',
     imageColor: '#004977'
   },
   {
@@ -67,6 +69,7 @@ const CAPITALONE_CARDS = [
     categories: [
       { category: 'travel', multiplier: 5, note: 'hotels booked through Capital One Travel' }
     ],
+    imageURL: 'https://ecm.capitalone.com/WCM/card/products/ventureone-background.png',
     imageColor: '#0066A1'
   },
   {
@@ -76,6 +79,7 @@ const CAPITALONE_CARDS = [
     network: 'mastercard',
     baseReward: 1.5,
     categories: [],
+    imageURL: 'https://ecm.capitalone.com/WCM/card/products/quicksilver-background.png',
     imageColor: '#004879'
   },
   {
@@ -86,6 +90,7 @@ const CAPITALONE_CARDS = [
     baseReward: 0,
     categories: [],
     note: 'Credit building card, no rewards',
+    imageURL: 'https://ecm.capitalone.com/WCM/card/products/platinum-background.png',
     imageColor: '#5C6BC0'
   },
   {
@@ -97,6 +102,7 @@ const CAPITALONE_CARDS = [
     categories: [
       { category: 'travel', multiplier: 5, note: 'hotels and car rentals booked through Capital One Travel' }
     ],
+    imageURL: 'https://ecm.capitalone.com/WCM/card/products/spark-cash-plus-background.png',
     imageColor: '#2E7D32'
   }
 ];

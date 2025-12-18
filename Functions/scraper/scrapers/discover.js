@@ -39,6 +39,7 @@ const DISCOVER_CARDS = [
       { category: 'gas', multiplier: 2, cap: 1000, capPeriod: 'quarterly' },
       { category: 'dining', multiplier: 2, cap: 1000, capPeriod: 'quarterly' }
     ],
+    imageURL: 'https://www.discover.com/content/dam/discover/en_us/credit-cards/card-acquisitions/chrome-cardart.png',
     imageColor: '#868686'
   },
   {
@@ -48,6 +49,7 @@ const DISCOVER_CARDS = [
     network: 'discover',
     baseReward: 1.5,
     categories: [],
+    imageURL: 'https://www.discover.com/content/dam/discover/en_us/credit-cards/card-acquisitions/miles-cardart.png',
     imageColor: '#1E90FF'
   },
   {
@@ -64,6 +66,7 @@ const DISCOVER_CARDS = [
       activationRequired: true
     },
     note: 'Student version of Discover it Cash Back',
+    imageURL: 'https://www.discover.com/content/dam/discover/en_us/credit-cards/card-acquisitions/student-cashback-cardart.png',
     imageColor: '#FF6600'
   }
 ];

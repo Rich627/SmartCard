@@ -1,23 +1,12 @@
 /**
  * American Express Credit Card Scraper
+ * Complete list of American Express consumer and business credit cards
  */
 
 const { generateCardId } = require('../utils/categories');
 
 const AMEX_CARDS = [
-  {
-    name: 'American Express Gold Card',
-    annualFee: 250,
-    rewardType: 'points',
-    network: 'amex',
-    baseReward: 1,
-    categories: [
-      { category: 'dining', multiplier: 4 },
-      { category: 'grocery', multiplier: 4, cap: 25000, capPeriod: 'yearly' }
-    ],
-    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/gold-card.png',
-    imageColor: '#B8860B'
-  },
+  // ========== PERSONAL CHARGE CARDS ==========
   {
     name: 'American Express Platinum Card',
     annualFee: 695,
@@ -28,8 +17,23 @@ const AMEX_CARDS = [
       { category: 'travel', multiplier: 5, note: 'flights booked through Amex Travel' },
       { category: 'travel', multiplier: 5, note: 'prepaid hotels through Amex Travel' }
     ],
-    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/platinum-card.png',
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000174_480x304_straight_withname.png',
     imageColor: '#E5E4E2'
+  },
+  {
+    name: 'American Express Gold Card',
+    annualFee: 325,
+    rewardType: 'points',
+    network: 'amex',
+    baseReward: 1,
+    categories: [
+      { category: 'dining', multiplier: 4, cap: 50000, capPeriod: 'yearly' },
+      { category: 'grocery', multiplier: 4, cap: 25000, capPeriod: 'yearly' },
+      { category: 'travel', multiplier: 3, note: 'flights booked directly with airlines or amextravel.com' },
+      { category: 'travel', multiplier: 2, note: 'prepaid hotels through Amex Travel' }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000256_480x304_straight_withname.png',
+    imageColor: '#B8860B'
   },
   {
     name: 'American Express Green Card',
@@ -42,9 +46,24 @@ const AMEX_CARDS = [
       { category: 'transit', multiplier: 3 },
       { category: 'dining', multiplier: 3 }
     ],
-    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/green-card.png',
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000313_480x304_straight_withname.png',
     imageColor: '#228B22'
   },
+  {
+    name: 'Centurion Card',
+    annualFee: 5000,
+    rewardType: 'points',
+    network: 'amex',
+    baseReward: 1,
+    categories: [
+      { category: 'travel', multiplier: 1.5 },
+      { category: 'dining', multiplier: 1.5 }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000070_480x304_straight_withname.png',
+    imageColor: '#1C1C1C'
+  },
+
+  // ========== BLUE CASH SERIES ==========
   {
     name: 'Blue Cash Preferred',
     annualFee: 95,
@@ -57,7 +76,7 @@ const AMEX_CARDS = [
       { category: 'gas', multiplier: 3 },
       { category: 'transit', multiplier: 3 }
     ],
-    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/blue-cash-preferred.png',
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000269_480x304_straight_withname.png',
     imageColor: '#0066B2'
   },
   {
@@ -71,8 +90,11 @@ const AMEX_CARDS = [
       { category: 'gas', multiplier: 3 },
       { category: 'onlineShopping', multiplier: 3 }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000270_480x304_straight_withname.png',
     imageColor: '#5DADE2'
   },
+
+  // ========== AMEX EVERYDAY SERIES ==========
   {
     name: 'Amex EveryDay',
     annualFee: 0,
@@ -82,6 +104,7 @@ const AMEX_CARDS = [
     categories: [
       { category: 'grocery', multiplier: 2 }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000066_480x304_straight_withname.png',
     imageColor: '#9B59B6'
   },
   {
@@ -94,7 +117,23 @@ const AMEX_CARDS = [
       { category: 'grocery', multiplier: 3 },
       { category: 'gas', multiplier: 2 }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000065_480x304_straight_withname.png',
     imageColor: '#8E44AD'
+  },
+
+  // ========== DELTA SKYMILES ==========
+  {
+    name: 'Delta SkyMiles Blue',
+    annualFee: 0,
+    rewardType: 'miles',
+    network: 'amex',
+    baseReward: 1,
+    categories: [
+      { category: 'travel', multiplier: 2, note: 'Delta purchases' },
+      { category: 'dining', multiplier: 2 }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000258_480x304_straight_withname.png',
+    imageColor: '#003366'
   },
   {
     name: 'Delta SkyMiles Gold',
@@ -107,6 +146,7 @@ const AMEX_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000080_480x304_straight_withname.png',
     imageColor: '#C41E3A'
   },
   {
@@ -121,6 +161,7 @@ const AMEX_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000081_480x304_straight_withname.png',
     imageColor: '#0A2647'
   },
   {
@@ -132,10 +173,52 @@ const AMEX_CARDS = [
     categories: [
       { category: 'travel', multiplier: 3, note: 'Delta purchases' }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000082_480x304_straight_withname.png',
     imageColor: '#1E3A5F'
   },
   {
-    name: 'Hilton Honors',
+    name: 'Delta SkyMiles Gold Business',
+    annualFee: 150,
+    rewardType: 'miles',
+    network: 'amex',
+    baseReward: 1,
+    categories: [
+      { category: 'travel', multiplier: 2, note: 'Delta purchases' },
+      { category: 'shipping', multiplier: 2 },
+      { category: 'advertising', multiplier: 2 }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000086_480x304_straight_withname.png',
+    imageColor: '#B8860B'
+  },
+  {
+    name: 'Delta SkyMiles Platinum Business',
+    annualFee: 350,
+    rewardType: 'miles',
+    network: 'amex',
+    baseReward: 1,
+    categories: [
+      { category: 'travel', multiplier: 3, note: 'Delta purchases' },
+      { category: 'travel', multiplier: 1.5, note: 'hotels' }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000087_480x304_straight_withname.png',
+    imageColor: '#4A5568'
+  },
+  {
+    name: 'Delta SkyMiles Reserve Business',
+    annualFee: 650,
+    rewardType: 'miles',
+    network: 'amex',
+    baseReward: 1,
+    categories: [
+      { category: 'travel', multiplier: 3, note: 'Delta purchases' }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000088_480x304_straight_withname.png',
+    imageColor: '#1A365D'
+  },
+
+  // ========== HILTON HONORS ==========
+  {
+    name: 'Hilton Honors Card',
     annualFee: 0,
     rewardType: 'points',
     network: 'amex',
@@ -146,6 +229,7 @@ const AMEX_CARDS = [
       { category: 'grocery', multiplier: 5 },
       { category: 'gas', multiplier: 5 }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000116_480x304_straight_withname.png',
     imageColor: '#104C97'
   },
   {
@@ -160,6 +244,7 @@ const AMEX_CARDS = [
       { category: 'grocery', multiplier: 6 },
       { category: 'gas', multiplier: 6 }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000117_480x304_straight_withname.png',
     imageColor: '#0D3B66'
   },
   {
@@ -173,8 +258,26 @@ const AMEX_CARDS = [
       { category: 'travel', multiplier: 7, note: 'flights' },
       { category: 'dining', multiplier: 7 }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000229_480x304_straight_withname.png',
     imageColor: '#1B1B3A'
   },
+  {
+    name: 'Hilton Honors Business',
+    annualFee: 95,
+    rewardType: 'points',
+    network: 'amex',
+    baseReward: 3,
+    categories: [
+      { category: 'travel', multiplier: 12, note: 'Hilton hotels' },
+      { category: 'shipping', multiplier: 6 },
+      { category: 'gas', multiplier: 6 },
+      { category: 'dining', multiplier: 6 }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000118_480x304_straight_withname.png',
+    imageColor: '#1A365D'
+  },
+
+  // ========== MARRIOTT BONVOY ==========
   {
     name: 'Marriott Bonvoy Brilliant',
     annualFee: 650,
@@ -186,7 +289,70 @@ const AMEX_CARDS = [
       { category: 'dining', multiplier: 3 },
       { category: 'travel', multiplier: 3, note: 'flights' }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000243_480x304_straight_withname.png',
     imageColor: '#8A2432'
+  },
+  {
+    name: 'Marriott Bonvoy Bevy',
+    annualFee: 250,
+    rewardType: 'points',
+    network: 'amex',
+    baseReward: 2,
+    categories: [
+      { category: 'travel', multiplier: 6, note: 'Marriott hotels' },
+      { category: 'dining', multiplier: 4 }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000340_480x304_straight_withname.png',
+    imageColor: '#8A2432'
+  },
+  {
+    name: 'Marriott Bonvoy Business',
+    annualFee: 125,
+    rewardType: 'points',
+    network: 'amex',
+    baseReward: 2,
+    categories: [
+      { category: 'travel', multiplier: 6, note: 'Marriott hotels' },
+      { category: 'shipping', multiplier: 4 },
+      { category: 'gas', multiplier: 4 },
+      { category: 'phone', multiplier: 4 },
+      { category: 'dining', multiplier: 4 }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000244_480x304_straight_withname.png',
+    imageColor: '#8A2432'
+  },
+
+  // ========== BUSINESS CARDS ==========
+  {
+    name: 'Business Platinum Card',
+    annualFee: 695,
+    rewardType: 'points',
+    network: 'amex',
+    baseReward: 1,
+    categories: [
+      { category: 'travel', multiplier: 5, note: 'flights through Amex Travel' },
+      { category: 'travel', multiplier: 5, note: 'hotels through Amex Travel' },
+      { category: 'other', multiplier: 1.5, note: 'on purchases $5,000+' }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000175_480x304_straight_withname.png',
+    imageColor: '#E5E4E2'
+  },
+  {
+    name: 'Business Gold Card',
+    annualFee: 375,
+    rewardType: 'points',
+    network: 'amex',
+    baseReward: 1,
+    categories: [],
+    selectableConfig: {
+      maxSelections: 2,
+      availableCategories: ['advertising', 'shipping', 'gas', 'travel', 'phone', 'officeSupplies'],
+      multiplier: 4,
+      cap: 150000,
+      capPeriod: 'yearly'
+    },
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000257_480x304_straight_withname.png',
+    imageColor: '#B8860B'
   },
   {
     name: 'Blue Business Plus',
@@ -197,23 +363,59 @@ const AMEX_CARDS = [
     categories: [
       { category: 'other', multiplier: 2, cap: 50000, capPeriod: 'yearly' }
     ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000268_480x304_straight_withname.png',
     imageColor: '#2E86AB'
   },
   {
-    name: 'Business Gold Card',
-    annualFee: 375,
-    rewardType: 'points',
+    name: 'Blue Business Cash',
+    annualFee: 0,
+    rewardType: 'cashback',
+    network: 'amex',
+    baseReward: 2,
+    categories: [],
+    note: '2% on all purchases up to $50,000/year',
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000267_480x304_straight_withname.png',
+    imageColor: '#0066B2'
+  },
+  {
+    name: 'Amazon Business Prime',
+    annualFee: 0,
+    rewardType: 'cashback',
     network: 'amex',
     baseReward: 1,
-    selectableConfig: {
-      maxSelections: 2,
-      availableCategories: ['advertising', 'shipping', 'gas', 'travel', 'phone', 'officeSupplies'],
-      multiplier: 4,
-      cap: 150000,
-      capPeriod: 'yearly'
-    },
-    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/business-gold.png',
-    imageColor: '#B8860B'
+    categories: [
+      { category: 'amazon', multiplier: 5 },
+      { category: 'wholeFoods', multiplier: 5 },
+      { category: 'dining', multiplier: 2 },
+      { category: 'gas', multiplier: 2 }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000295_480x304_straight_withname.png',
+    imageColor: '#FF9900'
+  },
+  {
+    name: 'Lowes Business Rewards',
+    annualFee: 0,
+    rewardType: 'cashback',
+    network: 'amex',
+    baseReward: 1,
+    categories: [
+      { category: 'homeImprovement', multiplier: 5, note: 'Lowes purchases' },
+      { category: 'dining', multiplier: 2 },
+      { category: 'officeSupplies', multiplier: 2 }
+    ],
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000312_480x304_straight_withname.png',
+    imageColor: '#004990'
+  },
+  {
+    name: 'Plum Card',
+    annualFee: 250,
+    rewardType: 'cashback',
+    network: 'amex',
+    baseReward: 1.5,
+    categories: [],
+    note: '1.5% early pay discount',
+    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000173_480x304_straight_withname.png',
+    imageColor: '#614B79'
   }
 ];
 
