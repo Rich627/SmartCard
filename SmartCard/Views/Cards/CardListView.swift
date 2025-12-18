@@ -87,7 +87,7 @@ struct CardRow: View {
                     if !card.categoryRewards.isEmpty {
                         let topReward = card.categoryRewards.max(by: { $0.multiplier < $1.multiplier })
                         if let reward = topReward {
-                            Text("\(reward.displayMultiplier) \(reward.category.rawValue)")
+                            Text("\(reward.displayMultiplier) \(reward.category.displayName)")
                                 .font(.caption2)
                                 .padding(.horizontal, 6)
                                 .padding(.vertical, 2)
@@ -338,13 +338,13 @@ struct CardDetailView: View {
 
                     ForEach(card.categoryRewards) { reward in
                         HStack {
-                            Label(reward.category.rawValue, systemImage: reward.category.icon)
+                            Label(reward.category.displayName, systemImage: reward.category.icon)
                             Spacer()
                             VStack(alignment: .trailing) {
                                 Text(reward.displayMultiplier)
                                     .foregroundStyle(.green)
                                 if let cap = reward.cap {
-                                    Text("Cap: $\(Int(cap))/\(reward.capPeriod?.rawValue ?? "")")
+                                    Text("Cap: $\(Int(cap))/\(reward.capPeriod?.displayName ?? "")")
                                         .font(.caption2)
                                         .foregroundStyle(.secondary)
                                 }
@@ -365,25 +365,9 @@ struct CardDetailView: View {
                                     Text(rot.displayMultiplier)
                                         .foregroundStyle(.green)
                                 }
-                                Text(rot.categories.map { $0.rawValue }.joined(separator: ", "))
+                                Text(rot.categories.map { $0.displayName }.joined(separator: ", "))
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
-
-                                if rot.activationRequired {
-                                    let quarterId = "\(rot.year)-Q\(rot.quarter)"
-                                    let isActivated = userCard.activatedQuarters?.contains(quarterId) ?? false
-
-                                    if isActivated {
-                                        Label("Activated", systemImage: "checkmark.circle.fill")
-                                            .font(.caption)
-                                            .foregroundStyle(.green)
-                                    } else {
-                                        Button("Activate") {
-                                            cardViewModel.activateQuarter(for: userCard, quarter: rot.quarter, year: rot.year)
-                                        }
-                                        .font(.caption)
-                                    }
-                                }
                             }
                             .padding(.vertical, 4)
                         }
@@ -395,7 +379,7 @@ struct CardDetailView: View {
                     Section("Select Your Category (\(config.maxSelections) max)") {
                         ForEach(config.availableCategories, id: \.self) { category in
                             HStack {
-                                Label(category.rawValue, systemImage: category.icon)
+                                Label(category.displayName, systemImage: category.icon)
 
                                 Spacer()
 
@@ -425,7 +409,7 @@ struct CardDetailView: View {
                             HStack {
                                 Text("Spending cap")
                                 Spacer()
-                                Text("$\(Int(cap))/\(config.capPeriod?.rawValue ?? "")")
+                                Text("$\(Int(cap))/\(config.capPeriod?.displayName ?? "")")
                                     .foregroundStyle(.secondary)
                             }
                         }

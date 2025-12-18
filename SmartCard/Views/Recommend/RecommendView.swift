@@ -114,7 +114,7 @@ struct RecommendView: View {
                                                 .frame(width: 24)
                                             Text(item.query)
                                             if let category = item.spendingCategory {
-                                                Text("(\(category.rawValue))")
+                                                Text("(\(category.displayName))")
                                                     .font(.caption)
                                                     .foregroundStyle(.secondary)
                                             }
@@ -147,7 +147,7 @@ struct RecommendView: View {
                                                 .frame(width: 24)
                                             Text(merchant.name)
                                             Spacer()
-                                            Text(merchant.category.rawValue)
+                                            Text(merchant.category.displayName)
                                                 .font(.caption)
                                                 .foregroundStyle(.secondary)
                                         }
@@ -172,7 +172,7 @@ struct RecommendView: View {
                         HStack {
                             Image(systemName: detected.icon)
                                 .foregroundStyle(.green)
-                            Text("Category: \(detected.rawValue)")
+                            Text("Category: \(detected.displayName)")
                                 .font(.subheadline)
                             Image(systemName: "checkmark.circle.fill")
                                 .foregroundStyle(.green)
@@ -188,7 +188,7 @@ struct RecommendView: View {
                         } label: {
                             HStack {
                                 Image(systemName: selectedCategory.icon)
-                                Text(selectedCategory.rawValue)
+                                Text(selectedCategory.displayName)
                                 Spacer()
                                 Text("Tap to change")
                                     .font(.caption)
@@ -354,7 +354,7 @@ struct CategoryPickerView: View {
                             VStack(spacing: 8) {
                                 Image(systemName: category.icon)
                                     .font(.title2)
-                                Text(category.rawValue)
+                                Text(category.displayName)
                                     .font(.caption)
                                     .multilineTextAlignment(.center)
                             }

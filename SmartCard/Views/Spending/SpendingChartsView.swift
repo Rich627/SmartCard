@@ -75,7 +75,7 @@ struct CategoryPieChart: View {
                             Circle()
                                 .fill(item.color)
                                 .frame(width: 8, height: 8)
-                            Text(item.category.rawValue)
+                            Text(item.category.displayName)
                                 .font(.caption)
                                 .lineLimit(1)
                             Spacer()

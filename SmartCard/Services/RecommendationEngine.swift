@@ -194,7 +194,7 @@ class RecommendationEngine {
             return RewardInfo(
                 multiplier: categoryReward.multiplier,
                 isPercentage: categoryReward.isPercentage,
-                reason: "\(categoryReward.displayMultiplier) on \(category.rawValue)",
+                reason: "\(categoryReward.displayMultiplier) on \(category.displayName)",
                 isRotating: false,
                 isSelectable: false,
                 needsActivation: false
@@ -205,20 +205,16 @@ class RecommendationEngine {
         if let rotating = card.rotatingCategories {
             let currentQ = RotatingCategory.currentQuarter()
             let currentY = RotatingCategory.currentYear()
-            let quarterId = "\(currentY)-Q\(currentQ)"
 
             if let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) {
                 if currentRotating.categories.contains(category) {
-                    let isActivated = userCard.activatedQuarters?.contains(quarterId) ?? false
-                    let needsActivation = currentRotating.activationRequired && !isActivated
-
                     return RewardInfo(
                         multiplier: currentRotating.multiplier,
                         isPercentage: currentRotating.isPercentage,
-                        reason: "\(currentRotating.displayMultiplier) Q\(currentQ) rotating category" + (needsActivation ? " (needs activation)" : ""),
+                        reason: "\(currentRotating.displayMultiplier) Q\(currentQ) rotating category",
                         isRotating: true,
                         isSelectable: false,
-                        needsActivation: needsActivation
+                        needsActivation: false
                     )
                 }
             }
@@ -240,7 +236,7 @@ class RecommendationEngine {
                 return RewardInfo(
                     multiplier: card.baseReward,
                     isPercentage: card.baseIsPercentage,
-                    reason: "Base reward (can select \(category.rawValue) for \(config.multiplier)\(config.isPercentage ? "%" : "x"))",
+                    reason: "Base reward (can select \(category.displayName) for \(config.multiplier)\(config.isPercentage ? "%" : "x"))",
                     isRotating: false,
                     isSelectable: true,
                     needsActivation: false

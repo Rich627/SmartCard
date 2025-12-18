@@ -106,12 +106,12 @@ struct ScanReceiptView: View {
                                         Button {
                                             selectedCategory = category
                                         } label: {
-                                            Label(category.rawValue, systemImage: category.icon)
+                                            Label(category.displayName, systemImage: category.icon)
                                         }
                                     }
                                 } label: {
                                     HStack {
-                                        Label(selectedCategory.rawValue, systemImage: selectedCategory.icon)
+                                        Label(selectedCategory.displayName, systemImage: selectedCategory.icon)
                                         Spacer()
                                         Image(systemName: "chevron.down")
                                     }

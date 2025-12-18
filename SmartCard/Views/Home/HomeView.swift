@@ -18,11 +18,6 @@ struct HomeView: View {
                     // Quick Search Bar
                     QuickSearchBar(searchText: $searchText, showingSheet: $showingQuickRecommend)
 
-                    // Activation Alerts (if any) - always expanded, important
-                    if !cardViewModel.cardsNeedingActivation.isEmpty {
-                        ActivationAlertCard()
-                    }
-
                     // Credit Utilization Overview
                     if hasAnyUtilizationData {
                         CreditUtilizationCard(isExpanded: $utilizationExpanded)
@@ -111,48 +106,6 @@ struct QuickSearchBar: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .buttonStyle(.plain)
-    }
-}
-
-// MARK: - Activation Alert Card
-
-struct ActivationAlertCard: View {
-    @EnvironmentObject var cardViewModel: CardViewModel
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .foregroundStyle(.orange)
-                Text("Activate Categories")
-                    .font(.headline)
-                Spacer()
-            }
-
-            ForEach(cardViewModel.cardsNeedingActivation.prefix(2), id: \.1.id) { userCard, card, rotating in
-                HStack {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(userCard.nickname ?? card.name)
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                        Text(rotating.categories.map { $0.rawValue }.joined(separator: ", "))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    Spacer()
-
-                    Button("Activate") {
-                        cardViewModel.activateQuarter(for: userCard, quarter: rotating.quarter, year: rotating.year)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.small)
-                }
-            }
-        }
-        .padding()
-        .background(Color.orange.opacity(0.1))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 
@@ -623,7 +576,7 @@ struct QuickRecommendSheet: View {
                                                 .frame(width: 24)
                                             Text(item.query)
                                             if let category = item.spendingCategory {
-                                                Text("(\(category.rawValue))")
+                                                Text("(\(category.displayName))")
                                                     .font(.caption)
                                                     .foregroundStyle(.secondary)
                                             }
@@ -655,7 +608,7 @@ struct QuickRecommendSheet: View {
                                                 .frame(width: 24)
                                             Text(merchant.name)
                                             Spacer()
-                                            Text(merchant.category.rawValue)
+                                            Text(merchant.category.displayName)
                                                 .font(.caption)
                                                 .foregroundStyle(.secondary)
                                         }
@@ -675,7 +628,7 @@ struct QuickRecommendSheet: View {
                     if let category = detectedCategory {
                         HStack {
                             Image(systemName: category.icon)
-                            Text("Category: \(category.rawValue)")
+                            Text("Category: \(category.displayName)")
                             Spacer()
                             Image(systemName: "checkmark.circle.fill")
                                 .foregroundStyle(.green)
@@ -756,7 +709,7 @@ struct QuickRecommendSheet: View {
                     if let rec = selectedRecommendation, let amountValue = Double(amount) {
                         spendingViewModel.addSpending(
                             amount: amountValue,
-                            merchant: searchText.isEmpty ? effectiveCategory.rawValue : searchText,
+                            merchant: searchText.isEmpty ? effectiveCategory.displayName : searchText,
                             category: effectiveCategory,
                             cardUsed: rec.card.id,
                             date: Date(),
@@ -769,7 +722,7 @@ struct QuickRecommendSheet: View {
                 Button("Cancel", role: .cancel) {}
             } message: {
                 if let rec = selectedRecommendation {
-                    Text("Add $\(amount) spending at \(searchText.isEmpty ? effectiveCategory.rawValue : searchText) using \(rec.userCard.nickname ?? rec.card.name)?")
+                    Text("Add $\(amount) spending at \(searchText.isEmpty ? effectiveCategory.displayName : searchText) using \(rec.userCard.nickname ?? rec.card.name)?")
                 }
             }
         }

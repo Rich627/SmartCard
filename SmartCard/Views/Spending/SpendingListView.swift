@@ -230,7 +230,7 @@ struct AddSpendingView: View {
                         HStack {
                             Text("Category")
                             Spacer()
-                            Label(effectiveCategory.rawValue, systemImage: effectiveCategory.icon)
+                            Label(effectiveCategory.displayName, systemImage: effectiveCategory.icon)
                                 .foregroundStyle(.secondary)
                             if detectedCategory != nil {
                                 Text("(auto)")
@@ -358,7 +358,7 @@ struct SpendingAnalyticsView: View {
                 Section("By Category") {
                     ForEach(spendingViewModel.spendingsByCategory, id: \.0) { category, amount in
                         HStack {
-                            Label(category.rawValue, systemImage: category.icon)
+                            Label(category.displayName, systemImage: category.icon)
                             Spacer()
                             Text(formatCurrency(amount))
                                 .foregroundStyle(.secondary)
