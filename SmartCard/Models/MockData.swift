@@ -108,7 +108,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: nil,
             imageColor: "#0066B2",
-            imageURL: nil,
+            imageURL: "https://cdn.chase.com/content/dam/jpmc-marketplace/card-art/freedom_rise_alt_card2.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -152,7 +152,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 75000, bonusType: .points, spendRequirement: 6000, timeframeDays: 90, description: "$750 bonus after $6,000 in 3 months"),
             imageColor: "#0066B2",
-            imageURL: nil,
+            imageURL: "https://www.chase.com/content/dam/jpmc-marketplace/card-art/ink_cash_card.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -169,7 +169,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 75000, bonusType: .points, spendRequirement: 6000, timeframeDays: 90, description: "$750 bonus after $6,000 in 3 months"),
             imageColor: "#0066B2",
-            imageURL: nil,
+            imageURL: "https://www.chase.com/content/dam/jpmc-marketplace/card-art/ink_unlimited_card.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -213,7 +213,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 70000, bonusType: .miles, spendRequirement: 4000, timeframeDays: 90, description: "70,000 miles after $4,000 in 3 months"),
             imageColor: "#0032A0",
-            imageURL: nil,
+            imageURL: "https://www.chase.com/content/dam/jpmc-marketplace/card-art/united_quest_card_tilted.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -235,7 +235,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 50000, bonusType: .points, spendRequirement: 1000, timeframeDays: 90, description: "50,000 points after $1,000 in 3 months"),
             imageColor: "#304CB2",
-            imageURL: nil,
+            imageURL: "https://www.chase.com/content/dam/jpmc-marketplace/card-art/swa_priority_card_ribbon.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -256,7 +256,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 85000, bonusType: .points, spendRequirement: 4000, timeframeDays: 90, description: "85,000 points after $4,000 in 3 months"),
             imageColor: "#8C1D40",
-            imageURL: nil,
+            imageURL: "https://www.chase.com/content/dam/jpmc-marketplace/card-art/marriott-bonvoy-boundless-card.png",
             lastUpdated: Date()
         ),
     ]
@@ -321,7 +321,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 40000, bonusType: .points, spendRequirement: 3000, timeframeDays: 180, description: "40,000 points after $3,000 in 6 months"),
             imageColor: "#006B54",
-            imageURL: nil,
+            imageURL: "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/green-card.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -364,7 +364,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 200, bonusType: .cashback, spendRequirement: 2000, timeframeDays: 180, description: "$200 back after $2,000 in 6 months"),
             imageColor: "#006FCF",
-            imageURL: nil,
+            imageURL: "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/blue-cash-everyday.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -486,7 +486,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 80000, bonusType: .points, spendRequirement: 2000, timeframeDays: 180, description: "80,000 points after $2,000 in 6 months"),
             imageColor: "#104C97",
-            imageURL: nil,
+            imageURL: "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/hilton-honors.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -926,7 +926,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: nil,
             imageColor: "#A3A3A3",
-            imageURL: nil,
+            imageURL: "https://www.discover.com/content/dam/discover/en_us/credit-cards/card-acquisitions/grey-redesign/global/images/cardart/cardart-cash-chrome-platinum-620-382.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -943,7 +943,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: nil,
             imageColor: "#FF6600",
-            imageURL: nil,
+            imageURL: "https://www.discover.com/content/dam/discover/en_us/credit-cards/card-acquisitions/grey-redesign/global/images/cardart/cardart-it-miles-620-382.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -965,7 +965,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: nil,
             imageColor: "#FF6600",
-            imageURL: nil,
+            imageURL: "https://www.discover.com/content/dam/discover/en_us/credit-cards/card-acquisitions/grey-redesign/global/images/cardart/cardart-student-it-choose-new-your-card-614-432.png",
             lastUpdated: Date()
         ),
     ]
@@ -1017,7 +1017,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 60000, bonusType: .points, spendRequirement: 4000, timeframeDays: 90, description: "60,000 points after $4,000 in 90 days"),
             imageColor: "#012169",
-            imageURL: nil,
+            imageURL: "https://www.bankofamerica.com/content/images/ContextualSiteGraphics/CreditCardArt/en_US/Approved_PCM/8CAL_prmsigcm_v_250_158.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -1037,7 +1037,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 75000, bonusType: .points, spendRequirement: 5000, timeframeDays: 90, description: "75,000 points after $5,000 in 90 days"),
             imageColor: "#012169",
-            imageURL: nil,
+            imageURL: "https://www.bankofamerica.com/content/images/ContextualSiteGraphics/CreditCardArt/en_US/Approved_PCM/8cud_premrewelite_v_250x158.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -1054,7 +1054,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 25000, bonusType: .points, spendRequirement: 1000, timeframeDays: 90, description: "25,000 points after $1,000 in 90 days"),
             imageColor: "#012169",
-            imageURL: nil,
+            imageURL: "https://www.bankofamerica.com/content/images/ContextualSiteGraphics/CreditCardArt/en_US/Approved_PCM/8blm_trvsigcm_v_250x158.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -1071,7 +1071,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 200, bonusType: .cashback, spendRequirement: 1000, timeframeDays: 90, description: "$200 back after $1,000 in 90 days"),
             imageColor: "#E31837",
-            imageURL: nil,
+            imageURL: "https://www.bankofamerica.com/content/images/ContextualSiteGraphics/CreditCardArt/en_US/Approved_PCM/8cty_cshsigcm_v_250x157.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -1092,7 +1092,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 70000, bonusType: .miles, spendRequirement: 3000, timeframeDays: 90, description: "70,000 miles after $3,000 in 90 days"),
             imageColor: "#00274C",
-            imageURL: nil,
+            imageURL: "https://www.bankofamerica.com/content/images/ContextualSiteGraphics/CreditCardArt/en_US/Approved_PCM/1bbt_sigcm_v_atmos_ascent_250.png",
             lastUpdated: Date()
         ),
     ]
@@ -1143,7 +1143,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 25000, bonusType: .points, spendRequirement: 1000, timeframeDays: 90, description: "25,000 points after $1,000 in 90 days"),
             imageColor: "#0C2340",
-            imageURL: nil,
+            imageURL: "https://www.usbank.com/content/dam/usbank/en/images/illustrations/card-art/credit-cards/altitude-go-visa-signature-credit-card.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -1167,7 +1167,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 50000, bonusType: .points, spendRequirement: 2000, timeframeDays: 120, description: "50,000 points after $2,000 in 120 days"),
             imageColor: "#0C2340",
-            imageURL: nil,
+            imageURL: "https://www.usbank.com/content/dam/usbank/en/images/photos/credit-cards/photo-altitude-connect-consumer.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -1187,7 +1187,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 50000, bonusType: .points, spendRequirement: 4500, timeframeDays: 90, description: "50,000 points after $4,500 in 90 days"),
             imageColor: "#000000",
-            imageURL: nil,
+            imageURL: "https://www.usbank.com/content/dam/usbank/en/images/photos/credit-cards/photo-altitude-reserve-consumer.png",
             lastUpdated: Date()
         ),
     ]
@@ -1233,7 +1233,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 20000, bonusType: .points, spendRequirement: 1000, timeframeDays: 90, description: "20,000 points after $1,000 in 3 months"),
             imageColor: "#D71E28",
-            imageURL: nil,
+            imageURL: "https://www.wellsfargo.com/W-Card-MarketPlace/v12-17-25/images/Products/Autograph/Autograph-No-Fee-Card-RGB_d.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -1253,7 +1253,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 60000, bonusType: .points, spendRequirement: 4000, timeframeDays: 90, description: "60,000 points after $4,000 in 3 months"),
             imageColor: "#D71E28",
-            imageURL: nil,
+            imageURL: "https://www.wellsfargo.com/W-Card-MarketPlace/v12-17-25/images/Products/AutographJourney/Autograph-Journey-Card-RGB_d.png",
             lastUpdated: Date()
         ),
         CreditCard(
@@ -1270,7 +1270,7 @@ struct MockData {
             selectableConfig: nil,
             signUpBonus: nil,
             imageColor: "#D71E28",
-            imageURL: nil,
+            imageURL: "https://www.wellsfargo.com/W-Card-MarketPlace/v12-17-25/images/Products/Reflect/Reflect-Card-RGB_d.png",
             lastUpdated: Date()
         ),
     ]
