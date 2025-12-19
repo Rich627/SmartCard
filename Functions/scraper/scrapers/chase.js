@@ -1,9 +1,9 @@
 /**
  * Chase Credit Card Scraper
- * Complete list of Chase consumer and business credit cards
+ * Real web scraper with fallback to cached data
  */
 
-const puppeteer = require('puppeteer');
+const BaseScraper = require('../utils/BaseScraper');
 const { generateCardId, mapCategory } = require('../utils/categories');
 
 const CHASE_CARDS = [
@@ -20,7 +20,7 @@ const CHASE_CARDS = [
       { category: 'streaming', multiplier: 3 },
       { category: 'travel', multiplier: 2, note: 'other travel purchases' }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/sapphire_preferred_card.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/sapphire_preferred_card.png',
     imageColor: '#0A3161'
   },
   {
@@ -34,7 +34,7 @@ const CHASE_CARDS = [
       { category: 'travel', multiplier: 3, note: 'all other travel' },
       { category: 'dining', multiplier: 3 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/sapphire_reserve_card.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/sapphire_reserve_card_Halo.png',
     imageColor: '#1A1F71'
   },
 
@@ -49,7 +49,7 @@ const CHASE_CARDS = [
       { category: 'dining', multiplier: 3 },
       { category: 'drugstore', multiplier: 3 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/freedom_redesign_light.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_unlimited_card_alt.png',
     imageColor: '#0066B2'
   },
   {
@@ -63,7 +63,7 @@ const CHASE_CARDS = [
       { category: 'drugstore', multiplier: 3 }
     ],
     rotating: { multiplier: 5, cap: 1500, capPeriod: 'quarterly', activationRequired: true },
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/freedom_flex_card.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_flex_card_alt.png',
     imageColor: '#00A4E4'
   },
   {
@@ -72,7 +72,7 @@ const CHASE_CARDS = [
     rewardType: 'cashback',
     baseReward: 1.5,
     categories: [],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/freedom_rise_card.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_rise_alt_card2.png',
     imageColor: '#4A90D9'
   },
   {
@@ -81,7 +81,7 @@ const CHASE_CARDS = [
     rewardType: 'cashback',
     baseReward: 1,
     categories: [],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/freedom_student_card.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_unlimited_card_alt.png',
     imageColor: '#0066B2'
   },
 
@@ -98,7 +98,7 @@ const CHASE_CARDS = [
       { category: 'phone', multiplier: 3, cap: 150000, capPeriod: 'yearly' },
       { category: 'advertising', multiplier: 3, cap: 150000, capPeriod: 'yearly' }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/ink_business_preferred2.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_preferred_card.png',
     imageColor: '#1A1F71'
   },
   {
@@ -113,7 +113,7 @@ const CHASE_CARDS = [
       { category: 'gas', multiplier: 2, cap: 25000, capPeriod: 'yearly' },
       { category: 'dining', multiplier: 2, cap: 25000, capPeriod: 'yearly' }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/ink_cash_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_cash_card.png',
     imageColor: '#2D6A4F'
   },
   {
@@ -122,7 +122,7 @@ const CHASE_CARDS = [
     rewardType: 'cashback',
     baseReward: 1.5,
     categories: [],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/ink_unlimited_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_unlimited_card.png',
     imageColor: '#4895EF'
   },
   {
@@ -133,7 +133,7 @@ const CHASE_CARDS = [
     categories: [
       { category: 'travel', multiplier: 2.5 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/ink_premier_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_business_premier_card.png',
     imageColor: '#1A1F71'
   },
 
@@ -149,7 +149,7 @@ const CHASE_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'streaming', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/united_quest_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_quest_card.png',
     imageColor: '#002244'
   },
   {
@@ -162,7 +162,7 @@ const CHASE_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'hotels', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/united_explorer_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_explorer_card.png',
     imageColor: '#002244'
   },
   {
@@ -176,7 +176,7 @@ const CHASE_CARDS = [
       { category: 'transit', multiplier: 2 },
       { category: 'streaming', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/united_gateway_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_gateway_card.png',
     imageColor: '#0033A0'
   },
   {
@@ -189,7 +189,7 @@ const CHASE_CARDS = [
       { category: 'travel', multiplier: 2, note: 'all other travel' },
       { category: 'dining', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/united_club_infinite_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_club_infinite_card.png',
     imageColor: '#002244'
   },
   {
@@ -203,7 +203,7 @@ const CHASE_CARDS = [
       { category: 'gas', multiplier: 2 },
       { category: 'officeSupplies', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/united_business_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_biz_card.png',
     imageColor: '#002244'
   },
 
@@ -219,7 +219,7 @@ const CHASE_CARDS = [
       { category: 'internet', multiplier: 2 },
       { category: 'phone', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/southwest_priority_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_priority_card-2.png',
     imageColor: '#304CB2'
   },
   {
@@ -233,7 +233,7 @@ const CHASE_CARDS = [
       { category: 'internet', multiplier: 2 },
       { category: 'phone', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/southwest_plus_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_plus_card_New.png',
     imageColor: '#FFBF27'
   },
   {
@@ -247,7 +247,7 @@ const CHASE_CARDS = [
       { category: 'internet', multiplier: 2 },
       { category: 'phone', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/southwest_premier_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_premier_card.png',
     imageColor: '#304CB2'
   },
   {
@@ -262,7 +262,7 @@ const CHASE_CARDS = [
       { category: 'phone', multiplier: 3 },
       { category: 'advertising', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/southwest_performance_business_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_performance_biz_card.png',
     imageColor: '#304CB2'
   },
 
@@ -278,7 +278,7 @@ const CHASE_CARDS = [
       { category: 'gas', multiplier: 3 },
       { category: 'dining', multiplier: 3 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/marriott_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/marriott-bonvoy-boundless-card.png',
     imageColor: '#8A2432'
   },
   {
@@ -289,7 +289,7 @@ const CHASE_CARDS = [
     categories: [
       { category: 'marriott', multiplier: 3, note: 'Marriott hotels' }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/marriott_bold_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/marriott_bonvoy_bold_card_NAF.png',
     imageColor: '#8A2432'
   },
   {
@@ -303,7 +303,7 @@ const CHASE_CARDS = [
       { category: 'grocery', multiplier: 3 },
       { category: 'gas', multiplier: 3 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/marriott_bountiful_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/marriott_bonvoy_bountiful_card.png',
     imageColor: '#8A2432'
   },
   {
@@ -316,7 +316,7 @@ const CHASE_CARDS = [
       { category: 'travel', multiplier: 5, note: 'travel, gas stations' },
       { category: 'dining', multiplier: 5 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/ihg_rewards_premier.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ihg_premier_card.png',
     imageColor: '#005F3D'
   },
   {
@@ -330,7 +330,7 @@ const CHASE_CARDS = [
       { category: 'dining', multiplier: 3 },
       { category: 'utilities', multiplier: 3 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/ihg_traveler_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ihg-traveler-card.png',
     imageColor: '#005F3D'
   },
   {
@@ -345,7 +345,7 @@ const CHASE_CARDS = [
       { category: 'fitness', multiplier: 2 },
       { category: 'transit', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/hyatt_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/world_of_hyatt_card.png',
     imageColor: '#2C3E50'
   },
   {
@@ -360,7 +360,7 @@ const CHASE_CARDS = [
       { category: 'shipping', multiplier: 2 },
       { category: 'advertising', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/hyatt_business_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/world_hyatt_biz_card.png',
     imageColor: '#2C3E50'
   },
 
@@ -378,7 +378,7 @@ const CHASE_CARDS = [
       { category: 'drugstore', multiplier: 2 },
       { category: 'transit', multiplier: 2 }
     ],
-    imageURL: 'https://m.media-amazon.com/images/G/01/credit/CBCC_Premium_RGB_600x388.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/prime-visa.png',
     imageColor: '#FF9900'
   },
   {
@@ -393,7 +393,7 @@ const CHASE_CARDS = [
       { category: 'gas', multiplier: 2 },
       { category: 'drugstore', multiplier: 2 }
     ],
-    imageURL: 'https://m.media-amazon.com/images/G/01/credit/card-background-amazon.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/amazon-visa.png',
     imageColor: '#232F3E'
   },
   {
@@ -406,7 +406,7 @@ const CHASE_CARDS = [
       { category: 'gas', multiplier: 1 },
       { category: 'grocery', multiplier: 1 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/disney_premier_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/disney-rewards2025.png',
     imageColor: '#006E96'
   },
   {
@@ -419,7 +419,7 @@ const CHASE_CARDS = [
       { category: 'gas', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/disney_premier_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/disney_Mickey70_premier_card.png',
     imageColor: '#1E3A5F'
   },
   {
@@ -434,7 +434,7 @@ const CHASE_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'streaming', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/instacart_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/instacart_card.png',
     imageColor: '#43B02A'
   },
   {
@@ -447,7 +447,7 @@ const CHASE_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 1.5 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/aeroplan_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/aeroplan_card.png',
     imageColor: '#C8102E'
   },
   {
@@ -458,7 +458,7 @@ const CHASE_CARDS = [
     categories: [
       { category: 'britishairways', multiplier: 3, note: 'British Airways purchases' }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/british_airways_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/british-airways.png',
     imageColor: '#075AAA'
   },
   {
@@ -469,7 +469,7 @@ const CHASE_CARDS = [
     categories: [
       { category: 'iberia', multiplier: 3, note: 'Iberia purchases' }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/iberia_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/iberia_card.png',
     imageColor: '#CB2127'
   },
   {
@@ -480,7 +480,7 @@ const CHASE_CARDS = [
     categories: [
       { category: 'aerlingus', multiplier: 3, note: 'Aer Lingus purchases' }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/aerlingus_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/aer_lingus_card.png',
     imageColor: '#006272'
   },
   {
@@ -493,67 +493,183 @@ const CHASE_CARDS = [
       { category: 'dining', multiplier: 3, note: 'other dining' },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/doordash_background.png',
+    imageURL: 'https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/doordash_card.png',
     imageColor: '#FF3008'
-  },
-  {
-    name: 'Starbucks Rewards Visa Card',
-    annualFee: 0,
-    rewardType: 'points',
-    baseReward: 1,
-    categories: [
-      { category: 'starbucks', multiplier: 3, note: 'Starbucks purchases' },
-      { category: 'grocery', multiplier: 1 }
-    ],
-    imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/starbucks_background.png',
-    imageColor: '#00704A'
   }
 ];
 
-async function scrapeChase() {
-  const cards = CHASE_CARDS.map(card => formatCard('Chase', card));
-
-  // Try to scrape live data for images
-  try {
-    const browser = await puppeteer.launch({ headless: 'new' });
-    const page = await browser.newPage();
-
-    // Set longer timeout and user agent
-    await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-
-    await page.goto('https://creditcards.chase.com/all-credit-cards', {
-      waitUntil: 'networkidle2',
-      timeout: 30000
+/**
+ * Chase Scraper class - extends BaseScraper
+ */
+class ChaseScraper extends BaseScraper {
+  constructor() {
+    super('Chase', {
+      fallbackCards: CHASE_CARDS.map(card => formatCard('Chase', card)),
+      baseUrl: 'https://creditcards.chase.com',
+      timeout: 45000
     });
-
-    // Extract card images from the page
-    const liveImages = await page.evaluate(() => {
-      const images = {};
-      const cardElements = document.querySelectorAll('[data-card-name], .card-art img, .cardart img');
-      cardElements.forEach(el => {
-        const cardName = el.getAttribute('data-card-name') || el.getAttribute('alt') || '';
-        const imgSrc = el.tagName === 'IMG' ? el.src : el.querySelector('img')?.src;
-        if (cardName && imgSrc) {
-          images[cardName.toLowerCase()] = imgSrc;
-        }
-      });
-      return images;
-    });
-
-    await browser.close();
-
-    // Merge live images
-    cards.forEach(card => {
-      const key = card.name.toLowerCase();
-      if (liveImages[key] && !card.imageURL) {
-        card.imageURL = liveImages[key];
-      }
-    });
-  } catch (error) {
-    console.log(`   Using cached data (live scrape failed: ${error.message})`);
   }
 
-  return cards;
+  /**
+   * Scrape live data from Chase website
+   */
+  async scrapeLive() {
+    await this.launchBrowser();
+    const page = await this.browser.newPage();
+
+    // Navigate to all cards page
+    const url = `${this.baseUrl}/all-credit-cards`;
+    console.log(`    📄 載入 ${url}`);
+
+    const success = await this.safeGoto(page, url);
+    if (!success) return [];
+
+    await this.randomDelay(2000, 4000);
+
+    // Extract card links and basic info from the listing page
+    const cardLinks = await page.evaluate(() => {
+      const links = [];
+      // Find all card product links
+      const cardElements = document.querySelectorAll('a[href*="/credit-cards/"]');
+      const seen = new Set();
+
+      cardElements.forEach(el => {
+        const href = el.getAttribute('href');
+        // Filter to actual card product pages
+        if (href && (href.includes('/cash-back-credit-cards/') ||
+            href.includes('/travel-credit-cards/') ||
+            href.includes('/business-credit-cards/') ||
+            href.includes('/a]')) &&
+            !href.includes('/compare') &&
+            !href.includes('/application')) {
+
+          const fullUrl = href.startsWith('http') ? href : `https://creditcards.chase.com${href}`;
+          if (!seen.has(fullUrl)) {
+            seen.add(fullUrl);
+            links.push(fullUrl);
+          }
+        }
+      });
+      return links;
+    });
+
+    console.log(`    🔗 找到 ${cardLinks.length} 個卡片連結`);
+
+    // Visit each card page and extract details
+    const scrapedCards = [];
+    const maxCards = Math.min(cardLinks.length, 10); // Limit to 10 for testing
+
+    for (let i = 0; i < maxCards; i++) {
+      const cardUrl = cardLinks[i];
+      console.log(`    📋 抓取卡片 ${i + 1}/${maxCards}: ${cardUrl.split('/').pop()}`);
+
+      try {
+        await this.randomDelay(1500, 3000);
+        await this.safeGoto(page, cardUrl);
+        await this.randomDelay(1000, 2000);
+
+        const cardData = await page.evaluate(() => {
+          const data = {};
+
+          // Card name - typically in h1 or main heading
+          const h1 = document.querySelector('h1');
+          if (h1) {
+            data.name = h1.textContent.trim().replace(/®|™|℠/g, '').trim();
+          }
+
+          // Annual fee - look for "ANNUAL FEE" text
+          const allText = document.body.innerText;
+          const annualFeeMatch = allText.match(/ANNUAL FEE[:\s]*\$?([\d,]+|\d+)/i);
+          if (annualFeeMatch) {
+            data.annualFee = parseInt(annualFeeMatch[1].replace(',', ''), 10);
+          } else if (allText.toLowerCase().includes('no annual fee') ||
+                     allText.toLowerCase().includes('$0 annual fee')) {
+            data.annualFee = 0;
+          }
+
+          // Rewards - look for percentage or X multipliers
+          const rewards = [];
+          const rewardPatterns = [
+            /(\d+(?:\.\d+)?)[x%]\s+(?:cash\s*back|points?|miles?)\s+(?:on\s+)?(.+?)(?:\.|,|$)/gi,
+            /unlimited\s+(\d+(?:\.\d+)?)[%]\s+cash\s*back/i,
+            /earn\s+(\d+)[x%]\s+(?:points?|miles?)\s+(?:on\s+)?(.+?)(?:\.|,|$)/gi
+          ];
+
+          // Extract from "AT A GLANCE" or similar sections
+          const listItems = document.querySelectorAll('li, p');
+          listItems.forEach(li => {
+            const text = li.textContent;
+            rewardPatterns.forEach(pattern => {
+              const match = text.match(pattern);
+              if (match) {
+                rewards.push(text.trim());
+              }
+            });
+          });
+
+          data.rawRewards = rewards.slice(0, 10);
+
+          // Card image
+          const cardImg = document.querySelector('img[src*="cardart"], img[alt*="card"]');
+          if (cardImg) {
+            data.imageUrl = cardImg.src;
+          }
+
+          return data;
+        });
+
+        if (cardData.name) {
+          scrapedCards.push({
+            ...cardData,
+            applicationUrl: cardUrl,
+            issuer: 'Chase'
+          });
+        }
+      } catch (error) {
+        console.log(`      ⚠️  無法抓取: ${error.message}`);
+      }
+    }
+
+    return scrapedCards;
+  }
+
+  /**
+   * Override merge to update specific fields from live data
+   */
+  mergeWithFallback(liveData) {
+    const merged = [...this.fallbackCards];
+
+    for (const liveCard of liveData) {
+      // Try to match by name (fuzzy match)
+      const liveNameLower = liveCard.name.toLowerCase();
+      const existingIndex = merged.findIndex(c => {
+        const fallbackNameLower = c.name.toLowerCase();
+        return fallbackNameLower === liveNameLower ||
+               fallbackNameLower.includes(liveNameLower) ||
+               liveNameLower.includes(fallbackNameLower);
+      });
+
+      if (existingIndex >= 0) {
+        // Update with live data
+        const existing = merged[existingIndex];
+        merged[existingIndex] = {
+          ...existing,
+          // Only update if live data has the value
+          ...(liveCard.annualFee !== undefined && { annualFee: liveCard.annualFee }),
+          ...(liveCard.imageUrl && { imageURL: liveCard.imageUrl }),
+          ...(liveCard.applicationUrl && { applicationUrl: liveCard.applicationUrl })
+        };
+        console.log(`      ✅ 更新: ${existing.name}`);
+      }
+    }
+
+    return merged;
+  }
+}
+
+async function scrapeChase() {
+  const scraper = new ChaseScraper();
+  return await scraper.scrape();
 }
 
 function formatCard(issuer, cardData) {
@@ -621,6 +737,22 @@ function formatCard(issuer, cardData) {
   }
 
   return card;
+}
+
+// Run standalone for testing
+if (require.main === module) {
+  console.log('🏦 Testing Chase Scraper...\n');
+  scrapeChase()
+    .then(cards => {
+      console.log(`\n✅ Total cards: ${cards.length}`);
+      cards.slice(0, 3).forEach(card => {
+        console.log(`  - ${card.name}: $${card.annualFee} annual fee`);
+      });
+    })
+    .catch(err => {
+      console.error('❌ Error:', err.message);
+      process.exit(1);
+    });
 }
 
 module.exports = scrapeChase;

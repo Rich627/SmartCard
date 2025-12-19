@@ -1,8 +1,9 @@
 /**
  * American Express Credit Card Scraper
- * Complete list of American Express consumer and business credit cards
+ * Real web scraper with fallback to cached data
  */
 
+const BaseScraper = require('../utils/BaseScraper');
 const { generateCardId, mapCategory } = require('../utils/categories');
 
 const AMEX_CARDS = [
@@ -16,7 +17,7 @@ const AMEX_CARDS = [
     categories: [
       { category: 'travelPortal', multiplier: 5, note: 'flights and prepaid hotels through Amex Travel' }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000174_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/platinum-card.png',
     imageColor: '#E5E4E2'
   },
   {
@@ -31,7 +32,7 @@ const AMEX_CARDS = [
       { category: 'airlines', multiplier: 3, note: 'flights booked directly with airlines or amextravel.com' },
       { category: 'travelPortal', multiplier: 2, note: 'prepaid hotels through Amex Travel' }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000256_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/gold-card.png',
     imageColor: '#B8860B'
   },
   {
@@ -45,7 +46,7 @@ const AMEX_CARDS = [
       { category: 'transit', multiplier: 3 },
       { category: 'dining', multiplier: 3 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000313_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/green-card.png',
     imageColor: '#228B22'
   },
   {
@@ -75,7 +76,7 @@ const AMEX_CARDS = [
       { category: 'gas', multiplier: 3 },
       { category: 'transit', multiplier: 3 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000269_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/blue-cash-preferred.png',
     imageColor: '#0066B2'
   },
   {
@@ -89,7 +90,7 @@ const AMEX_CARDS = [
       { category: 'gas', multiplier: 3 },
       { category: 'onlineShopping', multiplier: 3 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000270_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/blue-cash-everyday.png',
     imageColor: '#5DADE2'
   },
 
@@ -103,7 +104,7 @@ const AMEX_CARDS = [
     categories: [
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000066_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/amex-everyday.png',
     imageColor: '#9B59B6'
   },
   {
@@ -116,7 +117,7 @@ const AMEX_CARDS = [
       { category: 'grocery', multiplier: 3 },
       { category: 'gas', multiplier: 2 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000065_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/amex-everyday.png',
     imageColor: '#8E44AD'
   },
 
@@ -131,7 +132,7 @@ const AMEX_CARDS = [
       { category: 'delta', multiplier: 2, note: 'Delta purchases' },
       { category: 'dining', multiplier: 2 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000258_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-blue.png',
     imageColor: '#003366'
   },
   {
@@ -145,7 +146,7 @@ const AMEX_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000080_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/gold-delta-skymiles.png',
     imageColor: '#C41E3A'
   },
   {
@@ -160,7 +161,7 @@ const AMEX_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000081_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/platinum-delta-skymiles.png',
     imageColor: '#0A2647'
   },
   {
@@ -172,7 +173,7 @@ const AMEX_CARDS = [
     categories: [
       { category: 'delta', multiplier: 3, note: 'Delta purchases' }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000082_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-reserve.png',
     imageColor: '#1E3A5F'
   },
   {
@@ -228,7 +229,7 @@ const AMEX_CARDS = [
       { category: 'grocery', multiplier: 5 },
       { category: 'gas', multiplier: 5 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000116_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors.png',
     imageColor: '#104C97'
   },
   {
@@ -243,7 +244,7 @@ const AMEX_CARDS = [
       { category: 'grocery', multiplier: 6 },
       { category: 'gas', multiplier: 6 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000117_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors-surpass.png',
     imageColor: '#0D3B66'
   },
   {
@@ -257,7 +258,7 @@ const AMEX_CARDS = [
       { category: 'airlines', multiplier: 7, note: 'flights' },
       { category: 'dining', multiplier: 7 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000229_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors-aspire.png',
     imageColor: '#1B1B3A'
   },
   {
@@ -272,7 +273,7 @@ const AMEX_CARDS = [
       { category: 'gas', multiplier: 6 },
       { category: 'dining', multiplier: 6 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000118_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors.png',
     imageColor: '#1A365D'
   },
 
@@ -288,7 +289,7 @@ const AMEX_CARDS = [
       { category: 'dining', multiplier: 3 },
       { category: 'airlines', multiplier: 3, note: 'flights' }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000243_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-brilliant-card.png',
     imageColor: '#8A2432'
   },
   {
@@ -301,7 +302,7 @@ const AMEX_CARDS = [
       { category: 'marriott', multiplier: 6, note: 'Marriott hotels' },
       { category: 'dining', multiplier: 4 }
     ],
-    imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000340_480x304_straight_withname.png',
+    imageURL: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-bevy-card.png',
     imageColor: '#8A2432'
   },
   {
@@ -417,8 +418,170 @@ const AMEX_CARDS = [
   }
 ];
 
+/**
+ * Amex Scraper class - extends BaseScraper
+ */
+class AmexScraper extends BaseScraper {
+  constructor() {
+    super('American Express', {
+      fallbackCards: AMEX_CARDS.map(card => formatCard('American Express', card)),
+      baseUrl: 'https://www.americanexpress.com',
+      timeout: 45000
+    });
+
+    // Known card page URLs for direct scraping
+    this.cardPages = [
+      '/us/credit-cards/card/platinum-card/',
+      '/us/credit-cards/card/gold-card/',
+      '/us/credit-cards/card/green-card/',
+      '/us/credit-cards/card/blue-cash-preferred/',
+      '/us/credit-cards/card/blue-cash-everyday/',
+      '/us/credit-cards/card/hilton-honors/',
+      '/us/credit-cards/card/hilton-honors-surpass/',
+      '/us/credit-cards/card/hilton-honors-aspire/',
+      '/us/credit-cards/card/delta-skymiles-gold/',
+      '/us/credit-cards/card/delta-skymiles-platinum/'
+    ];
+  }
+
+  /**
+   * Scrape live data from Amex website
+   */
+  async scrapeLive() {
+    await this.launchBrowser();
+    const page = await this.browser.newPage();
+
+    // Amex has strong anti-bot, need extra headers
+    await page.setExtraHTTPHeaders({
+      'Accept-Language': 'en-US,en;q=0.9'
+    });
+
+    const scrapedCards = [];
+
+    for (let i = 0; i < this.cardPages.length; i++) {
+      const cardPath = this.cardPages[i];
+      const url = `${this.baseUrl}${cardPath}`;
+      console.log(`    📋 抓取卡片 ${i + 1}/${this.cardPages.length}: ${cardPath.split('/').filter(Boolean).pop()}`);
+
+      try {
+        await this.randomDelay(2000, 4000);
+        const success = await this.safeGoto(page, url);
+        if (!success) continue;
+
+        // Wait for dynamic content
+        await this.randomDelay(2000, 3000);
+
+        const cardData = await page.evaluate(() => {
+          const data = {};
+
+          // Card name from title or h1
+          const title = document.querySelector('h1, [data-testid="card-name"]');
+          if (title) {
+            data.name = title.textContent.trim().replace(/®|™|℠/g, '').trim();
+          }
+
+          // Try to find annual fee
+          const allText = document.body.innerText;
+          const feePatterns = [
+            /\$(\d+)\s*Annual\s*Fee/i,
+            /Annual\s*Fee[:\s]*\$(\d+)/i,
+            /\$(\d+)\s*annual\s*membership/i
+          ];
+
+          for (const pattern of feePatterns) {
+            const match = allText.match(pattern);
+            if (match) {
+              data.annualFee = parseInt(match[1], 10);
+              break;
+            }
+          }
+
+          if (allText.includes('No Annual Fee') || allText.includes('$0 annual fee')) {
+            data.annualFee = 0;
+          }
+
+          // Try to find reward rates
+          const rewards = [];
+          const rewardPatterns = [
+            /(\d+)[Xx]\s+(?:Membership Rewards®?\s+)?(?:points?\s+)?(?:at|on|for)\s+(.+?)(?:\.|,|$)/gi,
+            /Earn\s+(\d+)[Xx]\s+(?:points?\s+)?(?:at|on)\s+(.+?)(?:\.|,|$)/gi
+          ];
+
+          const elements = document.querySelectorAll('li, p, span');
+          elements.forEach(el => {
+            const text = el.textContent;
+            for (const pattern of rewardPatterns) {
+              pattern.lastIndex = 0;
+              const match = pattern.exec(text);
+              if (match) {
+                rewards.push({
+                  multiplier: parseInt(match[1], 10),
+                  category: match[2].trim()
+                });
+              }
+            }
+          });
+
+          data.rewards = rewards.slice(0, 10);
+
+          // Find card image
+          const cardImg = document.querySelector('img[src*="card-art"], img[alt*="Card"]');
+          if (cardImg && cardImg.src) {
+            data.imageUrl = cardImg.src;
+          }
+
+          return data;
+        });
+
+        if (cardData.name) {
+          scrapedCards.push({
+            ...cardData,
+            applicationUrl: url,
+            issuer: 'American Express'
+          });
+        }
+      } catch (error) {
+        console.log(`      ⚠️  無法抓取: ${error.message}`);
+      }
+    }
+
+    return scrapedCards;
+  }
+
+  /**
+   * Override merge to update specific fields from live data
+   */
+  mergeWithFallback(liveData) {
+    const merged = [...this.fallbackCards];
+
+    for (const liveCard of liveData) {
+      const liveNameLower = liveCard.name.toLowerCase();
+      const existingIndex = merged.findIndex(c => {
+        const fallbackNameLower = c.name.toLowerCase();
+        return fallbackNameLower.includes(liveNameLower) ||
+               liveNameLower.includes(fallbackNameLower) ||
+               fallbackNameLower === liveNameLower;
+      });
+
+      if (existingIndex >= 0) {
+        const existing = merged[existingIndex];
+        merged[existingIndex] = {
+          ...existing,
+          ...(liveCard.annualFee !== undefined && { annualFee: liveCard.annualFee }),
+          ...(liveCard.imageUrl && { imageURL: liveCard.imageUrl }),
+          ...(liveCard.applicationUrl && { applicationUrl: liveCard.applicationUrl })
+        };
+        console.log(`      ✅ 更新: ${existing.name}`);
+      }
+    }
+
+    return merged;
+  }
+}
+
 async function scrapeAmex() {
-  return AMEX_CARDS.map(card => formatCard('American Express', card));
+  const scraper = new AmexScraper();
+  return await scraper.scrape();
 }
 
 function formatCard(issuer, cardData) {
@@ -475,6 +638,22 @@ function formatCard(issuer, cardData) {
   };
 
   return card;
+}
+
+// Run standalone for testing
+if (require.main === module) {
+  console.log('🏦 Testing Amex Scraper...\n');
+  scrapeAmex()
+    .then(cards => {
+      console.log(`\n✅ Total cards: ${cards.length}`);
+      cards.slice(0, 3).forEach(card => {
+        console.log(`  - ${card.name}: $${card.annualFee} annual fee`);
+      });
+    })
+    .catch(err => {
+      console.error('❌ Error:', err.message);
+      process.exit(1);
+    });
 }
 
 module.exports = scrapeAmex;

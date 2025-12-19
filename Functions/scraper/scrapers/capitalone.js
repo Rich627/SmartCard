@@ -1,7 +1,9 @@
 /**
  * Capital One Credit Card Scraper
+ * Real web scraper with fallback to cached data
  */
 
+const BaseScraper = require('../utils/BaseScraper');
 const { generateCardId, mapCategory } = require('../utils/categories');
 
 const CAPITALONE_CARDS = [
@@ -107,8 +109,98 @@ const CAPITALONE_CARDS = [
   }
 ];
 
+/**
+ * Capital One Scraper class - extends BaseScraper
+ */
+class CapitalOneScraper extends BaseScraper {
+  constructor() {
+    super('Capital One', {
+      fallbackCards: CAPITALONE_CARDS.map(card => formatCard('Capital One', card)),
+      baseUrl: 'https://www.capitalone.com',
+      timeout: 45000
+    });
+
+    this.cardPages = [
+      '/credit-cards/savor-dining-rewards/',
+      '/credit-cards/savorone-dining-rewards/',
+      '/credit-cards/venture-x/',
+      '/credit-cards/venture/',
+      '/credit-cards/ventureone/',
+      '/credit-cards/quicksilver/'
+    ];
+  }
+
+  async scrapeLive() {
+    await this.launchBrowser();
+    const page = await this.browser.newPage();
+    const scrapedCards = [];
+
+    for (let i = 0; i < this.cardPages.length; i++) {
+      const cardPath = this.cardPages[i];
+      const url = `${this.baseUrl}${cardPath}`;
+      console.log(`    📋 抓取卡片 ${i + 1}/${this.cardPages.length}: ${cardPath.split('/').filter(Boolean).pop()}`);
+
+      try {
+        await this.randomDelay(1500, 3000);
+        const success = await this.safeGoto(page, url);
+        if (!success) continue;
+
+        await this.randomDelay(1500, 2500);
+
+        const cardData = await page.evaluate(() => {
+          const data = {};
+          const h1 = document.querySelector('h1');
+          if (h1) data.name = h1.textContent.trim().replace(/®|™|℠/g, '').trim();
+
+          const allText = document.body.innerText;
+          const feeMatch = allText.match(/\$(\d+)\s*annual\s*fee/i);
+          if (feeMatch) data.annualFee = parseInt(feeMatch[1], 10);
+          if (allText.includes('$0 annual fee') || allText.match(/no\s*annual\s*fee/i)) {
+            data.annualFee = 0;
+          }
+
+          const cardImg = document.querySelector('img[src*="card"], img[alt*="card"]');
+          if (cardImg) data.imageUrl = cardImg.src;
+
+          return data;
+        });
+
+        if (cardData.name) {
+          scrapedCards.push({ ...cardData, applicationUrl: url, issuer: 'Capital One' });
+        }
+      } catch (error) {
+        console.log(`      ⚠️  無法抓取: ${error.message}`);
+      }
+    }
+
+    return scrapedCards;
+  }
+
+  mergeWithFallback(liveData) {
+    const merged = [...this.fallbackCards];
+    for (const liveCard of liveData) {
+      const liveNameLower = liveCard.name.toLowerCase();
+      const existingIndex = merged.findIndex(c =>
+        c.name.toLowerCase().includes(liveNameLower) || liveNameLower.includes(c.name.toLowerCase())
+      );
+      if (existingIndex >= 0) {
+        const existing = merged[existingIndex];
+        merged[existingIndex] = {
+          ...existing,
+          ...(liveCard.annualFee !== undefined && { annualFee: liveCard.annualFee }),
+          ...(liveCard.imageUrl && { imageURL: liveCard.imageUrl }),
+          ...(liveCard.applicationUrl && { applicationUrl: liveCard.applicationUrl })
+        };
+        console.log(`      ✅ 更新: ${existing.name}`);
+      }
+    }
+    return merged;
+  }
+}
+
 async function scrapeCapitalOne() {
-  return CAPITALONE_CARDS.map(card => formatCard('Capital One', card));
+  const scraper = new CapitalOneScraper();
+  return await scraper.scrape();
 }
 
 function formatCard(issuer, cardData) {
@@ -146,6 +238,22 @@ function formatCard(issuer, cardData) {
     imageColor: cardData.imageColor || '#004977',
     imageURL: cardData.imageURL || null
   };
+}
+
+// Run standalone for testing
+if (require.main === module) {
+  console.log('🏦 Testing Capital One Scraper...\n');
+  scrapeCapitalOne()
+    .then(cards => {
+      console.log(`\n✅ Total cards: ${cards.length}`);
+      cards.slice(0, 3).forEach(card => {
+        console.log(`  - ${card.name}: $${card.annualFee} annual fee`);
+      });
+    })
+    .catch(err => {
+      console.error('❌ Error:', err.message);
+      process.exit(1);
+    });
 }
 
 module.exports = scrapeCapitalOne;
