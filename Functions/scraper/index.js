@@ -14,6 +14,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// Import validation
+const { validateAllCards, printValidationSummary } = require('./utils/schema-validator');
+
 // Import individual scrapers
 const chaseScraper = require('./scrapers/chase');
 const amexScraper = require('./scrapers/amex');
@@ -57,6 +60,16 @@ async function runAllScrapers() {
     }
   }
 
+  // Validate all cards against iOS schema
+  console.log('\n📋 Validating cards against iOS schema...');
+  const validationResult = validateAllCards(allCards);
+  printValidationSummary(validationResult);
+
+  if (!validationResult.passed) {
+    console.error('\n❌ Validation failed! Fix the errors above before uploading.');
+    process.exit(1);
+  }
+
   // Save results
   const result = {
     scrapedAt: new Date().toISOString(),
@@ -70,7 +83,8 @@ async function runAllScrapers() {
   console.log('\n' + '='.repeat(50));
   console.log(`📊 Scraping Complete!`);
   console.log(`   Total cards: ${allCards.length}`);
-  console.log(`   Errors: ${errors.length}`);
+  console.log(`   Valid cards: ${validationResult.validCards}`);
+  console.log(`   Scraper errors: ${errors.length}`);
   console.log(`   Output saved to: ${OUTPUT_FILE}`);
   console.log('='.repeat(50));
 

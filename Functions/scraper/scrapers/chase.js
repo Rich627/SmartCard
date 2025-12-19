@@ -4,7 +4,7 @@
  */
 
 const puppeteer = require('puppeteer');
-const { generateCardId } = require('../utils/categories');
+const { generateCardId, mapCategory } = require('../utils/categories');
 
 const CHASE_CARDS = [
   // ========== SAPPHIRE SERIES ==========
@@ -557,13 +557,23 @@ async function scrapeChase() {
 }
 
 function formatCard(issuer, cardData) {
-  const categoryRewards = (cardData.categories || []).map(cat => ({
-    category: cat.category,
-    multiplier: cat.multiplier,
-    isPercentage: cardData.rewardType === 'cashback',
-    cap: cat.cap || null,
-    capPeriod: cat.capPeriod || null
-  }));
+  // Map categories to iOS SpendingCategory enum values
+  const categoryRewards = (cardData.categories || [])
+    .map(cat => {
+      const mappedCategory = mapCategory(cat.category);
+      if (!mappedCategory) {
+        console.warn(`  ⚠️  Unknown category '${cat.category}' in ${cardData.name}, skipping`);
+        return null;
+      }
+      return {
+        category: mappedCategory,
+        multiplier: cat.multiplier,
+        isPercentage: cardData.rewardType === 'cashback',
+        cap: cat.cap || null,
+        capPeriod: cat.capPeriod || null
+      };
+    })
+    .filter(Boolean);
 
   const card = {
     id: generateCardId(issuer, cardData.name),
@@ -587,17 +597,22 @@ function formatCard(issuer, cardData) {
     const currentYear = new Date().getFullYear();
 
     // 2025 rotating categories (updated Dec 2025)
+    // Note: These are raw categories that will be mapped to iOS SpendingCategory
     const CHASE_ROTATING = {
-      1: ['grocery', 'fitness', 'hairSalon'],
+      1: ['grocery', 'fitness', 'fitness'],  // hairSalon maps to fitness
       2: ['amazon', 'streaming'],
-      3: ['instacart', 'entertainment', 'gas', 'evCharging'],
-      4: ['chaseTravel', 'departmentStores', 'paypal']
+      3: ['grocery', 'entertainment', 'gas', 'evCharging'],  // instacart maps to grocery
+      4: ['travel', 'other', 'paypal']  // chaseTravel->travel, departmentStores->other
     };
+
+    // Map rotating categories to iOS values
+    const rawCategories = CHASE_ROTATING[currentQuarter] || ['grocery', 'gas'];
+    const mappedCategories = [...new Set(rawCategories.map(cat => mapCategory(cat)).filter(Boolean))];
 
     card.rotatingCategories = [{
       quarter: currentQuarter,
       year: currentYear,
-      categories: CHASE_ROTATING[currentQuarter] || ['grocery', 'gas'],
+      categories: mappedCategories,
       multiplier: cardData.rotating.multiplier,
       isPercentage: cardData.rewardType === 'cashback',
       cap: cardData.rotating.cap,

@@ -1,8 +1,16 @@
 /**
  * Credit Card Data Validation Script
- * Validates all card data for quality and consistency
+ *
+ * Validates all card data against the iOS CreditCard schema
+ * to ensure compatibility with the SmartCard iOS app.
  */
 
+const fs = require('fs');
+const path = require('path');
+const { getValidCategories } = require('./utils/categories');
+const { validateAllCards, printValidationSummary } = require('./utils/schema-validator');
+
+// Import scrapers
 const scrapeChase = require('./scrapers/chase');
 const scrapeAmex = require('./scrapers/amex');
 const scrapeCiti = require('./scrapers/citi');
@@ -13,190 +21,9 @@ const scrapeBofa = require('./scrapers/bofa');
 const scrapeUsBank = require('./scrapers/usbank');
 const scrapeOthers = require('./scrapers/others');
 
-// Standard categories that the app recognizes
-const STANDARD_CATEGORIES = [
-  // General spending
-  'dining', 'grocery', 'gas', 'travel', 'transit', 'streaming',
-  'drugstore', 'utilities', 'phone', 'internet', 'fitness',
-  // Shopping
-  'onlineShopping', 'departmentStores', 'wholesale', 'homeImprovement',
-  // Travel specifics
-  'hotels', 'airlines', 'carRental', 'entertainment', 'travelPortal', 'travelPortalFlights',
-  // Business
-  'officeSupplies', 'shipping', 'advertising', 'evCharging',
-  // Retailers
-  'amazon', 'wholefoods', 'walmart', 'walmartOnline', 'target', 'costco', 'apple',
-  // Airlines
-  'united', 'southwest', 'delta', 'americanairlines', 'jetblue', 'frontier',
-  'hawaiian', 'alaska', 'britishairways', 'iberia', 'aerlingus', 'aircanada', 'cathaypacific',
-  // Hotels
-  'marriott', 'hilton', 'hyatt', 'ihg', 'wyndham',
-  // Services
-  'doordash', 'instacart', 'starbucks', 'priceline', 'paypal', 'verizon',
-  // Special
-  'rent', 'delivery', 'other'
-];
-
-async function validateCards() {
-  console.log('🔍 Starting card data validation...\n');
-
-  const allCards = await getAllCards();
-  console.log(`📊 Total cards: ${allCards.length}\n`);
-
-  const issues = {
-    missingRewards: [],
-    duplicateCategories: [],
-    unknownCategories: [],
-    missingImages: [],
-    invalidData: []
-  };
-
-  for (const card of allCards) {
-    // Check for missing rewards
-    if (card.categoryRewards.length === 0 && card.baseReward <= 1 && !card.rotatingCategories && !card.selectableConfig) {
-      // Skip cards that are explicitly no-rewards or basic 1% cards
-      const noRewardsCards = [
-        'Citi Diamond Preferred',
-        'Capital One Platinum',
-        'Wells Fargo Reflect',
-        'Target RedCard Credit',
-        'Chase Freedom Student'  // Basic 1% student card
-      ];
-      if (!noRewardsCards.includes(card.name)) {
-        issues.missingRewards.push({
-          name: card.name,
-          issuer: card.issuer,
-          baseReward: card.baseReward
-        });
-      }
-    }
-
-    // Check for duplicate categories
-    const categories = card.categoryRewards.map(r => r.category);
-    const duplicates = categories.filter((c, i) => categories.indexOf(c) !== i);
-    if (duplicates.length > 0) {
-      issues.duplicateCategories.push({
-        name: card.name,
-        issuer: card.issuer,
-        duplicates: [...new Set(duplicates)]
-      });
-    }
-
-    // Check for unknown categories
-    const unknownCats = categories.filter(c => !STANDARD_CATEGORIES.includes(c));
-    if (unknownCats.length > 0) {
-      issues.unknownCategories.push({
-        name: card.name,
-        issuer: card.issuer,
-        categories: unknownCats
-      });
-    }
-
-    // Check for missing images
-    if (!card.imageURL) {
-      issues.missingImages.push({
-        name: card.name,
-        issuer: card.issuer
-      });
-    }
-
-    // Check for invalid data
-    if (!card.name || !card.issuer || card.annualFee === undefined) {
-      issues.invalidData.push({
-        name: card.name || 'UNKNOWN',
-        issuer: card.issuer || 'UNKNOWN',
-        issue: 'Missing required fields'
-      });
-    }
-  }
-
-  // Print results
-  console.log('=' .repeat(60));
-  console.log('VALIDATION RESULTS');
-  console.log('=' .repeat(60));
-
-  if (issues.missingRewards.length > 0) {
-    console.log(`\n❌ Cards with missing rewards (${issues.missingRewards.length}):`);
-    issues.missingRewards.forEach(card => {
-      console.log(`   - ${card.issuer}: ${card.name} (base: ${card.baseReward})`);
-    });
-  } else {
-    console.log('\n✅ All cards have rewards defined');
-  }
-
-  if (issues.duplicateCategories.length > 0) {
-    console.log(`\n❌ Cards with duplicate categories (${issues.duplicateCategories.length}):`);
-    issues.duplicateCategories.forEach(card => {
-      console.log(`   - ${card.issuer}: ${card.name} (${card.duplicates.join(', ')})`);
-    });
-  } else {
-    console.log('\n✅ No duplicate categories found');
-  }
-
-  if (issues.unknownCategories.length > 0) {
-    console.log(`\n⚠️  Cards with unknown categories (${issues.unknownCategories.length}):`);
-    issues.unknownCategories.forEach(card => {
-      console.log(`   - ${card.issuer}: ${card.name} (${card.categories.join(', ')})`);
-    });
-  } else {
-    console.log('\n✅ All categories are recognized');
-  }
-
-  if (issues.missingImages.length > 0) {
-    console.log(`\n❌ Cards with missing images (${issues.missingImages.length}):`);
-    issues.missingImages.forEach(card => {
-      console.log(`   - ${card.issuer}: ${card.name}`);
-    });
-  } else {
-    console.log('\n✅ All cards have images');
-  }
-
-  if (issues.invalidData.length > 0) {
-    console.log(`\n❌ Cards with invalid data (${issues.invalidData.length}):`);
-    issues.invalidData.forEach(card => {
-      console.log(`   - ${card.issuer}: ${card.name} - ${card.issue}`);
-    });
-  } else {
-    console.log('\n✅ All cards have valid data');
-  }
-
-  // Summary
-  const totalIssues =
-    issues.missingRewards.length +
-    issues.duplicateCategories.length +
-    issues.missingImages.length +
-    issues.invalidData.length;
-
-  console.log('\n' + '=' .repeat(60));
-  if (totalIssues === 0) {
-    console.log('🎉 VALIDATION PASSED - All cards are valid!');
-  } else {
-    console.log(`⚠️  VALIDATION FOUND ${totalIssues} ISSUE(S)`);
-  }
-  console.log('=' .repeat(60));
-
-  // Print category statistics
-  console.log('\n📈 Category Statistics:');
-  const categoryCount = {};
-  allCards.forEach(card => {
-    card.categoryRewards.forEach(r => {
-      categoryCount[r.category] = (categoryCount[r.category] || 0) + 1;
-    });
-  });
-  const sortedCategories = Object.entries(categoryCount)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 15);
-  sortedCategories.forEach(([cat, count]) => {
-    console.log(`   ${cat}: ${count} cards`);
-  });
-
-  return {
-    totalCards: allCards.length,
-    issues,
-    valid: totalIssues === 0
-  };
-}
-
+/**
+ * Get all cards from all scrapers
+ */
 async function getAllCards() {
   const results = await Promise.all([
     scrapeChase(),
@@ -213,5 +40,137 @@ async function getAllCards() {
   return results.flat();
 }
 
-// Run validation
-validateCards().catch(console.error);
+/**
+ * Validate cards from scrapers (live data)
+ */
+async function validateFromScrapers() {
+  console.log('🔍 Validating card data from scrapers...\n');
+
+  try {
+    const allCards = await getAllCards();
+    console.log(`📊 Total cards from scrapers: ${allCards.length}\n`);
+
+    // Run iOS schema validation
+    const result = validateAllCards(allCards);
+    printValidationSummary(result);
+
+    // Additional quality checks
+    runQualityChecks(allCards);
+
+    return result;
+  } catch (error) {
+    console.error('❌ Error running scrapers:', error.message);
+    process.exit(1);
+  }
+}
+
+/**
+ * Validate cards from scraped-cards.json file
+ */
+function validateFromFile() {
+  const filePath = path.join(__dirname, 'scraped-cards.json');
+
+  if (!fs.existsSync(filePath)) {
+    console.error('❌ scraped-cards.json not found. Run the scraper first.');
+    process.exit(1);
+  }
+
+  console.log('🔍 Validating card data from scraped-cards.json...\n');
+
+  const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  console.log(`📊 Total cards in file: ${data.cards.length}`);
+  console.log(`📅 Scraped at: ${data.scrapedAt}\n`);
+
+  // Run iOS schema validation
+  const result = validateAllCards(data.cards);
+  printValidationSummary(result);
+
+  // Additional quality checks
+  runQualityChecks(data.cards);
+
+  return result;
+}
+
+/**
+ * Run additional quality checks
+ */
+function runQualityChecks(cards) {
+  console.log('\n📋 Additional Quality Checks:');
+  console.log('─'.repeat(40));
+
+  // Check for missing images
+  const missingImages = cards.filter(c => !c.imageURL);
+  if (missingImages.length > 0) {
+    console.log(`\n⚠️  Cards missing images (${missingImages.length}):`);
+    missingImages.forEach(card => {
+      console.log(`   - ${card.issuer}: ${card.name}`);
+    });
+  } else {
+    console.log('✅ All cards have images');
+  }
+
+  // Check for cards with no rewards
+  const noRewardsCards = cards.filter(c =>
+    c.categoryRewards.length === 0 &&
+    c.baseReward <= 1 &&
+    !c.rotatingCategories &&
+    !c.selectableConfig
+  );
+  // Filter out expected no-rewards cards
+  const expectedNoRewards = [
+    'Citi Diamond Preferred',
+    'Capital One Platinum',
+    'Wells Fargo Reflect',
+    'Target RedCard Credit',
+    'Chase Freedom Student'
+  ];
+  const unexpectedNoRewards = noRewardsCards.filter(c => !expectedNoRewards.includes(c.name));
+  if (unexpectedNoRewards.length > 0) {
+    console.log(`\n⚠️  Cards with no reward categories (${unexpectedNoRewards.length}):`);
+    unexpectedNoRewards.forEach(card => {
+      console.log(`   - ${card.issuer}: ${card.name}`);
+    });
+  } else {
+    console.log('✅ All cards have expected rewards');
+  }
+
+  // Print category statistics
+  console.log('\n📈 Top 15 Categories by Card Count:');
+  const categoryCount = {};
+  cards.forEach(card => {
+    card.categoryRewards.forEach(r => {
+      categoryCount[r.category] = (categoryCount[r.category] || 0) + 1;
+    });
+  });
+  const sortedCategories = Object.entries(categoryCount)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 15);
+  sortedCategories.forEach(([cat, count]) => {
+    console.log(`   ${cat}: ${count} cards`);
+  });
+
+  // Print valid iOS categories for reference
+  console.log('\n📱 Valid iOS SpendingCategory values:');
+  const validCats = getValidCategories();
+  console.log(`   ${validCats.join(', ')}`);
+}
+
+// Main execution
+async function main() {
+  const args = process.argv.slice(2);
+
+  if (args.includes('--file') || args.includes('-f')) {
+    // Validate from scraped-cards.json
+    const result = validateFromFile();
+    process.exit(result.passed ? 0 : 1);
+  } else {
+    // Validate from scrapers (default)
+    const result = await validateFromScrapers();
+    process.exit(result.passed ? 0 : 1);
+  }
+}
+
+main().catch(error => {
+  console.error('Fatal error:', error);
+  process.exit(1);
+});

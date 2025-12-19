@@ -41,7 +41,7 @@ const CATEGORIES = {
 
 // Map various category names from different issuers to our standard categories
 const CATEGORY_MAPPINGS = {
-  // Dining variations
+  // ========== DINING ==========
   'dining': CATEGORIES.dining,
   'restaurants': CATEGORIES.dining,
   'restaurant': CATEGORIES.dining,
@@ -52,58 +52,100 @@ const CATEGORY_MAPPINGS = {
   'worldwide dining': CATEGORIES.dining,
   'takeout': CATEGORIES.dining,
   'food delivery': CATEGORIES.dining,
+  'doordash': CATEGORIES.dining,
+  'starbucks': CATEGORIES.dining,
+  'delivery': CATEGORIES.dining,
 
-  // Grocery variations
+  // ========== GROCERY ==========
   'grocery': CATEGORIES.grocery,
   'groceries': CATEGORIES.grocery,
   'grocery stores': CATEGORIES.grocery,
   'supermarkets': CATEGORIES.grocery,
   'u.s. supermarkets': CATEGORIES.grocery,
+  'instacart': CATEGORIES.grocery,
 
-  // Gas variations
+  // ========== GAS ==========
   'gas': CATEGORIES.gas,
   'gas stations': CATEGORIES.gas,
   'fuel': CATEGORIES.gas,
   'u.s. gas stations': CATEGORIES.gas,
 
-  // Travel variations
+  // ========== TRAVEL (includes airlines, hotels, travel portals) ==========
   'travel': CATEGORIES.travel,
   'hotels': CATEGORIES.travel,
   'flights': CATEGORIES.travel,
   'airfare': CATEGORIES.travel,
   'car rentals': CATEGORIES.travel,
+  'carRental': CATEGORIES.travel,
   'airlines': CATEGORIES.travel,
   'travel purchases': CATEGORIES.travel,
   'travel booked through chase': CATEGORIES.travel,
   'travel purchased through amex': CATEGORIES.travel,
+  'priceline': CATEGORIES.travel,
 
-  // Streaming variations
+  // Travel portal variations
+  'travelPortal': CATEGORIES.travel,
+  'travelportal': CATEGORIES.travel,
+  'travelPortalFlights': CATEGORIES.travel,
+  'travelportalflights': CATEGORIES.travel,
+  'chaseTravel': CATEGORIES.travel,
+  'chasetravel': CATEGORIES.travel,
+
+  // US Airlines
+  'delta': CATEGORIES.travel,
+  'united': CATEGORIES.travel,
+  'southwest': CATEGORIES.travel,
+  'americanairlines': CATEGORIES.travel,
+  'jetblue': CATEGORIES.travel,
+  'frontier': CATEGORIES.travel,
+  'hawaiian': CATEGORIES.travel,
+  'alaska': CATEGORIES.travel,
+
+  // International Airlines
+  'britishairways': CATEGORIES.travel,
+  'iberia': CATEGORIES.travel,
+  'aerlingus': CATEGORIES.travel,
+  'aircanada': CATEGORIES.travel,
+  'cathaypacific': CATEGORIES.travel,
+
+  // Hotel Brands
+  'hilton': CATEGORIES.travel,
+  'marriott': CATEGORIES.travel,
+  'hyatt': CATEGORIES.travel,
+  'ihg': CATEGORIES.travel,
+  'wyndham': CATEGORIES.travel,
+
+  // ========== STREAMING ==========
   'streaming': CATEGORIES.streaming,
   'streaming services': CATEGORIES.streaming,
   'select streaming services': CATEGORIES.streaming,
   'u.s. streaming subscriptions': CATEGORIES.streaming,
 
-  // Drugstore variations
+  // ========== DRUGSTORE ==========
   'drugstore': CATEGORIES.drugstore,
   'drugstores': CATEGORIES.drugstore,
   'pharmacy': CATEGORIES.drugstore,
   'pharmacies': CATEGORIES.drugstore,
 
-  // Home improvement variations
+  // ========== HOME IMPROVEMENT ==========
+  'homeImprovement': CATEGORIES.homeImprovement,
+  'homeimprovement': CATEGORIES.homeImprovement,
   'home improvement': CATEGORIES.homeImprovement,
   'home improvement stores': CATEGORIES.homeImprovement,
 
-  // Entertainment variations
+  // ========== ENTERTAINMENT ==========
   'entertainment': CATEGORIES.entertainment,
   'movies': CATEGORIES.entertainment,
   'concerts': CATEGORIES.entertainment,
 
-  // Online shopping variations
+  // ========== ONLINE SHOPPING ==========
+  'onlineShopping': CATEGORIES.onlineShopping,
+  'onlineshopping': CATEGORIES.onlineShopping,
   'online shopping': CATEGORIES.onlineShopping,
   'online retail': CATEGORIES.onlineShopping,
   'e-commerce': CATEGORIES.onlineShopping,
 
-  // Transit variations
+  // ========== TRANSIT ==========
   'transit': CATEGORIES.transit,
   'public transit': CATEGORIES.transit,
   'commuting': CATEGORIES.transit,
@@ -111,65 +153,84 @@ const CATEGORY_MAPPINGS = {
   'lyft': CATEGORIES.transit,
   'uber': CATEGORIES.transit,
 
-  // Wholesale variations
+  // ========== WHOLESALE ==========
   'wholesale': CATEGORIES.wholesale,
   'wholesale clubs': CATEGORIES.wholesale,
   'warehouse stores': CATEGORIES.wholesale,
   'costco': CATEGORIES.wholesale,
   'sam\'s club': CATEGORIES.wholesale,
 
-  // Specific merchants
+  // ========== SPECIFIC MERCHANTS ==========
   'amazon': CATEGORIES.amazon,
   'amazon.com': CATEGORIES.amazon,
+
+  // Whole Foods (case variations)
+  'wholeFoods': CATEGORIES.wholeFoods,
+  'wholefoods': CATEGORIES.wholeFoods,
   'whole foods': CATEGORIES.wholeFoods,
   'whole foods market': CATEGORIES.wholeFoods,
+
   'target': CATEGORIES.target,
+
+  // Walmart (including online)
   'walmart': CATEGORIES.walmart,
   'walmart.com': CATEGORIES.walmart,
-  'paypal': CATEGORIES.paypal,
+  'walmartOnline': CATEGORIES.walmart,
+  'walmartonline': CATEGORIES.walmart,
 
-  // Utilities
+  'paypal': CATEGORIES.paypal,
+  'apple': CATEGORIES.apple,
+  'apple purchases': CATEGORIES.apple,
+
+  // ========== UTILITIES ==========
   'utilities': CATEGORIES.utilities,
   'utility bills': CATEGORIES.utilities,
 
-  // Phone/Internet
+  // ========== PHONE/INTERNET ==========
   'phone': CATEGORIES.phone,
   'phone plans': CATEGORIES.phone,
   'wireless': CATEGORIES.phone,
   'cell phone': CATEGORIES.phone,
+  'verizon': CATEGORIES.phone,
   'internet': CATEGORIES.internet,
   'cable': CATEGORIES.internet,
 
-  // EV Charging
+  // ========== EV CHARGING ==========
+  'evCharging': CATEGORIES.evCharging,
+  'evcharging': CATEGORIES.evCharging,
   'ev charging': CATEGORIES.evCharging,
   'electric vehicle charging': CATEGORIES.evCharging,
 
-  // Fitness
+  // ========== FITNESS ==========
   'fitness': CATEGORIES.fitness,
   'gym': CATEGORIES.fitness,
   'gyms': CATEGORIES.fitness,
   'health clubs': CATEGORIES.fitness,
+  'hairSalon': CATEGORIES.fitness,
+  'hairsalon': CATEGORIES.fitness,
 
-  // Office
+  // ========== OFFICE ==========
+  'officeSupplies': CATEGORIES.officeSupplies,
+  'officesupplies': CATEGORIES.officeSupplies,
   'office supplies': CATEGORIES.officeSupplies,
   'office supply stores': CATEGORIES.officeSupplies,
 
-  // Advertising
+  // ========== ADVERTISING ==========
   'advertising': CATEGORIES.advertising,
   'online advertising': CATEGORIES.advertising,
   'social media advertising': CATEGORIES.advertising,
 
-  // Shipping
+  // ========== SHIPPING ==========
   'shipping': CATEGORIES.shipping,
 
-  // Apple
-  'apple': CATEGORIES.apple,
-  'apple purchases': CATEGORIES.apple,
-
-  // Default
+  // ========== OTHER (catch-all) ==========
+  'other': CATEGORIES.other,
   'everything else': CATEGORIES.other,
   'all other purchases': CATEGORIES.other,
-  'other': CATEGORIES.other
+  'departmentStores': CATEGORIES.other,
+  'departmentstores': CATEGORIES.other,
+  'rent': CATEGORIES.other,
+  'electronics': CATEGORIES.electronics
 };
 
 /**
@@ -255,10 +316,27 @@ function generateCardId(issuer, cardName) {
   return `${issuer.toLowerCase().replace(/\s+/g, '-')}-${cardName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 }
 
+/**
+ * Check if a category is valid (exists in iOS SpendingCategory enum)
+ */
+function isValidCategory(category) {
+  return Object.values(CATEGORIES).includes(category);
+}
+
+/**
+ * Get all valid iOS categories
+ */
+function getValidCategories() {
+  return Object.values(CATEGORIES);
+}
+
 module.exports = {
   CATEGORIES,
+  CATEGORY_MAPPINGS,
   mapCategory,
   parseMultiplier,
   parseCap,
-  generateCardId
+  generateCardId,
+  isValidCategory,
+  getValidCategories
 };

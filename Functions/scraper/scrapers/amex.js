@@ -3,7 +3,7 @@
  * Complete list of American Express consumer and business credit cards
  */
 
-const { generateCardId } = require('../utils/categories');
+const { generateCardId, mapCategory } = require('../utils/categories');
 
 const AMEX_CARDS = [
   // ========== PERSONAL CHARGE CARDS ==========
@@ -422,13 +422,40 @@ async function scrapeAmex() {
 }
 
 function formatCard(issuer, cardData) {
-  const categoryRewards = (cardData.categories || []).map(cat => ({
-    category: cat.category,
-    multiplier: cat.multiplier,
-    isPercentage: cardData.rewardType === 'cashback',
-    cap: cat.cap || null,
-    capPeriod: cat.capPeriod || null
-  }));
+  // Map categories to iOS SpendingCategory enum values
+  const categoryRewards = (cardData.categories || [])
+    .map(cat => {
+      const mappedCategory = mapCategory(cat.category);
+      if (!mappedCategory) {
+        console.warn(`  ⚠️  Unknown category '${cat.category}' in ${cardData.name}, skipping`);
+        return null;
+      }
+      return {
+        category: mappedCategory,
+        multiplier: cat.multiplier,
+        isPercentage: cardData.rewardType === 'cashback',
+        cap: cat.cap || null,
+        capPeriod: cat.capPeriod || null
+      };
+    })
+    .filter(Boolean);  // Remove null entries
+
+  // Map selectableConfig categories if present
+  let selectableConfig = null;
+  if (cardData.selectableConfig) {
+    const mappedAvailableCategories = cardData.selectableConfig.availableCategories
+      .map(cat => mapCategory(cat))
+      .filter(Boolean);
+
+    selectableConfig = {
+      maxSelections: cardData.selectableConfig.maxSelections,
+      availableCategories: mappedAvailableCategories,
+      multiplier: cardData.selectableConfig.multiplier,
+      isPercentage: cardData.rewardType === 'cashback',
+      cap: cardData.selectableConfig.cap || null,
+      capPeriod: cardData.selectableConfig.capPeriod || null
+    };
+  }
 
   const card = {
     id: generateCardId(issuer, cardData.name),
@@ -441,7 +468,7 @@ function formatCard(issuer, cardData) {
     baseIsPercentage: cardData.rewardType === 'cashback',
     categoryRewards: categoryRewards,
     rotatingCategories: null,
-    selectableConfig: cardData.selectableConfig || null,
+    selectableConfig: selectableConfig,
     signUpBonus: cardData.signUpBonus || null,
     imageColor: cardData.imageColor || '#006FCF',
     imageURL: cardData.imageURL || null

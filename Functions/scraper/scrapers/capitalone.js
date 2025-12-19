@@ -2,7 +2,7 @@
  * Capital One Credit Card Scraper
  */
 
-const { generateCardId } = require('../utils/categories');
+const { generateCardId, mapCategory } = require('../utils/categories');
 
 const CAPITALONE_CARDS = [
   {
@@ -112,13 +112,23 @@ async function scrapeCapitalOne() {
 }
 
 function formatCard(issuer, cardData) {
-  const categoryRewards = (cardData.categories || []).map(cat => ({
-    category: cat.category,
-    multiplier: cat.multiplier,
-    isPercentage: cardData.rewardType === 'cashback',
-    cap: cat.cap || null,
-    capPeriod: cat.capPeriod || null
-  }));
+  // Map categories to iOS SpendingCategory enum values
+  const categoryRewards = (cardData.categories || [])
+    .map(cat => {
+      const mappedCategory = mapCategory(cat.category);
+      if (!mappedCategory) {
+        console.warn(`  ⚠️  Unknown category '${cat.category}' in ${cardData.name}, skipping`);
+        return null;
+      }
+      return {
+        category: mappedCategory,
+        multiplier: cat.multiplier,
+        isPercentage: cardData.rewardType === 'cashback',
+        cap: cat.cap || null,
+        capPeriod: cat.capPeriod || null
+      };
+    })
+    .filter(Boolean);
 
   return {
     id: generateCardId(issuer, cardData.name),

@@ -2,7 +2,7 @@
  * Discover Credit Card Scraper
  */
 
-const { generateCardId } = require('../utils/categories');
+const { generateCardId, mapCategory } = require('../utils/categories');
 
 // Discover it quarterly categories for 2025 (example - should be updated each year)
 const DISCOVER_ROTATING_2025 = {
@@ -81,11 +81,17 @@ async function scrapeDiscover() {
     // Add rotating categories for Discover it cards
     if (card.rotating) {
       const quarterKey = `Q${currentQuarter}`;
+      const rawCategories = DISCOVER_ROTATING_2025[quarterKey] || ['grocery', 'gas'];
+      // Map rotating categories to iOS SpendingCategory enum values
+      const mappedCategories = rawCategories
+        .map(cat => mapCategory(cat))
+        .filter(Boolean);
+
       formatted.rotatingCategories = [
         {
           quarter: currentQuarter,
           year: currentYear,
-          categories: DISCOVER_ROTATING_2025[quarterKey] || ['grocery', 'gas'],
+          categories: mappedCategories,
           multiplier: card.rotating.multiplier,
           isPercentage: true,
           cap: card.rotating.cap,
@@ -99,13 +105,23 @@ async function scrapeDiscover() {
 }
 
 function formatCard(issuer, cardData) {
-  const categoryRewards = (cardData.categories || []).map(cat => ({
-    category: cat.category,
-    multiplier: cat.multiplier,
-    isPercentage: cardData.rewardType === 'cashback',
-    cap: cat.cap || null,
-    capPeriod: cat.capPeriod || null
-  }));
+  // Map categories to iOS SpendingCategory enum values
+  const categoryRewards = (cardData.categories || [])
+    .map(cat => {
+      const mappedCategory = mapCategory(cat.category);
+      if (!mappedCategory) {
+        console.warn(`  ⚠️  Unknown category '${cat.category}' in ${cardData.name}, skipping`);
+        return null;
+      }
+      return {
+        category: mappedCategory,
+        multiplier: cat.multiplier,
+        isPercentage: cardData.rewardType === 'cashback',
+        cap: cat.cap || null,
+        capPeriod: cat.capPeriod || null
+      };
+    })
+    .filter(Boolean);
 
   return {
     id: generateCardId(issuer, cardData.name),

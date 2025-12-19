@@ -3,7 +3,7 @@
  * Barclays, Credit Unions, Fintech, and Other Issuers
  */
 
-const { generateCardId } = require('../utils/categories');
+const { generateCardId, mapCategory } = require('../utils/categories');
 
 // ============================================================================
 // BARCLAYS CARDS
@@ -472,7 +472,7 @@ const RETAIL_CARDS = [
     issuer: 'Amazon',
     annualFee: 0,
     rewardType: 'cashback',
-    network: 'other',
+    network: 'visa',  // Amazon-branded card issued through Synchrony
     baseReward: 0,
     categories: [
       { category: 'amazon', multiplier: 5 }
@@ -547,13 +547,40 @@ async function scrapeOthers() {
 }
 
 function formatCard(cardData) {
-  const categoryRewards = (cardData.categories || []).map(cat => ({
-    category: cat.category,
-    multiplier: cat.multiplier,
-    isPercentage: cardData.rewardType === 'cashback',
-    cap: cat.cap || null,
-    capPeriod: cat.capPeriod || null
-  }));
+  // Map categories to iOS SpendingCategory enum values
+  const categoryRewards = (cardData.categories || [])
+    .map(cat => {
+      const mappedCategory = mapCategory(cat.category);
+      if (!mappedCategory) {
+        console.warn(`  ⚠️  Unknown category '${cat.category}' in ${cardData.name}, skipping`);
+        return null;
+      }
+      return {
+        category: mappedCategory,
+        multiplier: cat.multiplier,
+        isPercentage: cardData.rewardType === 'cashback',
+        cap: cat.cap || null,
+        capPeriod: cat.capPeriod || null
+      };
+    })
+    .filter(Boolean);
+
+  // Map selectableConfig categories if present
+  let selectableConfig = null;
+  if (cardData.selectableConfig) {
+    const mappedAvailableCategories = cardData.selectableConfig.availableCategories
+      .map(cat => mapCategory(cat))
+      .filter(Boolean);
+
+    selectableConfig = {
+      maxSelections: cardData.selectableConfig.maxSelections,
+      availableCategories: mappedAvailableCategories,
+      multiplier: cardData.selectableConfig.multiplier,
+      isPercentage: cardData.rewardType === 'cashback',
+      cap: cardData.selectableConfig.cap || null,
+      capPeriod: cardData.selectableConfig.capPeriod || null
+    };
+  }
 
   return {
     id: generateCardId(cardData.issuer, cardData.name),
@@ -566,7 +593,7 @@ function formatCard(cardData) {
     baseIsPercentage: cardData.rewardType === 'cashback',
     categoryRewards: categoryRewards,
     rotatingCategories: null,
-    selectableConfig: cardData.selectableConfig || null,
+    selectableConfig: selectableConfig,
     signUpBonus: cardData.signUpBonus || null,
     imageColor: cardData.imageColor || '#333333',
     imageURL: cardData.imageURL || null
