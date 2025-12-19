@@ -44,7 +44,7 @@ An iOS app that recommends the best credit card for every purchase. Supports 60+
 | Receipt Scanning | OCR-powered expense logging |
 | Bonus Tracker | Never miss sign-up bonus deadlines |
 | Home Widget | Quick access without opening app |
-| Privacy First | 100% offline, data stays on device |
+| Cloud Sync | Card data synced via Firebase |
 
 ---
 
@@ -73,7 +73,7 @@ open SmartCard.xcodeproj
 ## Tech Stack
 
 ```
-SwiftUI · MVVM · Combine · WidgetKit · Vision (OCR)
+SwiftUI · MVVM · Combine · WidgetKit · Vision (OCR) · Firebase
 ```
 
 ---

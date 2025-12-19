@@ -33,7 +33,7 @@
 | **收據掃描** | OCR 快速記錄消費 |
 | **開卡禮追蹤** | 追蹤開卡禮進度，不錯過期限 |
 | **主畫面小工具** | 不用開 App 就能查看推薦 |
-| **隱私優先** | 所有資料儲存在本機 |
+| **隱私優先** | 使用者資料透過 Firebase 同步，卡片資料來自官方來源 |
 
 ### 支援卡片
 
@@ -120,7 +120,7 @@ SmartCard/
 │   ├── CreditCard.swift    # 卡片定義與回饋設定
 │   ├── Spending.swift      # 交易紀錄
 │   ├── Merchant.swift      # 商家 → 類別對應
-│   └── MockData.swift      # 信用卡資料庫範例
+│   └── SpendingCategory.swift
 ├── Views/                  # SwiftUI 視圖 (MVVM)
 │   ├── Home/               # 主控台
 │   ├── Cards/              # 卡片管理
@@ -129,10 +129,18 @@ SmartCard/
 │   └── Settings/           # App 設定
 ├── ViewModels/             # 狀態管理
 ├── Services/               # 商業邏輯
+│   ├── FirebaseService.swift    # Firestore 資料同步
 │   ├── RecommendationEngine.swift
 │   ├── OCRService.swift
 │   └── NotificationService.swift
 └── Utils/                  # 擴充與輔助工具
+
+Functions/                  # 後端服務
+├── scraper/               # 信用卡資料爬蟲
+│   ├── index.js           # 爬蟲主程式
+│   ├── scrapers/          # 各發卡機構爬蟲
+│   └── upload-to-firestore.js
+└── index.js               # Firebase Cloud Functions
 ```
 
 ---
@@ -146,7 +154,9 @@ SmartCard/
 | 響應式 | Combine |
 | 小工具 | WidgetKit |
 | OCR | Vision Framework |
-| 儲存 | UserDefaults (計畫改用 Firebase) |
+| 後端 | Firebase Firestore |
+| 認證 | Firebase Auth（可選） |
+| 爬蟲 | Node.js + Puppeteer |
 
 ---
 

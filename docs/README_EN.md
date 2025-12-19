@@ -33,7 +33,7 @@ An iOS app that helps you choose the best credit card for every purchase, so you
 | **Receipt Scanning** | OCR-powered receipt scanning for quick expense logging |
 | **Sign-Up Bonus Tracker** | Never miss a sign-up bonus deadline |
 | **Home Screen Widget** | Quick access to recommendations without opening the app |
-| **Privacy First** | All data stored locally on your device |
+| **Privacy First** | User data synced via Firebase, card data from official sources |
 
 ### Supported Cards
 
@@ -120,7 +120,7 @@ SmartCard/
 │   ├── CreditCard.swift    # Card definitions & reward configs
 │   ├── Spending.swift      # Transaction records
 │   ├── Merchant.swift      # Merchant → category mapping
-│   └── MockData.swift      # Sample credit card database
+│   └── SpendingCategory.swift
 ├── Views/                  # SwiftUI views (MVVM)
 │   ├── Home/               # Dashboard
 │   ├── Cards/              # Card management
@@ -129,10 +129,18 @@ SmartCard/
 │   └── Settings/           # App settings
 ├── ViewModels/             # State management
 ├── Services/               # Business logic
+│   ├── FirebaseService.swift    # Firestore data sync
 │   ├── RecommendationEngine.swift
 │   ├── OCRService.swift
 │   └── NotificationService.swift
 └── Utils/                  # Extensions & helpers
+
+Functions/                  # Backend services
+├── scraper/               # Credit card data scraper
+│   ├── index.js           # Main scraper entry
+│   ├── scrapers/          # Per-issuer scrapers
+│   └── upload-to-firestore.js
+└── index.js               # Firebase Cloud Functions
 ```
 
 ---
@@ -146,7 +154,9 @@ SmartCard/
 | Reactive | Combine |
 | Widget | WidgetKit |
 | OCR | Vision Framework |
-| Storage | UserDefaults (Firebase planned) |
+| Backend | Firebase Firestore |
+| Auth | Firebase Auth (optional) |
+| Scraper | Node.js + Puppeteer |
 
 ---
 
