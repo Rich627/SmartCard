@@ -267,34 +267,45 @@ Mockups, examples, etc.
 
 ## Adding Credit Card Data
 
-To add a new credit card to the database:
+Credit card data is managed through the **scraper system** in `Functions/scraper/`.
 
-1. Open `SmartCard/Models/MockData.swift`
-2. Add the card definition following the existing format:
+### Option 1: Add to Existing Scraper
 
-```swift
-CreditCard(
-    id: "unique-card-id",
-    name: "Card Name",
-    issuer: "Issuer Name",
-    network: .visa,
-    annualFee: 0,
-    rewardType: .cashback,
-    baseReward: 1.0,
-    baseIsPercentage: true,
-    categoryRewards: [
-        CategoryReward(category: .dining, multiplier: 3.0, isPercentage: true, cap: nil, capPeriod: nil)
-    ],
-    rotatingCategories: nil,
-    selectableConfig: nil,
-    signUpBonus: nil,
-    imageColor: "#1A1A1A",
-    lastUpdated: Date()
-)
+1. Open the appropriate scraper in `Functions/scraper/scrapers/` (e.g., `chase.js`, `amex.js`)
+2. Add the card to the `CARDS` array:
+
+```javascript
+{
+  name: 'Card Name',
+  annualFee: 0,
+  rewardType: 'cashback',  // 'cashback', 'points', or 'miles'
+  network: 'visa',         // 'visa', 'mastercard', 'amex', 'discover'
+  baseReward: 1,
+  categories: [
+    { category: 'dining', multiplier: 3, cap: 1500, capPeriod: 'quarterly' }
+  ],
+  imageURL: 'https://...',
+  imageColor: '#1A1A1A'
+}
 ```
 
-3. Verify the card data accuracy from official issuer sources
-4. Add a test case in `SmartCardTests/`
+3. Run the scraper and upload:
+```bash
+cd Functions/scraper
+npm run full  # Scrapes all cards and uploads to Firestore
+```
+
+### Option 2: Add New Issuer
+
+1. Create a new scraper file in `Functions/scraper/scrapers/`
+2. Extend `BaseScraper` class (see existing scrapers for examples)
+3. Register it in `Functions/scraper/index.js`
+
+### Verification
+
+- Verify card data accuracy from official issuer websites
+- Run `npm run validate` to check data format
+- Test in the iOS app after uploading
 
 ---
 

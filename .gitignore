@@ -64,11 +64,11 @@ GoogleService-Info.plist
 Secrets.swift
 
 # Firebase Functions secrets
-functions/.env
-functions/.env.*
-functions/.secret.*
-functions/service-account*.json
-functions/node_modules/
+Functions/.env
+Functions/.env.*
+Functions/.secret.*
+Functions/service-account*.json
+Functions/firebase/node_modules/
 
 # Plaid
 plaid-*.json

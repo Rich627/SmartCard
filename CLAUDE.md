@@ -15,8 +15,10 @@ SmartCard is an iOS app that helps users maximize credit card rewards by recomme
 - **Platform**: iOS (iPhone only)
 - **UI Framework**: SwiftUI
 - **Architecture**: MVVM
-- **Backend**: Firebase (planned, currently using UserDefaults)
+- **Backend**: Firebase Firestore
+- **Auth**: Firebase Auth (optional)
 - **Language**: Swift
+- **Scraper**: Node.js + Puppeteer (in `Functions/scraper/`)
 
 ## Build and Development
 
@@ -38,8 +40,7 @@ SmartCard/
 │   ├── CreditCard.swift    # Card, rewards, rotating/selectable configs
 │   ├── Spending.swift      # Transaction records
 │   ├── SpendingCategory.swift
-│   ├── Merchant.swift      # Merchant → category mapping
-│   └── MockData.swift      # Sample credit card data
+│   └── Merchant.swift      # Merchant → category mapping
 ├── Views/                  # SwiftUI views (MVVM View layer)
 │   ├── Home/
 │   ├── Cards/
@@ -50,9 +51,23 @@ SmartCard/
 │   ├── CardViewModel.swift
 │   └── SpendingViewModel.swift
 ├── Services/               # Business logic
-│   └── RecommendationEngine.swift
+│   ├── FirebaseService.swift   # Firestore data sync
+│   ├── RecommendationEngine.swift
+│   ├── OCRService.swift
+│   └── NotificationService.swift
 └── Utils/
     └── Extensions.swift    # Color hex, Date helpers
+
+Functions/
+├── firebase/               # Firebase Cloud Functions
+│   ├── index.js            # Cloud Functions entry point
+│   └── package.json
+├── scraper/                # Credit card data scraper
+│   ├── index.js            # Main entry, runs all scrapers
+│   ├── scrapers/           # Per-issuer scrapers (chase.js, amex.js, etc.)
+│   ├── utils/              # BaseScraper, category mapping
+│   └── upload-to-firestore.js
+└── service-account.json    # Firebase credentials (gitignored)
 ```
 
 ## Key Components
@@ -75,3 +90,22 @@ Calculates best card for a category considering:
 2. `MerchantDatabase` maps merchant → category
 3. `RecommendationEngine` evaluates all user cards
 4. Results sorted by estimated reward value
+
+## Scraper Commands
+
+```bash
+cd Functions/scraper
+
+npm run scrape          # Run all scrapers
+npm run scrape:chase    # Run specific issuer
+npm run validate        # Validate scraped data
+npm run upload          # Upload to Firestore
+npm run full            # Scrape + upload (one command)
+```
+
+## Firebase Setup
+
+1. Create a Firebase project
+2. Download `service-account.json` from Firebase Console → Project Settings → Service Accounts
+3. Place it in `Functions/` directory
+4. Configure iOS app with `GoogleService-Info.plist`
