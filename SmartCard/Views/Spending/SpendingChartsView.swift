@@ -185,22 +185,35 @@ struct SpendingCapChart: View {
                                 .foregroundStyle(.secondary)
                         }
 
-                        GeometryReader { geo in
-                            ZStack(alignment: .leading) {
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(Color(.systemGray4))
-                                    .frame(height: 8)
-
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(cap.isAtCap ? .red : (cap.isNearCap ? .orange : .green))
-                                    .frame(width: geo.size.width * min(cap.percentage / 100, 1), height: 8)
+                        if cap.isUnlimited {
+                            HStack {
+                                Text(cap.category)
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Text("Unlimited")
+                                    .font(.caption2)
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(.blue)
                             }
-                        }
-                        .frame(height: 8)
+                        } else {
+                            GeometryReader { geo in
+                                ZStack(alignment: .leading) {
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .fill(Color(.systemGray4))
+                                        .frame(height: 8)
 
-                        Text(cap.category)
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .fill(cap.isAtCap ? .red : (cap.isNearCap ? .orange : .green))
+                                        .frame(width: geo.size.width * min(cap.percentage / 100, 1), height: 8)
+                                }
+                            }
+                            .frame(height: 8)
+
+                            Text(cap.category)
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                     .padding(.vertical, 4)
                 }

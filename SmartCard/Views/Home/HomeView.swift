@@ -301,27 +301,41 @@ struct SpendingCapsCard: View {
                                 .foregroundStyle(.secondary)
                         }
 
-                        GeometryReader { geo in
-                            ZStack(alignment: .leading) {
-                                RoundedRectangle(cornerRadius: 3)
-                                    .fill(Color(.systemGray4))
-                                    .frame(height: 6)
-
-                                RoundedRectangle(cornerRadius: 3)
-                                    .fill(cap.isAtCap ? .red : (cap.isNearCap ? .orange : .green))
-                                    .frame(width: geo.size.width * min(cap.percentage / 100, 1), height: 6)
+                        if cap.isUnlimited {
+                            // No progress bar for unlimited
+                            HStack {
+                                Text(cap.category)
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Text("Unlimited")
+                                    .font(.caption2)
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(.blue)
                             }
-                        }
-                        .frame(height: 6)
+                        } else {
+                            GeometryReader { geo in
+                                ZStack(alignment: .leading) {
+                                    RoundedRectangle(cornerRadius: 3)
+                                        .fill(Color(.systemGray4))
+                                        .frame(height: 6)
 
-                        HStack {
-                            Text(cap.category)
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                            Spacer()
-                            Text(cap.formattedRemaining)
-                                .font(.caption2)
-                                .foregroundStyle(cap.isNearCap ? .orange : .green)
+                                    RoundedRectangle(cornerRadius: 3)
+                                        .fill(cap.isAtCap ? .red : (cap.isNearCap ? .orange : .green))
+                                        .frame(width: geo.size.width * min(cap.percentage / 100, 1), height: 6)
+                                }
+                            }
+                            .frame(height: 6)
+
+                            HStack {
+                                Text(cap.category)
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Text(cap.formattedRemaining)
+                                    .font(.caption2)
+                                    .foregroundStyle(cap.isNearCap ? .orange : .green)
+                            }
                         }
                     }
                 }

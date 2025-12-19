@@ -119,7 +119,7 @@ struct CreditCard: Identifiable, Codable, Equatable {
     let signUpBonus: SignUpBonus?    // Optional sign-up bonus
     let imageColor: String           // hex color for card display (fallback)
     let imageURL: String?            // URL for card image
-    let lastUpdated: Date
+    let lastUpdated: Date?           // Optional: set by Firestore on upload
 
     var displayBaseReward: String {
         if baseIsPercentage {

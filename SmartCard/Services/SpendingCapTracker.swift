@@ -6,32 +6,46 @@ struct SpendingCapProgress: Identifiable {
     let cardName: String
     let category: String
     let currentSpend: Double
-    let cap: Double
-    let period: CapPeriod
+    let cap: Double?  // nil means unlimited
+    let period: CapPeriod?
     let isRotating: Bool
 
+    var isUnlimited: Bool {
+        cap == nil
+    }
+
     var percentage: Double {
-        min((currentSpend / cap) * 100, 100)
+        guard let cap = cap, cap > 0 else { return 0 }
+        return min((currentSpend / cap) * 100, 100)
     }
 
     var remaining: Double {
-        max(cap - currentSpend, 0)
+        guard let cap = cap else { return .infinity }
+        return max(cap - currentSpend, 0)
     }
 
     var isNearCap: Bool {
-        percentage >= 80
+        guard !isUnlimited else { return false }
+        return percentage >= 80
     }
 
     var isAtCap: Bool {
-        percentage >= 100
+        guard !isUnlimited else { return false }
+        return percentage >= 100
     }
 
     var formattedProgress: String {
-        "$\(Int(currentSpend)) / $\(Int(cap))"
+        guard let cap = cap else {
+            return "$\(Int(currentSpend)) / Unlimited"
+        }
+        return "$\(Int(currentSpend)) / $\(Int(cap))"
     }
 
     var formattedRemaining: String {
-        "$\(Int(remaining)) remaining"
+        guard let cap = cap else {
+            return "Unlimited"
+        }
+        return "$\(Int(max(cap - currentSpend, 0))) remaining"
     }
 }
 

@@ -138,9 +138,81 @@ struct AddCardView: View {
         if searchText.isEmpty {
             return available
         }
-        return available.filter {
-            $0.name.localizedCaseInsensitiveContains(searchText) ||
-            $0.issuer.localizedCaseInsensitiveContains(searchText)
+
+        // Common issuer abbreviations
+        let issuerAliases: [String: [String]] = [
+            "American Express": ["amex", "ae"],
+            "Bank of America": ["bofa", "boa"],
+            "Capital One": ["cap1", "c1"],
+            "Wells Fargo": ["wf"],
+            "US Bank": ["usb"]
+        ]
+
+        // Common card name abbreviations
+        let cardAliases: [String: [String]] = [
+            // Chase
+            "Chase Freedom Flex": ["cff", "freedom flex"],
+            "Chase Freedom Unlimited": ["cfu", "freedom unlimited"],
+            "Chase Freedom Rise": ["cfr", "freedom rise"],
+            "Chase Sapphire Preferred": ["csp", "sapphire preferred"],
+            "Chase Sapphire Reserve": ["csr", "sapphire reserve"],
+            "Ink Business Preferred": ["cip", "ink preferred"],
+            "Ink Business Unlimited": ["ciu", "ink unlimited"],
+            "Ink Business Cash": ["cic", "ink cash"],
+            // Amex
+            "American Express Gold Card": ["amex gold", "gold card"],
+            "American Express Platinum Card": ["amex platinum", "amex plat", "platinum card"],
+            "Blue Cash Preferred": ["bcp"],
+            "Blue Cash Everyday": ["bce"],
+            "American Express Green Card": ["amex green", "green card"],
+            // Citi
+            "Citi Double Cash": ["cdc", "double cash"],
+            "Citi Custom Cash": ["ccc", "custom cash"],
+            "Citi Premier": ["citi premier"],
+            // Capital One
+            "Capital One Venture X": ["venture x", "vx"],
+            "Capital One Venture": ["venture"],
+            "Capital One Savor": ["savor"],
+            "Capital One SavorOne": ["savorone"],
+            // Discover
+            "Discover it Cash Back": ["discover it", "dit"],
+            // Wells Fargo
+            "Wells Fargo Active Cash": ["wf active cash", "active cash"],
+            "Wells Fargo Autograph": ["wf autograph", "autograph"],
+            // US Bank
+            "US Bank Altitude Go": ["altitude go"],
+            "US Bank Altitude Reserve": ["altitude reserve", "uar"],
+            "US Bank Cash+": ["cash plus", "cash+"]
+        ]
+
+        return available.filter { card in
+            let searchLower = searchText.lowercased().trimmingCharacters(in: .whitespaces)
+
+            // Check name and issuer
+            if card.name.localizedCaseInsensitiveContains(searchText) ||
+               card.issuer.localizedCaseInsensitiveContains(searchText) {
+                return true
+            }
+
+            // Check issuer aliases
+            if let aliases = issuerAliases[card.issuer] {
+                for alias in aliases {
+                    if searchLower.contains(alias) {
+                        return true
+                    }
+                }
+            }
+
+            // Check card name aliases
+            if let aliases = cardAliases[card.name] {
+                for alias in aliases {
+                    if searchLower == alias || searchLower.contains(alias) {
+                        return true
+                    }
+                }
+            }
+
+            return false
         }
     }
 
