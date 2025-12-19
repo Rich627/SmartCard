@@ -28,7 +28,7 @@ const USBANK_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'travel and hotels booked through Altitude Rewards' },
+      { category: 'travelPortal', multiplier: 5, note: 'travel and hotels booked through Altitude Rewards' },
       { category: 'gas', multiplier: 4 },
       { category: 'evCharging', multiplier: 4 },
       { category: 'streaming', multiplier: 2 },

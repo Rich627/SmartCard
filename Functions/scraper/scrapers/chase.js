@@ -14,7 +14,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'through Chase Travel' },
+      { category: 'travelPortal', multiplier: 5, note: 'through Chase Travel' },
       { category: 'dining', multiplier: 3 },
       { category: 'grocery', multiplier: 3, note: 'online grocery purchases' },
       { category: 'streaming', multiplier: 3 },
@@ -29,8 +29,8 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 10, note: 'hotels/car rentals through Chase Travel' },
-      { category: 'travel', multiplier: 5, note: 'flights through Chase Travel' },
+      { category: 'travelPortal', multiplier: 10, note: 'hotels/car rentals through Chase Travel' },
+      { category: 'travelPortalFlights', multiplier: 5, note: 'flights through Chase Travel' },
       { category: 'travel', multiplier: 3, note: 'all other travel' },
       { category: 'dining', multiplier: 3 }
     ],
@@ -45,7 +45,7 @@ const CHASE_CARDS = [
     rewardType: 'cashback',
     baseReward: 1.5,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'through Chase Travel' },
+      { category: 'travelPortal', multiplier: 5, note: 'through Chase Travel' },
       { category: 'dining', multiplier: 3 },
       { category: 'drugstore', multiplier: 3 }
     ],
@@ -58,7 +58,7 @@ const CHASE_CARDS = [
     rewardType: 'cashback',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'through Chase Travel' },
+      { category: 'travelPortal', multiplier: 5, note: 'through Chase Travel' },
       { category: 'dining', multiplier: 3 },
       { category: 'drugstore', multiplier: 3 }
     ],
@@ -144,7 +144,7 @@ const CHASE_CARDS = [
     rewardType: 'miles',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'United purchases' },
+      { category: 'united', multiplier: 3, note: 'United purchases' },
       { category: 'travel', multiplier: 2, note: 'all other travel' },
       { category: 'dining', multiplier: 2 },
       { category: 'streaming', multiplier: 2 }
@@ -158,9 +158,9 @@ const CHASE_CARDS = [
     rewardType: 'miles',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'United purchases' },
+      { category: 'united', multiplier: 2, note: 'United purchases' },
       { category: 'dining', multiplier: 2 },
-      { category: 'travel', multiplier: 2, note: 'hotels' }
+      { category: 'hotels', multiplier: 2 }
     ],
     imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/united_explorer_background.png',
     imageColor: '#002244'
@@ -171,7 +171,7 @@ const CHASE_CARDS = [
     rewardType: 'miles',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'United purchases' },
+      { category: 'united', multiplier: 2, note: 'United purchases' },
       { category: 'gas', multiplier: 2 },
       { category: 'transit', multiplier: 2 },
       { category: 'streaming', multiplier: 2 }
@@ -185,7 +185,7 @@ const CHASE_CARDS = [
     rewardType: 'miles',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 4, note: 'United purchases' },
+      { category: 'united', multiplier: 4, note: 'United purchases' },
       { category: 'travel', multiplier: 2, note: 'all other travel' },
       { category: 'dining', multiplier: 2 }
     ],
@@ -198,7 +198,7 @@ const CHASE_CARDS = [
     rewardType: 'miles',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'United purchases' },
+      { category: 'united', multiplier: 2, note: 'United purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 },
       { category: 'officeSupplies', multiplier: 2 }
@@ -214,7 +214,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Southwest purchases' },
+      { category: 'southwest', multiplier: 3, note: 'Southwest purchases' },
       { category: 'transit', multiplier: 2 },
       { category: 'internet', multiplier: 2 },
       { category: 'phone', multiplier: 2 }
@@ -228,7 +228,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'Southwest purchases' },
+      { category: 'southwest', multiplier: 2, note: 'Southwest purchases' },
       { category: 'transit', multiplier: 2 },
       { category: 'internet', multiplier: 2 },
       { category: 'phone', multiplier: 2 }
@@ -242,7 +242,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'Southwest purchases' },
+      { category: 'southwest', multiplier: 2, note: 'Southwest purchases' },
       { category: 'transit', multiplier: 2 },
       { category: 'internet', multiplier: 2 },
       { category: 'phone', multiplier: 2 }
@@ -256,7 +256,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 4, note: 'Southwest purchases' },
+      { category: 'southwest', multiplier: 4, note: 'Southwest purchases' },
       { category: 'transit', multiplier: 3 },
       { category: 'internet', multiplier: 3 },
       { category: 'phone', multiplier: 3 },
@@ -273,7 +273,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 2,
     categories: [
-      { category: 'travel', multiplier: 6, note: 'Marriott hotels' },
+      { category: 'marriott', multiplier: 6, note: 'Marriott hotels' },
       { category: 'grocery', multiplier: 3 },
       { category: 'gas', multiplier: 3 },
       { category: 'dining', multiplier: 3 }
@@ -287,7 +287,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Marriott hotels' }
+      { category: 'marriott', multiplier: 3, note: 'Marriott hotels' }
     ],
     imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/marriott_bold_background.png',
     imageColor: '#8A2432'
@@ -298,7 +298,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 2,
     categories: [
-      { category: 'travel', multiplier: 6, note: 'Marriott hotels' },
+      { category: 'marriott', multiplier: 6, note: 'Marriott hotels' },
       { category: 'dining', multiplier: 4 },
       { category: 'grocery', multiplier: 3 },
       { category: 'gas', multiplier: 3 }
@@ -312,7 +312,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 3,
     categories: [
-      { category: 'travel', multiplier: 26, note: 'IHG hotels' },
+      { category: 'ihg', multiplier: 26, note: 'IHG hotels' },
       { category: 'travel', multiplier: 5, note: 'travel, gas stations' },
       { category: 'dining', multiplier: 5 }
     ],
@@ -325,7 +325,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 3,
     categories: [
-      { category: 'travel', multiplier: 17, note: 'IHG hotels' },
+      { category: 'ihg', multiplier: 17, note: 'IHG hotels' },
       { category: 'gas', multiplier: 3 },
       { category: 'dining', multiplier: 3 },
       { category: 'utilities', multiplier: 3 }
@@ -339,9 +339,9 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 4, note: 'Hyatt purchases' },
+      { category: 'hyatt', multiplier: 4, note: 'Hyatt purchases' },
       { category: 'dining', multiplier: 2 },
-      { category: 'travel', multiplier: 2, note: 'airlines' },
+      { category: 'airlines', multiplier: 2 },
       { category: 'fitness', multiplier: 2 },
       { category: 'transit', multiplier: 2 }
     ],
@@ -354,7 +354,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 4, note: 'Hyatt purchases' },
+      { category: 'hyatt', multiplier: 4, note: 'Hyatt purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'fitness', multiplier: 2 },
       { category: 'shipping', multiplier: 2 },
@@ -372,7 +372,7 @@ const CHASE_CARDS = [
     baseReward: 1,
     categories: [
       { category: 'amazon', multiplier: 5 },
-      { category: 'wholeFoods', multiplier: 5 },
+      { category: 'wholefoods', multiplier: 5 },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 },
       { category: 'drugstore', multiplier: 2 },
@@ -388,7 +388,7 @@ const CHASE_CARDS = [
     baseReward: 1,
     categories: [
       { category: 'amazon', multiplier: 3 },
-      { category: 'wholeFoods', multiplier: 3 },
+      { category: 'wholefoods', multiplier: 3 },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 },
       { category: 'drugstore', multiplier: 2 }
@@ -428,7 +428,7 @@ const CHASE_CARDS = [
     rewardType: 'cashback',
     baseReward: 1,
     categories: [
-      { category: 'grocery', multiplier: 5, note: 'Instacart purchases' },
+      { category: 'instacart', multiplier: 5, note: 'Instacart purchases' },
       { category: 'grocery', multiplier: 2, note: 'other grocery' },
       { category: 'gas', multiplier: 2 },
       { category: 'dining', multiplier: 2 },
@@ -443,7 +443,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Air Canada purchases' },
+      { category: 'aircanada', multiplier: 3, note: 'Air Canada purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 1.5 }
     ],
@@ -456,7 +456,7 @@ const CHASE_CARDS = [
     rewardType: 'miles',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'British Airways purchases' }
+      { category: 'britishairways', multiplier: 3, note: 'British Airways purchases' }
     ],
     imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/british_airways_background.png',
     imageColor: '#075AAA'
@@ -467,7 +467,7 @@ const CHASE_CARDS = [
     rewardType: 'miles',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Iberia purchases' }
+      { category: 'iberia', multiplier: 3, note: 'Iberia purchases' }
     ],
     imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/iberia_background.png',
     imageColor: '#CB2127'
@@ -478,7 +478,7 @@ const CHASE_CARDS = [
     rewardType: 'miles',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Aer Lingus purchases' }
+      { category: 'aerlingus', multiplier: 3, note: 'Aer Lingus purchases' }
     ],
     imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/aerlingus_background.png',
     imageColor: '#006272'
@@ -489,7 +489,7 @@ const CHASE_CARDS = [
     rewardType: 'cashback',
     baseReward: 1,
     categories: [
-      { category: 'dining', multiplier: 4, note: 'DoorDash orders' },
+      { category: 'doordash', multiplier: 4, note: 'DoorDash orders' },
       { category: 'dining', multiplier: 3, note: 'other dining' },
       { category: 'grocery', multiplier: 2 }
     ],
@@ -502,7 +502,7 @@ const CHASE_CARDS = [
     rewardType: 'points',
     baseReward: 1,
     categories: [
-      { category: 'dining', multiplier: 3, note: 'Starbucks purchases' },
+      { category: 'starbucks', multiplier: 3, note: 'Starbucks purchases' },
       { category: 'grocery', multiplier: 1 }
     ],
     imageURL: 'https://creditcards.chase.com/K-Marketplace/images/cardart/starbucks_background.png',

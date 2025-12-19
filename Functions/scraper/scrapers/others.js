@@ -17,7 +17,7 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'American Airlines purchases' }
+      { category: 'americanairlines', multiplier: 2, note: 'American Airlines purchases' }
     ],
     imageURL: 'https://www.barclaycardus.com/banking/cards/aviator-red.png',
     imageColor: '#C8102E'
@@ -30,7 +30,7 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'American Airlines purchases' },
+      { category: 'americanairlines', multiplier: 2, note: 'American Airlines purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
@@ -45,7 +45,7 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 6, note: 'JetBlue purchases' },
+      { category: 'jetblue', multiplier: 6, note: 'JetBlue purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
@@ -60,7 +60,7 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'JetBlue purchases' },
+      { category: 'jetblue', multiplier: 3, note: 'JetBlue purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
@@ -75,7 +75,7 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 6, note: 'JetBlue purchases' },
+      { category: 'jetblue', multiplier: 6, note: 'JetBlue purchases' },
       { category: 'phone', multiplier: 2 },
       { category: 'officeSupplies', multiplier: 2 }
     ],
@@ -90,7 +90,7 @@ const BARCLAYS_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 6, note: 'Wyndham purchases' },
+      { category: 'wyndham', multiplier: 6, note: 'Wyndham purchases' },
       { category: 'gas', multiplier: 4 },
       { category: 'grocery', multiplier: 4 },
       { category: 'utilities', multiplier: 4 }
@@ -106,7 +106,7 @@ const BARCLAYS_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'Wyndham purchases' },
+      { category: 'wyndham', multiplier: 5, note: 'Wyndham purchases' },
       { category: 'gas', multiplier: 2 },
       { category: 'grocery', multiplier: 2 },
       { category: 'utilities', multiplier: 2 }
@@ -122,7 +122,7 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Hawaiian Airlines purchases' },
+      { category: 'hawaiian', multiplier: 3, note: 'Hawaiian Airlines purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
@@ -137,7 +137,7 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Frontier purchases' },
+      { category: 'frontier', multiplier: 3, note: 'Frontier purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'entertainment', multiplier: 2 }
     ],
@@ -152,7 +152,7 @@ const BARCLAYS_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'Priceline purchases' },
+      { category: 'priceline', multiplier: 5, note: 'Priceline purchases' },
       { category: 'dining', multiplier: 3 },
       { category: 'gas', multiplier: 2 }
     ],
@@ -331,9 +331,9 @@ const FINTECH_CARDS = [
     categories: [
       { category: 'dining', multiplier: 3 },
       { category: 'travel', multiplier: 2 },
-      { category: 'other', multiplier: 1, note: 'rent payments with no fee' }
+      { category: 'rent', multiplier: 1, note: 'rent payments with no fee' }
     ],
-    imageURL: 'https://www.biltrewards.com/static/media/card-front.png',
+    imageURL: 'https://www.biltrewards.com/assets/images/bilt-card.png',
     imageColor: '#000000'
   },
 
@@ -443,7 +443,7 @@ const RETAIL_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'walmart', multiplier: 5, note: 'Walmart.com and Walmart app' },
+      { category: 'walmartOnline', multiplier: 5, note: 'Walmart.com and Walmart app' },
       { category: 'walmart', multiplier: 2, note: 'Walmart stores' },
       { category: 'travel', multiplier: 2 },
       { category: 'dining', multiplier: 2 }
@@ -494,7 +494,7 @@ const SYNCHRONY_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Cathay Pacific purchases' },
+      { category: 'cathaypacific', multiplier: 3, note: 'Cathay Pacific purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
@@ -509,7 +509,7 @@ const SYNCHRONY_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'phone', multiplier: 4, note: 'Verizon purchases' },
+      { category: 'verizon', multiplier: 4, note: 'Verizon purchases' },
       { category: 'grocery', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],

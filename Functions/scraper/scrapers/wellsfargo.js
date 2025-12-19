@@ -39,7 +39,7 @@ const WELLSFARGO_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'hotels through Wells Fargo Travel' },
+      { category: 'travelPortal', multiplier: 5, note: 'hotels through Wells Fargo Travel' },
       { category: 'travel', multiplier: 4, note: 'airlines, hotels, car rentals' },
       { category: 'dining', multiplier: 3 },
       { category: 'transit', multiplier: 3 }

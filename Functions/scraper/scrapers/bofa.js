@@ -78,11 +78,11 @@ const BOFA_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Alaska Airlines purchases' },
+      { category: 'alaska', multiplier: 3, note: 'Alaska Airlines purchases' },
       { category: 'gas', multiplier: 2 },
       { category: 'streaming', multiplier: 2 },
       { category: 'transit', multiplier: 2 },
-      { category: 'onlineShopping', multiplier: 2, note: 'eligible delivery services' }
+      { category: 'delivery', multiplier: 2, note: 'eligible delivery services' }
     ],
     imageURL: 'https://www.bankofamerica.com/content/images/ContextualSiteGraphics/Co-Brand/en_US/Alaska/alaska_signature_background.png',
     imageColor: '#01426A'

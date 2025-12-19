@@ -42,8 +42,8 @@ const CAPITALONE_CARDS = [
     network: 'visa',
     baseReward: 2,
     categories: [
-      { category: 'travel', multiplier: 10, note: 'hotels and car rentals booked through Capital One Travel' },
-      { category: 'travel', multiplier: 5, note: 'flights booked through Capital One Travel' }
+      { category: 'travelPortal', multiplier: 10, note: 'hotels and car rentals booked through Capital One Travel' },
+      { category: 'travelPortalFlights', multiplier: 5, note: 'flights booked through Capital One Travel' }
     ],
     imageURL: 'https://ecm.capitalone.com/WCM/card/products/venturex-background.png',
     imageColor: '#1A1F71'
@@ -55,7 +55,7 @@ const CAPITALONE_CARDS = [
     network: 'visa',
     baseReward: 2,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'hotels and car rentals booked through Capital One Travel' }
+      { category: 'travelPortal', multiplier: 5, note: 'hotels and car rentals booked through Capital One Travel' }
     ],
     imageURL: 'https://ecm.capitalone.com/WCM/card/products/venture-background.png',
     imageColor: '#004977'
@@ -67,7 +67,7 @@ const CAPITALONE_CARDS = [
     network: 'visa',
     baseReward: 1.25,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'hotels booked through Capital One Travel' }
+      { category: 'travelPortal', multiplier: 5, note: 'hotels booked through Capital One Travel' }
     ],
     imageURL: 'https://ecm.capitalone.com/WCM/card/products/ventureone-background.png',
     imageColor: '#0066A1'
@@ -100,7 +100,7 @@ const CAPITALONE_CARDS = [
     network: 'mastercard',
     baseReward: 2,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'hotels and car rentals booked through Capital One Travel' }
+      { category: 'travelPortal', multiplier: 5, note: 'hotels and car rentals booked through Capital One Travel' }
     ],
     imageURL: 'https://ecm.capitalone.com/WCM/card/products/spark-cash-plus-background.png',
     imageColor: '#2E7D32'

@@ -54,7 +54,7 @@ const CITI_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 10, note: 'hotels through thankyou.com' },
+      { category: 'travelPortal', multiplier: 10, note: 'hotels through thankyou.com' },
       { category: 'travel', multiplier: 3 },
       { category: 'dining', multiplier: 3 },
       { category: 'grocery', multiplier: 3 },
@@ -110,7 +110,7 @@ const CITI_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'American Airlines purchases' },
+      { category: 'americanairlines', multiplier: 2, note: 'American Airlines purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],

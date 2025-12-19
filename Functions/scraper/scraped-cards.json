@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2025-12-18T22:58:33.065Z",
+  "scrapedAt": "2025-12-19T00:50:57.673Z",
   "totalCards": 136,
   "errors": [],
   "cards": [
@@ -14,7 +14,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -66,14 +66,14 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 10,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "travelPortalFlights",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -111,7 +111,7 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
@@ -149,7 +149,7 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
@@ -377,7 +377,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "united",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -422,7 +422,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "united",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -436,7 +436,7 @@
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -460,7 +460,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "united",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -505,7 +505,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "united",
           "multiplier": 4,
           "isPercentage": false,
           "cap": null,
@@ -543,7 +543,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "united",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -588,7 +588,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "southwest",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -633,7 +633,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "southwest",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -678,7 +678,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "southwest",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -723,7 +723,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "southwest",
           "multiplier": 4,
           "isPercentage": false,
           "cap": null,
@@ -775,7 +775,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "marriott",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -820,7 +820,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "marriott",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -844,7 +844,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "marriott",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -889,7 +889,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "ihg",
           "multiplier": 26,
           "isPercentage": false,
           "cap": null,
@@ -927,7 +927,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "ihg",
           "multiplier": 17,
           "isPercentage": false,
           "cap": null,
@@ -972,7 +972,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hyatt",
           "multiplier": 4,
           "isPercentage": false,
           "cap": null,
@@ -986,7 +986,7 @@
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -1024,7 +1024,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hyatt",
           "multiplier": 4,
           "isPercentage": false,
           "cap": null,
@@ -1083,7 +1083,7 @@
           "capPeriod": null
         },
         {
-          "category": "wholeFoods",
+          "category": "wholefoods",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
@@ -1142,7 +1142,7 @@
           "capPeriod": null
         },
         {
-          "category": "wholeFoods",
+          "category": "wholefoods",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
@@ -1263,7 +1263,7 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "grocery",
+          "category": "instacart",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
@@ -1315,7 +1315,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "aircanada",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -1353,7 +1353,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "britishairways",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -1377,7 +1377,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "iberia",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -1401,7 +1401,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "aerlingus",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -1425,7 +1425,7 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "dining",
+          "category": "doordash",
           "multiplier": 4,
           "isPercentage": true,
           "cap": null,
@@ -1463,7 +1463,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "dining",
+          "category": "starbucks",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -1494,14 +1494,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -1539,14 +1532,14 @@
           "capPeriod": "yearly"
         },
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -1777,7 +1770,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "delta",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -1808,7 +1801,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "delta",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -1846,14 +1839,14 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "delta",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -1891,7 +1884,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "delta",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -1915,7 +1908,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "delta",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -1953,14 +1946,14 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "delta",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 1.5,
           "isPercentage": false,
           "cap": null,
@@ -1984,7 +1977,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "delta",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -2008,7 +2001,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hilton",
           "multiplier": 7,
           "isPercentage": false,
           "cap": null,
@@ -2053,7 +2046,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hilton",
           "multiplier": 12,
           "isPercentage": false,
           "cap": null,
@@ -2098,14 +2091,14 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hilton",
           "multiplier": 14,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 7,
           "isPercentage": false,
           "cap": null,
@@ -2136,7 +2129,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hilton",
           "multiplier": 12,
           "isPercentage": false,
           "cap": null,
@@ -2181,7 +2174,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "marriott",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -2195,7 +2188,7 @@
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -2219,7 +2212,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "marriott",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -2250,7 +2243,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "marriott",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -2302,14 +2295,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -2416,7 +2402,7 @@
           "capPeriod": null
         },
         {
-          "category": "wholeFoods",
+          "category": "wholefoods",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
@@ -2601,7 +2587,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 10,
           "isPercentage": false,
           "cap": null,
@@ -2745,7 +2731,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "americanairlines",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -2873,14 +2859,14 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 10,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "travelPortalFlights",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -2904,7 +2890,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -2928,7 +2914,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -2984,7 +2970,7 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
@@ -3248,7 +3234,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "alaska",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -3276,7 +3262,7 @@
           "capPeriod": null
         },
         {
-          "category": "onlineShopping",
+          "category": "delivery",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -3375,7 +3361,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -3526,7 +3512,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "travelPortal",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -3658,7 +3644,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "americanairlines",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -3682,7 +3668,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "americanairlines",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -3720,7 +3706,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "jetblue",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -3758,7 +3744,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "jetblue",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -3796,7 +3782,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "jetblue",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -3834,7 +3820,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "wyndham",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -3879,7 +3865,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "wyndham",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -3924,7 +3910,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hawaiian",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -3962,7 +3948,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "frontier",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -4000,7 +3986,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "priceline",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -4339,7 +4325,7 @@
           "capPeriod": null
         },
         {
-          "category": "other",
+          "category": "rent",
           "multiplier": 1,
           "isPercentage": false,
           "cap": null,
@@ -4350,7 +4336,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#000000",
-      "imageURL": "https://www.biltrewards.com/static/media/card-front.png"
+      "imageURL": "https://www.biltrewards.com/assets/images/bilt-card.png"
     },
     {
       "id": "paypal-paypal-cashback-mastercard",
@@ -4526,7 +4512,7 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "walmart",
+          "category": "walmartOnline",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
@@ -4640,7 +4626,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "cathaypacific",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -4678,7 +4664,7 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "phone",
+          "category": "verizon",
           "multiplier": 4,
           "isPercentage": true,
           "cap": null,

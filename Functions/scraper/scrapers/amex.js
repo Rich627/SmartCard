@@ -14,8 +14,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'flights booked through Amex Travel' },
-      { category: 'travel', multiplier: 5, note: 'prepaid hotels through Amex Travel' }
+      { category: 'travelPortal', multiplier: 5, note: 'flights and prepaid hotels through Amex Travel' }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000174_480x304_straight_withname.png',
     imageColor: '#E5E4E2'
@@ -29,8 +28,8 @@ const AMEX_CARDS = [
     categories: [
       { category: 'dining', multiplier: 4, cap: 50000, capPeriod: 'yearly' },
       { category: 'grocery', multiplier: 4, cap: 25000, capPeriod: 'yearly' },
-      { category: 'travel', multiplier: 3, note: 'flights booked directly with airlines or amextravel.com' },
-      { category: 'travel', multiplier: 2, note: 'prepaid hotels through Amex Travel' }
+      { category: 'airlines', multiplier: 3, note: 'flights booked directly with airlines or amextravel.com' },
+      { category: 'travelPortal', multiplier: 2, note: 'prepaid hotels through Amex Travel' }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000256_480x304_straight_withname.png',
     imageColor: '#B8860B'
@@ -129,7 +128,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'Delta purchases' },
+      { category: 'delta', multiplier: 2, note: 'Delta purchases' },
       { category: 'dining', multiplier: 2 }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000258_480x304_straight_withname.png',
@@ -142,7 +141,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'Delta purchases' },
+      { category: 'delta', multiplier: 2, note: 'Delta purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
@@ -156,8 +155,8 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Delta purchases' },
-      { category: 'travel', multiplier: 2, note: 'hotels' },
+      { category: 'delta', multiplier: 3, note: 'Delta purchases' },
+      { category: 'hotels', multiplier: 2 },
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
@@ -171,7 +170,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Delta purchases' }
+      { category: 'delta', multiplier: 3, note: 'Delta purchases' }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000082_480x304_straight_withname.png',
     imageColor: '#1E3A5F'
@@ -183,7 +182,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 2, note: 'Delta purchases' },
+      { category: 'delta', multiplier: 2, note: 'Delta purchases' },
       { category: 'shipping', multiplier: 2 },
       { category: 'advertising', multiplier: 2 }
     ],
@@ -197,8 +196,8 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Delta purchases' },
-      { category: 'travel', multiplier: 1.5, note: 'hotels' }
+      { category: 'delta', multiplier: 3, note: 'Delta purchases' },
+      { category: 'hotels', multiplier: 1.5 }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000087_480x304_straight_withname.png',
     imageColor: '#4A5568'
@@ -210,7 +209,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 3, note: 'Delta purchases' }
+      { category: 'delta', multiplier: 3, note: 'Delta purchases' }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000088_480x304_straight_withname.png',
     imageColor: '#1A365D'
@@ -224,7 +223,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 3,
     categories: [
-      { category: 'travel', multiplier: 7, note: 'Hilton hotels' },
+      { category: 'hilton', multiplier: 7, note: 'Hilton hotels' },
       { category: 'dining', multiplier: 5 },
       { category: 'grocery', multiplier: 5 },
       { category: 'gas', multiplier: 5 }
@@ -239,7 +238,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 3,
     categories: [
-      { category: 'travel', multiplier: 12, note: 'Hilton hotels' },
+      { category: 'hilton', multiplier: 12, note: 'Hilton hotels' },
       { category: 'dining', multiplier: 6 },
       { category: 'grocery', multiplier: 6 },
       { category: 'gas', multiplier: 6 }
@@ -254,8 +253,8 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 3,
     categories: [
-      { category: 'travel', multiplier: 14, note: 'Hilton hotels' },
-      { category: 'travel', multiplier: 7, note: 'flights' },
+      { category: 'hilton', multiplier: 14, note: 'Hilton hotels' },
+      { category: 'airlines', multiplier: 7, note: 'flights' },
       { category: 'dining', multiplier: 7 }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000229_480x304_straight_withname.png',
@@ -268,7 +267,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 3,
     categories: [
-      { category: 'travel', multiplier: 12, note: 'Hilton hotels' },
+      { category: 'hilton', multiplier: 12, note: 'Hilton hotels' },
       { category: 'shipping', multiplier: 6 },
       { category: 'gas', multiplier: 6 },
       { category: 'dining', multiplier: 6 }
@@ -285,9 +284,9 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 2,
     categories: [
-      { category: 'travel', multiplier: 6, note: 'Marriott hotels' },
+      { category: 'marriott', multiplier: 6, note: 'Marriott hotels' },
       { category: 'dining', multiplier: 3 },
-      { category: 'travel', multiplier: 3, note: 'flights' }
+      { category: 'airlines', multiplier: 3, note: 'flights' }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000243_480x304_straight_withname.png',
     imageColor: '#8A2432'
@@ -299,7 +298,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 2,
     categories: [
-      { category: 'travel', multiplier: 6, note: 'Marriott hotels' },
+      { category: 'marriott', multiplier: 6, note: 'Marriott hotels' },
       { category: 'dining', multiplier: 4 }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000340_480x304_straight_withname.png',
@@ -312,7 +311,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 2,
     categories: [
-      { category: 'travel', multiplier: 6, note: 'Marriott hotels' },
+      { category: 'marriott', multiplier: 6, note: 'Marriott hotels' },
       { category: 'shipping', multiplier: 4 },
       { category: 'gas', multiplier: 4 },
       { category: 'phone', multiplier: 4 },
@@ -330,8 +329,7 @@ const AMEX_CARDS = [
     network: 'amex',
     baseReward: 1,
     categories: [
-      { category: 'travel', multiplier: 5, note: 'flights through Amex Travel' },
-      { category: 'travel', multiplier: 5, note: 'hotels through Amex Travel' },
+      { category: 'travelPortal', multiplier: 5, note: 'flights and hotels through Amex Travel' },
       { category: 'other', multiplier: 1.5, note: 'on purchases $5,000+' }
     ],
     imageURL: 'https://icm.aexp-static.com/acquisition/card-art/NUS000000175_480x304_straight_withname.png',
@@ -385,7 +383,7 @@ const AMEX_CARDS = [
     baseReward: 1,
     categories: [
       { category: 'amazon', multiplier: 5 },
-      { category: 'wholeFoods', multiplier: 5 },
+      { category: 'wholefoods', multiplier: 5 },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
