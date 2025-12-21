@@ -62,6 +62,7 @@ function validateCard(card) {
       const rewardErrors = validateCategoryReward(reward, index);
       errors.push(...rewardErrors);
     });
+
   }
 
   // Validate rotatingCategories (optional)

@@ -1,7 +1,185 @@
 {
-  "scrapedAt": "2025-12-19T10:57:29.319Z",
-  "totalCards": 135,
+  "scrapedAt": "2025-12-21T23:44:40.881Z",
+  "totalCards": 114,
   "errors": [],
+  "duplicateCategories": [
+    {
+      "card": "Chase Sapphire Preferred",
+      "duplicates": [
+        "travel"
+      ]
+    },
+    {
+      "card": "Chase Sapphire Reserve",
+      "duplicates": [
+        "travel"
+      ]
+    },
+    {
+      "card": "Instacart Mastercard",
+      "duplicates": [
+        "travel"
+      ]
+    },
+    {
+      "card": "Citi Strata Premier Card",
+      "duplicates": [
+        "travel"
+      ]
+    }
+  ],
+  "imageValidation": {
+    "valid": 85,
+    "invalid": 29,
+    "missing": 0,
+    "errors": [
+      {
+        "card": "Marriott Bonvoy Bevy American Express Card",
+        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-bevy.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Delta SkyMiles Blue American Express Card",
+        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-blue.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Delta SkyMiles Gold American Express Card",
+        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-gold.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Delta SkyMiles Platinum American Express Card",
+        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-platinum.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Delta SkyMiles Reserve American Express Card",
+        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-reserve.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Citi Double Cash Card",
+        "url": "https://www.citi.com/CRD/images/citi-double-cash/citi-double-cash_222x140.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Citi Custom Cash Card",
+        "url": "https://www.citi.com/CRD/images/citi-custom-cash/citi-custom-cash_222x140.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Citi Premier Card",
+        "url": "https://www.citi.com/CRD/images/citi-premier/citi-premier_222x140.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Citi Strata Premier Card",
+        "url": "https://www.citi.com/CRD/images/citi-strata-premier/citi-strata-premier_222x140.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Citi Rewards+ Card",
+        "url": "https://www.citi.com/CRD/images/citi-rewards-plus/citi-rewards-plus_222x140.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Citi Diamond Preferred Card",
+        "url": "https://www.citi.com/CRD/images/citi-diamond-preferred/citi-diamond-preferred_222x140.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Costco Anywhere Visa Card",
+        "url": "https://www.citi.com/CRD/images/costco-anywhere/costco-anywhere_222x140.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Citi AAdvantage Platinum Select Card",
+        "url": "https://www.citi.com/CRD/images/citi-aadvantage-platinum/citi-aadvantage-platinum_222x140.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Navy Federal cashRewards",
+        "url": "https://www.navyfederal.org/content/dam/card-art/visa/cash-rewards.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Navy Federal Flagship Rewards",
+        "url": "https://www.navyfederal.org/content/dam/card-art/visa/flagship-rewards.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Navy Federal Go Rewards",
+        "url": "https://www.navyfederal.org/content/dam/card-art/mc/go-rewards.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "PenFed Platinum Rewards",
+        "url": "https://www.penfed.org/images/credit-cards/platinum-rewards.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "PenFed Power Cash Rewards",
+        "url": "https://www.penfed.org/images/credit-cards/power-cash.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "PenFed Pathfinder Rewards",
+        "url": "https://www.penfed.org/images/credit-cards/pathfinder.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "Alliant Cashback Visa",
+        "url": "https://www.alliantcreditunion.org/images/cards/cashback.png",
+        "reason": "HTTP 403"
+      },
+      {
+        "card": "USAA Cashback Rewards Plus",
+        "url": "https://www.usaa.com/content/dam/usaa/cards/cashback-plus.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "USAA Preferred Cash Rewards",
+        "url": "https://www.usaa.com/content/dam/usaa/cards/preferred-cash.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "USAA Limitless Cashback",
+        "url": "https://www.usaa.com/content/dam/usaa/cards/limitless.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Venmo Credit Card",
+        "url": "https://venmo.com/about/creditcard/assets/img/cc-front.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "SoFi Credit Card",
+        "url": "https://www.sofi.com/images/credit-card/card-front.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Apple Card",
+        "url": "https://www.apple.com/v/apple-card/p/images/overview/hero_cc__bcr1x3yclnwy_large.jpg",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Walmart Rewards Card",
+        "url": "https://www.walmart.com/content/dam/walmart/cards/rewards.png",
+        "reason": "timeout"
+      },
+      {
+        "card": "Amazon Store Card",
+        "url": "https://m.media-amazon.com/images/G/01/credit/store-card.png",
+        "reason": "HTTP 404"
+      },
+      {
+        "card": "Verizon Visa Card",
+        "url": "https://www.verizon.com/content/dam/verizon/cards/visa.png",
+        "reason": "timeout"
+      }
+    ]
+  },
   "cards": [
     {
       "id": "chase-chase-sapphire-preferred",
@@ -9,42 +187,49 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "points",
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
           "category": "travel",
           "multiplier": 5,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "dining",
           "multiplier": 3,
-          "isPercentage": false,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "grocery",
           "multiplier": 3,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "streaming",
           "multiplier": 3,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
+          "category": "transit",
+          "multiplier": 5,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -52,7 +237,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#0A3161",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/sapphire_preferred_card.png"
     },
     {
@@ -60,36 +245,29 @@
       "name": "Chase Sapphire Reserve",
       "issuer": "Chase",
       "network": "visa",
-      "annualFee": 550,
-      "rewardType": "points",
+      "annualFee": 795,
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 10,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
+          "category": "transit",
           "multiplier": 5,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
+          "multiplier": 2,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "dining",
-          "multiplier": 3,
-          "isPercentage": false,
+          "category": "travel",
+          "multiplier": 2,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -97,7 +275,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#1A1F71",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/sapphire_reserve_card_Halo.png"
     },
     {
@@ -111,13 +289,6 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
           "category": "dining",
           "multiplier": 3,
           "isPercentage": true,
@@ -130,19 +301,33 @@
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "transit",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#0066B2",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_unlimited_card_alt.png"
     },
     {
       "id": "chase-chase-freedom-flex",
       "name": "Chase Freedom Flex",
       "issuer": "Chase",
-      "network": "visa",
+      "network": "mastercard",
       "annualFee": 0,
       "rewardType": "cashback",
       "baseReward": 1,
@@ -168,6 +353,20 @@
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "transit",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
         }
       ],
       "rotatingCategories": [
@@ -175,19 +374,20 @@
           "quarter": 4,
           "year": 2025,
           "categories": [
-            "travel",
-            "other",
-            "paypal"
+            "amazon",
+            "target",
+            "walmart"
           ],
           "multiplier": 5,
           "isPercentage": true,
           "cap": 1500,
+          "capPeriod": "quarterly",
           "activationRequired": true
         }
       ],
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#00A4E4",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_flex_card_alt.png"
     },
     {
@@ -199,11 +399,19 @@
       "rewardType": "cashback",
       "baseReward": 1.5,
       "baseIsPercentage": true,
-      "categoryRewards": [],
+      "categoryRewards": [
+        {
+          "category": "transit",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#4A90D9",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_rise_alt_card2.png"
     },
     {
@@ -219,8 +427,8 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#0066B2",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_unlimited_card_alt.png"
+      "imageColor": "#003B73",
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/freedom_rise_alt_card2.png"
     },
     {
       "id": "chase-ink-business-preferred",
@@ -228,50 +436,29 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "points",
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": 150000,
-          "capPeriod": "yearly"
-        },
         {
           "category": "shipping",
           "multiplier": 3,
-          "isPercentage": false,
-          "cap": 150000,
-          "capPeriod": "yearly"
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
         },
         {
-          "category": "internet",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": 150000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "phone",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": 150000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "advertising",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": 150000,
-          "capPeriod": "yearly"
+          "category": "transit",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#1A1F71",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_preferred_card.png"
     },
     {
@@ -288,42 +475,21 @@
           "category": "officeSupplies",
           "multiplier": 5,
           "isPercentage": true,
-          "cap": 25000,
-          "capPeriod": "yearly"
+          "cap": null,
+          "capPeriod": null
         },
         {
-          "category": "internet",
+          "category": "transit",
           "multiplier": 5,
           "isPercentage": true,
-          "cap": 25000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "phone",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": 25000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "gas",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": 25000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": 25000,
-          "capPeriod": "yearly"
+          "cap": null,
+          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#2D6A4F",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_cash_card.png"
     },
     {
@@ -333,13 +499,21 @@
       "network": "visa",
       "annualFee": 0,
       "rewardType": "cashback",
-      "baseReward": 1.5,
+      "baseReward": 1,
       "baseIsPercentage": true,
-      "categoryRewards": [],
+      "categoryRewards": [
+        {
+          "category": "transit",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#4895EF",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_unlimited_card.png"
     },
     {
@@ -349,12 +523,49 @@
       "network": "visa",
       "annualFee": 195,
       "rewardType": "cashback",
-      "baseReward": 2,
+      "baseReward": 1,
+      "baseIsPercentage": true,
+      "categoryRewards": [],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#003B73",
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_business_premier_card.png"
+    },
+    {
+      "id": "chase-united-quest-card",
+      "name": "United Quest Card",
+      "issuer": "Chase",
+      "network": "visa",
+      "annualFee": 350,
+      "rewardType": "cashback",
+      "baseReward": 1,
       "baseIsPercentage": true,
       "categoryRewards": [
         {
+          "category": "airlines",
+          "multiplier": 8,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
           "category": "travel",
-          "multiplier": 2.5,
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "streaming",
+          "multiplier": 2,
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
@@ -363,82 +574,37 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#1A1F71",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_business_premier_card.png"
-    },
-    {
-      "id": "chase-united-quest-card",
-      "name": "United Quest Card",
-      "issuer": "Chase",
-      "network": "visa",
-      "annualFee": 250,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "streaming",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#002244",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_quest_card.png"
+      "imageColor": "#003B73",
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_quest_card_tilted.png"
     },
     {
       "id": "chase-united-explorer-card",
       "name": "United Explorer Card",
       "issuer": "Chase",
       "network": "visa",
-      "annualFee": 95,
-      "rewardType": "miles",
+      "annualFee": 0,
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
+        {
+          "category": "airlines",
+          "multiplier": 7,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        },
         {
           "category": "travel",
           "multiplier": 2,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "dining",
           "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -446,8 +612,8 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#002244",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_explorer_card.png"
+      "imageColor": "#003B73",
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_explorer_card_tilted.png"
     },
     {
       "id": "chase-united-gateway-card",
@@ -455,35 +621,28 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 0,
-      "rewardType": "miles",
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
+          "category": "airlines",
+          "multiplier": 7,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "gas",
           "multiplier": 2,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "transit",
           "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "streaming",
-          "multiplier": 2,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -491,37 +650,37 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#0033A0",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_gateway_card.png"
+      "imageColor": "#003B73",
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_gateway_card_tilted.png"
     },
     {
-      "id": "chase-united-club-infinite-card",
-      "name": "United Club Infinite Card",
+      "id": "chase-united-club-card",
+      "name": "United Club Card",
       "issuer": "Chase",
       "network": "visa",
-      "annualFee": 525,
-      "rewardType": "miles",
+      "annualFee": 695,
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 4,
-          "isPercentage": false,
+          "category": "airlines",
+          "multiplier": 9,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
+          "multiplier": 5,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "dining",
           "multiplier": 2,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -529,89 +688,30 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#002244",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_club_infinite_card.png"
-    },
-    {
-      "id": "chase-united-business-card",
-      "name": "United Business Card",
-      "issuer": "Chase",
-      "network": "visa",
-      "annualFee": 99,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "officeSupplies",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#002244",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_biz_card.png"
+      "imageColor": "#003B73",
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/united_club_infinite_card_tilted.png"
     },
     {
       "id": "chase-southwest-rapid-rewards-priority",
       "name": "Southwest Rapid Rewards Priority",
       "issuer": "Chase",
       "network": "visa",
-      "annualFee": 149,
-      "rewardType": "points",
+      "annualFee": 229,
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
+          "category": "airlines",
+          "multiplier": 4,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "transit",
+          "category": "dining",
           "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "internet",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "phone",
-          "multiplier": 2,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -619,7 +719,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#304CB2",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_priority_card-2.png"
     },
     {
@@ -627,36 +727,15 @@
       "name": "Southwest Rapid Rewards Plus",
       "issuer": "Chase",
       "network": "visa",
-      "annualFee": 69,
-      "rewardType": "points",
+      "annualFee": 99,
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "transit",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "internet",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "phone",
-          "multiplier": 2,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -664,7 +743,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#FFBF27",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_plus_card_New.png"
     },
     {
@@ -672,36 +751,15 @@
       "name": "Southwest Rapid Rewards Premier",
       "issuer": "Chase",
       "network": "visa",
-      "annualFee": 99,
-      "rewardType": "points",
+      "annualFee": 149,
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "transit",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "internet",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "phone",
-          "multiplier": 2,
-          "isPercentage": false,
+          "category": "airlines",
+          "multiplier": 3,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -709,60 +767,8 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#304CB2",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_premier_card.png"
-    },
-    {
-      "id": "chase-southwest-rapid-rewards-performance-business",
-      "name": "Southwest Rapid Rewards Performance Business",
-      "issuer": "Chase",
-      "network": "visa",
-      "annualFee": 199,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "transit",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "internet",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "phone",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "advertising",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#304CB2",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_performance_biz_card.png"
     },
     {
       "id": "chase-marriott-bonvoy-boundless",
@@ -770,35 +776,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "points",
-      "baseReward": 2,
-      "baseIsPercentage": false,
+      "rewardType": "cashback",
+      "baseReward": 1,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 3,
-          "isPercentage": false,
+          "category": "hotels",
+          "multiplier": 17,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -806,7 +791,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#8A2432",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/marriott-bonvoy-boundless-card.png"
     },
     {
@@ -815,14 +800,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 0,
-      "rewardType": "points",
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
+          "category": "hotels",
+          "multiplier": 14,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -830,7 +815,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#8A2432",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/marriott_bonvoy_bold_card_NAF.png"
     },
     {
@@ -839,35 +824,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 250,
-      "rewardType": "points",
-      "baseReward": 2,
-      "baseIsPercentage": false,
+      "rewardType": "cashback",
+      "baseReward": 1,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 3,
-          "isPercentage": false,
+          "category": "hotels",
+          "multiplier": 5,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -875,37 +839,23 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#8A2432",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/marriott_bonvoy_bountiful_card.png"
     },
     {
       "id": "chase-ihg-one-rewards-premier",
       "name": "IHG One Rewards Premier",
       "issuer": "Chase",
-      "network": "visa",
+      "network": "mastercard",
       "annualFee": 99,
-      "rewardType": "points",
-      "baseReward": 3,
-      "baseIsPercentage": false,
+      "rewardType": "cashback",
+      "baseReward": 1,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 26,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 5,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -913,44 +863,23 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#005F3D",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ihg_premier_card.png"
     },
     {
       "id": "chase-ihg-one-rewards-traveler",
       "name": "IHG One Rewards Traveler",
       "issuer": "Chase",
-      "network": "visa",
+      "network": "mastercard",
       "annualFee": 0,
-      "rewardType": "points",
-      "baseReward": 3,
-      "baseIsPercentage": false,
+      "rewardType": "cashback",
+      "baseReward": 1,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 17,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "utilities",
-          "multiplier": 3,
-          "isPercentage": false,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -958,51 +887,23 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#005F3D",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ihg-traveler-card.png"
     },
     {
-      "id": "chase-world-of-hyatt-credit-card",
-      "name": "World of Hyatt Credit Card",
+      "id": "chase-world-of-hyatt",
+      "name": "World of Hyatt",
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "points",
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "travel",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "fitness",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "transit",
-          "multiplier": 2,
-          "isPercentage": false,
+          "category": "hotels",
+          "multiplier": 9,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -1010,170 +911,39 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#2C3E50",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/world_of_hyatt_card.png"
     },
     {
-      "id": "chase-world-of-hyatt-business-card",
-      "name": "World of Hyatt Business Card",
-      "issuer": "Chase",
-      "network": "visa",
-      "annualFee": 199,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "fitness",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "shipping",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "advertising",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#2C3E50",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/world_hyatt_biz_card.png"
-    },
-    {
-      "id": "chase-amazon-prime-rewards-visa",
-      "name": "Amazon Prime Rewards Visa",
+      "id": "chase-prime-visa",
+      "name": "Prime Visa",
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 0,
       "rewardType": "cashback",
       "baseReward": 1,
       "baseIsPercentage": true,
-      "categoryRewards": [
-        {
-          "category": "amazon",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "wholeFoods",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "drugstore",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "transit",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
+      "categoryRewards": [],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#FF9900",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/prime-visa.png"
     },
     {
-      "id": "chase-amazon-rewards-visa",
-      "name": "Amazon Rewards Visa",
+      "id": "chase-amazon-visa",
+      "name": "Amazon Visa",
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 0,
       "rewardType": "cashback",
       "baseReward": 1,
       "baseIsPercentage": true,
-      "categoryRewards": [
-        {
-          "category": "amazon",
-          "multiplier": 3,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "wholeFoods",
-          "multiplier": 3,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "drugstore",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
+      "categoryRewards": [],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#232F3E",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/amazon-visa.png"
     },
     {
@@ -1182,28 +952,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 0,
-      "rewardType": "points",
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "entertainment",
-          "multiplier": 1,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 1,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 1,
-          "isPercentage": false,
+          "category": "disney",
+          "multiplier": 10,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -1211,7 +967,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#006E96",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/disney-rewards2025.png"
     },
     {
@@ -1220,28 +976,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 49,
-      "rewardType": "points",
+      "rewardType": "cashback",
       "baseReward": 1,
-      "baseIsPercentage": false,
+      "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "entertainment",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 2,
-          "isPercentage": false,
+          "category": "disney",
+          "multiplier": 10,
+          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         }
@@ -1249,14 +991,14 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#1E3A5F",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/disney_Mickey70_premier_card.png"
     },
     {
       "id": "chase-instacart-mastercard",
       "name": "Instacart Mastercard",
       "issuer": "Chase",
-      "network": "visa",
+      "network": "mastercard",
       "annualFee": 0,
       "rewardType": "cashback",
       "baseReward": 1,
@@ -1270,8 +1012,8 @@
           "capPeriod": null
         },
         {
-          "category": "grocery",
-          "multiplier": 2,
+          "category": "travel",
+          "multiplier": 5,
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
@@ -1284,14 +1026,14 @@
           "capPeriod": null
         },
         {
-          "category": "dining",
-          "multiplier": 2,
+          "category": "travel",
+          "multiplier": 5,
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "streaming",
+          "category": "dining",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
@@ -1301,124 +1043,14 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#43B02A",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/instacart_card.png"
-    },
-    {
-      "id": "chase-aeroplan-credit-card",
-      "name": "Aeroplan Credit Card",
-      "issuer": "Chase",
-      "network": "visa",
-      "annualFee": 95,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 1.5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#C8102E",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/aeroplan_card.png"
-    },
-    {
-      "id": "chase-british-airways-visa",
-      "name": "British Airways Visa",
-      "issuer": "Chase",
-      "network": "visa",
-      "annualFee": 95,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#075AAA",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/british-airways.png"
-    },
-    {
-      "id": "chase-iberia-visa",
-      "name": "Iberia Visa",
-      "issuer": "Chase",
-      "network": "visa",
-      "annualFee": 95,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#CB2127",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/iberia_card.png"
-    },
-    {
-      "id": "chase-aer-lingus-visa",
-      "name": "Aer Lingus Visa",
-      "issuer": "Chase",
-      "network": "visa",
-      "annualFee": 95,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#006272",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/aer_lingus_card.png"
     },
     {
       "id": "chase-doordash-rewards-mastercard",
       "name": "DoorDash Rewards Mastercard",
       "issuer": "Chase",
-      "network": "visa",
+      "network": "mastercard",
       "annualFee": 0,
       "rewardType": "cashback",
       "baseReward": 1,
@@ -1432,13 +1064,6 @@
           "capPeriod": null
         },
         {
-          "category": "dining",
-          "multiplier": 3,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
           "category": "grocery",
           "multiplier": 2,
           "isPercentage": true,
@@ -1449,8 +1074,48 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#FF3008",
+      "imageColor": "#003B73",
       "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/doordash_card.png"
+    },
+    {
+      "id": "chase-aeroplan-card",
+      "name": "Aeroplan Card",
+      "issuer": "Chase",
+      "network": "visa",
+      "annualFee": 95,
+      "rewardType": "cashback",
+      "baseReward": 1,
+      "baseIsPercentage": true,
+      "categoryRewards": [
+        {
+          "category": "grocery",
+          "multiplier": 3,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#003B73",
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/aeroplan_card.png"
+    },
+    {
+      "id": "chase-british-airways-visa-signature",
+      "name": "British Airways Visa Signature",
+      "issuer": "Chase",
+      "network": "visa",
+      "annualFee": 95,
+      "rewardType": "cashback",
+      "baseReward": 1,
+      "baseIsPercentage": true,
+      "categoryRewards": [],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#003B73",
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/british-airways.png"
     },
     {
       "id": "american-express-american-express-platinum-card",
@@ -1463,7 +1128,14 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "hotels",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -1473,7 +1145,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#E5E4E2",
+      "imageColor": "#006FCF",
       "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/platinum-card.png"
     },
     {
@@ -1481,7 +1153,7 @@
       "name": "American Express Gold Card",
       "issuer": "American Express",
       "network": "amex",
-      "annualFee": 325,
+      "annualFee": 250,
       "rewardType": "points",
       "baseReward": 1,
       "baseIsPercentage": false,
@@ -1490,26 +1162,19 @@
           "category": "dining",
           "multiplier": 4,
           "isPercentage": false,
-          "cap": 50000,
-          "capPeriod": "yearly"
+          "cap": null,
+          "capPeriod": null
         },
         {
           "category": "grocery",
           "multiplier": 4,
           "isPercentage": false,
-          "cap": 25000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
-          "multiplier": 2,
+          "category": "airlines",
+          "multiplier": 3,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
@@ -1518,7 +1183,7 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#B8860B",
+      "imageColor": "#006FCF",
       "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/gold-card.png"
     },
     {
@@ -1556,43 +1221,12 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#228B22",
+      "imageColor": "#006FCF",
       "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/green-card.png"
     },
     {
-      "id": "american-express-centurion-card",
-      "name": "Centurion Card",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 5000,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 1.5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 1.5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#1C1C1C",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000070_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-blue-cash-preferred",
-      "name": "Blue Cash Preferred",
+      "id": "american-express-blue-cash-preferred-card",
+      "name": "Blue Cash Preferred Card",
       "issuer": "American Express",
       "network": "amex",
       "annualFee": 95,
@@ -1604,19 +1238,12 @@
           "category": "grocery",
           "multiplier": 6,
           "isPercentage": true,
-          "cap": 6000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "streaming",
-          "multiplier": 6,
-          "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "gas",
-          "multiplier": 3,
+          "category": "streaming",
+          "multiplier": 6,
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
@@ -1627,17 +1254,24 @@
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 3,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#0066B2",
+      "imageColor": "#006FCF",
       "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/blue-cash-preferred.png"
     },
     {
-      "id": "american-express-blue-cash-everyday",
-      "name": "Blue Cash Everyday",
+      "id": "american-express-blue-cash-everyday-card",
+      "name": "Blue Cash Everyday Card",
       "issuer": "American Express",
       "network": "amex",
       "annualFee": 0,
@@ -1647,13 +1281,6 @@
       "categoryRewards": [
         {
           "category": "grocery",
-          "multiplier": 3,
-          "isPercentage": true,
-          "cap": 6000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "gas",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
@@ -1665,784 +1292,27 @@
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 3,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#5DADE2",
+      "imageColor": "#006FCF",
       "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/blue-cash-everyday.png"
     },
     {
-      "id": "american-express-amex-everyday",
-      "name": "Amex EveryDay",
+      "id": "american-express-cash-magnet-card",
+      "name": "Cash Magnet Card",
       "issuer": "American Express",
       "network": "amex",
       "annualFee": 0,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "grocery",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#9B59B6",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/amex-everyday.png"
-    },
-    {
-      "id": "american-express-amex-everyday-preferred",
-      "name": "Amex EveryDay Preferred",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 95,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "grocery",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#8E44AD",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/amex-everyday.png"
-    },
-    {
-      "id": "american-express-delta-skymiles-blue",
-      "name": "Delta SkyMiles Blue",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 0,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#003366",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-blue.png"
-    },
-    {
-      "id": "american-express-delta-skymiles-gold",
-      "name": "Delta SkyMiles Gold",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 150,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#C41E3A",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/gold-delta-skymiles.png"
-    },
-    {
-      "id": "american-express-delta-skymiles-platinum",
-      "name": "Delta SkyMiles Platinum",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 350,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#0A2647",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/platinum-delta-skymiles.png"
-    },
-    {
-      "id": "american-express-delta-skymiles-reserve",
-      "name": "Delta SkyMiles Reserve",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 650,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#1E3A5F",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-reserve.png"
-    },
-    {
-      "id": "american-express-delta-skymiles-gold-business",
-      "name": "Delta SkyMiles Gold Business",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 150,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "shipping",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "advertising",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#B8860B",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000086_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-delta-skymiles-platinum-business",
-      "name": "Delta SkyMiles Platinum Business",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 350,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 1.5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#4A5568",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000087_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-delta-skymiles-reserve-business",
-      "name": "Delta SkyMiles Reserve Business",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 650,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#1A365D",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000088_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-hilton-honors-card",
-      "name": "Hilton Honors Card",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 0,
-      "rewardType": "points",
-      "baseReward": 3,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 7,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#104C97",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors.png"
-    },
-    {
-      "id": "american-express-hilton-honors-surpass",
-      "name": "Hilton Honors Surpass",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 150,
-      "rewardType": "points",
-      "baseReward": 3,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 12,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#0D3B66",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors-surpass.png"
-    },
-    {
-      "id": "american-express-hilton-honors-aspire",
-      "name": "Hilton Honors Aspire",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 550,
-      "rewardType": "points",
-      "baseReward": 3,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 14,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 7,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 7,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#1B1B3A",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors-aspire.png"
-    },
-    {
-      "id": "american-express-hilton-honors-business",
-      "name": "Hilton Honors Business",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 95,
-      "rewardType": "points",
-      "baseReward": 3,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 12,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "shipping",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#1A365D",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors.png"
-    },
-    {
-      "id": "american-express-marriott-bonvoy-brilliant",
-      "name": "Marriott Bonvoy Brilliant",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 650,
-      "rewardType": "points",
-      "baseReward": 2,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#8A2432",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-brilliant-card.png"
-    },
-    {
-      "id": "american-express-marriott-bonvoy-bevy",
-      "name": "Marriott Bonvoy Bevy",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 250,
-      "rewardType": "points",
-      "baseReward": 2,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#8A2432",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-bevy-card.png"
-    },
-    {
-      "id": "american-express-marriott-bonvoy-business",
-      "name": "Marriott Bonvoy Business",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 125,
-      "rewardType": "points",
-      "baseReward": 2,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "shipping",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "phone",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 4,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#8A2432",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000244_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-business-platinum-card",
-      "name": "Business Platinum Card",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 695,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "other",
-          "multiplier": 1.5,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#E5E4E2",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000175_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-business-gold-card",
-      "name": "Business Gold Card",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 375,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [],
-      "rotatingCategories": null,
-      "selectableConfig": {
-        "maxSelections": 2,
-        "availableCategories": [
-          "advertising",
-          "shipping",
-          "gas",
-          "travel",
-          "phone",
-          "officeSupplies"
-        ],
-        "multiplier": 4,
-        "isPercentage": false,
-        "cap": 150000,
-        "capPeriod": "yearly"
-      },
-      "signUpBonus": null,
-      "imageColor": "#B8860B",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000257_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-blue-business-plus",
-      "name": "Blue Business Plus",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 0,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "other",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": 50000,
-          "capPeriod": "yearly"
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#2E86AB",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000268_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-blue-business-cash",
-      "name": "Blue Business Cash",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 0,
-      "rewardType": "cashback",
-      "baseReward": 2,
-      "baseIsPercentage": true,
-      "categoryRewards": [],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#0066B2",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000267_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-amazon-business-prime",
-      "name": "Amazon Business Prime",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 0,
-      "rewardType": "cashback",
-      "baseReward": 1,
-      "baseIsPercentage": true,
-      "categoryRewards": [
-        {
-          "category": "amazon",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "wholeFoods",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#FF9900",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000295_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-lowes-business-rewards",
-      "name": "Lowes Business Rewards",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 0,
-      "rewardType": "cashback",
-      "baseReward": 1,
-      "baseIsPercentage": true,
-      "categoryRewards": [
-        {
-          "category": "homeImprovement",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "officeSupplies",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#004990",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000312_480x304_straight_withname.png"
-    },
-    {
-      "id": "american-express-plum-card",
-      "name": "Plum Card",
-      "issuer": "American Express",
-      "network": "amex",
-      "annualFee": 250,
       "rewardType": "cashback",
       "baseReward": 1.5,
       "baseIsPercentage": true,
@@ -2450,12 +1320,397 @@
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
-      "imageColor": "#614B79",
-      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000173_480x304_straight_withname.png"
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/cash-magnet.png"
     },
     {
-      "id": "citi-citi-double-cash",
-      "name": "Citi Double Cash",
+      "id": "american-express-amex-everyday-card",
+      "name": "Amex EveryDay Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 0,
+      "rewardType": "points",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "grocery",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/amex-everyday.png"
+    },
+    {
+      "id": "american-express-amex-everyday-preferred-card",
+      "name": "Amex EveryDay Preferred Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 95,
+      "rewardType": "points",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "grocery",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/amex-everyday-preferred.png"
+    },
+    {
+      "id": "american-express-hilton-honors-american-express-card",
+      "name": "Hilton Honors American Express Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 0,
+      "rewardType": "points",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "dining",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors.png"
+    },
+    {
+      "id": "american-express-hilton-honors-american-express-surpass-card",
+      "name": "Hilton Honors American Express Surpass Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 150,
+      "rewardType": "points",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "dining",
+          "multiplier": 6,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 6,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 6,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors-surpass.png"
+    },
+    {
+      "id": "american-express-hilton-honors-american-express-aspire-card",
+      "name": "Hilton Honors American Express Aspire Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 550,
+      "rewardType": "points",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "travel",
+          "multiplier": 7,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 7,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors-aspire.png"
+    },
+    {
+      "id": "american-express-marriott-bonvoy-american-express-card",
+      "name": "Marriott Bonvoy American Express Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 95,
+      "rewardType": "points",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy.png"
+    },
+    {
+      "id": "american-express-marriott-bonvoy-bevy-american-express-card",
+      "name": "Marriott Bonvoy Bevy American Express Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 250,
+      "rewardType": "points",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "hotels",
+          "multiplier": 6,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-bevy.png"
+    },
+    {
+      "id": "american-express-marriott-bonvoy-brilliant-american-express-card",
+      "name": "Marriott Bonvoy Brilliant American Express Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 650,
+      "rewardType": "points",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "hotels",
+          "multiplier": 6,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "airlines",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-brilliant.png"
+    },
+    {
+      "id": "american-express-delta-skymiles-blue-american-express-card",
+      "name": "Delta SkyMiles Blue American Express Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 0,
+      "rewardType": "miles",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "airlines",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-blue.png"
+    },
+    {
+      "id": "american-express-delta-skymiles-gold-american-express-card",
+      "name": "Delta SkyMiles Gold American Express Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 150,
+      "rewardType": "miles",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "airlines",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-gold.png"
+    },
+    {
+      "id": "american-express-delta-skymiles-platinum-american-express-card",
+      "name": "Delta SkyMiles Platinum American Express Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 350,
+      "rewardType": "miles",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "airlines",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-platinum.png"
+    },
+    {
+      "id": "american-express-delta-skymiles-reserve-american-express-card",
+      "name": "Delta SkyMiles Reserve American Express Card",
+      "issuer": "American Express",
+      "network": "amex",
+      "annualFee": 650,
+      "rewardType": "miles",
+      "baseReward": 1,
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "airlines",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#006FCF",
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-reserve.png"
+    },
+    {
+      "id": "citi-citi-double-cash-card",
+      "name": "Citi Double Cash Card",
       "issuer": "Citi",
       "network": "mastercard",
       "annualFee": 0,
@@ -2470,8 +1725,8 @@
       "imageURL": "https://www.citi.com/CRD/images/citi-double-cash/citi-double-cash_222x140.png"
     },
     {
-      "id": "citi-citi-custom-cash",
-      "name": "Citi Custom Cash",
+      "id": "citi-citi-custom-cash-card",
+      "name": "Citi Custom Cash Card",
       "issuer": "Citi",
       "network": "mastercard",
       "annualFee": 0,
@@ -2503,8 +1758,8 @@
       "imageURL": "https://www.citi.com/CRD/images/citi-custom-cash/citi-custom-cash_222x140.png"
     },
     {
-      "id": "citi-citi-premier",
-      "name": "Citi Premier",
+      "id": "citi-citi-premier-card",
+      "name": "Citi Premier Card",
       "issuer": "Citi",
       "network": "mastercard",
       "annualFee": 95,
@@ -2548,8 +1803,8 @@
       "imageURL": "https://www.citi.com/CRD/images/citi-premier/citi-premier_222x140.png"
     },
     {
-      "id": "citi-citi-strata-premier",
-      "name": "Citi Strata Premier",
+      "id": "citi-citi-strata-premier-card",
+      "name": "Citi Strata Premier Card",
       "issuer": "Citi",
       "network": "mastercard",
       "annualFee": 95,
@@ -2600,8 +1855,8 @@
       "imageURL": "https://www.citi.com/CRD/images/citi-strata-premier/citi-strata-premier_222x140.png"
     },
     {
-      "id": "citi-citi-rewards-",
-      "name": "Citi Rewards+",
+      "id": "citi-citi-rewards-card",
+      "name": "Citi Rewards+ Card",
       "issuer": "Citi",
       "network": "mastercard",
       "annualFee": 0,
@@ -2631,8 +1886,8 @@
       "imageURL": "https://www.citi.com/CRD/images/citi-rewards-plus/citi-rewards-plus_222x140.png"
     },
     {
-      "id": "citi-citi-diamond-preferred",
-      "name": "Citi Diamond Preferred",
+      "id": "citi-citi-diamond-preferred-card",
+      "name": "Citi Diamond Preferred Card",
       "issuer": "Citi",
       "network": "mastercard",
       "annualFee": 0,
@@ -2647,8 +1902,8 @@
       "imageURL": "https://www.citi.com/CRD/images/citi-diamond-preferred/citi-diamond-preferred_222x140.png"
     },
     {
-      "id": "citi-costco-anywhere-visa",
-      "name": "Costco Anywhere Visa",
+      "id": "citi-costco-anywhere-visa-card",
+      "name": "Costco Anywhere Visa Card",
       "issuer": "Citi",
       "network": "visa",
       "annualFee": 0,
@@ -2692,8 +1947,8 @@
       "imageURL": "https://www.citi.com/CRD/images/costco-anywhere/costco-anywhere_222x140.png"
     },
     {
-      "id": "citi-citi-aadvantage-platinum-select",
-      "name": "Citi AAdvantage Platinum Select",
+      "id": "citi-citi-aadvantage-platinum-select-card",
+      "name": "Citi AAdvantage Platinum Select Card",
       "issuer": "Citi",
       "network": "mastercard",
       "annualFee": 99,
@@ -2702,7 +1957,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -2730,32 +1985,32 @@
       "imageURL": "https://www.citi.com/CRD/images/citi-aadvantage-platinum/citi-aadvantage-platinum_222x140.png"
     },
     {
-      "id": "capital-one-capital-one-savor",
-      "name": "Capital One Savor",
+      "id": "capital-one-capital-one-savor-cash-rewards",
+      "name": "Capital One Savor Cash Rewards",
       "issuer": "Capital One",
       "network": "mastercard",
-      "annualFee": 95,
+      "annualFee": 0,
       "rewardType": "cashback",
       "baseReward": 1,
       "baseIsPercentage": true,
       "categoryRewards": [
         {
           "category": "dining",
-          "multiplier": 4,
+          "multiplier": 3,
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "entertainment",
-          "multiplier": 4,
+          "multiplier": 3,
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
         },
         {
           "category": "streaming",
-          "multiplier": 4,
+          "multiplier": 3,
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
@@ -2772,11 +2027,11 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#ED1B24",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/savor-background.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/pages/open-graph/savorone.png"
     },
     {
-      "id": "capital-one-capital-one-savorone",
-      "name": "Capital One SavorOne",
+      "id": "capital-one-capital-one-savorone-cash-rewards",
+      "name": "Capital One SavorOne Cash Rewards",
       "issuer": "Capital One",
       "network": "mastercard",
       "annualFee": 0,
@@ -2817,11 +2072,11 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#C41230",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/savorone-background.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/pages/open-graph/savorone.png"
     },
     {
-      "id": "capital-one-capital-one-venture-x",
-      "name": "Capital One Venture X",
+      "id": "capital-one-capital-one-venture-x-rewards",
+      "name": "Capital One Venture X Rewards",
       "issuer": "Capital One",
       "network": "visa",
       "annualFee": 395,
@@ -2837,7 +2092,7 @@
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -2848,11 +2103,11 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#1A1F71",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/venturex-background.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/pages/open-graph/venture-x.png"
     },
     {
-      "id": "capital-one-capital-one-venture",
-      "name": "Capital One Venture",
+      "id": "capital-one-capital-one-venture-rewards",
+      "name": "Capital One Venture Rewards",
       "issuer": "Capital One",
       "network": "visa",
       "annualFee": 95,
@@ -2872,11 +2127,11 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#004977",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/venture-background.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/pages/open-graph/venture.png"
     },
     {
-      "id": "capital-one-capital-one-ventureone",
-      "name": "Capital One VentureOne",
+      "id": "capital-one-capital-one-ventureone-rewards",
+      "name": "Capital One VentureOne Rewards",
       "issuer": "Capital One",
       "network": "visa",
       "annualFee": 0,
@@ -2896,11 +2151,11 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0066A1",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/ventureone-background.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/products/og/ventureone.png"
     },
     {
-      "id": "capital-one-capital-one-quicksilver",
-      "name": "Capital One Quicksilver",
+      "id": "capital-one-capital-one-quicksilver-cash-rewards",
+      "name": "Capital One Quicksilver Cash Rewards",
       "issuer": "Capital One",
       "network": "mastercard",
       "annualFee": 0,
@@ -2912,7 +2167,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#004879",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/quicksilver-background.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/pages/open-graph/quicksilver.png"
     },
     {
       "id": "capital-one-capital-one-platinum",
@@ -2928,31 +2183,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#5C6BC0",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/platinum-background.png"
-    },
-    {
-      "id": "capital-one-capital-one-spark-cash-plus",
-      "name": "Capital One Spark Cash Plus",
-      "issuer": "Capital One",
-      "network": "mastercard",
-      "annualFee": 150,
-      "rewardType": "cashback",
-      "baseReward": 2,
-      "baseIsPercentage": true,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#2E7D32",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/spark-cash-plus-background.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/pages/open-graph/platinumog.png"
     },
     {
       "id": "discover-discover-it-cash-back",
@@ -2970,9 +2201,7 @@
           "year": 2025,
           "categories": [
             "amazon",
-            "walmart",
-            "target",
-            "onlineShopping"
+            "drugstore"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -3048,9 +2277,7 @@
           "year": 2025,
           "categories": [
             "amazon",
-            "walmart",
-            "target",
-            "onlineShopping"
+            "drugstore"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -3074,7 +2301,14 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "onlineShopping",
+          "category": "grocery",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "wholesale",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
@@ -3172,7 +2406,15 @@
       "rewardType": "points",
       "baseReward": 1.5,
       "baseIsPercentage": false,
-      "categoryRewards": [],
+      "categoryRewards": [
+        {
+          "category": "travel",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
@@ -3196,8 +2438,8 @@
       "imageURL": "https://www.bankofamerica.com/content/images/ContextualSiteGraphics/CreditCardArt/en_US/Approved_PCM/8cty_cshsigcm_v_250x157.png"
     },
     {
-      "id": "bank-of-america-alaska-airlines-visa",
-      "name": "Alaska Airlines Visa",
+      "id": "bank-of-america-alaska-airlines-visa-signature",
+      "name": "Alaska Airlines Visa Signature",
       "issuer": "Bank of America",
       "network": "visa",
       "annualFee": 95,
@@ -3206,7 +2448,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -3232,13 +2474,6 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
@@ -3248,8 +2483,8 @@
       "imageURL": "https://www.bankofamerica.com/content/images/ContextualSiteGraphics/CreditCardArt/en_US/Approved_PCM/1bbt_sigcm_v_atmos_ascent_250.png"
     },
     {
-      "id": "wells-fargo-wells-fargo-active-cash",
-      "name": "Wells Fargo Active Cash",
+      "id": "wells-fargo-wells-fargo-active-cash-card",
+      "name": "Wells Fargo Active Cash Card",
       "issuer": "Wells Fargo",
       "network": "visa",
       "annualFee": 0,
@@ -3264,8 +2499,8 @@
       "imageURL": "https://creditcards.wellsfargo.com/W-Card-MarketPlace/v12-17-25/images/Products/ActiveCash/WF_ActiveCash_VS_Collateral_Front_RGB.png"
     },
     {
-      "id": "wells-fargo-wells-fargo-autograph",
-      "name": "Wells Fargo Autograph",
+      "id": "wells-fargo-wells-fargo-autograph-card",
+      "name": "Wells Fargo Autograph Card",
       "issuer": "Wells Fargo",
       "network": "visa",
       "annualFee": 0,
@@ -3323,8 +2558,8 @@
       "imageURL": "https://creditcards.wellsfargo.com/W-Card-MarketPlace/v12-17-25/images/Products/Autograph/Autograph-No-Fee-Card-RGB_d.png"
     },
     {
-      "id": "wells-fargo-wells-fargo-autograph-journey",
-      "name": "Wells Fargo Autograph Journey",
+      "id": "wells-fargo-wells-fargo-autograph-journey-card",
+      "name": "Wells Fargo Autograph Journey Card",
       "issuer": "Wells Fargo",
       "network": "visa",
       "annualFee": 95,
@@ -3333,14 +2568,14 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
         },
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 4,
           "isPercentage": false,
           "cap": null,
@@ -3354,7 +2589,7 @@
           "capPeriod": null
         },
         {
-          "category": "transit",
+          "category": "travel",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -3368,8 +2603,8 @@
       "imageURL": "https://creditcards.wellsfargo.com/W-Card-MarketPlace/v12-17-25/images/Products/AutographJourney/WF_Autograph_Journey_Card_d.png"
     },
     {
-      "id": "wells-fargo-wells-fargo-reflect",
-      "name": "Wells Fargo Reflect",
+      "id": "wells-fargo-wells-fargo-reflect-card",
+      "name": "Wells Fargo Reflect Card",
       "issuer": "Wells Fargo",
       "network": "visa",
       "annualFee": 0,
@@ -3384,8 +2619,8 @@
       "imageURL": "https://creditcards.wellsfargo.com/W-Card-MarketPlace/v12-17-25/images/Products/Reflect/Reflect_homepage.png"
     },
     {
-      "id": "wells-fargo-wells-fargo-bilt",
-      "name": "Wells Fargo Bilt",
+      "id": "wells-fargo-bilt-mastercard",
+      "name": "Bilt Mastercard",
       "issuer": "Wells Fargo",
       "network": "mastercard",
       "annualFee": 0,
@@ -3406,13 +2641,6 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
-        },
-        {
-          "category": "other",
-          "multiplier": 1,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
@@ -3422,8 +2650,8 @@
       "imageURL": "https://static.biltrewards.com/assets/seo/bilt_card2_coming_soon_seo.jpg"
     },
     {
-      "id": "us-bank-us-bank-altitude-go",
-      "name": "US Bank Altitude Go",
+      "id": "us-bank-us-bank-altitude-go-visa-signature",
+      "name": "US Bank Altitude Go Visa Signature",
       "issuer": "US Bank",
       "network": "visa",
       "annualFee": 0,
@@ -3435,8 +2663,8 @@
           "category": "dining",
           "multiplier": 4,
           "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
+          "cap": 2000,
+          "capPeriod": "quarterly"
         },
         {
           "category": "grocery",
@@ -3474,11 +2702,11 @@
       "imageURL": "https://www.usbank.com/content/dam/usbank/en/images/illustrations/card-art/credit-cards/altitude-go-visa-signature-credit-card.png"
     },
     {
-      "id": "us-bank-us-bank-altitude-connect",
-      "name": "US Bank Altitude Connect",
+      "id": "us-bank-us-bank-altitude-connect-visa-signature",
+      "name": "US Bank Altitude Connect Visa Signature",
       "issuer": "US Bank",
       "network": "visa",
-      "annualFee": 95,
+      "annualFee": 0,
       "rewardType": "points",
       "baseReward": 1,
       "baseIsPercentage": false,
@@ -3526,8 +2754,8 @@
       "imageURL": "https://www.usbank.com/content/dam/usbank/en/images/photos/credit-cards/photo-altitude-connect-consumer.png"
     },
     {
-      "id": "us-bank-us-bank-altitude-reserve",
-      "name": "US Bank Altitude Reserve",
+      "id": "us-bank-us-bank-altitude-reserve-visa-infinite",
+      "name": "US Bank Altitude Reserve Visa Infinite",
       "issuer": "US Bank",
       "network": "visa",
       "annualFee": 400,
@@ -3537,7 +2765,7 @@
       "categoryRewards": [
         {
           "category": "travel",
-          "multiplier": 5,
+          "multiplier": 3,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
@@ -3557,8 +2785,8 @@
       "imageURL": "https://www.usbank.com/content/dam/usbank/en/images/photos/credit-cards/photo-altitude-reserve-visa-infinite-benefits-vertical-card-art.png"
     },
     {
-      "id": "us-bank-us-bank-cash-",
-      "name": "US Bank Cash+",
+      "id": "us-bank-us-bank-cash-visa-signature",
+      "name": "US Bank Cash+ Visa Signature",
       "issuer": "US Bank",
       "network": "visa",
       "annualFee": 0,
@@ -3591,8 +2819,8 @@
       "imageURL": "https://www.usbank.com/content/dam/usbank/en/images/photos/credit-cards/photo-cash-plus-signature-lg.png"
     },
     {
-      "id": "us-bank-us-bank-smartly",
-      "name": "US Bank Smartly",
+      "id": "us-bank-us-bank-smartly-visa-signature",
+      "name": "US Bank Smartly Visa Signature",
       "issuer": "US Bank",
       "network": "visa",
       "annualFee": 0,
@@ -3617,7 +2845,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -3628,7 +2856,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#C8102E",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/aviator-red.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/aviator-red-world-elite-mastercard/img/aviator-red-world-elite-mastercard_Card.png"
     },
     {
       "id": "barclays-aadvantage-aviator-silver",
@@ -3641,7 +2869,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -3666,7 +2894,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#808080",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/aviator-silver.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/aviator-silver-world-elite-mastercard/img/aviator-silver-world-elite-mastercard_Card.png"
     },
     {
       "id": "barclays-jetblue-plus-card",
@@ -3679,7 +2907,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -3704,7 +2932,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003876",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/jetblue-plus.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/img/jetblue-plus-card_background.png"
     },
     {
       "id": "barclays-jetblue-card",
@@ -3717,7 +2945,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -3742,45 +2970,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003876",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/jetblue.png"
-    },
-    {
-      "id": "barclays-jetblue-business-card",
-      "name": "JetBlue Business Card",
-      "issuer": "Barclays",
-      "network": "mastercard",
-      "annualFee": 99,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 6,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "phone",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "officeSupplies",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#003876",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/jetblue-business.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/jetblue-card/img/jetblue-card_background.png"
     },
     {
       "id": "barclays-wyndham-rewards-earner-plus",
@@ -3793,7 +2983,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
@@ -3825,7 +3015,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0072CE",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/wyndham-plus.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-plus-card/img/wyndham-rewards-earner-plus-card_background.png"
     },
     {
       "id": "barclays-wyndham-rewards-earner",
@@ -3838,7 +3028,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
@@ -3870,7 +3060,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0072CE",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/wyndham.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-card/img/wyndham-rewards-earner-card_background.png"
     },
     {
       "id": "barclays-hawaiian-airlines-world-elite",
@@ -3883,7 +3073,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -3908,7 +3098,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#6B2D5B",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/hawaiian.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/img/hawaiian-airlines-world-elite-mastercard_Card.png"
     },
     {
       "id": "barclays-frontier-airlines-world-mastercard",
@@ -3921,7 +3111,7 @@
       "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
@@ -3946,7 +3136,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#004225",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/frontier.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/frontier-airlines-world-mastercard/img/frontier-airlines-world-mastercard_Card.png"
     },
     {
       "id": "barclays-priceline-vip-rewards-visa",
@@ -3984,13 +3174,13 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0064D2",
-      "imageURL": "https://www.barclaycardus.com/banking/cards/priceline.png"
+      "imageURL": "https://cards.barclaycardus.com/banking/cards/priceline-vip-rewards-visa-card/img/priceline-vip-rewards-visa-card_Card.png"
     },
     {
       "id": "navy-federal-navy-federal-more-rewards",
       "name": "Navy Federal More Rewards",
       "issuer": "Navy Federal",
-      "network": "visa",
+      "network": "amex",
       "annualFee": 0,
       "rewardType": "points",
       "baseReward": 1,
@@ -4029,7 +3219,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003865",
-      "imageURL": "https://www.navyfederal.org/content/dam/nfcu/images/cards/more-rewards.png"
+      "imageURL": "https://www.navyfederal.org/content/dam/card-art/amex/amex-no-name.svg"
     },
     {
       "id": "navy-federal-navy-federal-cashrewards",
@@ -4045,7 +3235,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003865",
-      "imageURL": "https://www.navyfederal.org/content/dam/nfcu/images/cards/cashrewards.png"
+      "imageURL": "https://www.navyfederal.org/content/dam/card-art/visa/cash-rewards.png"
     },
     {
       "id": "navy-federal-navy-federal-flagship-rewards",
@@ -4069,13 +3259,13 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0A2240",
-      "imageURL": "https://www.navyfederal.org/content/dam/nfcu/images/cards/flagship.png"
+      "imageURL": "https://www.navyfederal.org/content/dam/card-art/visa/flagship-rewards.png"
     },
     {
       "id": "navy-federal-navy-federal-go-rewards",
       "name": "Navy Federal Go Rewards",
       "issuer": "Navy Federal",
-      "network": "visa",
+      "network": "mastercard",
       "annualFee": 0,
       "rewardType": "points",
       "baseReward": 1,
@@ -4107,7 +3297,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003865",
-      "imageURL": "https://www.navyfederal.org/content/dam/nfcu/images/cards/gorewards.png"
+      "imageURL": "https://www.navyfederal.org/content/dam/card-art/mc/go-rewards.png"
     },
     {
       "id": "penfed-penfed-platinum-rewards",
@@ -4138,7 +3328,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003399",
-      "imageURL": "https://www.penfed.org/content/dam/penfed/cards/platinum-rewards.png"
+      "imageURL": "https://www.penfed.org/images/credit-cards/platinum-rewards.png"
     },
     {
       "id": "penfed-penfed-power-cash-rewards",
@@ -4154,7 +3344,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#007934",
-      "imageURL": "https://www.penfed.org/content/dam/penfed/cards/power-cash.png"
+      "imageURL": "https://www.penfed.org/images/credit-cards/power-cash.png"
     },
     {
       "id": "penfed-penfed-pathfinder-rewards",
@@ -4192,7 +3382,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#1A1F71",
-      "imageURL": "https://www.penfed.org/content/dam/penfed/cards/pathfinder.png"
+      "imageURL": "https://www.penfed.org/images/credit-cards/pathfinder.png"
     },
     {
       "id": "alliant-alliant-cashback-visa",
@@ -4274,44 +3464,6 @@
       "imageURL": "https://www.usaa.com/content/dam/usaa/cards/limitless.png"
     },
     {
-      "id": "bilt-bilt-mastercard",
-      "name": "Bilt Mastercard",
-      "issuer": "Bilt",
-      "network": "mastercard",
-      "annualFee": 0,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "dining",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "other",
-          "multiplier": 1,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#000000",
-      "imageURL": "https://www.biltrewards.com/assets/images/bilt-card.png"
-    },
-    {
       "id": "paypal-paypal-cashback-mastercard",
       "name": "PayPal Cashback Mastercard",
       "issuer": "PayPal",
@@ -4322,7 +3474,7 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "paypal",
+          "category": "onlineShopping",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
@@ -4333,45 +3485,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003087",
-      "imageURL": "https://www.paypal.com/content/dam/paypal/cards/cashback-mastercard.png"
-    },
-    {
-      "id": "paypal-paypal-extras-mastercard",
-      "name": "PayPal Extras Mastercard",
-      "issuer": "PayPal",
-      "network": "mastercard",
-      "annualFee": 0,
-      "rewardType": "points",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "paypal",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "gas",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#003087",
-      "imageURL": "https://www.paypal.com/content/dam/paypal/cards/extras.png"
+      "imageURL": "https://www.paypalobjects.com/marketing/web23/us/en/ppe/cbmc/hero_size-mobile-up_v1.jpg"
     },
     {
       "id": "venmo-venmo-credit-card",
@@ -4401,7 +3515,7 @@
       },
       "signUpBonus": null,
       "imageColor": "#008CFF",
-      "imageURL": "https://venmo.com/content/dam/venmo/cards/venmo-credit-card.png"
+      "imageURL": "https://venmo.com/about/creditcard/assets/img/cc-front.png"
     },
     {
       "id": "sofi-sofi-credit-card",
@@ -4417,7 +3531,31 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#4C00FF",
-      "imageURL": "https://www.sofi.com/content/dam/sofi/cards/credit-card.png"
+      "imageURL": "https://www.sofi.com/images/credit-card/card-front.png"
+    },
+    {
+      "id": "robinhood-robinhood-gold-card",
+      "name": "Robinhood Gold Card",
+      "issuer": "Robinhood",
+      "network": "visa",
+      "annualFee": 0,
+      "rewardType": "cashback",
+      "baseReward": 3,
+      "baseIsPercentage": true,
+      "categoryRewards": [
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
+        }
+      ],
+      "rotatingCategories": null,
+      "selectableConfig": null,
+      "signUpBonus": null,
+      "imageColor": "#C5A85F",
+      "imageURL": "https://cdn.robinhood.com/app_assets/credit-card/gold/web/shadow_card_desktop.png"
     },
     {
       "id": "apple-apple-card",
@@ -4448,7 +3586,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#FFFFFF",
-      "imageURL": "https://www.apple.com/v/apple-card/f/images/overview/hero__gb2doqnozq2e_large.png"
+      "imageURL": "https://www.apple.com/v/apple-card/p/images/overview/hero_cc__bcr1x3yclnwy_large.jpg"
     },
     {
       "id": "target-target-redcard-credit",
@@ -4472,7 +3610,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#CC0000",
-      "imageURL": "https://www.target.com/content/dam/target/cards/redcard.png"
+      "imageURL": "https://www.target.com/redcard/img/target-redcard.png"
     },
     {
       "id": "walmart-walmart-rewards-card",
@@ -4492,7 +3630,7 @@
           "capPeriod": null
         },
         {
-          "category": "walmart",
+          "category": "grocery",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
@@ -4520,51 +3658,6 @@
       "imageURL": "https://www.walmart.com/content/dam/walmart/cards/rewards.png"
     },
     {
-      "id": "costco-costco-anywhere-visa-by-citi",
-      "name": "Costco Anywhere Visa by Citi",
-      "issuer": "Costco",
-      "network": "visa",
-      "annualFee": 0,
-      "rewardType": "cashback",
-      "baseReward": 1,
-      "baseIsPercentage": true,
-      "categoryRewards": [
-        {
-          "category": "gas",
-          "multiplier": 4,
-          "isPercentage": true,
-          "cap": 7000,
-          "capPeriod": "yearly"
-        },
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 3,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "wholesale",
-          "multiplier": 2,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#E21836",
-      "imageURL": "https://www.costco.com/content/dam/costco/cards/anywhere-visa.png"
-    },
-    {
       "id": "amazon-amazon-store-card",
       "name": "Amazon Store Card",
       "issuer": "Amazon",
@@ -4587,44 +3680,6 @@
       "signUpBonus": null,
       "imageColor": "#FF9900",
       "imageURL": "https://m.media-amazon.com/images/G/01/credit/store-card.png"
-    },
-    {
-      "id": "synchrony-cathay-pacific-credit-card",
-      "name": "Cathay Pacific Credit Card",
-      "issuer": "Synchrony",
-      "network": "visa",
-      "annualFee": 0,
-      "rewardType": "miles",
-      "baseReward": 1,
-      "baseIsPercentage": false,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "dining",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        },
-        {
-          "category": "grocery",
-          "multiplier": 2,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
-      "rotatingCategories": null,
-      "selectableConfig": null,
-      "signUpBonus": null,
-      "imageColor": "#005E50",
-      "imageURL": "https://www.synchrony.com/content/dam/synchrony/cards/cathay-pacific.png"
     },
     {
       "id": "synchrony-verizon-visa-card",

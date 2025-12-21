@@ -1,9 +1,9 @@
-name: Monthly Credit Card Scraper
+name: Daily Credit Card Scraper
 
-# 每月 1 號早上 8:00 UTC (台灣時間下午 4:00) 自動執行
+# 每天早上 8:00 UTC (台灣時間下午 4:00) 自動執行
 on:
   schedule:
-    - cron: '0 8 1 * *'
+    - cron: '0 8 * * *'
 
   # 也可以手動觸發
   workflow_dispatch:
@@ -47,13 +47,55 @@ jobs:
       - name: Summary
         working-directory: Functions/scraper
         run: |
-          echo "## Scraper Results" >> $GITHUB_STEP_SUMMARY
+          echo "## Daily Scraper Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           node -e "
           const data = require('./scraped-cards.json');
+
+          // Overview
+          console.log('### Overview');
           console.log('| Metric | Value |');
           console.log('|--------|-------|');
           console.log('| Total Cards | ' + data.cards.length + ' |');
           console.log('| Cards with Images | ' + data.cards.filter(c => c.imageURL).length + ' |');
+          if (data.imageValidation) {
+            console.log('| Valid Image URLs | ' + data.imageValidation.valid + ' |');
+            console.log('| Invalid Image URLs | ' + data.imageValidation.invalid + ' |');
+          }
           console.log('| Scraped At | ' + data.scrapedAt + ' |');
+          console.log('');
+
+          // By Issuer
+          console.log('### Cards by Issuer');
+          console.log('| Issuer | Count |');
+          console.log('|--------|-------|');
+          const issuers = {};
+          data.cards.forEach(c => issuers[c.issuer] = (issuers[c.issuer] || 0) + 1);
+          Object.entries(issuers)
+            .sort((a, b) => b[1] - a[1])
+            .forEach(([issuer, count]) => console.log('| ' + issuer + ' | ' + count + ' |'));
+          console.log('');
+
+          // Scraper Errors
+          if (data.errors && data.errors.length > 0) {
+            console.log('### Scraper Errors');
+            data.errors.forEach(e => console.log('- **' + e.issuer + '**: ' + e.error));
+            console.log('');
+          }
+
+          // Image Validation Errors
+          if (data.imageValidation && data.imageValidation.errors && data.imageValidation.errors.length > 0) {
+            console.log('### Invalid Image URLs');
+            data.imageValidation.errors.slice(0, 10).forEach(e => console.log('- **' + e.card + '**: ' + e.reason));
+            if (data.imageValidation.errors.length > 10) {
+              console.log('- ... and ' + (data.imageValidation.errors.length - 10) + ' more');
+            }
+            console.log('');
+          }
+
+          // Duplicate Categories Warning
+          if (data.duplicateCategories && data.duplicateCategories.length > 0) {
+            console.log('### Duplicate Categories (Warning)');
+            data.duplicateCategories.forEach(c => console.log('- **' + c.card + '**: ' + c.duplicates.join(', ')));
+          }
           " >> $GITHUB_STEP_SUMMARY

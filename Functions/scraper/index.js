@@ -13,6 +13,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
+const http = require('http');
 
 // Import validation
 const { validateAllCards, printValidationSummary } = require('./utils/schema-validator');
@@ -29,6 +31,92 @@ const usbankScraper = require('./scrapers/usbank');
 const othersScraper = require('./scrapers/others');
 
 const OUTPUT_FILE = path.join(__dirname, 'scraped-cards.json');
+
+/**
+ * Check if a URL is accessible (returns HTTP status code)
+ */
+function checkImageUrl(url) {
+  return new Promise((resolve) => {
+    const client = url.startsWith('https') ? https : http;
+    const req = client.request(url, { method: 'HEAD', timeout: 10000 }, (res) => {
+      resolve({ status: res.statusCode, ok: res.statusCode >= 200 && res.statusCode < 400 });
+    });
+    req.on('error', (err) => resolve({ status: 0, ok: false, error: err.message }));
+    req.on('timeout', () => { req.destroy(); resolve({ status: 0, ok: false, error: 'timeout' }); });
+    req.end();
+  });
+}
+
+/**
+ * Check for duplicate categories in cards (warning only, doesn't fail validation)
+ */
+function checkDuplicateCategories(cards) {
+  console.log('\n🔍 Checking for duplicate categories...');
+  const cardsWithDuplicates = [];
+
+  for (const card of cards) {
+    if (!card.categoryRewards || card.categoryRewards.length === 0) continue;
+
+    const categories = card.categoryRewards.map(r => r.category);
+    const duplicates = categories.filter((c, i) => categories.indexOf(c) !== i);
+
+    if (duplicates.length > 0) {
+      cardsWithDuplicates.push({
+        card: card.name,
+        duplicates: [...new Set(duplicates)]
+      });
+    }
+  }
+
+  if (cardsWithDuplicates.length === 0) {
+    console.log('   ✅ No duplicate categories found');
+  } else {
+    console.log(`   ⚠️  Found ${cardsWithDuplicates.length} cards with duplicate categories:`);
+    cardsWithDuplicates.forEach(c => {
+      console.log(`   - ${c.card}: ${c.duplicates.join(', ')}`);
+    });
+  }
+
+  return cardsWithDuplicates;
+}
+
+/**
+ * Validate all image URLs are accessible
+ */
+async function validateImageUrls(cards) {
+  console.log('\n🖼️  Validating image URLs...');
+  const results = { valid: 0, invalid: 0, missing: 0, errors: [] };
+
+  for (const card of cards) {
+    if (!card.imageURL) {
+      results.missing++;
+      continue;
+    }
+
+    const check = await checkImageUrl(card.imageURL);
+    if (check.ok) {
+      results.valid++;
+    } else {
+      results.invalid++;
+      const reason = check.error || `HTTP ${check.status}`;
+      results.errors.push({ card: card.name, url: card.imageURL, reason });
+    }
+  }
+
+  // Print results
+  console.log(`   ✅ Valid: ${results.valid}`);
+  console.log(`   ❌ Invalid: ${results.invalid}`);
+  console.log(`   ⚠️  Missing: ${results.missing}`);
+
+  if (results.errors.length > 0) {
+    console.log('\n   Invalid image URLs:');
+    results.errors.forEach(e => {
+      console.log(`   - ${e.card}: ${e.reason}`);
+    });
+  }
+
+  return results;
+}
 
 async function runAllScrapers() {
   console.log('🚀 Starting SmartCard Credit Card Scraper...\n');
@@ -70,11 +158,24 @@ async function runAllScrapers() {
     process.exit(1);
   }
 
+  // Check for duplicate categories (warning only)
+  const duplicateCategories = checkDuplicateCategories(allCards);
+
+  // Validate image URLs
+  const imageValidation = await validateImageUrls(allCards);
+
   // Save results
   const result = {
     scrapedAt: new Date().toISOString(),
     totalCards: allCards.length,
     errors: errors,
+    duplicateCategories: duplicateCategories,
+    imageValidation: {
+      valid: imageValidation.valid,
+      invalid: imageValidation.invalid,
+      missing: imageValidation.missing,
+      errors: imageValidation.errors
+    },
     cards: allCards
   };
 
@@ -85,6 +186,7 @@ async function runAllScrapers() {
   console.log(`   Total cards: ${allCards.length}`);
   console.log(`   Valid cards: ${validationResult.validCards}`);
   console.log(`   Scraper errors: ${errors.length}`);
+  console.log(`   Images: ${imageValidation.valid} valid, ${imageValidation.invalid} invalid, ${imageValidation.missing} missing`);
   console.log(`   Output saved to: ${OUTPUT_FILE}`);
   console.log('='.repeat(50));
 
