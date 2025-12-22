@@ -30,6 +30,40 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+async function deleteAllCards() {
+  console.log('🗑️  Deleting existing cards from Firestore...');
+
+  const cardsRef = db.collection('cards');
+  const snapshot = await cardsRef.get();
+
+  if (snapshot.empty) {
+    console.log('   Collection is empty, skipping delete.\n');
+    return;
+  }
+
+  let batch = db.batch();
+  let batchCount = 0;
+  let totalDeleted = 0;
+
+  for (const doc of snapshot.docs) {
+    batch.delete(doc.ref);
+    batchCount++;
+    totalDeleted++;
+
+    if (batchCount >= 450) {
+      await batch.commit();
+      batch = db.batch();
+      batchCount = 0;
+    }
+  }
+
+  if (batchCount > 0) {
+    await batch.commit();
+  }
+
+  console.log(`   ✅ Deleted ${totalDeleted} cards\n`);
+}
+
 async function uploadCards() {
   const scrapedDataPath = path.join(__dirname, 'scraped-cards.json');
 
@@ -98,9 +132,14 @@ async function uploadCards() {
   console.log(`\n✨ Successfully uploaded ${totalCount} cards to Firestore!`);
 }
 
-uploadCards()
+async function main() {
+  await deleteAllCards();
+  await uploadCards();
+}
+
+main()
   .then(() => process.exit(0))
   .catch((error) => {
-    console.error('Error uploading cards:', error);
+    console.error('Error:', error);
     process.exit(1);
   });

@@ -36,6 +36,9 @@ const CATEGORIES = {
   gap: 'gap',
   nordstrom: 'nordstrom',
   electronics: 'electronics',
+  disney: 'disney',
+  hotels: 'hotels',
+  airlines: 'airlines',
   other: 'other'
 };
 
@@ -91,29 +94,30 @@ const CATEGORY_MAPPINGS = {
   'chaseTravel': CATEGORIES.travel,
   'chasetravel': CATEGORIES.travel,
 
-  // US Airlines
-  'delta': CATEGORIES.travel,
-  'united': CATEGORIES.travel,
-  'southwest': CATEGORIES.travel,
-  'americanairlines': CATEGORIES.travel,
-  'jetblue': CATEGORIES.travel,
-  'frontier': CATEGORIES.travel,
-  'hawaiian': CATEGORIES.travel,
-  'alaska': CATEGORIES.travel,
-
-  // International Airlines
-  'britishairways': CATEGORIES.travel,
-  'iberia': CATEGORIES.travel,
-  'aerlingus': CATEGORIES.travel,
-  'aircanada': CATEGORIES.travel,
-  'cathaypacific': CATEGORIES.travel,
+  // Airlines
+  'airlines': CATEGORIES.airlines,
+  'delta': CATEGORIES.airlines,
+  'united': CATEGORIES.airlines,
+  'southwest': CATEGORIES.airlines,
+  'americanairlines': CATEGORIES.airlines,
+  'jetblue': CATEGORIES.airlines,
+  'frontier': CATEGORIES.airlines,
+  'hawaiian': CATEGORIES.airlines,
+  'alaska': CATEGORIES.airlines,
+  'britishairways': CATEGORIES.airlines,
+  'iberia': CATEGORIES.airlines,
+  'aerlingus': CATEGORIES.airlines,
+  'aircanada': CATEGORIES.airlines,
+  'cathaypacific': CATEGORIES.airlines,
+  'aeroplan': CATEGORIES.airlines,
 
   // Hotel Brands
-  'hilton': CATEGORIES.travel,
-  'marriott': CATEGORIES.travel,
-  'hyatt': CATEGORIES.travel,
-  'ihg': CATEGORIES.travel,
-  'wyndham': CATEGORIES.travel,
+  'hilton': CATEGORIES.hotels,
+  'marriott': CATEGORIES.hotels,
+  'hyatt': CATEGORIES.hotels,
+  'ihg': CATEGORIES.hotels,
+  'wyndham': CATEGORIES.hotels,
+  'hotels': CATEGORIES.hotels,
 
   // ========== STREAMING ==========
   'streaming': CATEGORIES.streaming,
@@ -181,6 +185,10 @@ const CATEGORY_MAPPINGS = {
   'paypal': CATEGORIES.paypal,
   'apple': CATEGORIES.apple,
   'apple purchases': CATEGORIES.apple,
+  'disney': CATEGORIES.disney,
+  'disney purchases': CATEGORIES.disney,
+  'disneyland': CATEGORIES.disney,
+  'disney world': CATEGORIES.disney,
 
   // ========== UTILITIES ==========
   'utilities': CATEGORIES.utilities,
