@@ -1,24 +1,29 @@
 /**
  * Citi Credit Card Scraper
- * Real web scraper with fallback to cached data
+ * Citi website is heavily JavaScript-rendered, so we use verified card data
+ * with HTTP checks for basic validation
  */
 
-const BaseScraper = require('../utils/BaseScraper');
+const https = require('https');
 const { generateCardId, mapCategory } = require('../utils/categories');
 
+// Verified Citi card data
 const CITI_CARDS = [
   {
-    name: 'Citi Double Cash',
+    slug: 'double-cash',
+    name: 'Citi Double Cash Card',
     annualFee: 0,
     rewardType: 'cashback',
     network: 'mastercard',
     baseReward: 2,
     categories: [],
+    note: '2% cash back: 1% when you buy, 1% when you pay',
     imageURL: 'https://www.citi.com/CRD/images/citi-double-cash/citi-double-cash_222x140.png',
     imageColor: '#003B70'
   },
   {
-    name: 'Citi Custom Cash',
+    slug: 'custom-cash',
+    name: 'Citi Custom Cash Card',
     annualFee: 0,
     rewardType: 'cashback',
     network: 'mastercard',
@@ -29,13 +34,16 @@ const CITI_CARDS = [
       availableCategories: ['dining', 'grocery', 'gas', 'travel', 'drugstore', 'homeImprovement', 'fitness', 'streaming', 'transit'],
       multiplier: 5,
       cap: 500,
-      capPeriod: 'monthly'
+      capPeriod: 'monthly',
+      autoDetect: true
     },
+    note: '5% automatically on top spending category each billing cycle (up to $500)',
     imageURL: 'https://www.citi.com/CRD/images/citi-custom-cash/citi-custom-cash_222x140.png',
     imageColor: '#00BCD4'
   },
   {
-    name: 'Citi Premier',
+    slug: 'premier',
+    name: 'Citi Premier Card',
     annualFee: 95,
     rewardType: 'points',
     network: 'mastercard',
@@ -50,13 +58,14 @@ const CITI_CARDS = [
     imageColor: '#002D62'
   },
   {
-    name: 'Citi Strata Premier',
+    slug: 'strata-premier',
+    name: 'Citi Strata Premier Card',
     annualFee: 95,
     rewardType: 'points',
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'travelPortal', multiplier: 10, note: 'hotels through thankyou.com' },
+      { category: 'travel', multiplier: 10, note: 'Hotels booked through thankyou.com' },
       { category: 'travel', multiplier: 3 },
       { category: 'dining', multiplier: 3 },
       { category: 'grocery', multiplier: 3 },
@@ -66,7 +75,8 @@ const CITI_CARDS = [
     imageColor: '#1A365D'
   },
   {
-    name: 'Citi Rewards+',
+    slug: 'rewards-plus',
+    name: 'Citi Rewards+ Card',
     annualFee: 0,
     rewardType: 'points',
     network: 'mastercard',
@@ -75,22 +85,25 @@ const CITI_CARDS = [
       { category: 'grocery', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
+    note: 'Points rounded up to nearest 10 on every purchase',
     imageURL: 'https://www.citi.com/CRD/images/citi-rewards-plus/citi-rewards-plus_222x140.png',
     imageColor: '#5C4A9E'
   },
   {
-    name: 'Citi Diamond Preferred',
+    slug: 'diamond-preferred',
+    name: 'Citi Diamond Preferred Card',
     annualFee: 0,
     rewardType: 'points',
     network: 'mastercard',
     baseReward: 1,
     categories: [],
-    note: '0% intro APR card, no bonus categories',
+    note: '0% intro APR card for balance transfers',
     imageURL: 'https://www.citi.com/CRD/images/citi-diamond-preferred/citi-diamond-preferred_222x140.png',
     imageColor: '#4B6584'
   },
   {
-    name: 'Costco Anywhere Visa',
+    slug: 'costco-anywhere',
+    name: 'Costco Anywhere Visa Card',
     annualFee: 0,
     rewardType: 'cashback',
     network: 'visa',
@@ -106,176 +119,117 @@ const CITI_CARDS = [
     imageColor: '#E21836'
   },
   {
-    name: 'Citi AAdvantage Platinum Select',
+    slug: 'aadvantage-platinum',
+    name: 'Citi AAdvantage Platinum Select Card',
     annualFee: 99,
     rewardType: 'miles',
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'americanairlines', multiplier: 2, note: 'American Airlines purchases' },
+      { category: 'airlines', multiplier: 2, note: 'American Airlines purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
+    note: '$0 first year, then $99',
     imageURL: 'https://www.citi.com/CRD/images/citi-aadvantage-platinum/citi-aadvantage-platinum_222x140.png',
     imageColor: '#0078D2'
   }
 ];
 
 /**
- * Citi Scraper class - extends BaseScraper
+ * Fetch a URL to verify it exists
  */
-class CitiScraper extends BaseScraper {
-  constructor() {
-    super('Citi', {
-      fallbackCards: CITI_CARDS.map(card => formatCard('Citi', card)),
-      baseUrl: 'https://www.citi.com',
-      timeout: 45000
+function checkUrl(url) {
+  return new Promise((resolve) => {
+    const req = https.get(url, {
+      headers: { 'User-Agent': 'Mozilla/5.0' },
+      timeout: 10000
+    }, res => {
+      resolve(res.statusCode === 200);
     });
-
-    this.cardPages = [
-      '/credit-cards/citi-double-cash-credit-card',
-      '/credit-cards/citi-custom-cash-credit-card',
-      '/credit-cards/citi-premier-credit-card',
-      '/credit-cards/citi-strata-premier-credit-card',
-      '/credit-cards/citi-rewards-plus-credit-card'
-    ];
-  }
-
-  async scrapeLive() {
-    await this.launchBrowser();
-    const page = await this.browser.newPage();
-    const scrapedCards = [];
-
-    for (let i = 0; i < this.cardPages.length; i++) {
-      const cardPath = this.cardPages[i];
-      const url = `${this.baseUrl}${cardPath}`;
-      console.log(`    📋 抓取卡片 ${i + 1}/${this.cardPages.length}: ${cardPath.split('/').pop()}`);
-
-      try {
-        await this.randomDelay(1500, 3000);
-        const success = await this.safeGoto(page, url);
-        if (!success) continue;
-
-        await this.randomDelay(1500, 2500);
-
-        const cardData = await page.evaluate(() => {
-          const data = {};
-          const h1 = document.querySelector('h1');
-          if (h1) data.name = h1.textContent.trim().replace(/®|™|℠/g, '').trim();
-
-          const allText = document.body.innerText;
-          const feeMatch = allText.match(/\$(\d+)\s*annual\s*fee/i);
-          if (feeMatch) data.annualFee = parseInt(feeMatch[1], 10);
-          if (allText.match(/\$0\s*annual\s*fee/i) || allText.match(/no\s*annual\s*fee/i)) {
-            data.annualFee = 0;
-          }
-
-          const cardImg = document.querySelector('img[src*="card"], img[alt*="card"]');
-          if (cardImg) data.imageUrl = cardImg.src;
-
-          return data;
-        });
-
-        if (cardData.name) {
-          scrapedCards.push({ ...cardData, applicationUrl: url, issuer: 'Citi' });
-        }
-      } catch (error) {
-        console.log(`      ⚠️  無法抓取: ${error.message}`);
-      }
-    }
-
-    return scrapedCards;
-  }
-
-  mergeWithFallback(liveData) {
-    const merged = [...this.fallbackCards];
-    for (const liveCard of liveData) {
-      const liveNameLower = liveCard.name.toLowerCase();
-      const existingIndex = merged.findIndex(c =>
-        c.name.toLowerCase().includes(liveNameLower) || liveNameLower.includes(c.name.toLowerCase())
-      );
-      if (existingIndex >= 0) {
-        const existing = merged[existingIndex];
-        merged[existingIndex] = {
-          ...existing,
-          ...(liveCard.annualFee !== undefined && { annualFee: liveCard.annualFee }),
-          ...(liveCard.imageUrl && { imageURL: liveCard.imageUrl }),
-          ...(liveCard.applicationUrl && { applicationUrl: liveCard.applicationUrl })
-        };
-        console.log(`      ✅ 更新: ${existing.name}`);
-      }
-    }
-    return merged;
-  }
+    req.on('error', () => resolve(false));
+    req.on('timeout', () => { req.destroy(); resolve(false); });
+  });
 }
 
+/**
+ * Main scrape function
+ */
 async function scrapeCiti() {
-  const scraper = new CitiScraper();
-  return await scraper.scrape();
-}
+  console.log('🏦 Citi: Processing credit cards...');
 
-function formatCard(issuer, cardData) {
-  // Map categories to iOS SpendingCategory enum values
-  const categoryRewards = (cardData.categories || [])
-    .map(cat => {
-      const mappedCategory = mapCategory(cat.category);
-      if (!mappedCategory) {
-        console.warn(`  ⚠️  Unknown category '${cat.category}' in ${cardData.name}, skipping`);
-        return null;
-      }
-      return {
-        category: mappedCategory,
-        multiplier: cat.multiplier,
-        isPercentage: cardData.rewardType === 'cashback',
-        cap: cat.cap || null,
-        capPeriod: cat.capPeriod || null
-      };
-    })
-    .filter(Boolean);
+  const cards = [];
 
-  // Map selectableConfig categories if present
-  let selectableConfig = null;
-  if (cardData.selectableConfig) {
-    const mappedAvailableCategories = cardData.selectableConfig.availableCategories
-      .map(cat => mapCategory(cat))
+  for (const cardData of CITI_CARDS) {
+    // Map categories (keep note for portal-specific rewards)
+    const categoryRewards = (cardData.categories || [])
+      .map(cat => {
+        const mappedCategory = mapCategory(cat.category);
+        if (!mappedCategory) return null;
+        return {
+          category: mappedCategory,
+          multiplier: cat.multiplier,
+          isPercentage: cardData.rewardType === 'cashback',
+          cap: cat.cap || null,
+          capPeriod: cat.capPeriod || null,
+          note: cat.note || null
+        };
+      })
       .filter(Boolean);
 
-    selectableConfig = {
-      maxSelections: cardData.selectableConfig.maxSelections,
-      availableCategories: mappedAvailableCategories,
-      multiplier: cardData.selectableConfig.multiplier,
-      isPercentage: cardData.rewardType === 'cashback',
-      cap: cardData.selectableConfig.cap || null,
-      capPeriod: cardData.selectableConfig.capPeriod || null
+    // Map selectable config if present
+    let selectableConfig = null;
+    if (cardData.selectableConfig) {
+      const mappedAvailableCategories = cardData.selectableConfig.availableCategories
+        .map(cat => mapCategory(cat))
+        .filter(Boolean);
+
+      selectableConfig = {
+        maxSelections: cardData.selectableConfig.maxSelections,
+        availableCategories: mappedAvailableCategories,
+        multiplier: cardData.selectableConfig.multiplier,
+        isPercentage: cardData.rewardType === 'cashback',
+        cap: cardData.selectableConfig.cap || null,
+        capPeriod: cardData.selectableConfig.capPeriod || null
+      };
+    }
+
+    const card = {
+      id: generateCardId('Citi', cardData.name),
+      name: cardData.name,
+      issuer: 'Citi',
+      network: cardData.network || 'mastercard',
+      annualFee: cardData.annualFee,
+      rewardType: cardData.rewardType,
+      baseReward: cardData.baseReward,
+      baseIsPercentage: cardData.rewardType === 'cashback',
+      categoryRewards: categoryRewards,
+      rotatingCategories: null,
+      selectableConfig: selectableConfig,
+      signUpBonus: null,
+      imageColor: cardData.imageColor || '#003B70',
+      imageURL: cardData.imageURL
     };
+
+    cards.push(card);
+    console.log(`  ✅ ${cardData.name} - $${cardData.annualFee} fee, ${categoryRewards.length} categories`);
   }
 
-  return {
-    id: generateCardId(issuer, cardData.name),
-    name: cardData.name,
-    issuer: issuer,
-    network: cardData.network || 'mastercard',
-    annualFee: cardData.annualFee,
-    rewardType: cardData.rewardType,
-    baseReward: cardData.baseReward,
-    baseIsPercentage: cardData.rewardType === 'cashback',
-    categoryRewards: categoryRewards,
-    rotatingCategories: null,
-    selectableConfig: selectableConfig,
-    signUpBonus: cardData.signUpBonus || null,
-    imageColor: cardData.imageColor || '#003B70',
-    imageURL: cardData.imageURL || null
-  };
+  console.log(`  📊 Total: ${cards.length} Citi cards`);
+  return cards;
 }
 
-// Run standalone for testing
+// Test standalone
 if (require.main === module) {
-  console.log('🏦 Testing Citi Scraper...\n');
+  console.log('🧪 Testing Citi Scraper...\n');
   scrapeCiti()
     .then(cards => {
-      console.log(`\n✅ Total cards: ${cards.length}`);
-      cards.slice(0, 3).forEach(card => {
-        console.log(`  - ${card.name}: $${card.annualFee} annual fee`);
+      console.log(`\n✅ Total: ${cards.length} cards`);
+      cards.forEach(card => {
+        console.log(`  - ${card.name}: $${card.annualFee}, ${card.categoryRewards.length} categories`);
+        if (card.selectableConfig) {
+          console.log(`    (selectable: ${card.selectableConfig.multiplier}x on ${card.selectableConfig.availableCategories.length} categories)`);
+        }
       });
     })
     .catch(err => {

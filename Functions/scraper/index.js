@@ -49,6 +49,7 @@ function checkImageUrl(url) {
 
 /**
  * Check for duplicate categories in cards (warning only, doesn't fail validation)
+ * Note: Duplicates with different 'note' fields are allowed (e.g., portal-specific rewards)
  */
 function checkDuplicateCategories(cards) {
   console.log('\n🔍 Checking for duplicate categories...');
@@ -57,7 +58,9 @@ function checkDuplicateCategories(cards) {
   for (const card of cards) {
     if (!card.categoryRewards || card.categoryRewards.length === 0) continue;
 
-    const categories = card.categoryRewards.map(r => r.category);
+    // Only count as duplicate if same category WITHOUT note distinction
+    const withoutNote = card.categoryRewards.filter(r => !r.note);
+    const categories = withoutNote.map(r => r.category);
     const duplicates = categories.filter((c, i) => categories.indexOf(c) !== i);
 
     if (duplicates.length > 0) {
