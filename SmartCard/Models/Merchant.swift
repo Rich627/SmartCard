@@ -19,9 +19,9 @@ struct Merchant: Identifiable, Codable, Equatable {
 // Common merchant database
 struct MerchantDatabase {
     static let merchants: [Merchant] = [
-        // Grocery
-        Merchant(name: "Walmart", category: .grocery, alternativeCategories: [.other], keywords: ["walmart", "wal-mart"]),
-        Merchant(name: "Target", category: .grocery, alternativeCategories: [.other], keywords: ["target"]),
+        // Superstore (NOT grocery for most cards like Amex Gold)
+        Merchant(name: "Walmart", category: .other, alternativeCategories: [.grocery], keywords: ["walmart", "wal-mart"]),
+        Merchant(name: "Target", category: .other, alternativeCategories: [.grocery], keywords: ["target"]),
         Merchant(name: "Costco", category: .wholesale, keywords: ["costco"]),
         Merchant(name: "Sam's Club", category: .wholesale, keywords: ["sams", "sam's"]),
         Merchant(name: "BJ's Wholesale", category: .wholesale, keywords: ["bj's", "bjs"]),
@@ -246,6 +246,116 @@ struct MerchantDatabase {
         Merchant(name: "PetSmart", category: .other, keywords: ["petsmart"]),
         Merchant(name: "Petco", category: .other, keywords: ["petco"]),
         Merchant(name: "Chewy", category: .onlineShopping, keywords: ["chewy"]),
+
+        // Coffee Shops
+        Merchant(name: "Dutch Bros", category: .dining, keywords: ["dutch bros"]),
+        Merchant(name: "Peet's Coffee", category: .dining, keywords: ["peets", "peet's"]),
+        Merchant(name: "Philz Coffee", category: .dining, keywords: ["philz"]),
+        Merchant(name: "Blue Bottle", category: .dining, keywords: ["blue bottle"]),
+        Merchant(name: "Tim Hortons", category: .dining, keywords: ["tim hortons"]),
+
+        // Fast Casual
+        Merchant(name: "Raising Cane's", category: .dining, keywords: ["raising canes", "canes"]),
+        Merchant(name: "Culver's", category: .dining, keywords: ["culvers", "culver's"]),
+        Merchant(name: "Noodles & Company", category: .dining, keywords: ["noodles & company", "noodles and company"]),
+        Merchant(name: "Qdoba", category: .dining, keywords: ["qdoba"]),
+        Merchant(name: "Jersey Mike's", category: .dining, keywords: ["jersey mikes", "jersey mike's"]),
+        Merchant(name: "Firehouse Subs", category: .dining, keywords: ["firehouse subs"]),
+        Merchant(name: "Jimmy John's", category: .dining, keywords: ["jimmy johns", "jimmy john's"]),
+        Merchant(name: "Potbelly", category: .dining, keywords: ["potbelly"]),
+        Merchant(name: "Blaze Pizza", category: .dining, keywords: ["blaze pizza"]),
+        Merchant(name: "MOD Pizza", category: .dining, keywords: ["mod pizza"]),
+        Merchant(name: "Cava", category: .dining, keywords: ["cava"]),
+        Merchant(name: "Sweetgreen", category: .dining, keywords: ["sweetgreen"]),
+        Merchant(name: "Chopt", category: .dining, keywords: ["chopt"]),
+
+        // Department & Retail Stores
+        Merchant(name: "Kohl's", category: .other, keywords: ["kohls", "kohl's"]),
+        Merchant(name: "JCPenney", category: .other, keywords: ["jcpenney", "jc penney"]),
+        Merchant(name: "Dillard's", category: .other, keywords: ["dillards", "dillard's"]),
+        Merchant(name: "Belk", category: .other, keywords: ["belk"]),
+        Merchant(name: "Ross", category: .other, keywords: ["ross"]),
+        Merchant(name: "TJ Maxx", category: .other, keywords: ["tj maxx", "tjmaxx"]),
+        Merchant(name: "Marshalls", category: .other, keywords: ["marshalls"]),
+        Merchant(name: "HomeGoods", category: .other, keywords: ["homegoods", "home goods"]),
+        Merchant(name: "Burlington", category: .other, keywords: ["burlington"]),
+
+        // Clothing & Fashion
+        Merchant(name: "Old Navy", category: .other, keywords: ["old navy"]),
+        Merchant(name: "Gap", category: .other, keywords: ["gap"]),
+        Merchant(name: "Banana Republic", category: .other, keywords: ["banana republic"]),
+        Merchant(name: "H&M", category: .other, keywords: ["h&m", "hm"]),
+        Merchant(name: "Zara", category: .other, keywords: ["zara"]),
+        Merchant(name: "Uniqlo", category: .other, keywords: ["uniqlo"]),
+        Merchant(name: "Forever 21", category: .other, keywords: ["forever 21"]),
+        Merchant(name: "Express", category: .other, keywords: ["express"]),
+        Merchant(name: "Abercrombie", category: .other, keywords: ["abercrombie"]),
+        Merchant(name: "American Eagle", category: .other, keywords: ["american eagle", "aerie"]),
+        Merchant(name: "Lululemon", category: .other, keywords: ["lululemon"]),
+        Merchant(name: "Athleta", category: .other, keywords: ["athleta"]),
+        Merchant(name: "REI", category: .other, keywords: ["rei"]),
+        Merchant(name: "Dick's Sporting Goods", category: .other, keywords: ["dicks", "dick's sporting"]),
+
+        // Discount Stores
+        Merchant(name: "Dollar Tree", category: .other, keywords: ["dollar tree"]),
+        Merchant(name: "Dollar General", category: .other, keywords: ["dollar general"]),
+        Merchant(name: "Five Below", category: .other, keywords: ["five below"]),
+        Merchant(name: "Big Lots", category: .other, keywords: ["big lots"]),
+
+        // Office Supplies
+        Merchant(name: "Staples", category: .other, keywords: ["staples"]),
+        Merchant(name: "Office Depot", category: .other, keywords: ["office depot", "officemax"]),
+
+        // Beauty & Personal Care
+        Merchant(name: "Ulta", category: .other, keywords: ["ulta"]),
+        Merchant(name: "Sephora", category: .other, keywords: ["sephora"]),
+        Merchant(name: "Bath & Body Works", category: .other, keywords: ["bath & body works", "bath and body"]),
+        Merchant(name: "Sally Beauty", category: .other, keywords: ["sally beauty"]),
+
+        // Bookstores
+        Merchant(name: "Barnes & Noble", category: .other, keywords: ["barnes & noble", "barnes and noble"]),
+        Merchant(name: "Books-A-Million", category: .other, keywords: ["books a million"]),
+
+        // Electronics
+        Merchant(name: "Micro Center", category: .other, keywords: ["micro center"]),
+        Merchant(name: "B&H Photo", category: .other, keywords: ["b&h", "b&h photo"]),
+        Merchant(name: "GameStop", category: .other, keywords: ["gamestop"]),
+
+        // More Grocery Stores
+        Merchant(name: "WinCo", category: .grocery, keywords: ["winco"]),
+        Merchant(name: "Ralph's", category: .grocery, keywords: ["ralphs", "ralph's"]),
+        Merchant(name: "Hy-Vee", category: .grocery, keywords: ["hy-vee", "hyvee"]),
+        Merchant(name: "ShopRite", category: .grocery, keywords: ["shoprite"]),
+        Merchant(name: "Jewel-Osco", category: .grocery, keywords: ["jewel-osco", "jewel osco"]),
+        Merchant(name: "Fry's Food", category: .grocery, keywords: ["frys", "fry's food"]),
+        Merchant(name: "Fred Meyer", category: .grocery, keywords: ["fred meyer"]),
+        Merchant(name: "Schnucks", category: .grocery, keywords: ["schnucks"]),
+        Merchant(name: "Lucky Supermarkets", category: .grocery, keywords: ["lucky"]),
+
+        // Furniture & Home
+        Merchant(name: "IKEA", category: .other, keywords: ["ikea"]),
+        Merchant(name: "Bed Bath & Beyond", category: .other, keywords: ["bed bath"]),
+        Merchant(name: "Crate & Barrel", category: .other, keywords: ["crate & barrel", "crate and barrel"]),
+        Merchant(name: "Williams-Sonoma", category: .other, keywords: ["williams-sonoma", "williams sonoma"]),
+        Merchant(name: "Pottery Barn", category: .other, keywords: ["pottery barn"]),
+        Merchant(name: "West Elm", category: .other, keywords: ["west elm"]),
+        Merchant(name: "At Home", category: .other, keywords: ["at home"]),
+        Merchant(name: "World Market", category: .other, keywords: ["world market"]),
+
+        // Auto
+        Merchant(name: "AutoZone", category: .other, keywords: ["autozone"]),
+        Merchant(name: "O'Reilly Auto", category: .other, keywords: ["oreilly", "o'reilly auto"]),
+        Merchant(name: "Advance Auto Parts", category: .other, keywords: ["advance auto"]),
+        Merchant(name: "NAPA", category: .other, keywords: ["napa"]),
+        Merchant(name: "Jiffy Lube", category: .other, keywords: ["jiffy lube"]),
+        Merchant(name: "Valvoline", category: .other, keywords: ["valvoline"]),
+
+        // Warehouse Clubs (already have Costco, Sam's, BJ's)
+
+        // Specialty Food
+        Merchant(name: "The Fresh Market", category: .grocery, keywords: ["fresh market"]),
+        Merchant(name: "Natural Grocers", category: .grocery, keywords: ["natural grocers"]),
+        Merchant(name: "Earth Fare", category: .grocery, keywords: ["earth fare"]),
     ]
 
     static func findMerchant(query: String) -> Merchant? {

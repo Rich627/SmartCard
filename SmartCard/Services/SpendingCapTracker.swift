@@ -196,11 +196,12 @@ class SpendingCapTracker {
         let progress = calculateCapProgress(userCards: userCards, allCards: allCards, spendings: spendings)
 
         for cap in progress where cap.isNearCap {
+            guard let capValue = cap.cap else { continue }
             NotificationService.shared.scheduleSpendingCapAlert(
                 cardName: cap.cardName,
                 category: cap.category,
                 currentSpend: cap.currentSpend,
-                cap: cap.cap
+                cap: capValue
             )
         }
     }

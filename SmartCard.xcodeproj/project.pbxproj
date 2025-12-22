@@ -87,6 +87,7 @@
 		88967CA0E3EC808053EC8C13 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8B90AD9987F00FB94E8BC708 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		951760E33EB3D7F4011CDF59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9B67CC422EF627C80030A156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A189D557F3089F8D0C823484 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		AAEAA2FE7812B480AD349838 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		B7ABBA3126974600CAF8FE3D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -281,6 +282,7 @@
 		DDF88FE29A0DE0439A16D085 /* SmartCard */ = {
 			isa = PBXGroup;
 			children = (
+				9B67CC422EF627C80030A156 /* Info.plist */,
 				CFD80CDD2A3F101C118E4C44 /* GoogleService-Info.plist */,
 				8865B56E2F800187B340E4F2 /* SmartCard.entitlements */,
 				6AFA89211960A0FEF2C71E73 /* App */,
@@ -510,6 +512,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K434CK85HW;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmartCard/Info.plist;
 				INFOPLIST_GENERATION_MODE = GeneratedFile;
 				INFOPLIST_KEY_CFBundleDisplayName = SmartCard;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -603,6 +606,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K434CK85HW;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmartCard/Info.plist;
 				INFOPLIST_GENERATION_MODE = GeneratedFile;
 				INFOPLIST_KEY_CFBundleDisplayName = SmartCard;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";

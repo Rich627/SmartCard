@@ -10,6 +10,7 @@ struct RecommendView: View {
     @State private var showingSuggestions = false
     @State private var showingHistory = false
     @FocusState private var isSearchFocused: Bool
+    @FocusState private var isAmountFocused: Bool
 
     var matchingMerchants: [Merchant] {
         MerchantDatabase.searchMerchants(query: searchText)
@@ -211,6 +212,7 @@ struct RecommendView: View {
                         Text("$")
                         TextField("100", text: $amount)
                             .keyboardType(.decimalPad)
+                            .focused($isAmountFocused)
                             .multilineTextAlignment(.trailing)
                             .frame(width: 80)
                             .padding(8)
@@ -219,6 +221,15 @@ struct RecommendView: View {
                     }
                 }
                 .padding()
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            isAmountFocused = false
+                            isSearchFocused = false
+                        }
+                    }
+                }
 
                 Divider()
 

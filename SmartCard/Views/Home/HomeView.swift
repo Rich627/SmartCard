@@ -170,7 +170,7 @@ struct CreditUtilizationCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             CollapsibleHeader(
-                title: "Credit Utilization",
+                title: "Credit Line Usage",
                 subtitle: cardViewModel.totalCreditUtilization.map { String(format: "%.0f%% total", $0) },
                 subtitleColor: cardViewModel.totalCreditUtilization.map { utilizationColor($0) } ?? .secondary,
                 isExpanded: $isExpanded
