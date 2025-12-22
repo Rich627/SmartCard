@@ -39,7 +39,7 @@ const AMEX_CARDS = [
   { slug: 'delta-skymiles-reserve-american-express-card', name: 'Delta SkyMiles Reserve American Express Card', annualFee: 650, rewardType: 'miles' }
 ];
 
-// Image URLs for Amex cards
+// Image URLs for Amex cards (updated 2025-12)
 const AMEX_IMAGES = {
   'platinum': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/platinum-card.png',
   'gold-card': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/gold-card.png',
@@ -53,12 +53,12 @@ const AMEX_IMAGES = {
   'hilton-honors-surpass': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors-surpass.png',
   'hilton-honors-aspire': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/hilton-honors-aspire.png',
   'marriott-bonvoy': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy.png',
-  'marriott-bonvoy-bevy': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-bevy.png',
+  'marriott-bonvoy-bevy': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/credit-cards/hero-images/bevy-modal-desktop.png',
   'marriott-bonvoy-brilliant': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-brilliant.png',
-  'delta-skymiles-blue-american-express-card': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-blue.png',
-  'delta-skymiles-gold-american-express-card': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-gold.png',
-  'delta-skymiles-platinum-american-express-card': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-platinum.png',
-  'delta-skymiles-reserve-american-express-card': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-reserve.png'
+  'delta-skymiles-blue-american-express-card': 'https://icm.aexp-static.com/acquisition/card-art/NUS000000270_480x304_straight_withname.png',
+  'delta-skymiles-gold-american-express-card': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/gold-delta-skymiles.png',
+  'delta-skymiles-platinum-american-express-card': 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/platinum-delta-skymiles.png',
+  'delta-skymiles-reserve-american-express-card': 'https://icm.aexp-static.com/acquisition/card-art/NUS000000237_480x304_straight_withname.png'
 };
 
 /**
