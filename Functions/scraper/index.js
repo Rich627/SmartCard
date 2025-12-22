@@ -34,12 +34,24 @@ const OUTPUT_FILE = path.join(__dirname, 'scraped-cards.json');
 
 /**
  * Check if a URL is accessible (returns HTTP status code)
+ * Uses GET with range header to minimize data transfer (some sites block HEAD)
  */
 function checkImageUrl(url) {
   return new Promise((resolve) => {
     const client = url.startsWith('https') ? https : http;
-    const req = client.request(url, { method: 'HEAD', timeout: 10000 }, (res) => {
-      resolve({ status: res.statusCode, ok: res.statusCode >= 200 && res.statusCode < 400 });
+    const options = {
+      method: 'GET',
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'Range': 'bytes=0-0'  // Only fetch first byte
+      }
+    };
+    const req = client.request(url, options, (res) => {
+      res.destroy(); // Don't need the body
+      // 206 = partial content (range request worked), 200 = full content
+      const ok = res.statusCode === 200 || res.statusCode === 206 || res.statusCode === 304;
+      resolve({ status: res.statusCode, ok });
     });
     req.on('error', (err) => resolve({ status: 0, ok: false, error: err.message }));
     req.on('timeout', () => { req.destroy(); resolve({ status: 0, ok: false, error: 'timeout' }); });
