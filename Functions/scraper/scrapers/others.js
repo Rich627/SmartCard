@@ -1,6 +1,7 @@
 /**
  * Other Credit Card Issuers Scraper
- * Barclays, Credit Unions, Fintech, and Other Issuers
+ * Barclays, Credit Unions, Fintech, Retail, and Other Issuers
+ * Uses verified card data
  */
 
 const { generateCardId, mapCategory } = require('../utils/categories');
@@ -17,9 +18,9 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'americanairlines', multiplier: 2, note: 'American Airlines purchases' }
+      { category: 'airlines', multiplier: 2, note: 'American Airlines purchases' }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/aviator-red.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/aviator-red-world-elite-mastercard/img/aviator-red-world-elite-mastercard_Card.png',
     imageColor: '#C8102E'
   },
   {
@@ -30,11 +31,11 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'americanairlines', multiplier: 2, note: 'American Airlines purchases' },
+      { category: 'airlines', multiplier: 2, note: 'American Airlines purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/aviator-silver.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/aviator-silver-world-elite-mastercard/img/aviator-silver-world-elite-mastercard_Card.png',
     imageColor: '#808080'
   },
   {
@@ -45,11 +46,11 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'jetblue', multiplier: 6, note: 'JetBlue purchases' },
+      { category: 'airlines', multiplier: 6, note: 'JetBlue purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/jetblue-plus.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/img/jetblue-plus-card_background.png',
     imageColor: '#003876'
   },
   {
@@ -60,26 +61,11 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'jetblue', multiplier: 3, note: 'JetBlue purchases' },
+      { category: 'airlines', multiplier: 3, note: 'JetBlue purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/jetblue.png',
-    imageColor: '#003876'
-  },
-  {
-    name: 'JetBlue Business Card',
-    issuer: 'Barclays',
-    annualFee: 99,
-    rewardType: 'points',
-    network: 'mastercard',
-    baseReward: 1,
-    categories: [
-      { category: 'jetblue', multiplier: 6, note: 'JetBlue purchases' },
-      { category: 'phone', multiplier: 2 },
-      { category: 'officeSupplies', multiplier: 2 }
-    ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/jetblue-business.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/jetblue-card/img/jetblue-card_background.png',
     imageColor: '#003876'
   },
   {
@@ -90,12 +76,12 @@ const BARCLAYS_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'wyndham', multiplier: 6, note: 'Wyndham purchases' },
+      { category: 'hotels', multiplier: 6, note: 'Wyndham purchases' },
       { category: 'gas', multiplier: 4 },
       { category: 'grocery', multiplier: 4 },
       { category: 'utilities', multiplier: 4 }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/wyndham-plus.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-plus-card/img/wyndham-rewards-earner-plus-card_background.png',
     imageColor: '#0072CE'
   },
   {
@@ -106,12 +92,12 @@ const BARCLAYS_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'wyndham', multiplier: 5, note: 'Wyndham purchases' },
+      { category: 'hotels', multiplier: 5, note: 'Wyndham purchases' },
       { category: 'gas', multiplier: 2 },
       { category: 'grocery', multiplier: 2 },
       { category: 'utilities', multiplier: 2 }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/wyndham.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-card/img/wyndham-rewards-earner-card_background.png',
     imageColor: '#0072CE'
   },
   {
@@ -122,11 +108,11 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'hawaiian', multiplier: 3, note: 'Hawaiian Airlines purchases' },
+      { category: 'airlines', multiplier: 3, note: 'Hawaiian Airlines purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/hawaiian.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/img/hawaiian-airlines-world-elite-mastercard_Card.png',
     imageColor: '#6B2D5B'
   },
   {
@@ -137,11 +123,11 @@ const BARCLAYS_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'frontier', multiplier: 3, note: 'Frontier purchases' },
+      { category: 'airlines', multiplier: 3, note: 'Frontier purchases' },
       { category: 'dining', multiplier: 2 },
       { category: 'entertainment', multiplier: 2 }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/frontier.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/frontier-airlines-world-mastercard/img/frontier-airlines-world-mastercard_Card.png',
     imageColor: '#004225'
   },
   {
@@ -152,11 +138,11 @@ const BARCLAYS_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'priceline', multiplier: 5, note: 'Priceline purchases' },
+      { category: 'travel', multiplier: 5, note: 'Priceline purchases' },
       { category: 'dining', multiplier: 3 },
       { category: 'gas', multiplier: 2 }
     ],
-    imageURL: 'https://www.barclaycardus.com/banking/cards/priceline.png',
+    imageURL: 'https://cards.barclaycardus.com/banking/cards/priceline-vip-rewards-visa-card/img/priceline-vip-rewards-visa-card_Card.png',
     imageColor: '#0064D2'
   }
 ];
@@ -171,7 +157,7 @@ const CREDIT_UNION_CARDS = [
     issuer: 'Navy Federal',
     annualFee: 0,
     rewardType: 'points',
-    network: 'visa',
+    network: 'amex',
     baseReward: 1,
     categories: [
       { category: 'dining', multiplier: 3 },
@@ -179,7 +165,7 @@ const CREDIT_UNION_CARDS = [
       { category: 'transit', multiplier: 3 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://www.navyfederal.org/content/dam/nfcu/images/cards/more-rewards.png',
+    imageURL: 'https://www.navyfederal.org/content/dam/card-art/amex/amex-no-name.svg',
     imageColor: '#003865'
   },
   {
@@ -190,7 +176,7 @@ const CREDIT_UNION_CARDS = [
     network: 'visa',
     baseReward: 1.5,
     categories: [],
-    imageURL: 'https://www.navyfederal.org/content/dam/nfcu/images/cards/cashrewards.png',
+    imageURL: 'https://www.navyfederal.org/content/dam/card-art/visa/cash-rewards.png',
     imageColor: '#003865'
   },
   {
@@ -203,7 +189,7 @@ const CREDIT_UNION_CARDS = [
     categories: [
       { category: 'travel', multiplier: 3 }
     ],
-    imageURL: 'https://www.navyfederal.org/content/dam/nfcu/images/cards/flagship.png',
+    imageURL: 'https://www.navyfederal.org/content/dam/card-art/visa/flagship-rewards.png',
     imageColor: '#0A2240'
   },
   {
@@ -211,14 +197,14 @@ const CREDIT_UNION_CARDS = [
     issuer: 'Navy Federal',
     annualFee: 0,
     rewardType: 'points',
-    network: 'visa',
+    network: 'mastercard',
     baseReward: 1,
     categories: [
       { category: 'dining', multiplier: 3 },
       { category: 'gas', multiplier: 2 },
       { category: 'transit', multiplier: 2 }
     ],
-    imageURL: 'https://www.navyfederal.org/content/dam/nfcu/images/cards/gorewards.png',
+    imageURL: 'https://www.navyfederal.org/content/dam/card-art/mc/go-rewards.png',
     imageColor: '#003865'
   },
 
@@ -234,7 +220,7 @@ const CREDIT_UNION_CARDS = [
       { category: 'gas', multiplier: 5 },
       { category: 'grocery', multiplier: 3 }
     ],
-    imageURL: 'https://www.penfed.org/content/dam/penfed/cards/platinum-rewards.png',
+    imageURL: 'https://www.penfed.org/images/credit-cards/platinum-rewards.png',
     imageColor: '#003399'
   },
   {
@@ -245,7 +231,7 @@ const CREDIT_UNION_CARDS = [
     network: 'visa',
     baseReward: 2,
     categories: [],
-    imageURL: 'https://www.penfed.org/content/dam/penfed/cards/power-cash.png',
+    imageURL: 'https://www.penfed.org/images/credit-cards/power-cash.png',
     imageColor: '#007934'
   },
   {
@@ -260,7 +246,7 @@ const CREDIT_UNION_CARDS = [
       { category: 'streaming', multiplier: 3 },
       { category: 'gas', multiplier: 3 }
     ],
-    imageURL: 'https://www.penfed.org/content/dam/penfed/cards/pathfinder.png',
+    imageURL: 'https://www.penfed.org/images/credit-cards/pathfinder.png',
     imageColor: '#1A1F71'
   },
 
@@ -320,23 +306,6 @@ const CREDIT_UNION_CARDS = [
 // FINTECH CARDS
 // ============================================================================
 const FINTECH_CARDS = [
-  // Bilt
-  {
-    name: 'Bilt Mastercard',
-    issuer: 'Bilt',
-    annualFee: 0,
-    rewardType: 'points',
-    network: 'mastercard',
-    baseReward: 1,
-    categories: [
-      { category: 'dining', multiplier: 3 },
-      { category: 'travel', multiplier: 2 },
-      { category: 'rent', multiplier: 1, note: 'rent payments with no fee' }
-    ],
-    imageURL: 'https://www.biltrewards.com/assets/images/bilt-card.png',
-    imageColor: '#000000'
-  },
-
   // PayPal
   {
     name: 'PayPal Cashback Mastercard',
@@ -346,24 +315,9 @@ const FINTECH_CARDS = [
     network: 'mastercard',
     baseReward: 2,
     categories: [
-      { category: 'paypal', multiplier: 3 }
+      { category: 'onlineShopping', multiplier: 3, note: 'PayPal purchases' }
     ],
-    imageURL: 'https://www.paypal.com/content/dam/paypal/cards/cashback-mastercard.png',
-    imageColor: '#003087'
-  },
-  {
-    name: 'PayPal Extras Mastercard',
-    issuer: 'PayPal',
-    annualFee: 0,
-    rewardType: 'points',
-    network: 'mastercard',
-    baseReward: 1,
-    categories: [
-      { category: 'paypal', multiplier: 3 },
-      { category: 'gas', multiplier: 2 },
-      { category: 'dining', multiplier: 2 }
-    ],
-    imageURL: 'https://www.paypal.com/content/dam/paypal/cards/extras.png',
+    imageURL: 'https://www.paypalobjects.com/marketing/web23/us/en/ppe/cbmc/hero_size-mobile-up_v1.jpg',
     imageColor: '#003087'
   },
 
@@ -384,7 +338,7 @@ const FINTECH_CARDS = [
       capPeriod: null,
       note: 'Auto-selects highest spend category'
     },
-    imageURL: 'https://venmo.com/content/dam/venmo/cards/venmo-credit-card.png',
+    imageURL: 'https://venmo.com/about/creditcard/assets/img/cc-front.png',
     imageColor: '#008CFF'
   },
 
@@ -397,8 +351,23 @@ const FINTECH_CARDS = [
     network: 'mastercard',
     baseReward: 2,
     categories: [],
-    imageURL: 'https://www.sofi.com/content/dam/sofi/cards/credit-card.png',
+    imageURL: 'https://www.sofi.com/images/credit-card/card-front.png',
     imageColor: '#4C00FF'
+  },
+
+  // Robinhood
+  {
+    name: 'Robinhood Gold Card',
+    issuer: 'Robinhood',
+    annualFee: 0,
+    rewardType: 'cashback',
+    network: 'visa',
+    baseReward: 3,
+    categories: [
+      { category: 'travel', multiplier: 5, note: 'Travel booked via Robinhood portal' }
+    ],
+    imageURL: 'https://cdn.robinhood.com/app_assets/credit-card/gold/web/shadow_card_desktop.png',
+    imageColor: '#C5A85F'
   },
 
   // Apple Card
@@ -413,7 +382,7 @@ const FINTECH_CARDS = [
       { category: 'apple', multiplier: 3 },
       { category: 'other', multiplier: 2, note: 'Apple Pay purchases' }
     ],
-    imageURL: 'https://www.apple.com/v/apple-card/f/images/overview/hero__gb2doqnozq2e_large.png',
+    imageURL: 'https://www.apple.com/v/apple-card/p/images/overview/hero_cc__bcr1x3yclnwy_large.jpg',
     imageColor: '#FFFFFF'
   }
 ];
@@ -432,7 +401,7 @@ const RETAIL_CARDS = [
     categories: [
       { category: 'target', multiplier: 5 }
     ],
-    imageURL: 'https://www.target.com/content/dam/target/cards/redcard.png',
+    imageURL: 'https://www.target.com/redcard/img/target-redcard.png',
     imageColor: '#CC0000'
   },
   {
@@ -443,8 +412,8 @@ const RETAIL_CARDS = [
     network: 'mastercard',
     baseReward: 1,
     categories: [
-      { category: 'walmartOnline', multiplier: 5, note: 'Walmart.com and Walmart app' },
-      { category: 'walmart', multiplier: 2, note: 'Walmart stores' },
+      { category: 'walmart', multiplier: 5, note: 'Walmart.com and Walmart app' },
+      { category: 'grocery', multiplier: 2, note: 'Walmart stores' },
       { category: 'travel', multiplier: 2 },
       { category: 'dining', multiplier: 2 }
     ],
@@ -452,27 +421,11 @@ const RETAIL_CARDS = [
     imageColor: '#0071CE'
   },
   {
-    name: 'Costco Anywhere Visa by Citi',
-    issuer: 'Costco',
-    annualFee: 0,
-    rewardType: 'cashback',
-    network: 'visa',
-    baseReward: 1,
-    categories: [
-      { category: 'gas', multiplier: 4, cap: 7000, capPeriod: 'yearly' },
-      { category: 'travel', multiplier: 3 },
-      { category: 'dining', multiplier: 3 },
-      { category: 'wholesale', multiplier: 2 }
-    ],
-    imageURL: 'https://www.costco.com/content/dam/costco/cards/anywhere-visa.png',
-    imageColor: '#E21836'
-  },
-  {
     name: 'Amazon Store Card',
     issuer: 'Amazon',
     annualFee: 0,
     rewardType: 'cashback',
-    network: 'visa',  // Amazon-branded card issued through Synchrony
+    network: 'visa',
     baseReward: 0,
     categories: [
       { category: 'amazon', multiplier: 5 }
@@ -487,21 +440,6 @@ const RETAIL_CARDS = [
 // ============================================================================
 const SYNCHRONY_CARDS = [
   {
-    name: 'Cathay Pacific Credit Card',
-    issuer: 'Synchrony',
-    annualFee: 0,
-    rewardType: 'miles',
-    network: 'visa',
-    baseReward: 1,
-    categories: [
-      { category: 'cathaypacific', multiplier: 3, note: 'Cathay Pacific purchases' },
-      { category: 'dining', multiplier: 2 },
-      { category: 'grocery', multiplier: 2 }
-    ],
-    imageURL: 'https://www.synchrony.com/content/dam/synchrony/cards/cathay-pacific.png',
-    imageColor: '#005E50'
-  },
-  {
     name: 'Verizon Visa Card',
     issuer: 'Synchrony',
     annualFee: 0,
@@ -509,7 +447,7 @@ const SYNCHRONY_CARDS = [
     network: 'visa',
     baseReward: 1,
     categories: [
-      { category: 'verizon', multiplier: 4, note: 'Verizon purchases' },
+      { category: 'phone', multiplier: 4, note: 'Verizon purchases' },
       { category: 'grocery', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
@@ -535,6 +473,8 @@ const SYNCHRONY_CARDS = [
 ];
 
 async function scrapeOthers() {
+  console.log('🏦 Others: Processing credit cards...');
+
   const allCards = [
     ...BARCLAYS_CARDS,
     ...CREDIT_UNION_CARDS,
@@ -543,61 +483,85 @@ async function scrapeOthers() {
     ...SYNCHRONY_CARDS
   ];
 
-  return allCards.map(card => formatCard(card));
-}
-
-function formatCard(cardData) {
-  // Map categories to iOS SpendingCategory enum values
-  const categoryRewards = (cardData.categories || [])
-    .map(cat => {
-      const mappedCategory = mapCategory(cat.category);
-      if (!mappedCategory) {
-        console.warn(`  ⚠️  Unknown category '${cat.category}' in ${cardData.name}, skipping`);
-        return null;
-      }
-      return {
-        category: mappedCategory,
-        multiplier: cat.multiplier,
-        isPercentage: cardData.rewardType === 'cashback',
-        cap: cat.cap || null,
-        capPeriod: cat.capPeriod || null
-      };
-    })
-    .filter(Boolean);
-
-  // Map selectableConfig categories if present
-  let selectableConfig = null;
-  if (cardData.selectableConfig) {
-    const mappedAvailableCategories = cardData.selectableConfig.availableCategories
-      .map(cat => mapCategory(cat))
+  const cards = allCards.map(cardData => {
+    const categoryRewards = (cardData.categories || [])
+      .map(cat => {
+        const mappedCategory = mapCategory(cat.category);
+        if (!mappedCategory) {
+          console.warn(`  ⚠️ Unknown category '${cat.category}' in ${cardData.name}`);
+          return null;
+        }
+        return {
+          category: mappedCategory,
+          multiplier: cat.multiplier,
+          isPercentage: cardData.rewardType === 'cashback',
+          cap: cat.cap || null,
+          capPeriod: cat.capPeriod || null
+        };
+      })
       .filter(Boolean);
 
-    selectableConfig = {
-      maxSelections: cardData.selectableConfig.maxSelections,
-      availableCategories: mappedAvailableCategories,
-      multiplier: cardData.selectableConfig.multiplier,
-      isPercentage: cardData.rewardType === 'cashback',
-      cap: cardData.selectableConfig.cap || null,
-      capPeriod: cardData.selectableConfig.capPeriod || null
-    };
-  }
+    let selectableConfig = null;
+    if (cardData.selectableConfig) {
+      const mappedCategories = cardData.selectableConfig.availableCategories
+        .map(cat => mapCategory(cat))
+        .filter(Boolean);
 
-  return {
-    id: generateCardId(cardData.issuer, cardData.name),
-    name: cardData.name,
-    issuer: cardData.issuer,
-    network: cardData.network || 'visa',
-    annualFee: cardData.annualFee,
-    rewardType: cardData.rewardType,
-    baseReward: cardData.baseReward,
-    baseIsPercentage: cardData.rewardType === 'cashback',
-    categoryRewards: categoryRewards,
-    rotatingCategories: null,
-    selectableConfig: selectableConfig,
-    signUpBonus: cardData.signUpBonus || null,
-    imageColor: cardData.imageColor || '#333333',
-    imageURL: cardData.imageURL || null
-  };
+      selectableConfig = {
+        maxSelections: cardData.selectableConfig.maxSelections,
+        availableCategories: mappedCategories,
+        multiplier: cardData.selectableConfig.multiplier,
+        isPercentage: cardData.rewardType === 'cashback',
+        cap: cardData.selectableConfig.cap || null,
+        capPeriod: cardData.selectableConfig.capPeriod || null
+      };
+    }
+
+    console.log(`  ✅ ${cardData.name} - $${cardData.annualFee} fee, ${categoryRewards.length} categories`);
+
+    return {
+      id: generateCardId(cardData.issuer, cardData.name),
+      name: cardData.name,
+      issuer: cardData.issuer,
+      network: cardData.network || 'visa',
+      annualFee: cardData.annualFee,
+      rewardType: cardData.rewardType,
+      baseReward: cardData.baseReward,
+      baseIsPercentage: cardData.rewardType === 'cashback',
+      categoryRewards: categoryRewards,
+      rotatingCategories: null,
+      selectableConfig: selectableConfig,
+      signUpBonus: null,
+      imageColor: cardData.imageColor || '#333333',
+      imageURL: cardData.imageURL
+    };
+  });
+
+  console.log(`  📊 Total: ${cards.length} cards from other issuers`);
+  return cards;
+}
+
+if (require.main === module) {
+  console.log('🧪 Testing Others Scraper...\n');
+  scrapeOthers()
+    .then(cards => {
+      console.log(`\n✅ Total: ${cards.length} cards`);
+
+      // Group by issuer
+      const byIssuer = {};
+      cards.forEach(card => {
+        if (!byIssuer[card.issuer]) byIssuer[card.issuer] = [];
+        byIssuer[card.issuer].push(card);
+      });
+
+      Object.entries(byIssuer).forEach(([issuer, issuerCards]) => {
+        console.log(`\n${issuer}: ${issuerCards.length} cards`);
+        issuerCards.forEach(card => {
+          console.log(`  - ${card.name}: $${card.annualFee}, ${card.categoryRewards.length} categories`);
+        });
+      });
+    })
+    .catch(err => console.error('❌ Error:', err.message));
 }
 
 module.exports = scrapeOthers;
