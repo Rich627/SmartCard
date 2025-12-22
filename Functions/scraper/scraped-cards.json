@@ -1,33 +1,8 @@
 {
-  "scrapedAt": "2025-12-21T23:44:40.881Z",
+  "scrapedAt": "2025-12-22T02:37:05.450Z",
   "totalCards": 114,
   "errors": [],
-  "duplicateCategories": [
-    {
-      "card": "Chase Sapphire Preferred",
-      "duplicates": [
-        "travel"
-      ]
-    },
-    {
-      "card": "Chase Sapphire Reserve",
-      "duplicates": [
-        "travel"
-      ]
-    },
-    {
-      "card": "Instacart Mastercard",
-      "duplicates": [
-        "travel"
-      ]
-    },
-    {
-      "card": "Citi Strata Premier Card",
-      "duplicates": [
-        "travel"
-      ]
-    }
-  ],
+  "duplicateCategories": [],
   "imageValidation": {
     "valid": 85,
     "invalid": 29,
@@ -196,42 +171,48 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "dining",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "travel",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Booked through Chase Travel"
         },
         {
           "category": "grocery",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "streaming",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "transit",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Lyft rides"
         }
       ],
       "rotatingCategories": null,
@@ -255,21 +236,24 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Lyft rides"
         },
         {
           "category": "travel",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "travel",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Booked through Chase Travel"
         }
       ],
       "rotatingCategories": null,
@@ -293,28 +277,32 @@
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "drugstore",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "travel",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Booked through Chase Travel"
         },
         {
           "category": "transit",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Lyft rides"
         }
       ],
       "rotatingCategories": null,
@@ -338,35 +326,40 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Booked through Chase Travel"
         },
         {
           "category": "dining",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "drugstore",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "gas",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "transit",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Lyft rides"
         }
       ],
       "rotatingCategories": [
@@ -405,7 +398,8 @@
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Lyft rides"
         }
       ],
       "rotatingCategories": null,
@@ -445,14 +439,16 @@
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "transit",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Lyft rides"
         }
       ],
       "rotatingCategories": null,
@@ -476,14 +472,16 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "transit",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Lyft rides"
         }
       ],
       "rotatingCategories": null,
@@ -507,7 +505,8 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Lyft rides"
         }
       ],
       "rotatingCategories": null,
@@ -547,28 +546,32 @@
           "multiplier": 8,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "United purchases"
         },
         {
           "category": "travel",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "streaming",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -592,21 +595,24 @@
           "multiplier": 7,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "United purchases"
         },
         {
           "category": "travel",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -630,21 +636,24 @@
           "multiplier": 7,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "United purchases"
         },
         {
           "category": "gas",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "transit",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -668,21 +677,24 @@
           "multiplier": 9,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "United purchases"
         },
         {
           "category": "travel",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -706,14 +718,16 @@
           "multiplier": 4,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Southwest purchases"
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -737,7 +751,8 @@
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Southwest purchases"
         }
       ],
       "rotatingCategories": null,
@@ -761,7 +776,8 @@
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Southwest purchases"
         }
       ],
       "rotatingCategories": null,
@@ -785,7 +801,8 @@
           "multiplier": 17,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Marriott Bonvoy purchases"
         }
       ],
       "rotatingCategories": null,
@@ -809,7 +826,8 @@
           "multiplier": 14,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Marriott Bonvoy purchases"
         }
       ],
       "rotatingCategories": null,
@@ -833,7 +851,8 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Marriott Bonvoy purchases"
         }
       ],
       "rotatingCategories": null,
@@ -857,7 +876,8 @@
           "multiplier": 26,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "IHG Hotels purchases"
         }
       ],
       "rotatingCategories": null,
@@ -881,7 +901,8 @@
           "multiplier": 17,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "IHG Hotels purchases"
         }
       ],
       "rotatingCategories": null,
@@ -905,7 +926,8 @@
           "multiplier": 9,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hyatt purchases"
         }
       ],
       "rotatingCategories": null,
@@ -961,7 +983,8 @@
           "multiplier": 10,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Disney purchases"
         }
       ],
       "rotatingCategories": null,
@@ -985,7 +1008,8 @@
           "multiplier": 10,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Disney purchases"
         }
       ],
       "rotatingCategories": null,
@@ -1009,35 +1033,40 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "travel",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "gas",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "travel",
           "multiplier": 5,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Booked through Chase Travel"
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -1061,14 +1090,24 @@
           "multiplier": 4,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "DoorDash/delivery purchases"
+        },
+        {
+          "category": "dining",
+          "multiplier": 3,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "grocery",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -1092,7 +1131,8 @@
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -1772,28 +1812,32 @@
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "gas",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "dining",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "grocery",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -1817,35 +1861,40 @@
           "multiplier": 10,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hotels booked through thankyou.com"
         },
         {
           "category": "travel",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "dining",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "grocery",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "gas",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -1869,14 +1918,16 @@
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "gas",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -1916,28 +1967,32 @@
           "multiplier": 4,
           "isPercentage": true,
           "cap": 7000,
-          "capPeriod": "yearly"
+          "capPeriod": "yearly",
+          "note": null
         },
         {
           "category": "travel",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "dining",
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "wholesale",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Costco and Costco.com"
         }
       ],
       "rotatingCategories": null,
@@ -1961,21 +2016,24 @@
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "American Airlines purchases"
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "gas",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
