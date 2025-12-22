@@ -1,159 +1,13 @@
 {
-  "scrapedAt": "2025-12-22T02:37:05.450Z",
+  "scrapedAt": "2025-12-22T04:54:47.580Z",
   "totalCards": 114,
   "errors": [],
   "duplicateCategories": [],
   "imageValidation": {
-    "valid": 85,
-    "invalid": 29,
-    "missing": 0,
-    "errors": [
-      {
-        "card": "Marriott Bonvoy Bevy American Express Card",
-        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-bevy.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Delta SkyMiles Blue American Express Card",
-        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-blue.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Delta SkyMiles Gold American Express Card",
-        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-gold.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Delta SkyMiles Platinum American Express Card",
-        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-platinum.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Delta SkyMiles Reserve American Express Card",
-        "url": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-reserve.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Citi Double Cash Card",
-        "url": "https://www.citi.com/CRD/images/citi-double-cash/citi-double-cash_222x140.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Citi Custom Cash Card",
-        "url": "https://www.citi.com/CRD/images/citi-custom-cash/citi-custom-cash_222x140.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Citi Premier Card",
-        "url": "https://www.citi.com/CRD/images/citi-premier/citi-premier_222x140.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Citi Strata Premier Card",
-        "url": "https://www.citi.com/CRD/images/citi-strata-premier/citi-strata-premier_222x140.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Citi Rewards+ Card",
-        "url": "https://www.citi.com/CRD/images/citi-rewards-plus/citi-rewards-plus_222x140.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Citi Diamond Preferred Card",
-        "url": "https://www.citi.com/CRD/images/citi-diamond-preferred/citi-diamond-preferred_222x140.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Costco Anywhere Visa Card",
-        "url": "https://www.citi.com/CRD/images/costco-anywhere/costco-anywhere_222x140.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Citi AAdvantage Platinum Select Card",
-        "url": "https://www.citi.com/CRD/images/citi-aadvantage-platinum/citi-aadvantage-platinum_222x140.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Navy Federal cashRewards",
-        "url": "https://www.navyfederal.org/content/dam/card-art/visa/cash-rewards.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Navy Federal Flagship Rewards",
-        "url": "https://www.navyfederal.org/content/dam/card-art/visa/flagship-rewards.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Navy Federal Go Rewards",
-        "url": "https://www.navyfederal.org/content/dam/card-art/mc/go-rewards.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "PenFed Platinum Rewards",
-        "url": "https://www.penfed.org/images/credit-cards/platinum-rewards.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "PenFed Power Cash Rewards",
-        "url": "https://www.penfed.org/images/credit-cards/power-cash.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "PenFed Pathfinder Rewards",
-        "url": "https://www.penfed.org/images/credit-cards/pathfinder.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "Alliant Cashback Visa",
-        "url": "https://www.alliantcreditunion.org/images/cards/cashback.png",
-        "reason": "HTTP 403"
-      },
-      {
-        "card": "USAA Cashback Rewards Plus",
-        "url": "https://www.usaa.com/content/dam/usaa/cards/cashback-plus.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "USAA Preferred Cash Rewards",
-        "url": "https://www.usaa.com/content/dam/usaa/cards/preferred-cash.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "USAA Limitless Cashback",
-        "url": "https://www.usaa.com/content/dam/usaa/cards/limitless.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Venmo Credit Card",
-        "url": "https://venmo.com/about/creditcard/assets/img/cc-front.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "SoFi Credit Card",
-        "url": "https://www.sofi.com/images/credit-card/card-front.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Apple Card",
-        "url": "https://www.apple.com/v/apple-card/p/images/overview/hero_cc__bcr1x3yclnwy_large.jpg",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Walmart Rewards Card",
-        "url": "https://www.walmart.com/content/dam/walmart/cards/rewards.png",
-        "reason": "timeout"
-      },
-      {
-        "card": "Amazon Store Card",
-        "url": "https://m.media-amazon.com/images/G/01/credit/store-card.png",
-        "reason": "HTTP 404"
-      },
-      {
-        "card": "Verizon Visa Card",
-        "url": "https://www.verizon.com/content/dam/verizon/cards/visa.png",
-        "reason": "timeout"
-      }
-    ]
+    "valid": 92,
+    "invalid": 0,
+    "missing": 22,
+    "errors": []
   },
   "cards": [
     {
@@ -1570,7 +1424,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#006FCF",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/marriott-bonvoy-bevy.png"
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/credit-cards/hero-images/bevy-modal-desktop.png"
     },
     {
       "id": "american-express-marriott-bonvoy-brilliant-american-express-card",
@@ -1639,7 +1493,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#006FCF",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-blue.png"
+      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000270_480x304_straight_withname.png"
     },
     {
       "id": "american-express-delta-skymiles-gold-american-express-card",
@@ -1677,7 +1531,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#006FCF",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-gold.png"
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/gold-delta-skymiles.png"
     },
     {
       "id": "american-express-delta-skymiles-platinum-american-express-card",
@@ -1722,7 +1576,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#006FCF",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-platinum.png"
+      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/platinum-delta-skymiles.png"
     },
     {
       "id": "american-express-delta-skymiles-reserve-american-express-card",
@@ -1746,7 +1600,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#006FCF",
-      "imageURL": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/category/cardarts/delta-skymiles-reserve.png"
+      "imageURL": "https://icm.aexp-static.com/acquisition/card-art/NUS000000237_480x304_straight_withname.png"
     },
     {
       "id": "citi-citi-double-cash-card",
@@ -1950,7 +1804,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#4B6584",
-      "imageURL": "https://www.citi.com/CRD/images/citi-diamond-preferred/citi-diamond-preferred_222x140.png"
+      "imageURL": "https://cdn.prodstatic.com/shared/images/cards/278x175/64a1b510-35eb-11ee-bf78-57c180bf03f6.png"
     },
     {
       "id": "citi-costco-anywhere-visa-card",
@@ -2040,7 +1894,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0078D2",
-      "imageURL": "https://www.citi.com/CRD/images/citi-aadvantage-platinum/citi-aadvantage-platinum_222x140.png"
+      "imageURL": null
     },
     {
       "id": "capital-one-capital-one-savor-cash-rewards",
@@ -2914,7 +2768,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#C8102E",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/aviator-red-world-elite-mastercard/img/aviator-red-world-elite-mastercard_Card.png"
+      "imageURL": null
     },
     {
       "id": "barclays-aadvantage-aviator-silver",
@@ -2952,7 +2806,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#808080",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/aviator-silver-world-elite-mastercard/img/aviator-silver-world-elite-mastercard_Card.png"
+      "imageURL": null
     },
     {
       "id": "barclays-jetblue-plus-card",
@@ -2990,7 +2844,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003876",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/img/jetblue-plus-card_background.png"
+      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/JBE_card_Plus_WE_Flat_230x157.png"
     },
     {
       "id": "barclays-jetblue-card",
@@ -3028,7 +2882,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003876",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/jetblue-card/img/jetblue-card_background.png"
+      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/JBM_card_NoFee_WM_Flat_230x157.png"
     },
     {
       "id": "barclays-wyndham-rewards-earner-plus",
@@ -3073,7 +2927,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0072CE",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-plus-card/img/wyndham-rewards-earner-plus-card_background.png"
+      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/WYF_card_rRGB_Fee_EarnerPlus_VS_Flat_230x157.png"
     },
     {
       "id": "barclays-wyndham-rewards-earner",
@@ -3118,7 +2972,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0072CE",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-card/img/wyndham-rewards-earner-card_background.png"
+      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/WYZ_card_rRGB_NoFee_Earner_VS_Flat_230x157.png"
     },
     {
       "id": "barclays-hawaiian-airlines-world-elite",
@@ -3156,7 +3010,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#6B2D5B",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/img/hawaiian-airlines-world-elite-mastercard_Card.png"
+      "imageURL": null
     },
     {
       "id": "barclays-frontier-airlines-world-mastercard",
@@ -3194,7 +3048,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#004225",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/frontier-airlines-world-mastercard/img/frontier-airlines-world-mastercard_Card.png"
+      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/FTA_CD_Flat_Card_Art_230x157.png"
     },
     {
       "id": "barclays-priceline-vip-rewards-visa",
@@ -3232,7 +3086,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0064D2",
-      "imageURL": "https://cards.barclaycardus.com/banking/cards/priceline-vip-rewards-visa-card/img/priceline-vip-rewards-visa-card_Card.png"
+      "imageURL": null
     },
     {
       "id": "navy-federal-navy-federal-more-rewards",
@@ -3277,7 +3131,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003865",
-      "imageURL": "https://www.navyfederal.org/content/dam/card-art/amex/amex-no-name.svg"
+      "imageURL": null
     },
     {
       "id": "navy-federal-navy-federal-cashrewards",
@@ -3293,7 +3147,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003865",
-      "imageURL": "https://www.navyfederal.org/content/dam/card-art/visa/cash-rewards.png"
+      "imageURL": null
     },
     {
       "id": "navy-federal-navy-federal-flagship-rewards",
@@ -3317,7 +3171,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0A2240",
-      "imageURL": "https://www.navyfederal.org/content/dam/card-art/visa/flagship-rewards.png"
+      "imageURL": null
     },
     {
       "id": "navy-federal-navy-federal-go-rewards",
@@ -3355,7 +3209,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003865",
-      "imageURL": "https://www.navyfederal.org/content/dam/card-art/mc/go-rewards.png"
+      "imageURL": null
     },
     {
       "id": "penfed-penfed-platinum-rewards",
@@ -3386,7 +3240,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003399",
-      "imageURL": "https://www.penfed.org/images/credit-cards/platinum-rewards.png"
+      "imageURL": null
     },
     {
       "id": "penfed-penfed-power-cash-rewards",
@@ -3402,7 +3256,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#007934",
-      "imageURL": "https://www.penfed.org/images/credit-cards/power-cash.png"
+      "imageURL": null
     },
     {
       "id": "penfed-penfed-pathfinder-rewards",
@@ -3440,7 +3294,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#1A1F71",
-      "imageURL": "https://www.penfed.org/images/credit-cards/pathfinder.png"
+      "imageURL": null
     },
     {
       "id": "alliant-alliant-cashback-visa",
@@ -3456,7 +3310,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#005695",
-      "imageURL": "https://www.alliantcreditunion.org/images/cards/cashback.png"
+      "imageURL": null
     },
     {
       "id": "usaa-usaa-cashback-rewards-plus",
@@ -3472,7 +3326,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003366",
-      "imageURL": "https://www.usaa.com/content/dam/usaa/cards/cashback-plus.png"
+      "imageURL": null
     },
     {
       "id": "usaa-usaa-preferred-cash-rewards",
@@ -3503,7 +3357,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003366",
-      "imageURL": "https://www.usaa.com/content/dam/usaa/cards/preferred-cash.png"
+      "imageURL": null
     },
     {
       "id": "usaa-usaa-limitless-cashback",
@@ -3519,7 +3373,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#1A2E5A",
-      "imageURL": "https://www.usaa.com/content/dam/usaa/cards/limitless.png"
+      "imageURL": null
     },
     {
       "id": "paypal-paypal-cashback-mastercard",
@@ -3573,7 +3427,7 @@
       },
       "signUpBonus": null,
       "imageColor": "#008CFF",
-      "imageURL": "https://venmo.com/about/creditcard/assets/img/cc-front.png"
+      "imageURL": "https://runway-media-production.global.ssl.fastly.net/us/originals/2020/10/Credit_Card_Visual06-e1601663957985.png"
     },
     {
       "id": "sofi-sofi-credit-card",
@@ -3589,7 +3443,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#4C00FF",
-      "imageURL": "https://www.sofi.com/images/credit-card/card-front.png"
+      "imageURL": "https://d32ijn7u0aqfv4.cloudfront.net/wp/wp-content/uploads/raw/CC24-2177731-AB_CC-LP-Redesign-for-PQ-Flow_Unlimited-CC_Desktop%402x.png"
     },
     {
       "id": "robinhood-robinhood-gold-card",
@@ -3644,7 +3498,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#FFFFFF",
-      "imageURL": "https://www.apple.com/v/apple-card/p/images/overview/hero_cc__bcr1x3yclnwy_large.jpg"
+      "imageURL": null
     },
     {
       "id": "target-target-redcard-credit",
@@ -3668,7 +3522,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#CC0000",
-      "imageURL": "https://www.target.com/redcard/img/target-redcard.png"
+      "imageURL": null
     },
     {
       "id": "walmart-walmart-rewards-card",
@@ -3713,7 +3567,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0071CE",
-      "imageURL": "https://www.walmart.com/content/dam/walmart/cards/rewards.png"
+      "imageURL": null
     },
     {
       "id": "amazon-amazon-store-card",
@@ -3737,7 +3591,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#FF9900",
-      "imageURL": "https://m.media-amazon.com/images/G/01/credit/store-card.png"
+      "imageURL": null
     },
     {
       "id": "synchrony-verizon-visa-card",
@@ -3775,7 +3629,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#CD040B",
-      "imageURL": "https://www.verizon.com/content/dam/verizon/cards/visa.png"
+      "imageURL": null
     },
     {
       "id": "synchrony-sam-s-club-mastercard",
@@ -3820,7 +3674,7 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0067A5",
-      "imageURL": "https://www.samsclub.com/content/dam/samsclub/cards/mastercard.png"
+      "imageURL": null
     }
   ]
 }
