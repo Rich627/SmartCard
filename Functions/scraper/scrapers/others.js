@@ -20,7 +20,7 @@ const BARCLAYS_CARDS = [
     categories: [
       { category: 'airlines', multiplier: 2, note: 'American Airlines purchases' }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/aviator-red-world-elite-mastercard/img/aviator-red-world-elite-mastercard_Card.png',
+    imageURL: null,
     imageColor: '#C8102E'
   },
   {
@@ -35,7 +35,7 @@ const BARCLAYS_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/aviator-silver-world-elite-mastercard/img/aviator-silver-world-elite-mastercard_Card.png',
+    imageURL: null,
     imageColor: '#808080'
   },
   {
@@ -50,7 +50,7 @@ const BARCLAYS_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/img/jetblue-plus-card_background.png',
+    imageURL: 'https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/JBE_card_Plus_WE_Flat_230x157.png',
     imageColor: '#003876'
   },
   {
@@ -65,7 +65,7 @@ const BARCLAYS_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/jetblue-card/img/jetblue-card_background.png',
+    imageURL: 'https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/JBM_card_NoFee_WM_Flat_230x157.png',
     imageColor: '#003876'
   },
   {
@@ -81,7 +81,7 @@ const BARCLAYS_CARDS = [
       { category: 'grocery', multiplier: 4 },
       { category: 'utilities', multiplier: 4 }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-plus-card/img/wyndham-rewards-earner-plus-card_background.png',
+    imageURL: 'https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/WYF_card_rRGB_Fee_EarnerPlus_VS_Flat_230x157.png',
     imageColor: '#0072CE'
   },
   {
@@ -97,7 +97,7 @@ const BARCLAYS_CARDS = [
       { category: 'grocery', multiplier: 2 },
       { category: 'utilities', multiplier: 2 }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-card/img/wyndham-rewards-earner-card_background.png',
+    imageURL: 'https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/WYZ_card_rRGB_NoFee_Earner_VS_Flat_230x157.png',
     imageColor: '#0072CE'
   },
   {
@@ -112,7 +112,7 @@ const BARCLAYS_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/img/hawaiian-airlines-world-elite-mastercard_Card.png',
+    imageURL: null,
     imageColor: '#6B2D5B'
   },
   {
@@ -127,7 +127,7 @@ const BARCLAYS_CARDS = [
       { category: 'dining', multiplier: 2 },
       { category: 'entertainment', multiplier: 2 }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/frontier-airlines-world-mastercard/img/frontier-airlines-world-mastercard_Card.png',
+    imageURL: 'https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/FTA_CD_Flat_Card_Art_230x157.png',
     imageColor: '#004225'
   },
   {
@@ -142,7 +142,7 @@ const BARCLAYS_CARDS = [
       { category: 'dining', multiplier: 3 },
       { category: 'gas', multiplier: 2 }
     ],
-    imageURL: 'https://cards.barclaycardus.com/banking/cards/priceline-vip-rewards-visa-card/img/priceline-vip-rewards-visa-card_Card.png',
+    imageURL: null,
     imageColor: '#0064D2'
   }
 ];
@@ -165,7 +165,7 @@ const CREDIT_UNION_CARDS = [
       { category: 'transit', multiplier: 3 },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://www.navyfederal.org/content/dam/card-art/amex/amex-no-name.svg',
+    imageURL: null,
     imageColor: '#003865'
   },
   {
@@ -176,7 +176,7 @@ const CREDIT_UNION_CARDS = [
     network: 'visa',
     baseReward: 1.5,
     categories: [],
-    imageURL: 'https://www.navyfederal.org/content/dam/card-art/visa/cash-rewards.png',
+    imageURL: null,
     imageColor: '#003865'
   },
   {
@@ -189,7 +189,7 @@ const CREDIT_UNION_CARDS = [
     categories: [
       { category: 'travel', multiplier: 3 }
     ],
-    imageURL: 'https://www.navyfederal.org/content/dam/card-art/visa/flagship-rewards.png',
+    imageURL: null,
     imageColor: '#0A2240'
   },
   {
@@ -204,7 +204,7 @@ const CREDIT_UNION_CARDS = [
       { category: 'gas', multiplier: 2 },
       { category: 'transit', multiplier: 2 }
     ],
-    imageURL: 'https://www.navyfederal.org/content/dam/card-art/mc/go-rewards.png',
+    imageURL: null,
     imageColor: '#003865'
   },
 
@@ -220,7 +220,7 @@ const CREDIT_UNION_CARDS = [
       { category: 'gas', multiplier: 5 },
       { category: 'grocery', multiplier: 3 }
     ],
-    imageURL: 'https://www.penfed.org/images/credit-cards/platinum-rewards.png',
+    imageURL: null,
     imageColor: '#003399'
   },
   {
@@ -231,7 +231,7 @@ const CREDIT_UNION_CARDS = [
     network: 'visa',
     baseReward: 2,
     categories: [],
-    imageURL: 'https://www.penfed.org/images/credit-cards/power-cash.png',
+    imageURL: null,
     imageColor: '#007934'
   },
   {
@@ -246,7 +246,7 @@ const CREDIT_UNION_CARDS = [
       { category: 'streaming', multiplier: 3 },
       { category: 'gas', multiplier: 3 }
     ],
-    imageURL: 'https://www.penfed.org/images/credit-cards/pathfinder.png',
+    imageURL: null,
     imageColor: '#1A1F71'
   },
 
@@ -259,7 +259,7 @@ const CREDIT_UNION_CARDS = [
     network: 'visa',
     baseReward: 2.5,
     categories: [],
-    imageURL: 'https://www.alliantcreditunion.org/images/cards/cashback.png',
+    imageURL: null,
     imageColor: '#005695'
   },
 
@@ -272,7 +272,7 @@ const CREDIT_UNION_CARDS = [
     network: 'visa',
     baseReward: 1.5,
     categories: [],
-    imageURL: 'https://www.usaa.com/content/dam/usaa/cards/cashback-plus.png',
+    imageURL: null,
     imageColor: '#003366'
   },
   {
@@ -286,7 +286,7 @@ const CREDIT_UNION_CARDS = [
       { category: 'gas', multiplier: 5, cap: 3000, capPeriod: 'yearly' },
       { category: 'grocery', multiplier: 2 }
     ],
-    imageURL: 'https://www.usaa.com/content/dam/usaa/cards/preferred-cash.png',
+    imageURL: null,
     imageColor: '#003366'
   },
   {
@@ -297,7 +297,7 @@ const CREDIT_UNION_CARDS = [
     network: 'visa',
     baseReward: 2.5,
     categories: [],
-    imageURL: 'https://www.usaa.com/content/dam/usaa/cards/limitless.png',
+    imageURL: null,
     imageColor: '#1A2E5A'
   }
 ];
@@ -338,7 +338,7 @@ const FINTECH_CARDS = [
       capPeriod: null,
       note: 'Auto-selects highest spend category'
     },
-    imageURL: 'https://venmo.com/about/creditcard/assets/img/cc-front.png',
+    imageURL: 'https://runway-media-production.global.ssl.fastly.net/us/originals/2020/10/Credit_Card_Visual06-e1601663957985.png',
     imageColor: '#008CFF'
   },
 
@@ -351,7 +351,7 @@ const FINTECH_CARDS = [
     network: 'mastercard',
     baseReward: 2,
     categories: [],
-    imageURL: 'https://www.sofi.com/images/credit-card/card-front.png',
+    imageURL: 'https://d32ijn7u0aqfv4.cloudfront.net/wp/wp-content/uploads/raw/CC24-2177731-AB_CC-LP-Redesign-for-PQ-Flow_Unlimited-CC_Desktop%402x.png',
     imageColor: '#4C00FF'
   },
 
@@ -382,7 +382,7 @@ const FINTECH_CARDS = [
       { category: 'apple', multiplier: 3 },
       { category: 'other', multiplier: 2, note: 'Apple Pay purchases' }
     ],
-    imageURL: 'https://www.apple.com/v/apple-card/p/images/overview/hero_cc__bcr1x3yclnwy_large.jpg',
+    imageURL: null,
     imageColor: '#FFFFFF'
   }
 ];
@@ -401,7 +401,7 @@ const RETAIL_CARDS = [
     categories: [
       { category: 'target', multiplier: 5 }
     ],
-    imageURL: 'https://www.target.com/redcard/img/target-redcard.png',
+    imageURL: null,
     imageColor: '#CC0000'
   },
   {
@@ -417,7 +417,7 @@ const RETAIL_CARDS = [
       { category: 'travel', multiplier: 2 },
       { category: 'dining', multiplier: 2 }
     ],
-    imageURL: 'https://www.walmart.com/content/dam/walmart/cards/rewards.png',
+    imageURL: null,
     imageColor: '#0071CE'
   },
   {
@@ -430,7 +430,7 @@ const RETAIL_CARDS = [
     categories: [
       { category: 'amazon', multiplier: 5 }
     ],
-    imageURL: 'https://m.media-amazon.com/images/G/01/credit/store-card.png',
+    imageURL: null,
     imageColor: '#FF9900'
   }
 ];
@@ -451,7 +451,7 @@ const SYNCHRONY_CARDS = [
       { category: 'grocery', multiplier: 2 },
       { category: 'gas', multiplier: 2 }
     ],
-    imageURL: 'https://www.verizon.com/content/dam/verizon/cards/visa.png',
+    imageURL: null,
     imageColor: '#CD040B'
   },
   {
@@ -467,7 +467,7 @@ const SYNCHRONY_CARDS = [
       { category: 'dining', multiplier: 3 },
       { category: 'travel', multiplier: 3 }
     ],
-    imageURL: 'https://www.samsclub.com/content/dam/samsclub/cards/mastercard.png',
+    imageURL: null,
     imageColor: '#0067A5'
   }
 ];

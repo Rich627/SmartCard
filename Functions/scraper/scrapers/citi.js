@@ -98,7 +98,7 @@ const CITI_CARDS = [
     baseReward: 1,
     categories: [],
     note: '0% intro APR card for balance transfers',
-    imageURL: 'https://www.citi.com/CRD/images/citi-diamond-preferred/citi-diamond-preferred_222x140.png',
+    imageURL: 'https://cdn.prodstatic.com/shared/images/cards/278x175/64a1b510-35eb-11ee-bf78-57c180bf03f6.png',
     imageColor: '#4B6584'
   },
   {
@@ -131,7 +131,7 @@ const CITI_CARDS = [
       { category: 'gas', multiplier: 2 }
     ],
     note: '$0 first year, then $99',
-    imageURL: 'https://www.citi.com/CRD/images/citi-aadvantage-platinum/citi-aadvantage-platinum_222x140.png',
+    imageURL: null,
     imageColor: '#0078D2'
   }
 ];
