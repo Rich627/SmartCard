@@ -14,6 +14,7 @@ jobs:
   build-and-test:
     name: Build & Test
     runs-on: macos-14
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
 
@@ -76,6 +77,7 @@ jobs:
   swiftlint:
     name: SwiftLint
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
 
@@ -93,6 +95,7 @@ jobs:
   scraper-validate:
     name: Scraper Validation
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
 
