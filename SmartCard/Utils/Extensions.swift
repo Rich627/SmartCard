@@ -96,6 +96,64 @@ extension View {
     }
 }
 
+// MARK: - Card Image Cache
+
+final class CardImageCache {
+    static let shared = CardImageCache()
+    private let cache = NSCache<NSString, UIImage>()
+
+    private init() {
+        cache.countLimit = 100
+    }
+
+    func image(for key: String) -> UIImage? {
+        cache.object(forKey: key as NSString)
+    }
+
+    func setImage(_ image: UIImage, for key: String) {
+        cache.setObject(image, forKey: key as NSString)
+    }
+}
+
+// MARK: - Card Image Loader
+
+@MainActor
+final class CardImageLoader: ObservableObject {
+    @Published var uiImage: UIImage?
+    @Published var isLoading = false
+    private var urlString: String?
+
+    func load(from urlString: String) {
+        guard self.urlString != urlString else { return }
+        self.urlString = urlString
+
+        if let cached = CardImageCache.shared.image(for: urlString) {
+            self.uiImage = cached
+            return
+        }
+
+        guard let url = URL(string: urlString) else { return }
+        isLoading = true
+
+        var request = URLRequest(url: url)
+        request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)", forHTTPHeaderField: "User-Agent")
+        request.setValue("image/*", forHTTPHeaderField: "Accept")
+
+        Task {
+            do {
+                let (data, _) = try await URLSession.shared.data(for: request)
+                if let image = UIImage(data: data) {
+                    CardImageCache.shared.setImage(image, for: urlString)
+                    self.uiImage = image
+                }
+            } catch {
+                // Fall through to fallback color
+            }
+            self.isLoading = false
+        }
+    }
+}
+
 // MARK: - Card Image View
 
 struct CardImageView: View {
@@ -105,30 +163,30 @@ struct CardImageView: View {
     let height: CGFloat
     var cornerRadius: CGFloat = 8
 
+    @StateObject private var loader = CardImageLoader()
+
     var body: some View {
-        if let urlString = imageURL, let url = URL(string: urlString) {
-            AsyncImage(url: url) { phase in
-                switch phase {
-                case .empty:
-                    colorFallback
-                        .overlay {
-                            ProgressView()
-                                .scaleEffect(0.5)
-                        }
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: width, height: height)
-                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-                case .failure:
-                    colorFallback
-                @unknown default:
-                    colorFallback
-                }
+        Group {
+            if let uiImage = loader.uiImage {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: width, height: height)
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            } else if loader.isLoading {
+                colorFallback
+                    .overlay {
+                        ProgressView()
+                            .scaleEffect(0.5)
+                    }
+            } else {
+                colorFallback
             }
-        } else {
-            colorFallback
+        }
+        .onAppear {
+            if let urlString = imageURL {
+                loader.load(from: urlString)
+            }
         }
     }
 
