@@ -8,6 +8,9 @@ class SearchHistoryManager {
     private let userDefaultsKey = UserDefaultsKeys.searchHistory
     private let maxHistoryItems = 20
 
+    /// In-memory cache (fallback when Keychain is unavailable, e.g. CI)
+    private var cachedItems: [SearchItem]?
+
     private init() {}
 
     /// Recent search terms with timestamps
@@ -37,17 +40,24 @@ class SearchHistoryManager {
         }
     }
 
-    /// Get all search history items (Keychain-first with UserDefaults migration)
+    /// Get all search history items (Keychain-first with in-memory cache fallback)
     var history: [SearchItem] {
         // Try Keychain first
         if let items: [SearchItem] = try? KeychainHelper.shared.load(forKey: keychainKey) {
+            cachedItems = items
             return items.sorted { $0.timestamp > $1.timestamp }
+        }
+
+        // Fallback: in-memory cache (covers CI/testing where Keychain is unavailable)
+        if let cached = cachedItems {
+            return cached.sorted { $0.timestamp > $1.timestamp }
         }
 
         // Fallback: migrate from UserDefaults
         if let data = UserDefaults.standard.data(forKey: userDefaultsKey),
            let items = try? JSONDecoder().decode([SearchItem].self, from: data) {
             try? KeychainHelper.shared.save(items, forKey: keychainKey)
+            cachedItems = items
             UserDefaults.standard.removeObject(forKey: userDefaultsKey)
             return items.sorted { $0.timestamp > $1.timestamp }
         }
@@ -86,6 +96,7 @@ class SearchHistoryManager {
 
     /// Clear all search history
     func clearHistory() {
+        cachedItems = nil
         KeychainHelper.shared.delete(forKey: keychainKey)
         UserDefaults.standard.removeObject(forKey: userDefaultsKey)
     }
@@ -102,6 +113,7 @@ class SearchHistoryManager {
     }
 
     private func save(_ items: [SearchItem]) {
+        cachedItems = items
         try? KeychainHelper.shared.save(items, forKey: keychainKey)
     }
 }

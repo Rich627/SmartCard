@@ -8,10 +8,13 @@ final class RecommendationEngineTests: XCTestCase {
 
     override func setUpWithError() throws {
         allCards = MockData.creditCards
+        let csp = allCards.first { $0.id == "chase-sapphire-preferred" }!
+        let cff = allCards.first { $0.id == "chase-freedom-flex" }!
+        let amexGold = allCards.first { $0.id == "amex-gold" }!
         userCards = [
-            UserCard(card: allCards[0]), // Chase Sapphire Preferred
-            UserCard(card: allCards[1]), // Chase Freedom Flex
-            UserCard(card: allCards[2]), // Amex Gold
+            UserCard(card: csp),
+            UserCard(card: cff),
+            UserCard(card: amexGold),
         ]
     }
 
