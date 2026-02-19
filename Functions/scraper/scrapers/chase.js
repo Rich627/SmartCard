@@ -6,6 +6,12 @@
 const https = require('https');
 const { generateCardId, mapCategory } = require('../utils/categories');
 
+// Fallback annual fees for cards where scraping fails
+const KNOWN_ANNUAL_FEES = {
+  'marriott-bountiful': 250,
+  'united-explorer': 150,  // After first year intro $0
+};
+
 // Chase card URLs - organized by product line
 const CHASE_CARD_PAGES = [
   // Sapphire Series
@@ -156,6 +162,12 @@ function extractAnnualFee(html) {
   const sectionMatch = html.match(/ANNUAL\s*FEE<\/h\d>\s*<p>\$(\d+)/i);
   if (sectionMatch) {
     return parseInt(sectionMatch[1], 10);
+  }
+
+  // Look for "$0 intro annual fee for the first year, then $X" pattern (United Explorer style)
+  const introFeeMatch = html.match(/\$0\s*intro\s*annual\s*fee[^,]*,\s*then\s*\$(\d+)/i);
+  if (introFeeMatch) {
+    return parseInt(introFeeMatch[1], 10);
   }
 
   // Look for "$X annual fee" in content (not in nav links)
@@ -465,7 +477,14 @@ async function scrapeCard(cardInfo) {
       return null;
     }
 
-    const annualFee = extractAnnualFee(html);
+    let annualFee = extractAnnualFee(html);
+    
+    // Use fallback if annual fee couldn't be scraped
+    if (annualFee === null && KNOWN_ANNUAL_FEES[cardInfo.slug]) {
+      console.log(`    ℹ️ Using fallback annual fee for ${cardInfo.slug}: $${KNOWN_ANNUAL_FEES[cardInfo.slug]}`);
+      annualFee = KNOWN_ANNUAL_FEES[cardInfo.slug];
+    }
+    
     const rewards = extractRewards(html);
     const imageURL = extractImageUrl(html, cardInfo.url);
     const rotating = extractRotatingCategories(html, name);
