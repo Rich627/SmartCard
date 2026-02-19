@@ -107,6 +107,7 @@ async function scrapeDiscover() {
         multiplier: cardData.rotating.multiplier,
         isPercentage: true,
         cap: cardData.rotating.cap,
+        capPeriod: cardData.rotating.capPeriod || "quarterly",
         activationRequired: cardData.rotating.activationRequired
       }];
     }
@@ -147,7 +148,7 @@ if (require.main === module) {
         }
       });
     })
-    .catch(err => console.error('❌ Error:', err.message));
+    .catch(err => { console.error('❌ Error:', err.message); process.exit(1); });
 }
 
 module.exports = scrapeDiscover;

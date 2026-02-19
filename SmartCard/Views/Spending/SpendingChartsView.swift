@@ -108,6 +108,9 @@ struct MonthlyTrendChart: View {
                     .foregroundStyle(.secondary)
                     .frame(height: 200)
             } else {
+                let maxSpending = data.map(\.amount).max() ?? 1
+                let maxRewards = data.map(\.rewards).max() ?? 1
+
                 Chart {
                     ForEach(data) { item in
                         BarMark(
@@ -120,7 +123,7 @@ struct MonthlyTrendChart: View {
                     ForEach(data) { item in
                         LineMark(
                             x: .value("Month", item.month, unit: .month),
-                            y: .value("Rewards", item.rewards * 20) // Scale up for visibility
+                            y: .value("Rewards", maxRewards > 0 ? item.rewards / maxRewards * maxSpending : 0)
                         )
                         .foregroundStyle(.green)
                         .lineStyle(StrokeStyle(lineWidth: 2))
@@ -131,6 +134,27 @@ struct MonthlyTrendChart: View {
                     AxisMarks(values: .stride(by: .month)) { value in
                         AxisGridLine()
                         AxisValueLabel(format: .dateTime.month(.abbreviated))
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks(position: .leading) { value in
+                        AxisGridLine()
+                        AxisValueLabel {
+                            if let amount = value.as(Double.self) {
+                                Text("$\(Int(amount))")
+                                    .font(.caption2)
+                            }
+                        }
+                    }
+                    AxisMarks(position: .trailing) { value in
+                        AxisValueLabel {
+                            if let scaled = value.as(Double.self), maxSpending > 0 {
+                                let reward = scaled / maxSpending * maxRewards
+                                Text("$\(String(format: "%.0f", reward))")
+                                    .font(.caption2)
+                                    .foregroundStyle(.green)
+                            }
+                        }
                     }
                 }
 
@@ -147,7 +171,7 @@ struct MonthlyTrendChart: View {
                         Rectangle()
                             .fill(.green)
                             .frame(width: 12, height: 3)
-                        Text("Rewards (×20)")
+                        Text("Rewards")
                             .font(.caption)
                     }
                 }
@@ -300,7 +324,7 @@ struct EnhancedAnalyticsView: View {
     var monthlyData: [MonthlySpendingData] {
         let calendar = Calendar.current
         let grouped = Dictionary(grouping: spendingViewModel.spendings) { spending in
-            calendar.date(from: calendar.dateComponents([.year, .month], from: spending.date))!
+            calendar.date(from: calendar.dateComponents([.year, .month], from: spending.date)) ?? Date()
         }
 
         return grouped.map { month, spendings in

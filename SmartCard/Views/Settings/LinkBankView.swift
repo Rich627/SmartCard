@@ -186,8 +186,7 @@ class PlaidHostingViewController: UIViewController {
         case .success(let handler):
             self.handler = handler
             handler.open(presentUsing: .viewController(self))
-        case .failure(let error):
-            print("Plaid Link error: \(error)")
+        case .failure:
             onExit?()
         }
     }

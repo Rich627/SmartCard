@@ -250,22 +250,6 @@ function mapTitleToCategory(title) {
 }
 
 /**
- * Fallback: extract from HTML patterns (if JSON extraction fails)
- */
-function extractFromHtmlPatterns(html) {
-  const cardDataMap = {};
-
-  // Try to find reward patterns in HTML
-  const patterns = [
-    { regex: /(\d+)[xX]\s*(?:Membership\s*Rewards\s*)?points?\s*(?:at|on)\s+([^<,.\n]{3,40})/gi, isPercentage: false },
-    { regex: /(\d+)%\s*(?:cash\s*back\s*)?(?:at|on)\s+([^<,.\n]{3,40})/gi, isPercentage: true }
-  ];
-
-  // This would require knowing which card page we're on
-  return cardDataMap;
-}
-
-/**
  * Main scrape function
  */
 async function scrapeAmex() {

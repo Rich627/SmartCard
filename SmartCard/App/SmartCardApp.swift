@@ -37,6 +37,7 @@ struct SmartCardApp: App {
                         }
                     }
                     .onAppear {
+                        CacheManager.shared.clearExpired()
                         updateWidgetData()
                     }
             } else {

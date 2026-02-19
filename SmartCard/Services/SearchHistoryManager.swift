@@ -4,7 +4,8 @@ import Foundation
 class SearchHistoryManager {
     static let shared = SearchHistoryManager()
 
-    private let userDefaultsKey = "searchHistory"
+    private let keychainKey = "searchHistory"
+    private let userDefaultsKey = UserDefaultsKeys.searchHistory
     private let maxHistoryItems = 20
 
     private init() {}
@@ -36,13 +37,22 @@ class SearchHistoryManager {
         }
     }
 
-    /// Get all search history items
+    /// Get all search history items (Keychain-first with UserDefaults migration)
     var history: [SearchItem] {
-        guard let data = UserDefaults.standard.data(forKey: userDefaultsKey),
-              let items = try? JSONDecoder().decode([SearchItem].self, from: data) else {
-            return []
+        // Try Keychain first
+        if let items: [SearchItem] = try? KeychainHelper.shared.load(forKey: keychainKey) {
+            return items.sorted { $0.timestamp > $1.timestamp }
         }
-        return items.sorted { $0.timestamp > $1.timestamp }
+
+        // Fallback: migrate from UserDefaults
+        if let data = UserDefaults.standard.data(forKey: userDefaultsKey),
+           let items = try? JSONDecoder().decode([SearchItem].self, from: data) {
+            try? KeychainHelper.shared.save(items, forKey: keychainKey)
+            UserDefaults.standard.removeObject(forKey: userDefaultsKey)
+            return items.sorted { $0.timestamp > $1.timestamp }
+        }
+
+        return []
     }
 
     /// Add a search term to history
@@ -76,6 +86,7 @@ class SearchHistoryManager {
 
     /// Clear all search history
     func clearHistory() {
+        KeychainHelper.shared.delete(forKey: keychainKey)
         UserDefaults.standard.removeObject(forKey: userDefaultsKey)
     }
 
@@ -91,8 +102,6 @@ class SearchHistoryManager {
     }
 
     private func save(_ items: [SearchItem]) {
-        if let data = try? JSONEncoder().encode(items) {
-            UserDefaults.standard.set(data, forKey: userDefaultsKey)
-        }
+        try? KeychainHelper.shared.save(items, forKey: keychainKey)
     }
 }

@@ -279,7 +279,7 @@ struct ScanReceiptView: View {
         guard let cardId = selectedCardId,
               let amountValue = Double(amount) else { return }
 
-        spendingViewModel.addSpending(
+        try? spendingViewModel.addSpending(
             amount: amountValue,
             merchant: merchant,
             category: selectedCategory,

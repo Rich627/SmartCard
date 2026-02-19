@@ -10,30 +10,50 @@ class SpendingViewModel: ObservableObject {
         loadSpendings()
     }
 
-    // MARK: - Persistence
+    // MARK: - Persistence (Keychain with UserDefaults migration)
+
+    private static let keychainKey = "spendings"
 
     private func loadSpendings() {
-        if let data = UserDefaults.standard.data(forKey: "spendings"),
+        // Try Keychain first
+        if let loaded: [Spending] = try? KeychainHelper.shared.load(forKey: Self.keychainKey) {
+            spendings = loaded
+            return
+        }
+
+        // Fallback: migrate from UserDefaults
+        if let data = UserDefaults.standard.data(forKey: UserDefaultsKeys.spendings),
            let loaded = try? JSONDecoder().decode([Spending].self, from: data) {
             spendings = loaded
+            try? KeychainHelper.shared.save(loaded, forKey: Self.keychainKey)
+            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.spendings)
         } else {
-            // Start with empty spending history for new users
             spendings = []
         }
     }
 
     private func saveSpendings() {
-        if let data = try? JSONEncoder().encode(spendings) {
-            UserDefaults.standard.set(data, forKey: "spendings")
-        }
+        try? KeychainHelper.shared.save(spendings, forKey: Self.keychainKey)
     }
 
     func clearAllData() {
         spendings = []
-        UserDefaults.standard.removeObject(forKey: "spendings")
+        KeychainHelper.shared.delete(forKey: Self.keychainKey)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.spendings)
     }
 
     // MARK: - Spending Management
+
+    enum SpendingError: LocalizedError {
+        case cardNotFound
+
+        var errorDescription: String? {
+            switch self {
+            case .cardNotFound:
+                return "Card not found in your wallet"
+            }
+        }
+    }
 
     func addSpending(
         amount: Double,
@@ -43,22 +63,23 @@ class SpendingViewModel: ObservableObject {
         date: Date = Date(),
         note: String? = nil,
         cardViewModel: CardViewModel
-    ) {
+    ) throws {
         // Calculate reward earned
         guard let userCard = cardViewModel.getUserCard(byCardId: cardUsed),
               let card = cardViewModel.getCard(byId: cardUsed) else {
-            return
+            throw SpendingError.cardNotFound
         }
 
-        let effectiveMultiplier = card.getReward(
+        let reward = card.getReward(
             for: category,
             selectedCategories: userCard.selectedCategories
         )
 
         let rewardEarned = calculateReward(
             amount: amount,
-            multiplier: effectiveMultiplier,
-            card: card
+            multiplier: reward.multiplier,
+            isPercentage: reward.isPercentage,
+            rewardType: card.rewardType
         )
 
         // Find optimal card
@@ -98,12 +119,12 @@ class SpendingViewModel: ObservableObject {
         saveSpendings()
     }
 
-    private func calculateReward(amount: Double, multiplier: Double, card: CreditCard) -> Double {
-        if card.baseIsPercentage || card.rewardType == .cashback {
+    private func calculateReward(amount: Double, multiplier: Double, isPercentage: Bool, rewardType: RewardType) -> Double {
+        if isPercentage {
             return amount * (multiplier / 100)
         } else {
-            // Points - estimate at 1 cpp
-            return amount * multiplier * 0.01
+            // Points/miles - estimate at standard cpp
+            return amount * multiplier * RewardConstants.defaultPointsValueCPP
         }
     }
 
@@ -134,24 +155,12 @@ class SpendingViewModel: ObservableObject {
     }
 
     func spendingsThisMonth() -> [Spending] {
-        let calendar = Calendar.current
-        let now = Date()
-        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: now))!
-
+        let startOfMonth = Date().startOfMonth
         return spendings.filter { $0.date >= startOfMonth }
     }
 
     func spendingsThisQuarter() -> [Spending] {
-        let calendar = Calendar.current
-        let now = Date()
-        let quarter = (calendar.component(.month, from: now) - 1) / 3 + 1
-        let startMonth = (quarter - 1) * 3 + 1
-
-        var components = calendar.dateComponents([.year], from: now)
-        components.month = startMonth
-        components.day = 1
-        let startOfQuarter = calendar.date(from: components)!
-
+        let startOfQuarter = Date().startOfQuarter
         return spendings.filter { $0.date >= startOfQuarter }
     }
 }

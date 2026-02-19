@@ -73,5 +73,5 @@ jobs:
         working-directory: Functions/scraper
 
       - name: Validate scraped data
-        run: npm run validate
+        run: npm run validate:file
         working-directory: Functions/scraper

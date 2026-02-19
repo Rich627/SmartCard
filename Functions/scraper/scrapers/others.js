@@ -561,7 +561,7 @@ if (require.main === module) {
         });
       });
     })
-    .catch(err => console.error('❌ Error:', err.message));
+    .catch(err => { console.error('❌ Error:', err.message); process.exit(1); });
 }
 
 module.exports = scrapeOthers;

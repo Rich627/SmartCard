@@ -8,12 +8,10 @@ body:
       value: |
         Request support for a new credit card!
 
-        申請新增信用卡支援！
-
   - type: input
     id: card-name
     attributes:
-      label: Card Name / 卡片名稱
+      label: Card Name
       placeholder: e.g., Chase Sapphire Reserve
     validations:
       required: true
@@ -21,7 +19,7 @@ body:
   - type: input
     id: issuer
     attributes:
-      label: Card Issuer / 發卡銀行
+      label: Card Issuer
       placeholder: e.g., Chase, Amex, Citi
     validations:
       required: true
@@ -29,7 +27,7 @@ body:
   - type: textarea
     id: rewards
     attributes:
-      label: Reward Structure / 回饋結構
+      label: Reward Structure
       description: List the card's reward categories and rates
       placeholder: |
         - 3x on dining
@@ -41,24 +39,24 @@ body:
   - type: dropdown
     id: card-type
     attributes:
-      label: Card Type / 卡片類型
+      label: Card Type
       options:
-        - Fixed Categories / 固定類別
-        - Rotating Categories / 輪轉類別
-        - Selectable Categories / 自選類別
-        - Flat Rate / 固定回饋率
+        - Fixed Categories
+        - Rotating Categories
+        - Selectable Categories
+        - Flat Rate
     validations:
       required: true
 
   - type: input
     id: annual-fee
     attributes:
-      label: Annual Fee / 年費
+      label: Annual Fee
       placeholder: e.g., $95 or $0
 
   - type: input
     id: source
     attributes:
-      label: Source URL / 資料來源連結
+      label: Source URL
       description: Link to official card page
       placeholder: https://...

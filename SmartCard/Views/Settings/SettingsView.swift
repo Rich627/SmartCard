@@ -33,7 +33,7 @@ struct SettingsView: View {
                     HStack {
                         Text("Version")
                         Spacer()
-                        Text("1.0.0")
+                        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
                             .foregroundStyle(.secondary)
                     }
 
@@ -92,7 +92,8 @@ struct SettingsView: View {
                 }
 
                 Section("Support") {
-                    Link(destination: URL(string: "https://apps.apple.com")!) {
+                    // TODO: Replace with actual App Store URL after submission
+                    Link(destination: URL(string: "https://apps.apple.com/app/smartcard/id000000000")!) {
                         HStack {
                             Label("Rate on App Store", systemImage: "star")
                             Spacer()

@@ -148,7 +148,7 @@ if (require.main === module) {
         console.log(`  - ${card.name}: $${card.annualFee}, ${card.categoryRewards.length} categories`);
       });
     })
-    .catch(err => console.error('❌ Error:', err.message));
+    .catch(err => { console.error('❌ Error:', err.message); process.exit(1); });
 }
 
 module.exports = scrapeUsBank;

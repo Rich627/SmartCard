@@ -1,5 +1,14 @@
 import SwiftUI
 
+// MARK: - UserDefaults Keys
+
+enum UserDefaultsKeys {
+    static let userCards = "userCards"
+    static let spendings = "spendings"
+    static let searchHistory = "searchHistory"
+    static let plaidLinkedAccounts = "plaidLinkedAccounts"
+}
+
 extension Color {
     init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -33,19 +42,19 @@ extension Color {
     }
 
     func toHex() -> String? {
-        guard let components = UIColor(self).cgColor.components else { return nil }
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        guard UIColor(self).getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
 
-        let r = Int(components[0] * 255.0)
-        let g = Int(components[1] * 255.0)
-        let b = Int(components[2] * 255.0)
-
-        return String(format: "#%02X%02X%02X", r, g, b)
+        return String(format: "#%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
     }
 }
 
 extension Date {
     var startOfMonth: Date {
-        Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
+        Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self)) ?? Date()
     }
 
     var startOfQuarter: Date {
@@ -55,7 +64,7 @@ extension Date {
         var components = calendar.dateComponents([.year], from: self)
         components.month = startMonth
         components.day = 1
-        return calendar.date(from: components)!
+        return calendar.date(from: components) ?? Date()
     }
 
     var currentQuarter: Int {

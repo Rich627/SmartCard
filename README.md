@@ -12,8 +12,7 @@
 </p>
 
 <p>
-  <a href="docs/README_EN.md"><strong>English</strong></a> ·
-  <a href="docs/README_ZH-TW.md"><strong>繁體中文</strong></a>
+  <a href="docs/README_EN.md"><strong>Documentation</strong></a>
 </p>
 
 <p>
@@ -63,8 +62,7 @@ open SmartCard.xcodeproj
 
 ## Documentation
 
-- [English Documentation](docs/README_EN.md)
-- [繁體中文文件](docs/README_ZH-TW.md)
+- [Full Documentation](docs/README_EN.md)
 - [Contributing Guide](CONTRIBUTING.md)
 
 ---

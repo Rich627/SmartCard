@@ -1,6 +1,8 @@
 import Foundation
 
 struct MockData {
+    private static let currentYear = Calendar.current.component(.year, from: Date())
+
     // MARK: - Chase Cards
 
     static let chaseCards: [CreditCard] = [
@@ -62,10 +64,10 @@ struct MockData {
                 CategoryReward(category: .travel, multiplier: 5, isPercentage: false, cap: nil, capPeriod: nil),
             ],
             rotatingCategories: [
-                RotatingCategory(quarter: 1, year: 2025, categories: [.grocery], multiplier: 5, isPercentage: false, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 2, year: 2025, categories: [.gas, .homeImprovement], multiplier: 5, isPercentage: false, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 3, year: 2025, categories: [.dining, .drugstore], multiplier: 5, isPercentage: false, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 4, year: 2025, categories: [.amazon, .paypal, .wholesale], multiplier: 5, isPercentage: false, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 1, year: MockData.currentYear, categories: [.grocery], multiplier: 5, isPercentage: false, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 2, year: MockData.currentYear, categories: [.gas, .homeImprovement], multiplier: 5, isPercentage: false, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 3, year: MockData.currentYear, categories: [.dining, .drugstore], multiplier: 5, isPercentage: false, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 4, year: MockData.currentYear, categories: [.amazon, .paypal, .wholesale], multiplier: 5, isPercentage: false, cap: 1500, activationRequired: true),
             ],
             selectableConfig: nil,
             signUpBonus: SignUpBonus(bonusAmount: 20000, bonusType: .points, spendRequirement: 500, timeframeDays: 90, description: "20,000 points after $500 in 3 months"),
@@ -898,10 +900,10 @@ struct MockData {
             baseIsPercentage: true,
             categoryRewards: [],
             rotatingCategories: [
-                RotatingCategory(quarter: 1, year: 2025, categories: [.grocery, .drugstore], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 2, year: 2025, categories: [.gas, .homeImprovement], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 3, year: 2025, categories: [.dining, .paypal], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 4, year: 2025, categories: [.amazon, .onlineShopping], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 1, year: MockData.currentYear, categories: [.grocery, .drugstore], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 2, year: MockData.currentYear, categories: [.gas, .homeImprovement], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 3, year: MockData.currentYear, categories: [.dining, .paypal], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 4, year: MockData.currentYear, categories: [.amazon, .onlineShopping], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
             ],
             selectableConfig: nil,
             signUpBonus: nil,
@@ -957,10 +959,10 @@ struct MockData {
             baseIsPercentage: true,
             categoryRewards: [],
             rotatingCategories: [
-                RotatingCategory(quarter: 1, year: 2025, categories: [.grocery, .drugstore], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 2, year: 2025, categories: [.gas, .homeImprovement], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 3, year: 2025, categories: [.dining, .paypal], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
-                RotatingCategory(quarter: 4, year: 2025, categories: [.amazon, .onlineShopping], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 1, year: MockData.currentYear, categories: [.grocery, .drugstore], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 2, year: MockData.currentYear, categories: [.gas, .homeImprovement], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 3, year: MockData.currentYear, categories: [.dining, .paypal], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
+                RotatingCategory(quarter: 4, year: MockData.currentYear, categories: [.amazon, .onlineShopping], multiplier: 5, isPercentage: true, cap: 1500, activationRequired: true),
             ],
             selectableConfig: nil,
             signUpBonus: nil,

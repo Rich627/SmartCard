@@ -1,7 +1,9 @@
 import Foundation
 import UserNotifications
+import os
 
 class NotificationService {
+    private static let logger = Logger(subsystem: "com.smartcard.app", category: "NotificationService")
     static let shared = NotificationService()
 
     private init() {}
@@ -14,7 +16,9 @@ class NotificationService {
                 .requestAuthorization(options: [.alert, .badge, .sound])
             return granted
         } catch {
-            print("Notification permission error: \(error)")
+            #if DEBUG
+            Self.logger.error("Notification permission error: \(error.localizedDescription)")
+            #endif
             return false
         }
     }

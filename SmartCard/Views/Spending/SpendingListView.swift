@@ -296,7 +296,7 @@ struct AddSpendingView: View {
                         guard let cardId = selectedCardId,
                               let amountValue = Double(amount) else { return }
 
-                        spendingViewModel.addSpending(
+                        try? spendingViewModel.addSpending(
                             amount: amountValue,
                             merchant: merchant,
                             category: effectiveCategory,
@@ -334,71 +334,6 @@ struct AddSpendingView: View {
                 }
             }
         }
-    }
-}
-
-struct SpendingAnalyticsView: View {
-    @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var cardViewModel: CardViewModel
-    @EnvironmentObject var spendingViewModel: SpendingViewModel
-
-    var body: some View {
-        NavigationStack {
-            List {
-                Section("Overview") {
-                    AnalyticsRow(label: "Total Spending", value: formatCurrency(spendingViewModel.totalSpending))
-                    AnalyticsRow(label: "Total Rewards", value: formatCurrency(spendingViewModel.totalRewardsEarned), valueColor: .green)
-                    AnalyticsRow(label: "Missed Rewards", value: formatCurrency(spendingViewModel.totalMissedRewards), valueColor: .red)
-
-                    let effectiveRate = spendingViewModel.totalSpending > 0 ?
-                        (spendingViewModel.totalRewardsEarned / spendingViewModel.totalSpending) * 100 : 0
-                    AnalyticsRow(label: "Effective Rate", value: String(format: "%.2f%%", effectiveRate))
-                }
-
-                Section("By Category") {
-                    ForEach(spendingViewModel.spendingsByCategory, id: \.0) { category, amount in
-                        HStack {
-                            Label(category.displayName, systemImage: category.icon)
-                            Spacer()
-                            Text(formatCurrency(amount))
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                }
-
-                Section("By Card") {
-                    ForEach(spendingViewModel.spendingsByCard, id: \.0) { cardId, amount in
-                        HStack {
-                            if let card = cardViewModel.getCard(byId: cardId) {
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(Color(hex: card.imageColor) ?? .gray)
-                                    .frame(width: 24, height: 16)
-                                Text(card.name)
-                            } else {
-                                Text(cardId)
-                            }
-                            Spacer()
-                            Text(formatCurrency(amount))
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Analytics")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") { dismiss() }
-                }
-            }
-        }
-    }
-
-    private func formatCurrency(_ value: Double) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        return formatter.string(from: NSNumber(value: value)) ?? "$0"
     }
 }
 

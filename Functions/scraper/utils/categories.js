@@ -75,12 +75,10 @@ const CATEGORY_MAPPINGS = {
 
   // ========== TRAVEL (includes airlines, hotels, travel portals) ==========
   'travel': CATEGORIES.travel,
-  'hotels': CATEGORIES.travel,
   'flights': CATEGORIES.travel,
   'airfare': CATEGORIES.travel,
   'car rentals': CATEGORIES.travel,
   'carRental': CATEGORIES.travel,
-  'airlines': CATEGORIES.travel,
   'travel purchases': CATEGORIES.travel,
   'travel booked through chase': CATEGORIES.travel,
   'travel purchased through amex': CATEGORIES.travel,
@@ -266,58 +264,6 @@ function mapCategory(rawCategory) {
 }
 
 /**
- * Parse a multiplier string like "3x" or "3%" into number and type
- */
-function parseMultiplier(str) {
-  if (!str) return null;
-
-  const cleaned = str.toLowerCase().replace(/[^0-9.x%]/g, '');
-
-  if (cleaned.includes('%')) {
-    const num = parseFloat(cleaned.replace('%', ''));
-    return { multiplier: num, isPercentage: true };
-  }
-
-  if (cleaned.includes('x')) {
-    const num = parseFloat(cleaned.replace('x', ''));
-    return { multiplier: num, isPercentage: false };
-  }
-
-  const num = parseFloat(cleaned);
-  if (!isNaN(num)) {
-    // Assume percentage for cashback cards, points for others
-    return { multiplier: num, isPercentage: true };
-  }
-
-  return null;
-}
-
-/**
- * Parse a spending cap string like "$1,500" or "$6,000/quarter"
- */
-function parseCap(str) {
-  if (!str) return null;
-
-  const cleaned = str.toLowerCase();
-
-  // Extract amount
-  const amountMatch = cleaned.match(/\$?([\d,]+)/);
-  if (!amountMatch) return null;
-
-  const amount = parseFloat(amountMatch[1].replace(/,/g, ''));
-
-  // Determine period
-  let period = 'quarterly'; // default
-  if (cleaned.includes('month')) {
-    period = 'monthly';
-  } else if (cleaned.includes('year') || cleaned.includes('annual')) {
-    period = 'yearly';
-  }
-
-  return { cap: amount, capPeriod: period };
-}
-
-/**
  * Generate a unique card ID
  */
 function generateCardId(issuer, cardName) {
@@ -342,8 +288,6 @@ module.exports = {
   CATEGORIES,
   CATEGORY_MAPPINGS,
   mapCategory,
-  parseMultiplier,
-  parseCap,
   generateCardId,
   isValidCategory,
   getValidCategories

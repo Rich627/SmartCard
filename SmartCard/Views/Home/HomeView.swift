@@ -721,7 +721,7 @@ struct QuickRecommendSheet: View {
             .alert("Add Spending", isPresented: $showingAddConfirmation) {
                 Button("Add") {
                     if let rec = selectedRecommendation, let amountValue = Double(amount) {
-                        spendingViewModel.addSpending(
+                        try? spendingViewModel.addSpending(
                             amount: amountValue,
                             merchant: searchText.isEmpty ? effectiveCategory.displayName : searchText,
                             category: effectiveCategory,

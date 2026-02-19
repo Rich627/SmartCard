@@ -110,7 +110,6 @@ struct MerchantDatabase {
         Merchant(name: "Uber Eats", category: .dining, keywords: ["uber eats", "ubereats"]),
         Merchant(name: "Grubhub", category: .dining, keywords: ["grubhub"]),
         Merchant(name: "Postmates", category: .dining, keywords: ["postmates"]),
-        Merchant(name: "Instacart", category: .grocery, keywords: ["instacart"]),
         Merchant(name: "Seamless", category: .dining, keywords: ["seamless"]),
         Merchant(name: "Caviar", category: .dining, keywords: ["caviar"]),
 
@@ -412,70 +411,3 @@ struct MerchantDatabase {
     }
 }
 
-// MARK: - Lazy Initialized Keyword Index for Fast Lookups
-
-private class MerchantIndex {
-    static let shared = MerchantIndex()
-
-    // Keyword to merchant mapping for O(1) lookup
-    private(set) lazy var keywordIndex: [String: Merchant] = {
-        var index: [String: Merchant] = [:]
-        for merchant in MerchantDatabase.merchants {
-            // Index by lowercase name
-            index[merchant.name.lowercased()] = merchant
-
-            // Index by keywords
-            if let keywords = merchant.keywords {
-                for keyword in keywords {
-                    index[keyword.lowercased()] = merchant
-                }
-            }
-        }
-        return index
-    }()
-
-    // Prefix tree for fast prefix matching (simple implementation)
-    private(set) lazy var merchantsByFirstLetter: [Character: [Merchant]] = {
-        var byLetter: [Character: [Merchant]] = [:]
-        for merchant in MerchantDatabase.merchants {
-            let firstChar = merchant.name.lowercased().first ?? "a"
-            if byLetter[firstChar] == nil {
-                byLetter[firstChar] = []
-            }
-            byLetter[firstChar]?.append(merchant)
-        }
-        return byLetter
-    }()
-
-    /// Fast keyword lookup
-    func findByKeyword(_ keyword: String) -> Merchant? {
-        keywordIndex[keyword.lowercased()]
-    }
-
-    /// Get merchants starting with a specific character for faster filtering
-    func merchantsStartingWith(_ char: Character) -> [Merchant] {
-        merchantsByFirstLetter[char] ?? []
-    }
-}
-
-// MARK: - Fast Lookup Extension
-
-extension MerchantDatabase {
-    /// Optimized lookup using pre-built index
-    static func fastFindMerchant(query: String) -> Merchant? {
-        let lowercased = query.lowercased()
-
-        // Try exact keyword match first (O(1))
-        if let merchant = MerchantIndex.shared.findByKeyword(lowercased) {
-            return merchant
-        }
-
-        // Fall back to partial matching
-        return findMerchant(query: query)
-    }
-
-    /// Optimized category suggestion using index
-    static func fastSuggestCategory(for query: String) -> SpendingCategory? {
-        fastFindMerchant(query: query)?.category
-    }
-}

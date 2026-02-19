@@ -4,7 +4,6 @@
  * with HTTP checks for basic validation
  */
 
-const https = require('https');
 const { generateCardId, mapCategory } = require('../utils/categories');
 
 // Verified Citi card data
@@ -135,22 +134,6 @@ const CITI_CARDS = [
     imageColor: '#0078D2'
   }
 ];
-
-/**
- * Fetch a URL to verify it exists
- */
-function checkUrl(url) {
-  return new Promise((resolve) => {
-    const req = https.get(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0' },
-      timeout: 10000
-    }, res => {
-      resolve(res.statusCode === 200);
-    });
-    req.on('error', () => resolve(false));
-    req.on('timeout', () => { req.destroy(); resolve(false); });
-  });
-}
 
 /**
  * Main scrape function

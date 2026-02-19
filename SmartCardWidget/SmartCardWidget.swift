@@ -1,5 +1,7 @@
 import WidgetKit
 import SwiftUI
+import CryptoKit
+import Security
 
 // MARK: - Widget Data
 
@@ -20,7 +22,7 @@ struct WidgetData {
         topCategoryIcon: "fork.knife",
         bestCard: "Amex Gold",
         bestCardColor: "#B8860B",
-        bestCardImageURL: "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/gold-card.png",
+        bestCardImageURL: nil,
         rewardRate: "4x",
         rotatingCategories: ["Gas", "EV Charging"],
         rotatingCard: "Chase Freedom Flex",
@@ -29,20 +31,97 @@ struct WidgetData {
     )
 
     static func load() -> WidgetData {
-        let defaults = UserDefaults(suiteName: "group.com.smartcard.app")
+        // Decrypt widget data from shared App Group storage
+        if let payload = WidgetCryptoHelper.loadPayload() {
+            return WidgetData(
+                topCategory: payload.topCategory,
+                topCategoryIcon: payload.topCategoryIcon,
+                bestCard: payload.bestCard,
+                bestCardColor: payload.bestCardColor,
+                bestCardImageURL: nil,
+                rewardRate: payload.rewardRate,
+                rotatingCategories: payload.rotatingCategories,
+                rotatingCard: payload.rotatingCard,
+                spendingThisMonth: payload.spendingThisMonth,
+                rewardsThisMonth: payload.rewardsThisMonth
+            )
+        }
 
+        // Fallback if decryption fails
         return WidgetData(
-            topCategory: defaults?.string(forKey: "widget_topCategory") ?? "Dining",
-            topCategoryIcon: defaults?.string(forKey: "widget_topCategoryIcon") ?? "fork.knife",
-            bestCard: defaults?.string(forKey: "widget_bestCard") ?? "Add Cards",
-            bestCardColor: defaults?.string(forKey: "widget_bestCardColor") ?? "#808080",
-            bestCardImageURL: defaults?.string(forKey: "widget_bestCardImageURL"),
-            rewardRate: defaults?.string(forKey: "widget_rewardRate") ?? "-",
-            rotatingCategories: defaults?.stringArray(forKey: "widget_rotatingCategories") ?? [],
-            rotatingCard: defaults?.string(forKey: "widget_rotatingCard"),
-            spendingThisMonth: defaults?.double(forKey: "widget_spendingThisMonth") ?? 0,
-            rewardsThisMonth: defaults?.double(forKey: "widget_rewardsThisMonth") ?? 0
+            topCategory: "Dining",
+            topCategoryIcon: "fork.knife",
+            bestCard: "Add Cards",
+            bestCardColor: "#808080",
+            bestCardImageURL: nil,
+            rewardRate: "-",
+            rotatingCategories: [],
+            rotatingCard: nil,
+            spendingThisMonth: 0,
+            rewardsThisMonth: 0
         )
+    }
+}
+
+// MARK: - Widget Crypto Helper (mirrors WidgetDataManager encryption)
+
+private struct WidgetPayload: Codable {
+    let topCategory: String
+    let topCategoryIcon: String
+    let bestCard: String
+    let bestCardColor: String
+    let rewardRate: String
+    let rotatingCategories: [String]
+    let rotatingCard: String?
+    let spendingThisMonth: Double
+    let rewardsThisMonth: Double
+}
+
+private enum WidgetCryptoHelper {
+    static let appGroupID = "group.com.smartcard.app"
+    static let widgetDataKey = "widget_encrypted_data"
+    static let symmetricKeyKeychainKey = "widgetEncryptionKey"
+
+    static func loadPayload() -> WidgetPayload? {
+        let defaults = UserDefaults(suiteName: appGroupID)
+        guard let encrypted = defaults?.data(forKey: widgetDataKey) else {
+            return nil
+        }
+
+        guard let key = loadSymmetricKey() else { return nil }
+
+        do {
+            let sealedBox = try AES.GCM.SealedBox(combined: encrypted)
+            let decryptedData = try AES.GCM.open(sealedBox, using: key)
+            return try JSONDecoder().decode(WidgetPayload.self, from: decryptedData)
+        } catch {
+            return nil
+        }
+    }
+
+    private static func loadSymmetricKey() -> SymmetricKey? {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: "com.smartcard.app",
+            kSecAttrAccount as String: symmetricKeyKeychainKey,
+            kSecAttrAccessGroup as String: appGroupID,
+            kSecReturnData as String: true,
+            kSecMatchLimit as String: kSecMatchLimitOne,
+        ]
+
+        var result: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+
+        guard status == errSecSuccess, let keyJsonData = result as? Data else {
+            return nil
+        }
+
+        // KeychainHelper stores Data as JSON-encoded (with quotes), so decode it
+        guard let keyData = try? JSONDecoder().decode(Data.self, from: keyJsonData) else {
+            return nil
+        }
+
+        return SymmetricKey(data: keyData)
     }
 }
 

@@ -10,7 +10,7 @@ struct PrivacyPolicyView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     Group {
-                        Text("Last Updated: \(formattedDate)")
+                        Text("Last Updated: February 2026")
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
@@ -113,12 +113,6 @@ struct PrivacyPolicyView: View {
         }
     }
 
-    private var formattedDate: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter.string(from: Date())
-    }
-
     private func section(title: String, content: () -> String) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
@@ -140,7 +134,7 @@ struct TermsOfServiceView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     Group {
-                        Text("Last Updated: \(formattedDate)")
+                        Text("Last Updated: February 2026")
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
@@ -244,12 +238,6 @@ struct TermsOfServiceView: View {
                 }
             }
         }
-    }
-
-    private var formattedDate: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter.string(from: Date())
     }
 
     private func section(title: String, content: () -> String) -> some View {

@@ -1,8 +1,10 @@
 import Foundation
 import SwiftUI
+import os
 
 @MainActor
 class CardViewModel: ObservableObject {
+    private static let logger = Logger(subsystem: "com.smartcard.app", category: "CardViewModel")
     @Published var allCards: [CreditCard] = []
     @Published var userCards: [UserCard] = []
     @Published var isLoading = false
@@ -25,39 +27,54 @@ class CardViewModel: ObservableObject {
             if cards.isEmpty {
                 // Fallback to MockData if Firebase is empty
                 allCards = MockData.creditCards
-                print("Firebase empty, using MockData (\(allCards.count) cards)")
+                #if DEBUG
+                Self.logger.info("Firebase empty, using MockData (\(self.allCards.count) cards)")
+                #endif
             } else {
                 allCards = cards
-                print("Loaded \(cards.count) cards from Firebase")
+                #if DEBUG
+                Self.logger.info("Loaded \(cards.count) cards from Firebase")
+                #endif
             }
         } catch {
             // Fallback to MockData on error
             allCards = MockData.creditCards
-            print("Firebase error: \(error), using MockData")
+            #if DEBUG
+            Self.logger.error("Firebase error: \(error.localizedDescription), using MockData")
+            #endif
         }
     }
 
-    // MARK: - Persistence (UserDefaults)
+    // MARK: - Persistence (Keychain with UserDefaults migration)
+
+    private static let keychainKey = "userCards"
 
     private func loadUserCards() {
-        if let data = UserDefaults.standard.data(forKey: "userCards"),
+        // Try Keychain first
+        if let cards: [UserCard] = try? KeychainHelper.shared.load(forKey: Self.keychainKey) {
+            userCards = cards
+            return
+        }
+
+        // Fallback: migrate from UserDefaults
+        if let data = UserDefaults.standard.data(forKey: UserDefaultsKeys.userCards),
            let cards = try? JSONDecoder().decode([UserCard].self, from: data) {
             userCards = cards
+            try? KeychainHelper.shared.save(cards, forKey: Self.keychainKey)
+            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.userCards)
         } else {
-            // Start with empty wallet for new users
             userCards = []
         }
     }
 
     private func saveUserCards() {
-        if let data = try? JSONEncoder().encode(userCards) {
-            UserDefaults.standard.set(data, forKey: "userCards")
-        }
+        try? KeychainHelper.shared.save(userCards, forKey: Self.keychainKey)
     }
 
     func clearAllData() {
         userCards = []
-        UserDefaults.standard.removeObject(forKey: "userCards")
+        KeychainHelper.shared.delete(forKey: Self.keychainKey)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.userCards)
     }
 
     // MARK: - Card Management

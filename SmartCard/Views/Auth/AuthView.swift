@@ -47,8 +47,8 @@ struct AuthView: View {
                                     try? await authService.signInWithApple(credential: appleIDCredential, nonce: nonce)
                                 }
                             }
-                        case .failure(let error):
-                            print("Apple Sign In Error: \(error)")
+                        case .failure:
+                            break
                         }
                     }
                     .signInWithAppleButtonStyle(.black)

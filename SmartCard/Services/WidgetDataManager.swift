@@ -1,12 +1,85 @@
 import Foundation
 import WidgetKit
+import CryptoKit
 
 @MainActor
 class WidgetDataManager {
     static let shared = WidgetDataManager()
-    private let defaults = UserDefaults(suiteName: "group.com.smartcard.app")
+
+    private static let appGroupID = "group.com.smartcard.app"
+    private static let widgetDataKey = "widget_encrypted_data"
+    private static let symmetricKeyKeychainKey = "widgetEncryptionKey"
+
+    private let defaults: UserDefaults? = {
+        let suite = UserDefaults(suiteName: appGroupID)
+        if suite == nil {
+            assertionFailure("Failed to create UserDefaults suite '\(appGroupID)' — check App Group entitlements")
+        }
+        return suite
+    }()
 
     private init() {}
+
+    // MARK: - Symmetric Key Management
+
+    /// Get or create the symmetric key for widget data encryption (stored in shared Keychain).
+    private func getOrCreateSymmetricKey() -> SymmetricKey {
+        // Try loading from shared Keychain
+        if let keyData: Data = try? KeychainHelper.shared.load(
+            forKey: Self.symmetricKeyKeychainKey,
+            accessGroup: Self.appGroupID
+        ) {
+            return SymmetricKey(data: keyData)
+        }
+
+        // Generate and save a new key
+        let key = SymmetricKey(size: .bits256)
+        let keyData = key.withUnsafeBytes { Data($0) }
+        try? KeychainHelper.shared.save(
+            keyData,
+            forKey: Self.symmetricKeyKeychainKey,
+            accessGroup: Self.appGroupID
+        )
+        return key
+    }
+
+    // MARK: - Encryption / Decryption
+
+    private func encryptData(_ data: Data) -> Data? {
+        let key = getOrCreateSymmetricKey()
+        do {
+            let sealedBox = try AES.GCM.seal(data, using: key)
+            return sealedBox.combined
+        } catch {
+            return nil
+        }
+    }
+
+    private func decryptData(_ data: Data) -> Data? {
+        let key = getOrCreateSymmetricKey()
+        do {
+            let sealedBox = try AES.GCM.SealedBox(combined: data)
+            return try AES.GCM.open(sealedBox, using: key)
+        } catch {
+            return nil
+        }
+    }
+
+    // MARK: - Widget Data Model (for encrypted blob)
+
+    struct WidgetPayload: Codable {
+        let topCategory: String
+        let topCategoryIcon: String
+        let bestCard: String
+        let bestCardColor: String
+        let rewardRate: String
+        let rotatingCategories: [String]
+        let rotatingCard: String?
+        let spendingThisMonth: Double
+        let rewardsThisMonth: Double
+    }
+
+    // MARK: - Write Encrypted Widget Data
 
     func updateWidgetData(
         cardViewModel: CardViewModel,
@@ -20,60 +93,86 @@ class WidgetDataManager {
             allCards: cardViewModel.allCards
         )
 
+        var payload: WidgetPayload
+
         if let topRec = diningRecs.first {
-            defaults?.set("Dining", forKey: "widget_topCategory")
-            defaults?.set("fork.knife", forKey: "widget_topCategoryIcon")
-            defaults?.set(topRec.userCard.nickname ?? topRec.card.name, forKey: "widget_bestCard")
-            defaults?.set(topRec.card.imageColor, forKey: "widget_bestCardColor")
-            defaults?.set(topRec.displayReward, forKey: "widget_rewardRate")
-        } else {
-            defaults?.set("Dining", forKey: "widget_topCategory")
-            defaults?.set("fork.knife", forKey: "widget_topCategoryIcon")
-            defaults?.set("Add Cards", forKey: "widget_bestCard")
-            defaults?.set("#808080", forKey: "widget_bestCardColor")
-            defaults?.set("-", forKey: "widget_rewardRate")
-        }
+            // Get rotating categories
+            let currentQ = Date().currentQuarter
+            let currentY = RotatingCategory.currentYear()
 
-        // Get rotating categories
-        let currentQ = currentQuarter()
-        let currentY = currentYear()
+            var rotatingCategories: [String] = []
+            var rotatingCard: String? = nil
 
-        var rotatingCategories: [String] = []
-        var rotatingCard: String? = nil
+            for userCard in cardViewModel.userCards {
+                guard let card = cardViewModel.getCard(for: userCard),
+                      let rotating = card.rotatingCategories,
+                      let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) else {
+                    continue
+                }
 
-        for userCard in cardViewModel.userCards {
-            guard let card = cardViewModel.getCard(for: userCard),
-                  let rotating = card.rotatingCategories,
-                  let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) else {
-                continue
+                rotatingCategories = currentRotating.categories.map { $0.rawValue }
+                rotatingCard = userCard.nickname ?? card.name
+                break
             }
 
-            rotatingCategories = currentRotating.categories.map { $0.rawValue }
-            rotatingCard = userCard.nickname ?? card.name
-            break // Just get the first rotating card
+            // This month stats
+            let thisMonthSpendings = spendingViewModel.spendingsThisMonth()
+            let totalSpent = thisMonthSpendings.reduce(0) { $0 + $1.amount }
+            let totalRewards = thisMonthSpendings.reduce(0) { $0 + $1.rewardEarned }
+
+            payload = WidgetPayload(
+                topCategory: "Dining",
+                topCategoryIcon: "fork.knife",
+                bestCard: topRec.userCard.nickname ?? topRec.card.name,
+                bestCardColor: topRec.card.imageColor,
+                rewardRate: topRec.displayReward,
+                rotatingCategories: rotatingCategories,
+                rotatingCard: rotatingCard,
+                spendingThisMonth: totalSpent,
+                rewardsThisMonth: totalRewards
+            )
+        } else {
+            let thisMonthSpendings = spendingViewModel.spendingsThisMonth()
+            let totalSpent = thisMonthSpendings.reduce(0) { $0 + $1.amount }
+            let totalRewards = thisMonthSpendings.reduce(0) { $0 + $1.rewardEarned }
+
+            payload = WidgetPayload(
+                topCategory: "Dining",
+                topCategoryIcon: "fork.knife",
+                bestCard: "Add Cards",
+                bestCardColor: "#808080",
+                rewardRate: "-",
+                rotatingCategories: [],
+                rotatingCard: nil,
+                spendingThisMonth: totalSpent,
+                rewardsThisMonth: totalRewards
+            )
         }
 
-        defaults?.set(rotatingCategories, forKey: "widget_rotatingCategories")
-        defaults?.set(rotatingCard, forKey: "widget_rotatingCard")
-
-        // This month stats
-        let thisMonthSpendings = spendingViewModel.spendingsThisMonth()
-        let totalSpent = thisMonthSpendings.reduce(0) { $0 + $1.amount }
-        let totalRewards = thisMonthSpendings.reduce(0) { $0 + $1.rewardEarned }
-
-        defaults?.set(totalSpent, forKey: "widget_spendingThisMonth")
-        defaults?.set(totalRewards, forKey: "widget_rewardsThisMonth")
+        // Encrypt and store
+        if let jsonData = try? JSONEncoder().encode(payload),
+           let encrypted = encryptData(jsonData) {
+            defaults?.set(encrypted, forKey: Self.widgetDataKey)
+        }
 
         // Refresh widgets
         WidgetCenter.shared.reloadAllTimelines()
     }
 
-    private func currentQuarter() -> Int {
-        let month = Calendar.current.component(.month, from: Date())
-        return ((month - 1) / 3) + 1
-    }
+    // MARK: - Read Encrypted Widget Data (for Widget extension)
 
-    private func currentYear() -> Int {
-        Calendar.current.component(.year, from: Date())
+    static func loadWidgetPayload() -> WidgetPayload? {
+        let defaults = UserDefaults(suiteName: appGroupID)
+        guard let encrypted = defaults?.data(forKey: widgetDataKey) else {
+            return nil
+        }
+
+        // Decrypt using shared Keychain key
+        let manager = WidgetDataManager.shared
+        guard let decrypted = manager.decryptData(encrypted) else {
+            return nil
+        }
+
+        return try? JSONDecoder().decode(WidgetPayload.self, from: decrypted)
     }
 }

@@ -171,7 +171,7 @@ class SpendingCapTracker {
 
         switch period {
         case .monthly:
-            return calendar.date(from: calendar.dateComponents([.year, .month], from: now))!
+            return calendar.date(from: calendar.dateComponents([.year, .month], from: now)) ?? Date()
 
         case .quarterly:
             let month = calendar.component(.month, from: now)
@@ -180,10 +180,10 @@ class SpendingCapTracker {
             var components = calendar.dateComponents([.year], from: now)
             components.month = startMonth
             components.day = 1
-            return calendar.date(from: components)!
+            return calendar.date(from: components) ?? Date()
 
         case .yearly:
-            return calendar.date(from: calendar.dateComponents([.year], from: now))!
+            return calendar.date(from: calendar.dateComponents([.year], from: now)) ?? Date()
         }
     }
 

@@ -1,35 +1,35 @@
-## Description / 描述
+## Description
 
-<!-- Describe your changes / 描述你的變更 -->
+<!-- Describe your changes -->
 
-## Type of Change / 變更類型
+## Type of Change
 
-- [ ] Bug fix / 錯誤修復
-- [ ] New feature / 新功能
-- [ ] New card support / 新卡片支援
-- [ ] Documentation / 文件更新
-- [ ] Refactoring / 程式碼重構
-- [ ] Other / 其他
+- [ ] Bug fix
+- [ ] New feature
+- [ ] New card support
+- [ ] Documentation
+- [ ] Refactoring
+- [ ] Other
 
-## Related Issue / 相關 Issue
+## Related Issue
 
 <!-- Link to related issue: Fixes #123 -->
 
-## Screenshots / 螢幕截圖
+## Screenshots
 
 <!-- If applicable, add screenshots -->
 
-## Checklist / 檢查清單
+## Checklist
 
-- [ ] My code follows the project style guidelines / 程式碼符合專案風格
-- [ ] I have tested my changes / 已測試變更
-- [ ] I have updated documentation if needed / 已更新相關文件
-- [ ] My changes don't break existing functionality / 不影響現有功能
-- [ ] All CI checks pass (build, tests, lint) / 所有 CI 檢查通過
-- [ ] No new compiler warnings / 無新的編譯器警告
-- [ ] SwiftLint reports no violations / SwiftLint 無違規
+- [ ] My code follows the project style guidelines
+- [ ] I have tested my changes
+- [ ] I have updated documentation if needed
+- [ ] My changes don't break existing functionality
+- [ ] All CI checks pass (build, tests, lint)
+- [ ] No new compiler warnings
+- [ ] SwiftLint reports no violations
 
-## Testing / 測試
+## Testing
 
 <!-- How did you test your changes? -->
 
@@ -38,4 +38,4 @@
 > **Note:** All CI checks must pass before this PR can be merged. A maintainer
 > will be automatically assigned for review via CODEOWNERS.
 
-Thank you for contributing! / 感謝您的貢獻！
+Thank you for contributing!

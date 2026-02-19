@@ -214,7 +214,7 @@ class RecommendationEngine {
                         reason: "\(currentRotating.displayMultiplier) Q\(currentQ) rotating category",
                         isRotating: true,
                         isSelectable: false,
-                        needsActivation: false
+                        needsActivation: currentRotating.activationRequired
                     )
                 }
             }
@@ -265,9 +265,9 @@ class RecommendationEngine {
             // Direct cash back percentage
             return amount * (multiplier / 100)
         } else {
-            // Points/miles - estimate value at 1 cent per point for comparison
+            // Points/miles - estimate value at standard cpp
             let points = amount * multiplier
-            return points * 0.01  // 1 cpp valuation
+            return points * RewardConstants.defaultPointsValueCPP
         }
     }
 

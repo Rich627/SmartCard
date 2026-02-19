@@ -1,30 +1,30 @@
-# GitHub Actions 自動爬蟲設定指南
+# GitHub Actions Auto-Scraper Setup Guide
 
-## 自動執行時間
+## Schedule
 
-- **每月 1 號 早上 8:00 UTC** (台灣時間下午 4:00)
-- 也可以隨時手動觸發
+- **1st of every month at 8:00 UTC**
+- Can also be triggered manually at any time
 
-## 設定步驟
+## Setup Steps
 
-### Step 1: 取得 Firebase Service Account
+### Step 1: Get Firebase Service Account
 
-1. 前往 [Firebase Console](https://console.firebase.google.com/)
-2. 選擇專案 `smartcard-c6e92`
-3. 點擊 ⚙️ **Project Settings** > **Service accounts**
-4. 點擊 **Generate new private key**
-5. 下載 JSON 檔案
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Select project `smartcard-c6e92`
+3. Click **Project Settings** > **Service accounts**
+4. Click **Generate new private key**
+5. Download the JSON file
 
-### Step 2: 新增 GitHub Secret
+### Step 2: Add GitHub Secret
 
-1. 前往你的 GitHub Repo: https://github.com/YOUR_USERNAME/SmartCard
-2. 點擊 **Settings** > **Secrets and variables** > **Actions**
-3. 點擊 **New repository secret**
+1. Go to your GitHub Repo: https://github.com/YOUR_USERNAME/SmartCard
+2. Click **Settings** > **Secrets and variables** > **Actions**
+3. Click **New repository secret**
 4. Name: `FIREBASE_SERVICE_ACCOUNT`
-5. Value: 貼上整個 JSON 檔案內容
-6. 點擊 **Add secret**
+5. Value: Paste the entire JSON file content
+6. Click **Add secret**
 
-### Step 3: 推送程式碼
+### Step 3: Push the Code
 
 ```bash
 git add .github/workflows/monthly-scraper.yml
@@ -32,56 +32,99 @@ git commit -m "feat: add monthly auto scraper via GitHub Actions"
 git push
 ```
 
-### Step 4: 測試
+### Step 4: Test
 
-1. 前往 GitHub Repo > **Actions**
-2. 點擊 **Monthly Credit Card Scraper**
-3. 點擊 **Run workflow** > **Run workflow**
-4. 等待執行完成 (約 2-3 分鐘)
+1. Go to GitHub Repo > **Actions**
+2. Click **Monthly Credit Card Scraper**
+3. Click **Run workflow** > **Run workflow**
+4. Wait for completion (approximately 2-3 minutes)
 
-## 執行結果
+## Results
 
-每次執行後可以在 Actions 頁面看到：
-- 爬取了多少張卡片
-- 有多少張有圖片
-- 上傳到 Firestore 的時間
+After each run, you can see the following on the Actions page:
+- Number of cards scraped
+- Number of cards with images
+- Upload time to Firestore
 
-## 修改執行頻率
+## Changing the Schedule
 
-編輯 `.github/workflows/monthly-scraper.yml`:
+Edit `.github/workflows/monthly-scraper.yml`:
 
 ```yaml
 on:
   schedule:
-    # 每月 1 號
+    # 1st of every month
     - cron: '0 8 1 * *'
 
-    # 或改成每週一
+    # Or change to every Monday
     # - cron: '0 8 * * 1'
 
-    # 或改成每天
+    # Or change to daily
     # - cron: '0 8 * * *'
 ```
 
-Cron 格式: `分 時 日 月 星期`
+Cron format: `minute hour day month weekday`
 
-## 費用
+## Cost
 
-- GitHub Actions 私有 Repo: 每月 2000 分鐘免費
-- 每次爬蟲約 2-3 分鐘
-- 每月 1 次 = 約 3 分鐘，完全在免費額度內
+- GitHub Actions private repos: 2000 free minutes per month
+- Each scraper run takes approximately 2-3 minutes
+- Once per month = approximately 3 minutes, well within free tier
 
-## 故障排除
+## Security Recommendations
 
-### 執行失敗
+### Workload Identity Federation (Recommended)
 
-1. 檢查 Actions 頁面的錯誤訊息
-2. 確認 `FIREBASE_SERVICE_ACCOUNT` secret 設定正確
-3. 確認 JSON 格式正確 (不要有多餘空格或換行)
+Instead of storing a long-lived service account JSON key as a GitHub secret, consider using **Workload Identity Federation** for keyless authentication:
 
-### 手動觸發
+1. Create a Workload Identity Pool in Google Cloud:
+   ```bash
+   gcloud iam workload-identity-pools create "github-pool" \
+     --location="global" \
+     --display-name="GitHub Actions Pool"
+   ```
 
-如果自動執行沒有運作，可以隨時手動觸發：
-1. 前往 Actions 頁面
-2. 點擊 **Monthly Credit Card Scraper**
-3. 點擊 **Run workflow**
+2. Create a provider for GitHub:
+   ```bash
+   gcloud iam workload-identity-pools providers create-oidc "github-provider" \
+     --location="global" \
+     --workload-identity-pool="github-pool" \
+     --display-name="GitHub Provider" \
+     --attribute-mapping="google.subject=assertion.sub,attribute.repository=assertion.repository" \
+     --issuer-uri="https://token.actions.githubusercontent.com"
+   ```
+
+3. Grant the service account permissions to the pool, then use `google-github-actions/auth@v2` in your workflow.
+
+This eliminates the need for rotating service account keys.
+
+### Key Rotation Reminder
+
+If you continue using a service account JSON key:
+
+- **Rotate the key at least every 90 days**
+- Go to Firebase Console > Project Settings > Service Accounts
+- Generate a new private key, update the `FIREBASE_SERVICE_ACCOUNT` GitHub secret
+- Delete the old key from Google Cloud Console > IAM > Service Accounts > Keys
+- Consider setting a calendar reminder for periodic rotation
+
+### Additional Hardening
+
+- Restrict the service account to the minimum required permissions (Firestore write only)
+- Enable GitHub's secret scanning to detect accidental exposure
+- Review Actions audit logs periodically for unauthorized workflow runs
+
+## Troubleshooting
+
+### Run Failed
+
+1. Check error messages on the Actions page
+2. Verify the `FIREBASE_SERVICE_ACCOUNT` secret is set correctly
+3. Ensure the JSON format is correct (no extra spaces or line breaks)
+
+### Manual Trigger
+
+If the scheduled run isn't working, you can trigger it manually at any time:
+1. Go to the Actions page
+2. Click **Monthly Credit Card Scraper**
+3. Click **Run workflow**

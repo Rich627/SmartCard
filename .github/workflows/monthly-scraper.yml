@@ -1,11 +1,11 @@
-name: Daily Credit Card Scraper
+name: Monthly Credit Card Scraper
 
-# 每天早上 8:00 UTC (台灣時間下午 4:00) 自動執行
+# Runs daily at 8:00 UTC
 on:
   schedule:
     - cron: '0 8 * * *'
 
-  # 也可以手動觸發
+  # Can also be triggered manually
   workflow_dispatch:
 
 jobs:

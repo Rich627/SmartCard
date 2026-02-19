@@ -1,5 +1,6 @@
 import Foundation
 import LinkKit
+import FirebaseAuth
 
 class PlaidService: ObservableObject {
     static let shared = PlaidService()
@@ -8,30 +9,59 @@ class PlaidService: ObservableObject {
     @Published var linkedAccounts: [PlaidAccount] = []
     @Published var error: String?
 
-    // Firebase Cloud Functions URL
-    private let cloudFunctionsBaseURL = "https://us-central1-smartcard-c6e92.cloudfunctions.net"
+    private static let keychainKey = "plaidLinkedAccounts"
+
+    // Firebase Cloud Functions URL — reads from GoogleService-Info.plist; no hardcoded fallback
+    private let cloudFunctionsBaseURL: String = {
+        guard let plistPath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
+              let plist = NSDictionary(contentsOfFile: plistPath),
+              let projectID = plist["PROJECT_ID"] as? String else {
+            fatalError("GoogleService-Info.plist not found or missing PROJECT_ID. Cannot configure Cloud Functions URL.")
+        }
+        return "https://us-central1-\(projectID).cloudfunctions.net"
+    }()
 
     private init() {
         loadLinkedAccounts()
+    }
+
+    // MARK: - Auth Token
+
+    /// Get Firebase Auth ID token for authenticated backend requests.
+    private func getAuthToken() async throws -> String {
+        guard let user = Auth.auth().currentUser else {
+            throw PlaidError.notLinked
+        }
+        if user.isAnonymous {
+            throw PlaidError.accountUpgradeRequired
+        }
+        return try await user.getIDToken()
+    }
+
+    /// Create an authenticated URLRequest with Bearer token.
+    private func authenticatedRequest(url: URL) async throws -> URLRequest {
+        let token = try await getAuthToken()
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        return request
     }
 
     // MARK: - Link Token
 
     /// Get a link token from your backend (Firebase Cloud Functions)
     func getLinkToken() async throws -> String {
-        let url = URL(string: "\(cloudFunctionsBaseURL)/createLinkToken")!
+        guard let url = URL(string: "\(cloudFunctionsBaseURL)/createLinkToken") else {
+            throw URLError(.badURL)
+        }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        var request = try await authenticatedRequest(url: url)
 
-        // You might want to include user ID for personalized linking
-        let body: [String: Any] = [
-            "client_user_id": UUID().uuidString
-        ]
-        request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        // Body is now empty — backend uses uid from the verified token
+        request.httpBody = try JSONSerialization.data(withJSONObject: [:])
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await PinnedURLSession.shared.session.data(for: request)
 
         guard let httpResponse = response as? HTTPURLResponse,
               httpResponse.statusCode == 200 else {
@@ -50,11 +80,11 @@ class PlaidService: ObservableObject {
 
     /// Exchange public token for access token (happens on backend)
     func exchangePublicToken(_ publicToken: String, institutionName: String) async throws {
-        let url = URL(string: "\(cloudFunctionsBaseURL)/exchangePublicToken")!
+        guard let url = URL(string: "\(cloudFunctionsBaseURL)/exchangePublicToken") else {
+            throw URLError(.badURL)
+        }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        var request = try await authenticatedRequest(url: url)
 
         let body: [String: Any] = [
             "public_token": publicToken,
@@ -62,7 +92,7 @@ class PlaidService: ObservableObject {
         ]
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await PinnedURLSession.shared.session.data(for: request)
 
         guard let httpResponse = response as? HTTPURLResponse,
               httpResponse.statusCode == 200 else {
@@ -98,11 +128,11 @@ class PlaidService: ObservableObject {
 
     /// Fetch transactions from Plaid (through backend)
     func fetchTransactions(accountId: String, startDate: Date, endDate: Date) async throws -> [PlaidTransaction] {
-        let url = URL(string: "\(cloudFunctionsBaseURL)/getTransactions")!
+        guard let url = URL(string: "\(cloudFunctionsBaseURL)/getTransactions") else {
+            throw URLError(.badURL)
+        }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        var request = try await authenticatedRequest(url: url)
 
         let dateFormatter = ISO8601DateFormatter()
         let body: [String: Any] = [
@@ -112,7 +142,7 @@ class PlaidService: ObservableObject {
         ]
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await PinnedURLSession.shared.session.data(for: request)
 
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
@@ -121,25 +151,55 @@ class PlaidService: ObservableObject {
         return response.transactions
     }
 
-    // MARK: - Persistence
+    // MARK: - Persistence (Keychain with UserDefaults migration)
 
     private func loadLinkedAccounts() {
-        if let data = UserDefaults.standard.data(forKey: "plaidLinkedAccounts"),
+        // Try Keychain first
+        if let accounts: [PlaidAccount] = try? KeychainHelper.shared.load(forKey: Self.keychainKey) {
+            linkedAccounts = accounts
+            return
+        }
+
+        // Fallback: migrate from UserDefaults
+        if let data = UserDefaults.standard.data(forKey: UserDefaultsKeys.plaidLinkedAccounts),
            let accounts = try? JSONDecoder().decode([PlaidAccount].self, from: data) {
             linkedAccounts = accounts
+            // Migrate to Keychain and clean up UserDefaults
+            try? KeychainHelper.shared.save(accounts, forKey: Self.keychainKey)
+            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.plaidLinkedAccounts)
         }
     }
 
     private func saveLinkedAccounts() {
-        if let data = try? JSONEncoder().encode(linkedAccounts) {
-            UserDefaults.standard.set(data, forKey: "plaidLinkedAccounts")
-        }
+        try? KeychainHelper.shared.save(linkedAccounts, forKey: Self.keychainKey)
     }
 
     func unlinkAccount(_ account: PlaidAccount) {
         linkedAccounts.removeAll { $0.id == account.id }
         saveLinkedAccounts()
-        // TODO: Call backend to revoke access token
+
+        // Revoke access token on backend
+        Task {
+            try? await revokeAccessToken()
+        }
+    }
+
+    private func revokeAccessToken() async throws {
+        guard let url = URL(string: "\(cloudFunctionsBaseURL)/unlinkAccount") else {
+            throw URLError(.badURL)
+        }
+
+        var request = try await authenticatedRequest(url: url)
+
+        // Body is empty — backend uses uid from the verified token
+        request.httpBody = try JSONSerialization.data(withJSONObject: [:])
+
+        let (_, response) = try await PinnedURLSession.shared.session.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw PlaidError.exchangeFailed
+        }
     }
 }
 
@@ -188,6 +248,7 @@ enum PlaidError: Error, LocalizedError {
     case exchangeFailed
     case invalidResponse
     case notLinked
+    case accountUpgradeRequired
 
     var errorDescription: String? {
         switch self {
@@ -199,6 +260,8 @@ enum PlaidError: Error, LocalizedError {
             return "Invalid response from server"
         case .notLinked:
             return "No bank account linked"
+        case .accountUpgradeRequired:
+            return "Please sign in with an account to link your bank"
         }
     }
 }

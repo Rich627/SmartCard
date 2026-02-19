@@ -1,6 +1,8 @@
 import Foundation
 import FirebaseFirestore
 
+// MARK: - Reserved for Firebase Sync (Phase 2)
+
 class FirebaseService {
     static let shared = FirebaseService()
     private let db = Firestore.firestore()

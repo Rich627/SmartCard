@@ -30,10 +30,42 @@ class AuthService: ObservableObject {
         }
     }
 
+    // MARK: - Error Sanitization
+
+    /// Convert Firebase AuthErrorCode to a user-facing message that doesn't leak sensitive details.
+    /// Merges wrongPassword/userNotFound to prevent account enumeration.
+    private func userFacingMessage(from error: Error) -> String {
+        let nsError = error as NSError
+        guard nsError.domain == AuthErrorDomain,
+              let code = AuthErrorCode(rawValue: nsError.code) else {
+            return "An unexpected error occurred. Please try again."
+        }
+
+        switch code {
+        case .wrongPassword, .userNotFound, .invalidCredential:
+            return "Invalid email or password."
+        case .emailAlreadyInUse:
+            return "This email is already in use."
+        case .weakPassword:
+            return "Password is too weak. Please use at least 6 characters."
+        case .invalidEmail:
+            return "Please enter a valid email address."
+        case .networkError:
+            return "Network error. Please check your connection."
+        case .tooManyRequests:
+            return "Too many attempts. Please try again later."
+        case .userDisabled:
+            return "This account has been disabled."
+        default:
+            return "An unexpected error occurred. Please try again."
+        }
+    }
+
     // MARK: - Email/Password Auth
 
     func signUp(email: String, password: String) async throws {
         isLoading = true
+        defer { isLoading = false }
         errorMessage = nil
 
         do {
@@ -41,15 +73,14 @@ class AuthService: ObservableObject {
             user = result.user
             isAuthenticated = true
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = userFacingMessage(from: error)
             throw error
         }
-
-        isLoading = false
     }
 
     func signIn(email: String, password: String) async throws {
         isLoading = true
+        defer { isLoading = false }
         errorMessage = nil
 
         do {
@@ -57,11 +88,9 @@ class AuthService: ObservableObject {
             user = result.user
             isAuthenticated = true
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = userFacingMessage(from: error)
             throw error
         }
-
-        isLoading = false
     }
 
     func signOut() throws {
@@ -78,6 +107,7 @@ class AuthService: ObservableObject {
 
     func signInWithApple(credential: ASAuthorizationAppleIDCredential, nonce: String) async throws {
         isLoading = true
+        defer { isLoading = false }
         errorMessage = nil
 
         guard let appleIDToken = credential.identityToken,
@@ -96,28 +126,25 @@ class AuthService: ObservableObject {
             user = result.user
             isAuthenticated = true
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = userFacingMessage(from: error)
             throw error
         }
-
-        isLoading = false
     }
 
     // MARK: - Anonymous Auth (for testing without account)
 
     func signInAnonymously() async throws {
         isLoading = true
+        defer { isLoading = false }
 
         do {
             let result = try await Auth.auth().signInAnonymously()
             user = result.user
             isAuthenticated = true
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = userFacingMessage(from: error)
             throw error
         }
-
-        isLoading = false
     }
 
     var currentUserId: String? {
@@ -127,32 +154,40 @@ class AuthService: ObservableObject {
 
 enum AuthError: LocalizedError {
     case invalidCredential
-    case userNotFound
 
     var errorDescription: String? {
         switch self {
         case .invalidCredential:
             return "Invalid credential"
-        case .userNotFound:
-            return "User not found"
         }
     }
 }
 
 // MARK: - Apple Sign In Helpers
 
+/// Generate a cryptographically random nonce using rejection sampling to avoid modulo bias.
 func randomNonceString(length: Int = 32) -> String {
     precondition(length > 0)
-    var randomBytes = [UInt8](repeating: 0, count: length)
-    let errorCode = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
-    if errorCode != errSecSuccess {
-        fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+    let charset: [Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+    let charsetCount = charset.count
+    // Rejection sampling threshold to eliminate modulo bias
+    let maxAllowed = (256 / charsetCount) * charsetCount
+
+    var nonce = [Character]()
+    nonce.reserveCapacity(length)
+
+    while nonce.count < length {
+        var randomByte: UInt8 = 0
+        let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &randomByte)
+        if errorCode != errSecSuccess {
+            fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+        }
+        // Reject bytes that would cause modulo bias
+        if Int(randomByte) < maxAllowed {
+            nonce.append(charset[Int(randomByte) % charsetCount])
+        }
     }
 
-    let charset: [Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-    let nonce = randomBytes.map { byte in
-        charset[Int(byte) % charset.count]
-    }
     return String(nonce)
 }
 

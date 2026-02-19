@@ -1,5 +1,9 @@
 import Foundation
 
+enum RewardConstants {
+    static let defaultPointsValueCPP = 0.01
+}
+
 enum CardNetwork: String, Codable, CaseIterable {
     case visa
     case mastercard
@@ -130,10 +134,10 @@ struct CreditCard: Identifiable, Codable, Equatable {
     }
 
     // Get effective reward for a category considering rotating and selectable
-    func getReward(for category: SpendingCategory, selectedCategories: [SpendingCategory]? = nil) -> Double {
+    func getReward(for category: SpendingCategory, selectedCategories: [SpendingCategory]? = nil) -> (multiplier: Double, isPercentage: Bool) {
         // Check fixed category rewards first
         if let categoryReward = categoryRewards.first(where: { $0.category == category }) {
-            return categoryReward.multiplier
+            return (categoryReward.multiplier, categoryReward.isPercentage)
         }
 
         // Check rotating categories for current quarter
@@ -143,19 +147,19 @@ struct CreditCard: Identifiable, Codable, Equatable {
 
             if let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) {
                 if currentRotating.categories.contains(category) {
-                    return currentRotating.multiplier
+                    return (currentRotating.multiplier, currentRotating.isPercentage)
                 }
             }
         }
 
         // Check selectable categories
-        if let _ = selectableConfig, let selected = selectedCategories {
+        if let config = selectableConfig, let selected = selectedCategories {
             if selected.contains(category) {
-                return selectableConfig!.multiplier
+                return (config.multiplier, config.isPercentage)
             }
         }
 
-        return baseReward
+        return (baseReward, baseIsPercentage)
     }
 }
 
