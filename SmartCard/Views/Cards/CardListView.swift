@@ -196,19 +196,15 @@ struct AddCardView: View {
 
             // Check issuer aliases
             if let aliases = issuerAliases[card.issuer] {
-                for alias in aliases {
-                    if searchLower.contains(alias) {
-                        return true
-                    }
+                for alias in aliases where searchLower.contains(alias) {
+                    return true
                 }
             }
 
             // Check card name aliases
             if let aliases = cardAliases[card.name] {
-                for alias in aliases {
-                    if searchLower == alias || searchLower.contains(alias) {
-                        return true
-                    }
+                for alias in aliases where searchLower == alias || searchLower.contains(alias) {
+                    return true
                 }
             }
 

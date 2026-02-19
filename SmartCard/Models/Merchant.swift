@@ -366,13 +366,9 @@ struct MerchantDatabase {
         }
 
         // Keyword match
-        for merchant in merchants {
-            if let keywords = merchant.keywords {
-                for keyword in keywords {
-                    if lowercased.contains(keyword) {
-                        return merchant
-                    }
-                }
+        for merchant in merchants where merchant.keywords != nil {
+            for keyword in merchant.keywords! where lowercased.contains(keyword) {
+                return merchant
             }
         }
 
@@ -410,4 +406,3 @@ struct MerchantDatabase {
         }
     }
 }
-
