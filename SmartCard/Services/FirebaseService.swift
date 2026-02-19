@@ -108,7 +108,7 @@ class FirebaseService {
     // MARK: - Real-time Listeners
 
     func listenToCards(completion: @escaping ([CreditCard]) -> Void) -> ListenerRegistration {
-        return db.collection("cards").addSnapshotListener { snapshot, error in
+        return db.collection("cards").addSnapshotListener { snapshot, _ in
             guard let documents = snapshot?.documents else { return }
             let cards = documents.compactMap { doc in
                 try? doc.data(as: CreditCard.self)
@@ -120,7 +120,7 @@ class FirebaseService {
     func listenToUserCards(userId: String, completion: @escaping ([UserCard]) -> Void) -> ListenerRegistration {
         return db.collection("users").document(userId)
             .collection("wallet")
-            .addSnapshotListener { snapshot, error in
+            .addSnapshotListener { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
                 let cards = documents.compactMap { doc in
                     try? doc.data(as: UserCard.self)
@@ -134,7 +134,7 @@ class FirebaseService {
             .collection("spending")
             .order(by: "date", descending: true)
             .limit(to: 100)
-            .addSnapshotListener { snapshot, error in
+            .addSnapshotListener { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
                 let spendings = documents.compactMap { doc in
                     try? doc.data(as: Spending.self)

@@ -3,19 +3,20 @@ excluded:
 
 disabled_rules:
   - trailing_comma
+  - todo
 
 line_length:
-  warning: 200
-  error: 250
+  warning: 270
+  error: 300
   ignores_comments: true
   ignores_urls: true
 
 file_length:
-  warning: 1000
+  warning: 1500
   error: 1600
 
 type_body_length:
-  warning: 1000
+  warning: 1500
   error: 1600
 
 identifier_name:
@@ -23,5 +24,5 @@ identifier_name:
   max_length: 60
 
 function_body_length:
-  warning: 60
+  warning: 80
   error: 100

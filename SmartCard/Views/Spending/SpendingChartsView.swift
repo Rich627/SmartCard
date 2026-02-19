@@ -131,7 +131,7 @@ struct MonthlyTrendChart: View {
                 }
                 .frame(height: 200)
                 .chartXAxis {
-                    AxisMarks(values: .stride(by: .month)) { value in
+                    AxisMarks(values: .stride(by: .month)) { _ in
                         AxisGridLine()
                         AxisValueLabel(format: .dateTime.month(.abbreviated))
                     }

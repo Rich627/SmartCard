@@ -284,8 +284,8 @@ class RecommendationEngine {
         amount: Double
     ) -> SpendingCapInfo {
         // Find applicable cap for this category
-        var cap: Double? = nil
-        var capPeriod: CapPeriod? = nil
+        var cap: Double?
+        var capPeriod: CapPeriod?
 
         // Check fixed category rewards
         if let categoryReward = card.categoryRewards.first(where: { $0.category == category }) {

@@ -101,7 +101,7 @@ class WidgetDataManager {
             let currentY = RotatingCategory.currentYear()
 
             var rotatingCategories: [String] = []
-            var rotatingCard: String? = nil
+            var rotatingCard: String?
 
             for userCard in cardViewModel.userCards {
                 guard let card = cardViewModel.getCard(for: userCard),
