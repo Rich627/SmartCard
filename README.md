@@ -7,7 +7,7 @@
 <p>
   <a href="https://swift.org/"><img src="https://img.shields.io/badge/Swift-5.9-orange.svg" alt="Swift"></a>
   <a href="https://developer.apple.com/ios/"><img src="https://img.shields.io/badge/Platform-iOS%2017+-blue.svg" alt="Platform"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
   <a href="https://github.com/Rich627/SmartCard/stargazers"><img src="https://img.shields.io/github/stars/Rich627/SmartCard?style=social" alt="Stars"></a>
 </p>
 
@@ -66,7 +66,6 @@ open SmartCard.xcodeproj
 - [English Documentation](docs/README_EN.md)
 - [繁體中文文件](docs/README_ZH-TW.md)
 - [Contributing Guide](CONTRIBUTING.md)
-- [Commercial License](COMMERCIAL_LICENSE.md)
 
 ---
 
@@ -75,6 +74,15 @@ open SmartCard.xcodeproj
 ```
 SwiftUI · MVVM · Combine · WidgetKit · Vision (OCR) · Firebase
 ```
+
+---
+
+## Community
+
+- [Contributing Guide](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+- [Changelog](CHANGELOG.md)
 
 ---
 

@@ -25,11 +25,17 @@
 - [ ] I have tested my changes / 已測試變更
 - [ ] I have updated documentation if needed / 已更新相關文件
 - [ ] My changes don't break existing functionality / 不影響現有功能
+- [ ] All CI checks pass (build, tests, lint) / 所有 CI 檢查通過
+- [ ] No new compiler warnings / 無新的編譯器警告
+- [ ] SwiftLint reports no violations / SwiftLint 無違規
 
 ## Testing / 測試
 
 <!-- How did you test your changes? -->
 
 ---
+
+> **Note:** All CI checks must pass before this PR can be merged. A maintainer
+> will be automatically assigned for review via CODEOWNERS.
 
 Thank you for contributing! / 感謝您的貢獻！

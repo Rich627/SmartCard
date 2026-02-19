@@ -17,12 +17,15 @@ Thank you for your interest in contributing to SmartCard! This document provides
 
 ## Code of Conduct
 
-By participating in this project, you agree to maintain a respectful and inclusive environment. Please:
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
+By participating, you agree to uphold this code. Please:
 
 - Be respectful and constructive in discussions
 - Welcome newcomers and help them get started
 - Focus on what is best for the community
 - Show empathy towards other community members
+
+Please report unacceptable behavior by opening an issue with the `conduct` label.
 
 ---
 
@@ -45,7 +48,7 @@ By participating in this project, you agree to maintain a respectful and inclusi
    ```
 3. Add the upstream repository:
    ```bash
-   git remote add upstream https://github.com/ORIGINAL_OWNER/SmartCard.git
+   git remote add upstream https://github.com/Rich627/SmartCard.git
    ```
 
 ---
@@ -56,13 +59,13 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 | Type | Description |
 |------|-------------|
-| 🐛 **Bug Fixes** | Fix issues and improve stability |
-| ✨ **Features** | Add new functionality |
-| 📝 **Documentation** | Improve README, comments, guides |
-| 🌐 **Localization** | Add/improve translations |
-| 🧪 **Tests** | Add or improve test coverage |
-| 🎨 **UI/UX** | Improve design and user experience |
-| 💳 **Card Data** | Add new credit card definitions |
+| **Bug Fixes** | Fix issues and improve stability |
+| **Features** | Add new functionality |
+| **Documentation** | Improve README, comments, guides |
+| **Localization** | Add/improve translations |
+| **Tests** | Add or improve test coverage |
+| **UI/UX** | Improve design and user experience |
+| **Card Data** | Add new credit card definitions |
 
 ### Good First Issues
 
@@ -111,7 +114,7 @@ SmartCard/
 ### SwiftUI Best Practices
 
 ```swift
-// ✅ Good: Small, focused views
+// Good: Small, focused views
 struct CardRowView: View {
     let card: CreditCard
 
@@ -123,7 +126,7 @@ struct CardRowView: View {
     }
 }
 
-// ❌ Avoid: Large, monolithic views
+// Avoid: Large, monolithic views
 struct CardRowView: View {
     var body: some View {
         // 200+ lines of code...
@@ -204,9 +207,11 @@ Types:
 
 ### Review Process
 
-1. Maintainers will review your PR
-2. Address any requested changes
-3. Once approved, your PR will be merged
+1. A maintainer will be automatically assigned via [CODEOWNERS](.github/CODEOWNERS)
+2. At least **1 maintainer review** is required before merging
+3. All **CI checks must pass** (build, tests, SwiftLint, scraper validation)
+4. Address any requested changes and re-request review
+5. Once approved and CI is green, your PR will be merged
 
 ---
 
@@ -313,4 +318,4 @@ npm run full  # Scrapes all cards and uploads to Firestore
 
 Feel free to open an issue with the `question` label or reach out to the maintainers.
 
-Thank you for contributing! 🎉
+Thank you for contributing!
