@@ -79,9 +79,14 @@ final class RecommendationEngineTests: XCTestCase {
             allCards: allCards
         )
 
-        // Amex Gold has 4x on grocery
         let topRec = recommendations.first(where: { !$0.hasSignUpBonusInProgress })
-        XCTAssertEqual(topRec?.card.id, "amex-gold", "Amex Gold (4x grocery) should be top recommendation for grocery")
+
+        // In Q1, CFF has 5x rotating grocery which beats Amex Gold's 4x
+        if RotatingCategory.currentQuarter() == 1 {
+            XCTAssertEqual(topRec?.card.id, "chase-freedom-flex", "CFF (5x rotating grocery in Q1) should be top recommendation")
+        } else {
+            XCTAssertEqual(topRec?.card.id, "amex-gold", "Amex Gold (4x grocery) should be top recommendation for grocery")
+        }
     }
 
     // MARK: - Estimated Reward Calculation
