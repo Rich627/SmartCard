@@ -16,7 +16,7 @@
   "dependencies": {
     "firebase-admin": "^13.6.1",
     "firebase-functions": "^7.0.5",
-    "plaid": "^41.3.0",
+    "plaid": "^41.4.0",
     "cors": "^2.8.6",
     "jsonwebtoken": "^9.0.2",
     "jwk-to-pem": "^2.0.6"
